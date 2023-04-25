@@ -1,0 +1,6 @@
+[submodule "dependencies/cosmos-proto"]
+	path = dependencies/cosmos-proto
+	url = https://github.com/cosmos/cosmos-proto
+[submodule "dependencies/cosmos-sdk"]
+	path = dependencies/cosmos-sdk
+	url = https://github.com/cosmos/cosmos-sdk
