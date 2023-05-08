@@ -1,0 +1,41 @@
+// Transform from cosmos/base/kv/v1beta1/kv.proto
+package cosmos.base.kv.v1beta1
+
+import com.google.protobuf.ByteString
+import com.google.protobuf.Descriptors
+import com.google.protobuf.Parser
+import kr.jadekim.protobuf.converter.mapper.ProtobufTypeMapper
+
+public object PairsMapper : ProtobufTypeMapper<Pairs, Kv.Pairs> {
+  public override val descriptor: Descriptors.Descriptor = Kv.Pairs.getDescriptor()
+
+  public override val parser: Parser<Kv.Pairs> = Kv.Pairs.parser()
+
+  public override fun convert(obj: Kv.Pairs): Pairs = Pairs(
+  	pairs = obj.pairsList.map { PairMapper.convert(it) },
+  )
+
+  public override fun convert(obj: Pairs): Kv.Pairs {
+    val builder = Kv.Pairs.newBuilder()
+    builder.addAllPairs(obj.pairs.map { PairMapper.convert(it) })
+    return builder.build()
+  }
+}
+
+public object PairMapper : ProtobufTypeMapper<Pair, Kv.Pair> {
+  public override val descriptor: Descriptors.Descriptor = Kv.Pair.getDescriptor()
+
+  public override val parser: Parser<Kv.Pair> = Kv.Pair.parser()
+
+  public override fun convert(obj: Kv.Pair): Pair = Pair(
+  	key = obj.key.toByteArray(),
+  	`value` = obj.`value`.toByteArray(),
+  )
+
+  public override fun convert(obj: Pair): Kv.Pair {
+    val builder = Kv.Pair.newBuilder()
+    builder.setKey(ByteString.copyFrom(obj.key))
+    builder.setValue(ByteString.copyFrom(obj.`value`))
+    return builder.build()
+  }
+}

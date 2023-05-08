@@ -1,0 +1,85 @@
+// Transform from cosmos/base/query/v1beta1/pagination.proto
+@file:ProtobufSyntax(syntax = "PROTO3")
+
+package cosmos.base.query.v1beta1
+
+import kotlin.Boolean
+import kotlin.ByteArray
+import kotlin.ULong
+import kotlin.Unit
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kr.jadekim.protobuf.`annotation`.ProtobufIndex
+import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
+import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.kotlinx.ProtobufMapperEncoder
+
+@Serializable(with = PageRequest.KotlinxSerializer::class)
+@SerialName(value = "cosmos.base.query.v1beta1.PageRequest")
+public data class PageRequest(
+  @ProtobufIndex(index = 1)
+  public val key: ByteArray,
+  @ProtobufIndex(index = 2)
+  public val offset: ULong,
+  @ProtobufIndex(index = 3)
+  public val limit: ULong,
+  @ProtobufIndex(index = 4)
+  public val countTotal: Boolean,
+  @ProtobufIndex(index = 5)
+  public val reverse: Boolean,
+) {
+  public object KotlinxSerializer : KSerializer<PageRequest> {
+    private val delegator: KSerializer<PageRequest> = PageRequest.serializer()
+
+    public override val descriptor: SerialDescriptor = delegator.descriptor
+
+    public override fun serialize(encoder: Encoder, `value`: PageRequest): Unit {
+      if (encoder is ProtobufMapperEncoder) {
+        encoder.encodeValue(PageRequestMapper.serialize(value))
+        return
+      }
+      delegator.serialize(encoder, value)
+    }
+
+    public override fun deserialize(decoder: Decoder): PageRequest {
+      if (decoder is ProtobufMapperDecoder) {
+        return PageRequestMapper.deserialize(decoder.decodeByteArray())
+      }
+      return delegator.deserialize(decoder)
+    }
+  }
+}
+
+@Serializable(with = PageResponse.KotlinxSerializer::class)
+@SerialName(value = "cosmos.base.query.v1beta1.PageResponse")
+public data class PageResponse(
+  @ProtobufIndex(index = 1)
+  public val nextKey: ByteArray,
+  @ProtobufIndex(index = 2)
+  public val total: ULong,
+) {
+  public object KotlinxSerializer : KSerializer<PageResponse> {
+    private val delegator: KSerializer<PageResponse> = PageResponse.serializer()
+
+    public override val descriptor: SerialDescriptor = delegator.descriptor
+
+    public override fun serialize(encoder: Encoder, `value`: PageResponse): Unit {
+      if (encoder is ProtobufMapperEncoder) {
+        encoder.encodeValue(PageResponseMapper.serialize(value))
+        return
+      }
+      delegator.serialize(encoder, value)
+    }
+
+    public override fun deserialize(decoder: Decoder): PageResponse {
+      if (decoder is ProtobufMapperDecoder) {
+        return PageResponseMapper.deserialize(decoder.decodeByteArray())
+      }
+      return delegator.deserialize(decoder)
+    }
+  }
+}

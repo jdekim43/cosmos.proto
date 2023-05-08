@@ -3,7 +3,7 @@ plugins {
     id("signing")
     id("maven-publish")
     kotlin("jvm") version "1.8.20" apply false
-    id("com.google.protobuf") version "0.9.2"
+    id("com.google.protobuf") version "0.9.3"
 }
 
 allprojects {
@@ -26,11 +26,25 @@ allprojects {
                 srcDir("$dependenciesDir/cosmos-proto/proto")
                 srcDir("$dependenciesDir/cosmos-sdk/proto")
             }
+
+            java {
+                setSrcDirs(srcDirs.filterNot { it.absolutePath.startsWith(buildDir.absolutePath + "/generated/source/proto") })
+            }
         }
+    }
+
+    val copyTask = tasks.register<Copy>("moveProtoResults") {
+        from(buildDir.absolutePath + "/generated/source/proto/main")
+        into(projectDir.absolutePath + "/src/main")
+    }
+
+    tasks.getByName("generateProto") {
+        finalizedBy(copyTask)
     }
 
     repositories {
         mavenCentral()
+        mavenLocal()
     }
 
     dependencies {

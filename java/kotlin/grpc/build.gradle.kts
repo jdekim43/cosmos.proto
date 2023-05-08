@@ -6,10 +6,10 @@ plugins {
 
 protobuf {
     plugins {
-        val grpcKotlinVersion: String by project
+        val kotlinProtobufVersion: String by project
 
-        id("grpcKotlin") {
-            artifact = "io.grpc:protoc-gen-grpc-kotlin:$grpcKotlinVersion:jdk8@jar"
+        id("kotlin-grpc") {
+            artifact = "kr.jadekim:kotlin-protobuf-generator-grpc:$kotlinProtobufVersion:jdk8@jar"
         }
     }
 
@@ -20,7 +20,7 @@ protobuf {
             }
 
             task.plugins {
-                id("grpcKotlin") {
+                id("kotlin-grpc") {
                     outputSubDir = "kotlin"
                 }
             }
