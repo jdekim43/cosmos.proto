@@ -6,6 +6,21 @@ plugins {
     id("com.google.protobuf") version "0.9.3"
 }
 
+fun resolveCosmosSdkVersion(): String {
+    val directory = File(rootProject.projectDir.parentFile, "/dependencies/cosmos-sdk")
+    val process = ProcessBuilder("git", "describe", "--tags")
+        .directory(directory)
+        .start()
+    val input = process.inputReader()
+    val noTimeout = process.waitFor(5, TimeUnit.SECONDS)
+    if (!noTimeout || process.exitValue() != 0) {
+        throw IllegalStateException("timeout or illegal exit value ${process.exitValue()}")
+    }
+
+    return input.use { it.readLine() }.removePrefix("v")
+        .also { println("Resolved cosmos-sdk version : $it") }
+}
+
 allprojects {
     apply {
         plugin("java-library")
@@ -15,7 +30,7 @@ allprojects {
     }
 
     group = "kr.jadekim"
-    version = "0.47.1"
+    version = resolveCosmosSdkVersion()
 
     sourceSets {
         main {
@@ -66,7 +81,7 @@ allprojects {
 
     publishing {
         publications {
-            create<MavenPublication>("lib") {
+            create<MavenPublication>("artifacts") {
                 groupId = project.group.toString()
                 artifactId = project.name
                 version = project.version.toString()
@@ -125,7 +140,7 @@ allprojects {
     }
 
     signing {
-        sign(publishing.publications["lib"])
+        sign(publishing.publications["artifacts"])
     }
 }
 
