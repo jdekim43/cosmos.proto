@@ -47,6 +47,21 @@ public final class CommitInfoOuterClass {
      */
     cosmos.base.store.v1beta1.CommitInfoOuterClass.StoreInfoOrBuilder getStoreInfosOrBuilder(
         int index);
+
+    /**
+     * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+     * @return Whether the timestamp field is set.
+     */
+    boolean hasTimestamp();
+    /**
+     * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+     * @return The timestamp.
+     */
+    com.google.protobuf.Timestamp getTimestamp();
+    /**
+     * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getTimestampOrBuilder();
   }
   /**
    * <pre>
@@ -146,6 +161,32 @@ public final class CommitInfoOuterClass {
       return storeInfos_.get(index);
     }
 
+    public static final int TIMESTAMP_FIELD_NUMBER = 3;
+    private com.google.protobuf.Timestamp timestamp_;
+    /**
+     * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+     * @return Whether the timestamp field is set.
+     */
+    @java.lang.Override
+    public boolean hasTimestamp() {
+      return timestamp_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getTimestamp() {
+      return timestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timestamp_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getTimestampOrBuilder() {
+      return timestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timestamp_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -166,6 +207,9 @@ public final class CommitInfoOuterClass {
       for (int i = 0; i < storeInfos_.size(); i++) {
         output.writeMessage(2, storeInfos_.get(i));
       }
+      if (timestamp_ != null) {
+        output.writeMessage(3, getTimestamp());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -182,6 +226,10 @@ public final class CommitInfoOuterClass {
       for (int i = 0; i < storeInfos_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, storeInfos_.get(i));
+      }
+      if (timestamp_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getTimestamp());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -202,6 +250,11 @@ public final class CommitInfoOuterClass {
           != other.getVersion()) return false;
       if (!getStoreInfosList()
           .equals(other.getStoreInfosList())) return false;
+      if (hasTimestamp() != other.hasTimestamp()) return false;
+      if (hasTimestamp()) {
+        if (!getTimestamp()
+            .equals(other.getTimestamp())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -219,6 +272,10 @@ public final class CommitInfoOuterClass {
       if (getStoreInfosCount() > 0) {
         hash = (37 * hash) + STORE_INFOS_FIELD_NUMBER;
         hash = (53 * hash) + getStoreInfosList().hashCode();
+      }
+      if (hasTimestamp()) {
+        hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+        hash = (53 * hash) + getTimestamp().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -362,6 +419,11 @@ public final class CommitInfoOuterClass {
           storeInfosBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = null;
+        if (timestampBuilder_ != null) {
+          timestampBuilder_.dispose();
+          timestampBuilder_ = null;
+        }
         return this;
       }
 
@@ -410,6 +472,11 @@ public final class CommitInfoOuterClass {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.version_ = version_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.timestamp_ = timestampBuilder_ == null
+              ? timestamp_
+              : timestampBuilder_.build();
         }
       }
 
@@ -486,6 +553,9 @@ public final class CommitInfoOuterClass {
             }
           }
         }
+        if (other.hasTimestamp()) {
+          mergeTimestamp(other.getTimestamp());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -530,6 +600,13 @@ public final class CommitInfoOuterClass {
                 }
                 break;
               } // case 18
+              case 26: {
+                input.readMessage(
+                    getTimestampFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -817,6 +894,125 @@ public final class CommitInfoOuterClass {
           storeInfos_ = null;
         }
         return storeInfosBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp timestamp_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timestampBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       * @return Whether the timestamp field is set.
+       */
+      public boolean hasTimestamp() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       * @return The timestamp.
+       */
+      public com.google.protobuf.Timestamp getTimestamp() {
+        if (timestampBuilder_ == null) {
+          return timestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timestamp_;
+        } else {
+          return timestampBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       */
+      public Builder setTimestamp(com.google.protobuf.Timestamp value) {
+        if (timestampBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          timestamp_ = value;
+        } else {
+          timestampBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       */
+      public Builder setTimestamp(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (timestampBuilder_ == null) {
+          timestamp_ = builderForValue.build();
+        } else {
+          timestampBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       */
+      public Builder mergeTimestamp(com.google.protobuf.Timestamp value) {
+        if (timestampBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+            timestamp_ != null &&
+            timestamp_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getTimestampBuilder().mergeFrom(value);
+          } else {
+            timestamp_ = value;
+          }
+        } else {
+          timestampBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        timestamp_ = null;
+        if (timestampBuilder_ != null) {
+          timestampBuilder_.dispose();
+          timestampBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getTimestampBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getTimestampFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getTimestampOrBuilder() {
+        if (timestampBuilder_ != null) {
+          return timestampBuilder_.getMessageOrBuilder();
+        } else {
+          return timestamp_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : timestamp_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp = 3 [(.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getTimestampFieldBuilder() {
+        if (timestampBuilder_ == null) {
+          timestampBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getTimestamp(),
+                  getParentForChildren(),
+                  isClean());
+          timestamp_ = null;
+        }
+        return timestampBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2232,26 +2428,29 @@ public final class CommitInfoOuterClass {
     java.lang.String[] descriptorData = {
       "\n+cosmos/base/store/v1beta1/commit_info." +
       "proto\022\031cosmos.base.store.v1beta1\032\024gogopr" +
-      "oto/gogo.proto\"^\n\nCommitInfo\022\017\n\007version\030" +
-      "\001 \001(\003\022?\n\013store_infos\030\002 \003(\0132$.cosmos.base" +
-      ".store.v1beta1.StoreInfoB\004\310\336\037\000\"W\n\tStoreI" +
-      "nfo\022\014\n\004name\030\001 \001(\t\022<\n\tcommit_id\030\002 \001(\0132#.c" +
-      "osmos.base.store.v1beta1.CommitIDB\004\310\336\037\000\"" +
-      "/\n\010CommitID\022\017\n\007version\030\001 \001(\003\022\014\n\004hash\030\002 \001" +
-      "(\014:\004\230\240\037\000B*Z(github.com/cosmos/cosmos-sdk" +
-      "/store/typesb\006proto3"
+      "oto/gogo.proto\032\037google/protobuf/timestam" +
+      "p.proto\"\227\001\n\nCommitInfo\022\017\n\007version\030\001 \001(\003\022" +
+      "?\n\013store_infos\030\002 \003(\0132$.cosmos.base.store" +
+      ".v1beta1.StoreInfoB\004\310\336\037\000\0227\n\ttimestamp\030\003 " +
+      "\001(\0132\032.google.protobuf.TimestampB\010\310\336\037\000\220\337\037" +
+      "\001\"W\n\tStoreInfo\022\014\n\004name\030\001 \001(\t\022<\n\tcommit_i" +
+      "d\030\002 \001(\0132#.cosmos.base.store.v1beta1.Comm" +
+      "itIDB\004\310\336\037\000\"/\n\010CommitID\022\017\n\007version\030\001 \001(\003\022" +
+      "\014\n\004hash\030\002 \001(\014:\004\230\240\037\000B*Z(github.com/cosmos" +
+      "/cosmos-sdk/store/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.GoGoProtos.getDescriptor(),
+          com.google.protobuf.TimestampProto.getDescriptor(),
         });
     internal_static_cosmos_base_store_v1beta1_CommitInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_cosmos_base_store_v1beta1_CommitInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_base_store_v1beta1_CommitInfo_descriptor,
-        new java.lang.String[] { "Version", "StoreInfos", });
+        new java.lang.String[] { "Version", "StoreInfos", "Timestamp", });
     internal_static_cosmos_base_store_v1beta1_StoreInfo_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_cosmos_base_store_v1beta1_StoreInfo_fieldAccessorTable = new
@@ -2268,9 +2467,11 @@ public final class CommitInfoOuterClass {
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.GoGoProtos.goprotoStringer);
     registry.add(com.google.protobuf.GoGoProtos.nullable);
+    registry.add(com.google.protobuf.GoGoProtos.stdtime);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
     com.google.protobuf.GoGoProtos.getDescriptor();
+    com.google.protobuf.TimestampProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

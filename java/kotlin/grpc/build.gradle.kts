@@ -1,15 +1,50 @@
 import com.google.protobuf.gradle.*
 
 plugins {
-    kotlin("jvm")
+    kotlin("multiplatform")
+}
+
+kotlin {
+    jvm()
+
+    sourceSets {
+        val commonMain by getting {
+//            kotlin.srcDir(File(buildDir, "generated/source/proto/main/kotlin-grpc-multiplatform"))
+
+            dependencies {
+                val kotlinProtobufVersion: String by project
+
+                api(project(":cosmos-proto-kotlin"))
+
+                api("kr.jadekim:kotlin-protobuf:$kotlinProtobufVersion")
+                api("kr.jadekim:kotlin-protobuf-grpc:$kotlinProtobufVersion")
+            }
+        }
+
+        val jvmMain by getting {
+//            kotlin.srcDir(File(buildDir, "generated/source/proto/main/kotlin-converter-multiplatform-jvm"))
+
+            dependencies {
+                val grpcKotlinVersion: String by project
+
+                api(project(":"))
+                api(project(":cosmos-grpc-java"))
+                api("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
+            }
+        }
+    }
 }
 
 protobuf {
     plugins {
         val kotlinProtobufVersion: String by project
 
-        id("kotlin-grpc") {
-            artifact = "kr.jadekim:kotlin-protobuf-generator-grpc:$kotlinProtobufVersion:jdk8@jar"
+        id("kotlin-grpc-multiplatform") {
+            artifact = "kr.jadekim:kotlin-protobuf-generator-grpc-multiplatform:$kotlinProtobufVersion:jdk8@jar"
+        }
+
+        id("kotlin-grpc-multiplatform-jvm") {
+            artifact = "kr.jadekim:kotlin-protobuf-generator-grpc-multiplatform-jvm:$kotlinProtobufVersion:jdk8@jar"
         }
     }
 
@@ -20,30 +55,13 @@ protobuf {
             }
 
             task.plugins {
-                id("kotlin-grpc") {
-                    outputSubDir = "kotlin"
+                id("kotlin-grpc-multiplatform") {
+                    outputSubDir = "commonMain"
+                }
+                id("kotlin-grpc-multiplatform-jvm") {
+                    outputSubDir = "jvmMain"
                 }
             }
         }
     }
-}
-
-dependencies {
-    val grpcKotlinVersion: String by project
-
-    api(project(":"))
-    api(project(":cosmos-proto-kotlin"))
-
-    api(project(":cosmos-grpc-java"))
-    api("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
-}
-
-tasks.create("cleanProto") {
-    group = "other"
-
-    doLast {
-        delete("${project.projectDir.absolutePath}/src/main/kotlin")
-    }
-
-    finalizedBy(tasks.getByName("clean"))
 }

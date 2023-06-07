@@ -1,0 +1,12 @@
+// Transform from cosmos/evidence/v1beta1/tx.proto
+@file:GeneratorVersion(version = "0.2.1")
+
+package cosmos.evidence.v1beta1
+
+import kr.jadekim.protobuf.`annotation`.GeneratorVersion
+import kr.jadekim.protobuf.converter.ProtobufConverter
+
+public expect object MsgSubmitEvidenceConverter : ProtobufConverter<MsgSubmitEvidence>
+
+public expect object MsgSubmitEvidenceResponseConverter :
+    ProtobufConverter<MsgSubmitEvidenceResponse>

@@ -35,13 +35,3 @@ dependencies {
     api("io.grpc:grpc-protobuf:$grpcVersion")
     api("io.grpc:grpc-stub:$grpcVersion")
 }
-
-tasks.create("cleanProto") {
-    group = "other"
-
-    doLast {
-        delete("${project.projectDir.absolutePath}/src/main/java")
-    }
-
-    finalizedBy(tasks.getByName("clean"))
-}
