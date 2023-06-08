@@ -1,5 +1,5 @@
 // Transform from cosmos/tx/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.tx.v1beta1
 
@@ -21,9 +21,9 @@ public expect object AuthInfoConverter : ProtobufConverter<AuthInfo>
 public expect object SignerInfoConverter : ProtobufConverter<SignerInfo>
 
 public expect object ModeInfoConverter : ProtobufConverter<ModeInfo> {
-  public expect object SingleConverter : ProtobufConverter<ModeInfo.Single>
+  public object SingleConverter : ProtobufConverter<ModeInfo.Single>
 
-  public expect object MultiConverter : ProtobufConverter<ModeInfo.Multi>
+  public object MultiConverter : ProtobufConverter<ModeInfo.Multi>
 }
 
 public expect object FeeConverter : ProtobufConverter<Fee>

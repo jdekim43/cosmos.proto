@@ -1,5 +1,5 @@
 // Transform from cosmos/crypto/keyring/v1/record.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.crypto.keyring.v1
 

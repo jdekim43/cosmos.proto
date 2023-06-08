@@ -1,6 +1,6 @@
 // Transform from cosmos/group/v1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.group.v1
 
@@ -275,13 +275,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -291,9 +287,9 @@ public object QueryJvm {
     public suspend fun groupInfo(request: QueryGroupInfoRequest, metadata: Metadata):
         QueryGroupInfoResponse = QueryGroupInfoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, groupInfoDescriptor,
+    			option.channel, groupInfoDescriptor,
     			QueryGroupInfoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -303,9 +299,9 @@ public object QueryJvm {
     public suspend fun groupPolicyInfo(request: QueryGroupPolicyInfoRequest, metadata: Metadata):
         QueryGroupPolicyInfoResponse = QueryGroupPolicyInfoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, groupPolicyInfoDescriptor,
+    			option.channel, groupPolicyInfoDescriptor,
     			QueryGroupPolicyInfoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -315,9 +311,9 @@ public object QueryJvm {
     public suspend fun groupMembers(request: QueryGroupMembersRequest, metadata: Metadata):
         QueryGroupMembersResponse = QueryGroupMembersResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, groupMembersDescriptor,
+    			option.channel, groupMembersDescriptor,
     			QueryGroupMembersRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -327,9 +323,9 @@ public object QueryJvm {
     public suspend fun groupsByAdmin(request: QueryGroupsByAdminRequest, metadata: Metadata):
         QueryGroupsByAdminResponse = QueryGroupsByAdminResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, groupsByAdminDescriptor,
+    			option.channel, groupsByAdminDescriptor,
     			QueryGroupsByAdminRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -340,9 +336,9 @@ public object QueryJvm {
         metadata: Metadata): QueryGroupPoliciesByGroupResponse =
         QueryGroupPoliciesByGroupResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, groupPoliciesByGroupDescriptor,
+    			option.channel, groupPoliciesByGroupDescriptor,
     			QueryGroupPoliciesByGroupRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -353,9 +349,9 @@ public object QueryJvm {
         metadata: Metadata): QueryGroupPoliciesByAdminResponse =
         QueryGroupPoliciesByAdminResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, groupPoliciesByAdminDescriptor,
+    			option.channel, groupPoliciesByAdminDescriptor,
     			QueryGroupPoliciesByAdminRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -365,9 +361,9 @@ public object QueryJvm {
     public suspend fun proposal(request: QueryProposalRequest, metadata: Metadata):
         QueryProposalResponse = QueryProposalResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, proposalDescriptor,
+    			option.channel, proposalDescriptor,
     			QueryProposalRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -378,9 +374,9 @@ public object QueryJvm {
         metadata: Metadata): QueryProposalsByGroupPolicyResponse =
         QueryProposalsByGroupPolicyResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, proposalsByGroupPolicyDescriptor,
+    			option.channel, proposalsByGroupPolicyDescriptor,
     			QueryProposalsByGroupPolicyRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -391,9 +387,9 @@ public object QueryJvm {
         metadata: Metadata): QueryVoteByProposalVoterResponse =
         QueryVoteByProposalVoterResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, voteByProposalVoterDescriptor,
+    			option.channel, voteByProposalVoterDescriptor,
     			QueryVoteByProposalVoterRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -403,9 +399,9 @@ public object QueryJvm {
     public suspend fun votesByProposal(request: QueryVotesByProposalRequest, metadata: Metadata):
         QueryVotesByProposalResponse = QueryVotesByProposalResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, votesByProposalDescriptor,
+    			option.channel, votesByProposalDescriptor,
     			QueryVotesByProposalRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -415,9 +411,9 @@ public object QueryJvm {
     public suspend fun votesByVoter(request: QueryVotesByVoterRequest, metadata: Metadata):
         QueryVotesByVoterResponse = QueryVotesByVoterResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, votesByVoterDescriptor,
+    			option.channel, votesByVoterDescriptor,
     			QueryVotesByVoterRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -427,9 +423,9 @@ public object QueryJvm {
     public suspend fun groupsByMember(request: QueryGroupsByMemberRequest, metadata: Metadata):
         QueryGroupsByMemberResponse = QueryGroupsByMemberResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, groupsByMemberDescriptor,
+    			option.channel, groupsByMemberDescriptor,
     			QueryGroupsByMemberRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -439,9 +435,9 @@ public object QueryJvm {
     public suspend fun tallyResult(request: QueryTallyResultRequest, metadata: Metadata):
         QueryTallyResultResponse = QueryTallyResultResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, tallyResultDescriptor,
+    			option.channel, tallyResultDescriptor,
     			QueryTallyResultRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -451,9 +447,9 @@ public object QueryJvm {
     public suspend fun groups(request: QueryGroupsRequest, metadata: Metadata): QueryGroupsResponse
         = QueryGroupsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, groupsDescriptor,
+    			option.channel, groupsDescriptor,
     			QueryGroupsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

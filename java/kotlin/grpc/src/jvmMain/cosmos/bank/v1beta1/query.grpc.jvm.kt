@@ -1,6 +1,6 @@
 // Transform from cosmos/bank/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.bank.v1beta1
 
@@ -222,13 +222,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -238,9 +234,9 @@ public object QueryJvm {
     public suspend fun balance(request: QueryBalanceRequest, metadata: Metadata):
         QueryBalanceResponse = QueryBalanceResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, balanceDescriptor,
+    			option.channel, balanceDescriptor,
     			QueryBalanceRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -250,9 +246,9 @@ public object QueryJvm {
     public suspend fun allBalances(request: QueryAllBalancesRequest, metadata: Metadata):
         QueryAllBalancesResponse = QueryAllBalancesResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, allBalancesDescriptor,
+    			option.channel, allBalancesDescriptor,
     			QueryAllBalancesRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -263,9 +259,9 @@ public object QueryJvm {
         metadata: Metadata): QuerySpendableBalancesResponse =
         QuerySpendableBalancesResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, spendableBalancesDescriptor,
+    			option.channel, spendableBalancesDescriptor,
     			QuerySpendableBalancesRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -277,9 +273,9 @@ public object QueryJvm {
         metadata: Metadata): QuerySpendableBalanceByDenomResponse =
         QuerySpendableBalanceByDenomResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, spendableBalanceByDenomDescriptor,
+    			option.channel, spendableBalanceByDenomDescriptor,
     			QuerySpendableBalanceByDenomRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -289,9 +285,9 @@ public object QueryJvm {
     public suspend fun totalSupply(request: QueryTotalSupplyRequest, metadata: Metadata):
         QueryTotalSupplyResponse = QueryTotalSupplyResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, totalSupplyDescriptor,
+    			option.channel, totalSupplyDescriptor,
     			QueryTotalSupplyRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -301,9 +297,9 @@ public object QueryJvm {
     public suspend fun supplyOf(request: QuerySupplyOfRequest, metadata: Metadata):
         QuerySupplyOfResponse = QuerySupplyOfResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, supplyOfDescriptor,
+    			option.channel, supplyOfDescriptor,
     			QuerySupplyOfRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -313,9 +309,9 @@ public object QueryJvm {
     public suspend fun params(request: QueryParamsRequest, metadata: Metadata): QueryParamsResponse
         = QueryParamsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, paramsDescriptor,
+    			option.channel, paramsDescriptor,
     			QueryParamsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -325,9 +321,9 @@ public object QueryJvm {
     public suspend fun denomMetadata(request: QueryDenomMetadataRequest, metadata: Metadata):
         QueryDenomMetadataResponse = QueryDenomMetadataResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, denomMetadataDescriptor,
+    			option.channel, denomMetadataDescriptor,
     			QueryDenomMetadataRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -337,9 +333,9 @@ public object QueryJvm {
     public suspend fun denomsMetadata(request: QueryDenomsMetadataRequest, metadata: Metadata):
         QueryDenomsMetadataResponse = QueryDenomsMetadataResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, denomsMetadataDescriptor,
+    			option.channel, denomsMetadataDescriptor,
     			QueryDenomsMetadataRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -349,9 +345,9 @@ public object QueryJvm {
     public suspend fun denomOwners(request: QueryDenomOwnersRequest, metadata: Metadata):
         QueryDenomOwnersResponse = QueryDenomOwnersResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, denomOwnersDescriptor,
+    			option.channel, denomOwnersDescriptor,
     			QueryDenomOwnersRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -361,9 +357,9 @@ public object QueryJvm {
     public suspend fun sendEnabled(request: QuerySendEnabledRequest, metadata: Metadata):
         QuerySendEnabledResponse = QuerySendEnabledResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, sendEnabledDescriptor,
+    			option.channel, sendEnabledDescriptor,
     			QuerySendEnabledRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

@@ -1,6 +1,6 @@
 // Transform from cosmos/base/tendermint/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.base.tendermint.v1beta1
 
@@ -152,13 +152,9 @@ public object ServiceJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Service.Client>(channel = option.channel, callOptions =
       option.callOptions), Service.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Service.Client =
         Service.Client(ClientOption(channel, callOptions))
 
@@ -168,9 +164,9 @@ public object ServiceJvm {
     public suspend fun getNodeInfo(request: GetNodeInfoRequest, metadata: Metadata):
         GetNodeInfoResponse = GetNodeInfoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getNodeInfoDescriptor,
+    			option.channel, getNodeInfoDescriptor,
     			GetNodeInfoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -180,9 +176,9 @@ public object ServiceJvm {
     public suspend fun getSyncing(request: GetSyncingRequest, metadata: Metadata):
         GetSyncingResponse = GetSyncingResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getSyncingDescriptor,
+    			option.channel, getSyncingDescriptor,
     			GetSyncingRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -192,9 +188,9 @@ public object ServiceJvm {
     public suspend fun getLatestBlock(request: GetLatestBlockRequest, metadata: Metadata):
         GetLatestBlockResponse = GetLatestBlockResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getLatestBlockDescriptor,
+    			option.channel, getLatestBlockDescriptor,
     			GetLatestBlockRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -204,9 +200,9 @@ public object ServiceJvm {
     public suspend fun getBlockByHeight(request: GetBlockByHeightRequest, metadata: Metadata):
         GetBlockByHeightResponse = GetBlockByHeightResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getBlockByHeightDescriptor,
+    			option.channel, getBlockByHeightDescriptor,
     			GetBlockByHeightRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -217,9 +213,9 @@ public object ServiceJvm {
         metadata: Metadata): GetLatestValidatorSetResponse =
         GetLatestValidatorSetResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getLatestValidatorSetDescriptor,
+    			option.channel, getLatestValidatorSetDescriptor,
     			GetLatestValidatorSetRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -230,9 +226,9 @@ public object ServiceJvm {
         metadata: Metadata): GetValidatorSetByHeightResponse =
         GetValidatorSetByHeightResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getValidatorSetByHeightDescriptor,
+    			option.channel, getValidatorSetByHeightDescriptor,
     			GetValidatorSetByHeightRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -242,9 +238,9 @@ public object ServiceJvm {
     public suspend fun aBCIQuery(request: ABCIQueryRequest, metadata: Metadata): ABCIQueryResponse =
         ABCIQueryResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, aBCIQueryDescriptor,
+    			option.channel, aBCIQueryDescriptor,
     			ABCIQueryRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

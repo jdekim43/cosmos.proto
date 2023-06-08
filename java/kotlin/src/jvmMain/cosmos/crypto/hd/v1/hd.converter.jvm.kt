@@ -1,5 +1,5 @@
 // Transform from cosmos/crypto/hd/v1/hd.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.crypto.hd.v1
 

@@ -1,6 +1,6 @@
 // Transform from cosmos/gov/v1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.gov.v1
 
@@ -166,13 +166,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -182,9 +178,9 @@ public object QueryJvm {
     public suspend fun proposal(request: QueryProposalRequest, metadata: Metadata):
         QueryProposalResponse = QueryProposalResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, proposalDescriptor,
+    			option.channel, proposalDescriptor,
     			QueryProposalRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -194,9 +190,9 @@ public object QueryJvm {
     public suspend fun proposals(request: QueryProposalsRequest, metadata: Metadata):
         QueryProposalsResponse = QueryProposalsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, proposalsDescriptor,
+    			option.channel, proposalsDescriptor,
     			QueryProposalsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -206,9 +202,9 @@ public object QueryJvm {
     public suspend fun vote(request: QueryVoteRequest, metadata: Metadata): QueryVoteResponse =
         QueryVoteResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, voteDescriptor,
+    			option.channel, voteDescriptor,
     			QueryVoteRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -218,9 +214,9 @@ public object QueryJvm {
     public suspend fun votes(request: QueryVotesRequest, metadata: Metadata): QueryVotesResponse =
         QueryVotesResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, votesDescriptor,
+    			option.channel, votesDescriptor,
     			QueryVotesRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -230,9 +226,9 @@ public object QueryJvm {
     public suspend fun params(request: QueryParamsRequest, metadata: Metadata): QueryParamsResponse
         = QueryParamsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, paramsDescriptor,
+    			option.channel, paramsDescriptor,
     			QueryParamsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -242,9 +238,9 @@ public object QueryJvm {
     public suspend fun deposit(request: QueryDepositRequest, metadata: Metadata):
         QueryDepositResponse = QueryDepositResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, depositDescriptor,
+    			option.channel, depositDescriptor,
     			QueryDepositRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -254,9 +250,9 @@ public object QueryJvm {
     public suspend fun deposits(request: QueryDepositsRequest, metadata: Metadata):
         QueryDepositsResponse = QueryDepositsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, depositsDescriptor,
+    			option.channel, depositsDescriptor,
     			QueryDepositsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -266,9 +262,9 @@ public object QueryJvm {
     public suspend fun tallyResult(request: QueryTallyResultRequest, metadata: Metadata):
         QueryTallyResultResponse = QueryTallyResultResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, tallyResultDescriptor,
+    			option.channel, tallyResultDescriptor,
     			QueryTallyResultRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

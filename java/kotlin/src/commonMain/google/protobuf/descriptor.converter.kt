@@ -1,5 +1,5 @@
 // Transform from google/protobuf/descriptor.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package google.protobuf
 
@@ -11,9 +11,9 @@ public expect object FileDescriptorSetConverter : ProtobufConverter<FileDescript
 public expect object FileDescriptorProtoConverter : ProtobufConverter<FileDescriptorProto>
 
 public expect object DescriptorProtoConverter : ProtobufConverter<DescriptorProto> {
-  public expect object ExtensionRangeConverter : ProtobufConverter<DescriptorProto.ExtensionRange>
+  public object ExtensionRangeConverter : ProtobufConverter<DescriptorProto.ExtensionRange>
 
-  public expect object ReservedRangeConverter : ProtobufConverter<DescriptorProto.ReservedRange>
+  public object ReservedRangeConverter : ProtobufConverter<DescriptorProto.ReservedRange>
 }
 
 public expect object ExtensionRangeOptionsConverter : ProtobufConverter<ExtensionRangeOptions>
@@ -23,7 +23,7 @@ public expect object FieldDescriptorProtoConverter : ProtobufConverter<FieldDesc
 public expect object OneofDescriptorProtoConverter : ProtobufConverter<OneofDescriptorProto>
 
 public expect object EnumDescriptorProtoConverter : ProtobufConverter<EnumDescriptorProto> {
-  public expect object EnumReservedRangeConverter :
+  public object EnumReservedRangeConverter :
       ProtobufConverter<EnumDescriptorProto.EnumReservedRange>
 }
 
@@ -50,13 +50,13 @@ public expect object ServiceOptionsConverter : ProtobufConverter<ServiceOptions>
 public expect object MethodOptionsConverter : ProtobufConverter<MethodOptions>
 
 public expect object UninterpretedOptionConverter : ProtobufConverter<UninterpretedOption> {
-  public expect object NamePartConverter : ProtobufConverter<UninterpretedOption.NamePart>
+  public object NamePartConverter : ProtobufConverter<UninterpretedOption.NamePart>
 }
 
 public expect object SourceCodeInfoConverter : ProtobufConverter<SourceCodeInfo> {
-  public expect object LocationConverter : ProtobufConverter<SourceCodeInfo.Location>
+  public object LocationConverter : ProtobufConverter<SourceCodeInfo.Location>
 }
 
 public expect object GeneratedCodeInfoConverter : ProtobufConverter<GeneratedCodeInfo> {
-  public expect object AnnotationConverter : ProtobufConverter<GeneratedCodeInfo.Annotation>
+  public object AnnotationConverter : ProtobufConverter<GeneratedCodeInfo.Annotation>
 }

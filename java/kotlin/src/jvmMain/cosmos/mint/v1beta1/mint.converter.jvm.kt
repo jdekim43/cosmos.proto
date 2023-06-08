@@ -1,5 +1,5 @@
 // Transform from cosmos/mint/v1beta1/mint.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.mint.v1beta1
 

@@ -1,6 +1,6 @@
 // Transform from google/protobuf/descriptor.proto
 @file:ProtobufSyntax(syntax = "PROTO2")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package google.protobuf
 

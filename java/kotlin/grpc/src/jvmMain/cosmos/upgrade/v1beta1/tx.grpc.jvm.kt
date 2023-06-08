@@ -1,6 +1,6 @@
 // Transform from cosmos/upgrade/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.upgrade.v1beta1
 
@@ -68,13 +68,9 @@ public object MsgJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Msg.Client>(channel = option.channel, callOptions = option.callOptions),
       Msg.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Msg.Client =
         Msg.Client(ClientOption(channel, callOptions))
 
@@ -84,9 +80,9 @@ public object MsgJvm {
     public suspend fun softwareUpgrade(request: MsgSoftwareUpgrade, metadata: Metadata):
         MsgSoftwareUpgradeResponse = MsgSoftwareUpgradeResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, softwareUpgradeDescriptor,
+    			option.channel, softwareUpgradeDescriptor,
     			MsgSoftwareUpgradeJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -96,9 +92,9 @@ public object MsgJvm {
     public suspend fun cancelUpgrade(request: MsgCancelUpgrade, metadata: Metadata):
         MsgCancelUpgradeResponse = MsgCancelUpgradeResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, cancelUpgradeDescriptor,
+    			option.channel, cancelUpgradeDescriptor,
     			MsgCancelUpgradeJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

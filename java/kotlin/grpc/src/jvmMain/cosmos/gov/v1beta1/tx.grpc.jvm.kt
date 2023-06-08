@@ -1,6 +1,6 @@
 // Transform from cosmos/gov/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.gov.v1beta1
 
@@ -96,13 +96,9 @@ public object MsgJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Msg.Client>(channel = option.channel, callOptions = option.callOptions),
       Msg.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Msg.Client =
         Msg.Client(ClientOption(channel, callOptions))
 
@@ -112,9 +108,9 @@ public object MsgJvm {
     public suspend fun submitProposal(request: MsgSubmitProposal, metadata: Metadata):
         MsgSubmitProposalResponse = MsgSubmitProposalResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, submitProposalDescriptor,
+    			option.channel, submitProposalDescriptor,
     			MsgSubmitProposalJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -123,9 +119,9 @@ public object MsgJvm {
     public suspend fun vote(request: MsgVote, metadata: Metadata): MsgVoteResponse =
         MsgVoteResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, voteDescriptor,
+    			option.channel, voteDescriptor,
     			MsgVoteJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -135,9 +131,9 @@ public object MsgJvm {
     public suspend fun voteWeighted(request: MsgVoteWeighted, metadata: Metadata):
         MsgVoteWeightedResponse = MsgVoteWeightedResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, voteWeightedDescriptor,
+    			option.channel, voteWeightedDescriptor,
     			MsgVoteWeightedJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -147,9 +143,9 @@ public object MsgJvm {
     public suspend fun deposit(request: MsgDeposit, metadata: Metadata): MsgDepositResponse =
         MsgDepositResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, depositDescriptor,
+    			option.channel, depositDescriptor,
     			MsgDepositJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

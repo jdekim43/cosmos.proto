@@ -39,7 +39,7 @@ allprojects {
     }
 
     group = "kr.jadekim"
-    version = resolveCosmosSdkVersion() + ".1"
+    version = resolveCosmosSdkVersion() + ".2"
 
     sourceSets {
         main {
@@ -75,12 +75,8 @@ allprojects {
         }
     }
 
-    val cleanTask = tasks.getByName("clean") {
-        finalizedBy(cleanProtoTask)
-    }
-
     tasks.getByName("generateProto") {
-        dependsOn(cleanTask)
+        dependsOn(cleanProtoTask)
         finalizedBy(copyTask)
     }
 

@@ -1,6 +1,6 @@
 // Transform from cosmos/capability/module/v1/module.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.capability.module.v1
 

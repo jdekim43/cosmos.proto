@@ -1,6 +1,6 @@
 // Transform from cosmos/vesting/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.vesting.v1beta1
 
@@ -87,13 +87,9 @@ public object MsgJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Msg.Client>(channel = option.channel, callOptions = option.callOptions),
       Msg.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Msg.Client =
         Msg.Client(ClientOption(channel, callOptions))
 
@@ -103,9 +99,9 @@ public object MsgJvm {
     public suspend fun createVestingAccount(request: MsgCreateVestingAccount, metadata: Metadata):
         MsgCreateVestingAccountResponse = MsgCreateVestingAccountResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, createVestingAccountDescriptor,
+    			option.channel, createVestingAccountDescriptor,
     			MsgCreateVestingAccountJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -117,9 +113,9 @@ public object MsgJvm {
         metadata: Metadata): MsgCreatePermanentLockedAccountResponse =
         MsgCreatePermanentLockedAccountResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, createPermanentLockedAccountDescriptor,
+    			option.channel, createPermanentLockedAccountDescriptor,
     			MsgCreatePermanentLockedAccountJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -131,9 +127,9 @@ public object MsgJvm {
         metadata: Metadata): MsgCreatePeriodicVestingAccountResponse =
         MsgCreatePeriodicVestingAccountResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, createPeriodicVestingAccountDescriptor,
+    			option.channel, createPeriodicVestingAccountDescriptor,
     			MsgCreatePeriodicVestingAccountJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

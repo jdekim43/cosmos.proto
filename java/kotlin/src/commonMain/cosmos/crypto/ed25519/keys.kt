@@ -1,6 +1,6 @@
 // Transform from cosmos/crypto/ed25519/keys.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.crypto.ed25519
 

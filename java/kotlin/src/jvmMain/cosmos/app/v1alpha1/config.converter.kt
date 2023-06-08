@@ -1,5 +1,5 @@
 // Transform from cosmos/app/v1alpha1/config.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.app.v1alpha1
 

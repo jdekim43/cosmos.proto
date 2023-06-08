@@ -1,6 +1,6 @@
 // Transform from tendermint/abci/types.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package tendermint.abci
 
@@ -281,13 +281,9 @@ public object ABCIApplicationJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<ABCIApplication.Client>(channel = option.channel, callOptions =
       option.callOptions), ABCIApplication.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): ABCIApplication.Client =
         ABCIApplication.Client(ClientOption(channel, callOptions))
 
@@ -296,9 +292,9 @@ public object ABCIApplicationJvm {
     public suspend fun echo(request: RequestEcho, metadata: Metadata): ResponseEcho =
         ResponseEchoJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, echoDescriptor,
+    			option.channel, echoDescriptor,
     			RequestEchoJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -308,9 +304,9 @@ public object ABCIApplicationJvm {
     public suspend fun flush(request: RequestFlush, metadata: Metadata): ResponseFlush =
         ResponseFlushJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, flushDescriptor,
+    			option.channel, flushDescriptor,
     			RequestFlushJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -319,9 +315,9 @@ public object ABCIApplicationJvm {
     public suspend fun info(request: RequestInfo, metadata: Metadata): ResponseInfo =
         ResponseInfoJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, infoDescriptor,
+    			option.channel, infoDescriptor,
     			RequestInfoJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -331,9 +327,9 @@ public object ABCIApplicationJvm {
     public suspend fun deliverTx(request: RequestDeliverTx, metadata: Metadata): ResponseDeliverTx =
         ResponseDeliverTxJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, deliverTxDescriptor,
+    			option.channel, deliverTxDescriptor,
     			RequestDeliverTxJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -343,9 +339,9 @@ public object ABCIApplicationJvm {
     public suspend fun checkTx(request: RequestCheckTx, metadata: Metadata): ResponseCheckTx =
         ResponseCheckTxJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, checkTxDescriptor,
+    			option.channel, checkTxDescriptor,
     			RequestCheckTxJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -355,9 +351,9 @@ public object ABCIApplicationJvm {
     public suspend fun query(request: RequestQuery, metadata: Metadata): ResponseQuery =
         ResponseQueryJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, queryDescriptor,
+    			option.channel, queryDescriptor,
     			RequestQueryJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -367,9 +363,9 @@ public object ABCIApplicationJvm {
     public suspend fun commit(request: RequestCommit, metadata: Metadata): ResponseCommit =
         ResponseCommitJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, commitDescriptor,
+    			option.channel, commitDescriptor,
     			RequestCommitJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -379,9 +375,9 @@ public object ABCIApplicationJvm {
     public suspend fun initChain(request: RequestInitChain, metadata: Metadata): ResponseInitChain =
         ResponseInitChainJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, initChainDescriptor,
+    			option.channel, initChainDescriptor,
     			RequestInitChainJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -391,9 +387,9 @@ public object ABCIApplicationJvm {
     public suspend fun beginBlock(request: RequestBeginBlock, metadata: Metadata):
         ResponseBeginBlock = ResponseBeginBlockJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, beginBlockDescriptor,
+    			option.channel, beginBlockDescriptor,
     			RequestBeginBlockJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -403,9 +399,9 @@ public object ABCIApplicationJvm {
     public suspend fun endBlock(request: RequestEndBlock, metadata: Metadata): ResponseEndBlock =
         ResponseEndBlockJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, endBlockDescriptor,
+    			option.channel, endBlockDescriptor,
     			RequestEndBlockJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -415,9 +411,9 @@ public object ABCIApplicationJvm {
     public suspend fun listSnapshots(request: RequestListSnapshots, metadata: Metadata):
         ResponseListSnapshots = ResponseListSnapshotsJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, listSnapshotsDescriptor,
+    			option.channel, listSnapshotsDescriptor,
     			RequestListSnapshotsJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -427,9 +423,9 @@ public object ABCIApplicationJvm {
     public suspend fun offerSnapshot(request: RequestOfferSnapshot, metadata: Metadata):
         ResponseOfferSnapshot = ResponseOfferSnapshotJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, offerSnapshotDescriptor,
+    			option.channel, offerSnapshotDescriptor,
     			RequestOfferSnapshotJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -439,9 +435,9 @@ public object ABCIApplicationJvm {
     public suspend fun loadSnapshotChunk(request: RequestLoadSnapshotChunk, metadata: Metadata):
         ResponseLoadSnapshotChunk = ResponseLoadSnapshotChunkJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, loadSnapshotChunkDescriptor,
+    			option.channel, loadSnapshotChunkDescriptor,
     			RequestLoadSnapshotChunkJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -451,9 +447,9 @@ public object ABCIApplicationJvm {
     public suspend fun applySnapshotChunk(request: RequestApplySnapshotChunk, metadata: Metadata):
         ResponseApplySnapshotChunk = ResponseApplySnapshotChunkJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, applySnapshotChunkDescriptor,
+    			option.channel, applySnapshotChunkDescriptor,
     			RequestApplySnapshotChunkJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -463,9 +459,9 @@ public object ABCIApplicationJvm {
     public suspend fun prepareProposal(request: RequestPrepareProposal, metadata: Metadata):
         ResponsePrepareProposal = ResponsePrepareProposalJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, prepareProposalDescriptor,
+    			option.channel, prepareProposalDescriptor,
     			RequestPrepareProposalJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -475,9 +471,9 @@ public object ABCIApplicationJvm {
     public suspend fun processProposal(request: RequestProcessProposal, metadata: Metadata):
         ResponseProcessProposal = ResponseProcessProposalJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, processProposalDescriptor,
+    			option.channel, processProposalDescriptor,
     			RequestProcessProposalJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

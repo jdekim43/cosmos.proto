@@ -1,6 +1,6 @@
 // Transform from cosmos/evidence/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.evidence.v1beta1
 
@@ -68,13 +68,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -84,9 +80,9 @@ public object QueryJvm {
     public suspend fun evidence(request: QueryEvidenceRequest, metadata: Metadata):
         QueryEvidenceResponse = QueryEvidenceResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, evidenceDescriptor,
+    			option.channel, evidenceDescriptor,
     			QueryEvidenceRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -96,9 +92,9 @@ public object QueryJvm {
     public suspend fun allEvidence(request: QueryAllEvidenceRequest, metadata: Metadata):
         QueryAllEvidenceResponse = QueryAllEvidenceResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, allEvidenceDescriptor,
+    			option.channel, allEvidenceDescriptor,
     			QueryAllEvidenceRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

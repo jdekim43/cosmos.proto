@@ -1,6 +1,6 @@
 // Transform from cosmos/slashing/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.slashing.v1beta1
 
@@ -85,13 +85,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -101,9 +97,9 @@ public object QueryJvm {
     public suspend fun params(request: QueryParamsRequest, metadata: Metadata): QueryParamsResponse
         = QueryParamsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, paramsDescriptor,
+    			option.channel, paramsDescriptor,
     			QueryParamsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -113,9 +109,9 @@ public object QueryJvm {
     public suspend fun signingInfo(request: QuerySigningInfoRequest, metadata: Metadata):
         QuerySigningInfoResponse = QuerySigningInfoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, signingInfoDescriptor,
+    			option.channel, signingInfoDescriptor,
     			QuerySigningInfoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -125,9 +121,9 @@ public object QueryJvm {
     public suspend fun signingInfos(request: QuerySigningInfosRequest, metadata: Metadata):
         QuerySigningInfosResponse = QuerySigningInfosResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, signingInfosDescriptor,
+    			option.channel, signingInfosDescriptor,
     			QuerySigningInfosRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

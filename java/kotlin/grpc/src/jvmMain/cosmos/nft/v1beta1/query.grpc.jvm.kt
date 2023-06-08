@@ -1,6 +1,6 @@
 // Transform from cosmos/nft/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.nft.v1beta1
 
@@ -146,13 +146,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -162,9 +158,9 @@ public object QueryJvm {
     public suspend fun balance(request: QueryBalanceRequest, metadata: Metadata):
         QueryBalanceResponse = QueryBalanceResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, balanceDescriptor,
+    			option.channel, balanceDescriptor,
     			QueryBalanceRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -174,9 +170,9 @@ public object QueryJvm {
     public suspend fun owner(request: QueryOwnerRequest, metadata: Metadata): QueryOwnerResponse =
         QueryOwnerResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, ownerDescriptor,
+    			option.channel, ownerDescriptor,
     			QueryOwnerRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -186,9 +182,9 @@ public object QueryJvm {
     public suspend fun supply(request: QuerySupplyRequest, metadata: Metadata): QuerySupplyResponse
         = QuerySupplyResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, supplyDescriptor,
+    			option.channel, supplyDescriptor,
     			QuerySupplyRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -198,9 +194,9 @@ public object QueryJvm {
     public suspend fun nFTs(request: QueryNFTsRequest, metadata: Metadata): QueryNFTsResponse =
         QueryNFTsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, nFTsDescriptor,
+    			option.channel, nFTsDescriptor,
     			QueryNFTsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -210,21 +206,21 @@ public object QueryJvm {
     public suspend fun nFT(request: QueryNFTRequest, metadata: Metadata): QueryNFTResponse =
         QueryNFTResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, nFTDescriptor,
+    			option.channel, nFTDescriptor,
     			QueryNFTRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
     public override suspend fun `class`(request: QueryClassRequest): QueryClassResponse =
-        class(request, Metadata())
+        `class`(request, Metadata())
 
     public suspend fun `class`(request: QueryClassRequest, metadata: Metadata): QueryClassResponse =
         QueryClassResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, classDescriptor,
+    			option.channel, classDescriptor,
     			QueryClassRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -234,9 +230,9 @@ public object QueryJvm {
     public suspend fun classes(request: QueryClassesRequest, metadata: Metadata):
         QueryClassesResponse = QueryClassesResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, classesDescriptor,
+    			option.channel, classesDescriptor,
     			QueryClassesRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

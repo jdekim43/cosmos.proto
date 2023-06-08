@@ -1,5 +1,5 @@
 // Transform from cosmos/orm/query/v1alpha1/query.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.orm.query.v1alpha1
 

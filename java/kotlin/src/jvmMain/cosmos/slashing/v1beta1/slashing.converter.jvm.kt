@@ -1,5 +1,5 @@
 // Transform from cosmos/slashing/v1beta1/slashing.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.slashing.v1beta1
 

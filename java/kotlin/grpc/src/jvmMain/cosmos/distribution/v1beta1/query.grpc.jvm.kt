@@ -1,6 +1,6 @@
 // Transform from cosmos/distribution/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.distribution.v1beta1
 
@@ -208,13 +208,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -224,9 +220,9 @@ public object QueryJvm {
     public suspend fun params(request: QueryParamsRequest, metadata: Metadata): QueryParamsResponse
         = QueryParamsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, paramsDescriptor,
+    			option.channel, paramsDescriptor,
     			QueryParamsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -238,9 +234,9 @@ public object QueryJvm {
         metadata: Metadata): QueryValidatorDistributionInfoResponse =
         QueryValidatorDistributionInfoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, validatorDistributionInfoDescriptor,
+    			option.channel, validatorDistributionInfoDescriptor,
     			QueryValidatorDistributionInfoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -252,9 +248,9 @@ public object QueryJvm {
         metadata: Metadata): QueryValidatorOutstandingRewardsResponse =
         QueryValidatorOutstandingRewardsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, validatorOutstandingRewardsDescriptor,
+    			option.channel, validatorOutstandingRewardsDescriptor,
     			QueryValidatorOutstandingRewardsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -265,9 +261,9 @@ public object QueryJvm {
         metadata: Metadata): QueryValidatorCommissionResponse =
         QueryValidatorCommissionResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, validatorCommissionDescriptor,
+    			option.channel, validatorCommissionDescriptor,
     			QueryValidatorCommissionRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -277,9 +273,9 @@ public object QueryJvm {
     public suspend fun validatorSlashes(request: QueryValidatorSlashesRequest, metadata: Metadata):
         QueryValidatorSlashesResponse = QueryValidatorSlashesResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, validatorSlashesDescriptor,
+    			option.channel, validatorSlashesDescriptor,
     			QueryValidatorSlashesRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -290,9 +286,9 @@ public object QueryJvm {
         metadata: Metadata): QueryDelegationRewardsResponse =
         QueryDelegationRewardsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegationRewardsDescriptor,
+    			option.channel, delegationRewardsDescriptor,
     			QueryDelegationRewardsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -303,9 +299,9 @@ public object QueryJvm {
         metadata: Metadata): QueryDelegationTotalRewardsResponse =
         QueryDelegationTotalRewardsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegationTotalRewardsDescriptor,
+    			option.channel, delegationTotalRewardsDescriptor,
     			QueryDelegationTotalRewardsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -316,9 +312,9 @@ public object QueryJvm {
         metadata: Metadata): QueryDelegatorValidatorsResponse =
         QueryDelegatorValidatorsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegatorValidatorsDescriptor,
+    			option.channel, delegatorValidatorsDescriptor,
     			QueryDelegatorValidatorsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -330,9 +326,9 @@ public object QueryJvm {
         metadata: Metadata): QueryDelegatorWithdrawAddressResponse =
         QueryDelegatorWithdrawAddressResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegatorWithdrawAddressDescriptor,
+    			option.channel, delegatorWithdrawAddressDescriptor,
     			QueryDelegatorWithdrawAddressRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -342,9 +338,9 @@ public object QueryJvm {
     public suspend fun communityPool(request: QueryCommunityPoolRequest, metadata: Metadata):
         QueryCommunityPoolResponse = QueryCommunityPoolResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, communityPoolDescriptor,
+    			option.channel, communityPoolDescriptor,
     			QueryCommunityPoolRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

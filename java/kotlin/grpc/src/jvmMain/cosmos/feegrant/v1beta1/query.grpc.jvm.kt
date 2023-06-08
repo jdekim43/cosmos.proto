@@ -1,6 +1,6 @@
 // Transform from cosmos/feegrant/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.feegrant.v1beta1
 
@@ -85,13 +85,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -101,9 +97,9 @@ public object QueryJvm {
     public suspend fun allowance(request: QueryAllowanceRequest, metadata: Metadata):
         QueryAllowanceResponse = QueryAllowanceResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, allowanceDescriptor,
+    			option.channel, allowanceDescriptor,
     			QueryAllowanceRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -113,9 +109,9 @@ public object QueryJvm {
     public suspend fun allowances(request: QueryAllowancesRequest, metadata: Metadata):
         QueryAllowancesResponse = QueryAllowancesResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, allowancesDescriptor,
+    			option.channel, allowancesDescriptor,
     			QueryAllowancesRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -126,9 +122,9 @@ public object QueryJvm {
         metadata: Metadata): QueryAllowancesByGranterResponse =
         QueryAllowancesByGranterResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, allowancesByGranterDescriptor,
+    			option.channel, allowancesByGranterDescriptor,
     			QueryAllowancesByGranterRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

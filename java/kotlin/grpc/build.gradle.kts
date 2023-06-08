@@ -1,12 +1,6 @@
 import com.google.protobuf.gradle.*
 
-plugins {
-    kotlin("multiplatform")
-}
-
 kotlin {
-    jvm()
-
     sourceSets {
         val commonMain by getting {
 //            kotlin.srcDir(File(buildDir, "generated/source/proto/main/kotlin-grpc-multiplatform"))
@@ -27,8 +21,9 @@ kotlin {
             dependencies {
                 val grpcKotlinVersion: String by project
 
-                api(project(":"))
-                api(project(":cosmos-grpc-java"))
+                implementation(project(":"))
+                implementation(project(":cosmos-grpc-java"))
+
                 api("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
             }
         }

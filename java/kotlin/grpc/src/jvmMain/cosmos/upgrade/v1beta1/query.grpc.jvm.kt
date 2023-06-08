@@ -1,6 +1,6 @@
 // Transform from cosmos/upgrade/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.upgrade.v1beta1
 
@@ -120,13 +120,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -136,9 +132,9 @@ public object QueryJvm {
     public suspend fun currentPlan(request: QueryCurrentPlanRequest, metadata: Metadata):
         QueryCurrentPlanResponse = QueryCurrentPlanResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, currentPlanDescriptor,
+    			option.channel, currentPlanDescriptor,
     			QueryCurrentPlanRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -148,9 +144,9 @@ public object QueryJvm {
     public suspend fun appliedPlan(request: QueryAppliedPlanRequest, metadata: Metadata):
         QueryAppliedPlanResponse = QueryAppliedPlanResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, appliedPlanDescriptor,
+    			option.channel, appliedPlanDescriptor,
     			QueryAppliedPlanRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -161,9 +157,9 @@ public object QueryJvm {
         metadata: Metadata): QueryUpgradedConsensusStateResponse =
         QueryUpgradedConsensusStateResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, upgradedConsensusStateDescriptor,
+    			option.channel, upgradedConsensusStateDescriptor,
     			QueryUpgradedConsensusStateRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -173,9 +169,9 @@ public object QueryJvm {
     public suspend fun moduleVersions(request: QueryModuleVersionsRequest, metadata: Metadata):
         QueryModuleVersionsResponse = QueryModuleVersionsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, moduleVersionsDescriptor,
+    			option.channel, moduleVersionsDescriptor,
     			QueryModuleVersionsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -185,9 +181,9 @@ public object QueryJvm {
     public suspend fun authority(request: QueryAuthorityRequest, metadata: Metadata):
         QueryAuthorityResponse = QueryAuthorityResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, authorityDescriptor,
+    			option.channel, authorityDescriptor,
     			QueryAuthorityRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

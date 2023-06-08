@@ -1,6 +1,6 @@
 // Transform from cosmos/upgrade/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.upgrade.v1beta1
 

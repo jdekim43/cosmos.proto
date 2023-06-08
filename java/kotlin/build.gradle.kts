@@ -6,16 +6,49 @@ plugins {
     id("org.jetbrains.dokka") version "1.8.10" apply false
 }
 
-kotlin {
-    jvm {
-        jvmToolchain(8)
+allprojects {
+    apply {
+        plugin("kotlin-multiplatform")
+        plugin("org.jetbrains.dokka")
     }
 
-    sourceSets {
-        val commonMain by getting {
+    kotlin {
+        jvm {
+            jvmToolchain(8)
+        }
+
+        sourceSets {
+            val commonMain by getting {
 //            kotlin.srcDir(File(buildDir, "generated/source/proto/main/kotlin-kotlinx"))
 //            kotlin.srcDir(File(buildDir, "generated/source/proto/main/kotlin-converter-multiplatform"))
 
+                kotlin.srcDir(File(projectDir, "src/commonMain"))
+            }
+
+            val jvmMain by getting {
+//            kotlin.srcDir(File(buildDir, "generated/source/proto/main/kotlin-converter-multiplatform-jvm"))
+                kotlin.srcDir(File(projectDir, "src/jvmMain"))
+            }
+        }
+    }
+
+    val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
+    val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
+        dependsOn(dokkaHtml)
+        archiveClassifier.set("javadoc")
+        from(dokkaHtml.outputDirectory)
+    }
+
+    publishing {
+        publications.withType<MavenPublication> {
+            artifact(javadocJar)
+        }
+    }
+}
+
+kotlin {
+    sourceSets {
+        val commonMain by getting {
             dependencies {
                 val kotlinProtobufVersion: String by project
                 val kotlinxSerializationVersion: String by project
@@ -28,10 +61,8 @@ kotlin {
         }
 
         val jvmMain by getting {
-//            kotlin.srcDir(File(buildDir, "generated/source/proto/main/kotlin-converter-multiplatform-jvm"))
-
             dependencies {
-                api(project(":"))
+                implementation(project(":"))
             }
         }
     }
@@ -70,25 +101,6 @@ protobuf {
                     outputSubDir = "jvmMain"
                 }
             }
-        }
-    }
-}
-
-allprojects {
-    apply {
-        plugin("org.jetbrains.dokka")
-    }
-
-    val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
-    val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
-        dependsOn(dokkaHtml)
-        archiveClassifier.set("javadoc")
-        from(dokkaHtml.outputDirectory)
-    }
-
-    publishing {
-        publications.withType<MavenPublication> {
-            artifact(javadocJar)
         }
     }
 }

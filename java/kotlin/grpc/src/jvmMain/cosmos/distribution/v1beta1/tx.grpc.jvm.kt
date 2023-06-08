@@ -1,6 +1,6 @@
 // Transform from cosmos/distribution/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.distribution.v1beta1
 
@@ -137,13 +137,9 @@ public object MsgJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Msg.Client>(channel = option.channel, callOptions = option.callOptions),
       Msg.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Msg.Client =
         Msg.Client(ClientOption(channel, callOptions))
 
@@ -153,9 +149,9 @@ public object MsgJvm {
     public suspend fun setWithdrawAddress(request: MsgSetWithdrawAddress, metadata: Metadata):
         MsgSetWithdrawAddressResponse = MsgSetWithdrawAddressResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, setWithdrawAddressDescriptor,
+    			option.channel, setWithdrawAddressDescriptor,
     			MsgSetWithdrawAddressJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -166,9 +162,9 @@ public object MsgJvm {
         metadata: Metadata): MsgWithdrawDelegatorRewardResponse =
         MsgWithdrawDelegatorRewardResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, withdrawDelegatorRewardDescriptor,
+    			option.channel, withdrawDelegatorRewardDescriptor,
     			MsgWithdrawDelegatorRewardJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -180,9 +176,9 @@ public object MsgJvm {
         metadata: Metadata): MsgWithdrawValidatorCommissionResponse =
         MsgWithdrawValidatorCommissionResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, withdrawValidatorCommissionDescriptor,
+    			option.channel, withdrawValidatorCommissionDescriptor,
     			MsgWithdrawValidatorCommissionJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -192,9 +188,9 @@ public object MsgJvm {
     public suspend fun fundCommunityPool(request: MsgFundCommunityPool, metadata: Metadata):
         MsgFundCommunityPoolResponse = MsgFundCommunityPoolResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, fundCommunityPoolDescriptor,
+    			option.channel, fundCommunityPoolDescriptor,
     			MsgFundCommunityPoolJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -204,9 +200,9 @@ public object MsgJvm {
     public suspend fun updateParams(request: MsgUpdateParams, metadata: Metadata):
         MsgUpdateParamsResponse = MsgUpdateParamsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, updateParamsDescriptor,
+    			option.channel, updateParamsDescriptor,
     			MsgUpdateParamsJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -216,9 +212,9 @@ public object MsgJvm {
     public suspend fun communityPoolSpend(request: MsgCommunityPoolSpend, metadata: Metadata):
         MsgCommunityPoolSpendResponse = MsgCommunityPoolSpendResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, communityPoolSpendDescriptor,
+    			option.channel, communityPoolSpendDescriptor,
     			MsgCommunityPoolSpendJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

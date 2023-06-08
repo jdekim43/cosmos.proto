@@ -1,6 +1,6 @@
 // Transform from cosmos/tx/v1beta1/service.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.tx.v1beta1
 
@@ -179,13 +179,9 @@ public object ServiceJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Service.Client>(channel = option.channel, callOptions =
       option.callOptions), Service.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Service.Client =
         Service.Client(ClientOption(channel, callOptions))
 
@@ -195,9 +191,9 @@ public object ServiceJvm {
     public suspend fun simulate(request: SimulateRequest, metadata: Metadata): SimulateResponse =
         SimulateResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, simulateDescriptor,
+    			option.channel, simulateDescriptor,
     			SimulateRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -207,9 +203,9 @@ public object ServiceJvm {
     public suspend fun getTx(request: GetTxRequest, metadata: Metadata): GetTxResponse =
         GetTxResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getTxDescriptor,
+    			option.channel, getTxDescriptor,
     			GetTxRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -219,9 +215,9 @@ public object ServiceJvm {
     public suspend fun broadcastTx(request: BroadcastTxRequest, metadata: Metadata):
         BroadcastTxResponse = BroadcastTxResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, broadcastTxDescriptor,
+    			option.channel, broadcastTxDescriptor,
     			BroadcastTxRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -231,9 +227,9 @@ public object ServiceJvm {
     public suspend fun getTxsEvent(request: GetTxsEventRequest, metadata: Metadata):
         GetTxsEventResponse = GetTxsEventResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getTxsEventDescriptor,
+    			option.channel, getTxsEventDescriptor,
     			GetTxsEventRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -243,9 +239,9 @@ public object ServiceJvm {
     public suspend fun getBlockWithTxs(request: GetBlockWithTxsRequest, metadata: Metadata):
         GetBlockWithTxsResponse = GetBlockWithTxsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getBlockWithTxsDescriptor,
+    			option.channel, getBlockWithTxsDescriptor,
     			GetBlockWithTxsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -255,9 +251,9 @@ public object ServiceJvm {
     public suspend fun txDecode(request: TxDecodeRequest, metadata: Metadata): TxDecodeResponse =
         TxDecodeResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, txDecodeDescriptor,
+    			option.channel, txDecodeDescriptor,
     			TxDecodeRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -267,9 +263,9 @@ public object ServiceJvm {
     public suspend fun txEncode(request: TxEncodeRequest, metadata: Metadata): TxEncodeResponse =
         TxEncodeResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, txEncodeDescriptor,
+    			option.channel, txEncodeDescriptor,
     			TxEncodeRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -279,9 +275,9 @@ public object ServiceJvm {
     public suspend fun txEncodeAmino(request: TxEncodeAminoRequest, metadata: Metadata):
         TxEncodeAminoResponse = TxEncodeAminoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, txEncodeAminoDescriptor,
+    			option.channel, txEncodeAminoDescriptor,
     			TxEncodeAminoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -291,9 +287,9 @@ public object ServiceJvm {
     public suspend fun txDecodeAmino(request: TxDecodeAminoRequest, metadata: Metadata):
         TxDecodeAminoResponse = TxDecodeAminoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, txDecodeAminoDescriptor,
+    			option.channel, txDecodeAminoDescriptor,
     			TxDecodeAminoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

@@ -1,6 +1,6 @@
 // Transform from cosmos/base/node/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.base.node.v1beta1
 
@@ -48,13 +48,9 @@ public object ServiceJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Service.Client>(channel = option.channel, callOptions =
       option.callOptions), Service.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Service.Client =
         Service.Client(ClientOption(channel, callOptions))
 
@@ -64,9 +60,9 @@ public object ServiceJvm {
     public suspend fun config(request: ConfigRequest, metadata: Metadata): ConfigResponse =
         ConfigResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, configDescriptor,
+    			option.channel, configDescriptor,
     			ConfigRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

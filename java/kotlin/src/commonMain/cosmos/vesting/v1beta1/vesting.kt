@@ -1,6 +1,6 @@
 // Transform from cosmos/vesting/v1beta1/vesting.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.vesting.v1beta1
 

@@ -1,6 +1,6 @@
 // Transform from cosmos/feegrant/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.feegrant.v1beta1
 
@@ -68,13 +68,9 @@ public object MsgJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Msg.Client>(channel = option.channel, callOptions = option.callOptions),
       Msg.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Msg.Client =
         Msg.Client(ClientOption(channel, callOptions))
 
@@ -84,9 +80,9 @@ public object MsgJvm {
     public suspend fun grantAllowance(request: MsgGrantAllowance, metadata: Metadata):
         MsgGrantAllowanceResponse = MsgGrantAllowanceResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, grantAllowanceDescriptor,
+    			option.channel, grantAllowanceDescriptor,
     			MsgGrantAllowanceJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -96,9 +92,9 @@ public object MsgJvm {
     public suspend fun revokeAllowance(request: MsgRevokeAllowance, metadata: Metadata):
         MsgRevokeAllowanceResponse = MsgRevokeAllowanceResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, revokeAllowanceDescriptor,
+    			option.channel, revokeAllowanceDescriptor,
     			MsgRevokeAllowanceJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

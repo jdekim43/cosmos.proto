@@ -1,6 +1,6 @@
 // Transform from cosmos/base/reflection/v2alpha1/reflection.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.base.reflection.v2alpha1
 
@@ -138,13 +138,9 @@ public object ReflectionServiceJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<ReflectionService.Client>(channel = option.channel, callOptions =
       option.callOptions), ReflectionService.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): ReflectionService.Client
         = ReflectionService.Client(ClientOption(channel, callOptions))
 
@@ -154,9 +150,9 @@ public object ReflectionServiceJvm {
     public suspend fun getAuthnDescriptor(request: GetAuthnDescriptorRequest, metadata: Metadata):
         GetAuthnDescriptorResponse = GetAuthnDescriptorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getAuthnDescriptorDescriptor,
+    			option.channel, getAuthnDescriptorDescriptor,
     			GetAuthnDescriptorRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -166,9 +162,9 @@ public object ReflectionServiceJvm {
     public suspend fun getChainDescriptor(request: GetChainDescriptorRequest, metadata: Metadata):
         GetChainDescriptorResponse = GetChainDescriptorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getChainDescriptorDescriptor,
+    			option.channel, getChainDescriptorDescriptor,
     			GetChainDescriptorRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -178,9 +174,9 @@ public object ReflectionServiceJvm {
     public suspend fun getCodecDescriptor(request: GetCodecDescriptorRequest, metadata: Metadata):
         GetCodecDescriptorResponse = GetCodecDescriptorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getCodecDescriptorDescriptor,
+    			option.channel, getCodecDescriptorDescriptor,
     			GetCodecDescriptorRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -192,9 +188,9 @@ public object ReflectionServiceJvm {
         metadata: Metadata): GetConfigurationDescriptorResponse =
         GetConfigurationDescriptorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getConfigurationDescriptorDescriptor,
+    			option.channel, getConfigurationDescriptorDescriptor,
     			GetConfigurationDescriptorRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -206,9 +202,9 @@ public object ReflectionServiceJvm {
         metadata: Metadata): GetQueryServicesDescriptorResponse =
         GetQueryServicesDescriptorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getQueryServicesDescriptorDescriptor,
+    			option.channel, getQueryServicesDescriptorDescriptor,
     			GetQueryServicesDescriptorRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -218,9 +214,9 @@ public object ReflectionServiceJvm {
     public suspend fun getTxDescriptor(request: GetTxDescriptorRequest, metadata: Metadata):
         GetTxDescriptorResponse = GetTxDescriptorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, getTxDescriptorDescriptor,
+    			option.channel, getTxDescriptorDescriptor,
     			GetTxDescriptorRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

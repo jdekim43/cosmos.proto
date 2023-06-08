@@ -1,5 +1,5 @@
 // Transform from cosmos/auth/v1beta1/auth.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.auth.v1beta1
 

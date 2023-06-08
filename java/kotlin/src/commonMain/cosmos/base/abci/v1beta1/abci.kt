@@ -1,6 +1,6 @@
 // Transform from cosmos/base/abci/v1beta1/abci.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.base.abci.v1beta1
 

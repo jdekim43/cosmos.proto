@@ -1,6 +1,6 @@
 // Transform from cosmos/evidence/v1beta1/evidence.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.evidence.v1beta1
 

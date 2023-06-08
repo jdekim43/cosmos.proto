@@ -1,6 +1,6 @@
 // Transform from cosmos/reflection/v1/reflection.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.reflection.v1
 
@@ -51,13 +51,9 @@ public object ReflectionServiceJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<ReflectionService.Client>(channel = option.channel, callOptions =
       option.callOptions), ReflectionService.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): ReflectionService.Client
         = ReflectionService.Client(ClientOption(channel, callOptions))
 
@@ -67,9 +63,9 @@ public object ReflectionServiceJvm {
     public suspend fun fileDescriptors(request: FileDescriptorsRequest, metadata: Metadata):
         FileDescriptorsResponse = FileDescriptorsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, fileDescriptorsDescriptor,
+    			option.channel, fileDescriptorsDescriptor,
     			FileDescriptorsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

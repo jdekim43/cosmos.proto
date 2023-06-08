@@ -1,6 +1,6 @@
 // Transform from cosmos/staking/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.staking.v1beta1
 
@@ -274,13 +274,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -290,9 +286,9 @@ public object QueryJvm {
     public suspend fun validators(request: QueryValidatorsRequest, metadata: Metadata):
         QueryValidatorsResponse = QueryValidatorsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, validatorsDescriptor,
+    			option.channel, validatorsDescriptor,
     			QueryValidatorsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -302,9 +298,9 @@ public object QueryJvm {
     public suspend fun validator(request: QueryValidatorRequest, metadata: Metadata):
         QueryValidatorResponse = QueryValidatorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, validatorDescriptor,
+    			option.channel, validatorDescriptor,
     			QueryValidatorRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -315,9 +311,9 @@ public object QueryJvm {
         metadata: Metadata): QueryValidatorDelegationsResponse =
         QueryValidatorDelegationsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, validatorDelegationsDescriptor,
+    			option.channel, validatorDelegationsDescriptor,
     			QueryValidatorDelegationsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -331,9 +327,9 @@ public object QueryJvm {
         metadata: Metadata): QueryValidatorUnbondingDelegationsResponse =
         QueryValidatorUnbondingDelegationsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, validatorUnbondingDelegationsDescriptor,
+    			option.channel, validatorUnbondingDelegationsDescriptor,
     			QueryValidatorUnbondingDelegationsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -343,9 +339,9 @@ public object QueryJvm {
     public suspend fun delegation(request: QueryDelegationRequest, metadata: Metadata):
         QueryDelegationResponse = QueryDelegationResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegationDescriptor,
+    			option.channel, delegationDescriptor,
     			QueryDelegationRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -356,9 +352,9 @@ public object QueryJvm {
         metadata: Metadata): QueryUnbondingDelegationResponse =
         QueryUnbondingDelegationResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, unbondingDelegationDescriptor,
+    			option.channel, unbondingDelegationDescriptor,
     			QueryUnbondingDelegationRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -369,9 +365,9 @@ public object QueryJvm {
         metadata: Metadata): QueryDelegatorDelegationsResponse =
         QueryDelegatorDelegationsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegatorDelegationsDescriptor,
+    			option.channel, delegatorDelegationsDescriptor,
     			QueryDelegatorDelegationsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -385,9 +381,9 @@ public object QueryJvm {
         metadata: Metadata): QueryDelegatorUnbondingDelegationsResponse =
         QueryDelegatorUnbondingDelegationsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegatorUnbondingDelegationsDescriptor,
+    			option.channel, delegatorUnbondingDelegationsDescriptor,
     			QueryDelegatorUnbondingDelegationsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -397,9 +393,9 @@ public object QueryJvm {
     public suspend fun redelegations(request: QueryRedelegationsRequest, metadata: Metadata):
         QueryRedelegationsResponse = QueryRedelegationsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, redelegationsDescriptor,
+    			option.channel, redelegationsDescriptor,
     			QueryRedelegationsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -410,9 +406,9 @@ public object QueryJvm {
         metadata: Metadata): QueryDelegatorValidatorsResponse =
         QueryDelegatorValidatorsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegatorValidatorsDescriptor,
+    			option.channel, delegatorValidatorsDescriptor,
     			QueryDelegatorValidatorsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -423,9 +419,9 @@ public object QueryJvm {
         metadata: Metadata): QueryDelegatorValidatorResponse =
         QueryDelegatorValidatorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegatorValidatorDescriptor,
+    			option.channel, delegatorValidatorDescriptor,
     			QueryDelegatorValidatorRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -435,9 +431,9 @@ public object QueryJvm {
     public suspend fun historicalInfo(request: QueryHistoricalInfoRequest, metadata: Metadata):
         QueryHistoricalInfoResponse = QueryHistoricalInfoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, historicalInfoDescriptor,
+    			option.channel, historicalInfoDescriptor,
     			QueryHistoricalInfoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -447,9 +443,9 @@ public object QueryJvm {
     public suspend fun pool(request: QueryPoolRequest, metadata: Metadata): QueryPoolResponse =
         QueryPoolResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, poolDescriptor,
+    			option.channel, poolDescriptor,
     			QueryPoolRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -459,9 +455,9 @@ public object QueryJvm {
     public suspend fun params(request: QueryParamsRequest, metadata: Metadata): QueryParamsResponse
         = QueryParamsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, paramsDescriptor,
+    			option.channel, paramsDescriptor,
     			QueryParamsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

@@ -1,5 +1,5 @@
 // Transform from cosmos/group/v1/events.proto
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.group.v1
 

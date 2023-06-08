@@ -1,6 +1,6 @@
 // Transform from cosmos/staking/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.staking.v1beta1
 
@@ -150,13 +150,9 @@ public object MsgJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Msg.Client>(channel = option.channel, callOptions = option.callOptions),
       Msg.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Msg.Client =
         Msg.Client(ClientOption(channel, callOptions))
 
@@ -166,9 +162,9 @@ public object MsgJvm {
     public suspend fun createValidator(request: MsgCreateValidator, metadata: Metadata):
         MsgCreateValidatorResponse = MsgCreateValidatorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, createValidatorDescriptor,
+    			option.channel, createValidatorDescriptor,
     			MsgCreateValidatorJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -178,21 +174,21 @@ public object MsgJvm {
     public suspend fun editValidator(request: MsgEditValidator, metadata: Metadata):
         MsgEditValidatorResponse = MsgEditValidatorResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, editValidatorDescriptor,
+    			option.channel, editValidatorDescriptor,
     			MsgEditValidatorJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
     public override suspend fun `delegate`(request: MsgDelegate): MsgDelegateResponse =
-        delegate(request, Metadata())
+        `delegate`(request, Metadata())
 
     public suspend fun `delegate`(request: MsgDelegate, metadata: Metadata): MsgDelegateResponse =
         MsgDelegateResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, delegateDescriptor,
+    			option.channel, delegateDescriptor,
     			MsgDelegateJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -202,9 +198,9 @@ public object MsgJvm {
     public suspend fun beginRedelegate(request: MsgBeginRedelegate, metadata: Metadata):
         MsgBeginRedelegateResponse = MsgBeginRedelegateResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, beginRedelegateDescriptor,
+    			option.channel, beginRedelegateDescriptor,
     			MsgBeginRedelegateJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -214,9 +210,9 @@ public object MsgJvm {
     public suspend fun undelegate(request: MsgUndelegate, metadata: Metadata): MsgUndelegateResponse
         = MsgUndelegateResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, undelegateDescriptor,
+    			option.channel, undelegateDescriptor,
     			MsgUndelegateJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -227,9 +223,9 @@ public object MsgJvm {
         metadata: Metadata): MsgCancelUnbondingDelegationResponse =
         MsgCancelUnbondingDelegationResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, cancelUnbondingDelegationDescriptor,
+    			option.channel, cancelUnbondingDelegationDescriptor,
     			MsgCancelUnbondingDelegationJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -239,9 +235,9 @@ public object MsgJvm {
     public suspend fun updateParams(request: MsgUpdateParams, metadata: Metadata):
         MsgUpdateParamsResponse = MsgUpdateParamsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, updateParamsDescriptor,
+    			option.channel, updateParamsDescriptor,
     			MsgUpdateParamsJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

@@ -1,6 +1,6 @@
 // Transform from cosmos/auth/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.auth.v1beta1
 
@@ -204,13 +204,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -220,9 +216,9 @@ public object QueryJvm {
     public suspend fun accounts(request: QueryAccountsRequest, metadata: Metadata):
         QueryAccountsResponse = QueryAccountsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, accountsDescriptor,
+    			option.channel, accountsDescriptor,
     			QueryAccountsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -232,9 +228,9 @@ public object QueryJvm {
     public suspend fun account(request: QueryAccountRequest, metadata: Metadata):
         QueryAccountResponse = QueryAccountResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, accountDescriptor,
+    			option.channel, accountDescriptor,
     			QueryAccountRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -245,9 +241,9 @@ public object QueryJvm {
         metadata: Metadata): QueryAccountAddressByIDResponse =
         QueryAccountAddressByIDResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, accountAddressByIDDescriptor,
+    			option.channel, accountAddressByIDDescriptor,
     			QueryAccountAddressByIDRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -257,9 +253,9 @@ public object QueryJvm {
     public suspend fun params(request: QueryParamsRequest, metadata: Metadata): QueryParamsResponse
         = QueryParamsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, paramsDescriptor,
+    			option.channel, paramsDescriptor,
     			QueryParamsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -269,9 +265,9 @@ public object QueryJvm {
     public suspend fun moduleAccounts(request: QueryModuleAccountsRequest, metadata: Metadata):
         QueryModuleAccountsResponse = QueryModuleAccountsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, moduleAccountsDescriptor,
+    			option.channel, moduleAccountsDescriptor,
     			QueryModuleAccountsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -282,9 +278,9 @@ public object QueryJvm {
         metadata: Metadata): QueryModuleAccountByNameResponse =
         QueryModuleAccountByNameResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, moduleAccountByNameDescriptor,
+    			option.channel, moduleAccountByNameDescriptor,
     			QueryModuleAccountByNameRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -294,9 +290,9 @@ public object QueryJvm {
     public suspend fun bech32Prefix(request: Bech32PrefixRequest, metadata: Metadata):
         Bech32PrefixResponse = Bech32PrefixResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, bech32PrefixDescriptor,
+    			option.channel, bech32PrefixDescriptor,
     			Bech32PrefixRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -307,9 +303,9 @@ public object QueryJvm {
         metadata: Metadata): AddressBytesToStringResponse =
         AddressBytesToStringResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, addressBytesToStringDescriptor,
+    			option.channel, addressBytesToStringDescriptor,
     			AddressBytesToStringRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -320,9 +316,9 @@ public object QueryJvm {
         metadata: Metadata): AddressStringToBytesResponse =
         AddressStringToBytesResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, addressStringToBytesDescriptor,
+    			option.channel, addressStringToBytesDescriptor,
     			AddressStringToBytesRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -332,9 +328,9 @@ public object QueryJvm {
     public suspend fun accountInfo(request: QueryAccountInfoRequest, metadata: Metadata):
         QueryAccountInfoResponse = QueryAccountInfoResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, accountInfoDescriptor,
+    			option.channel, accountInfoDescriptor,
     			QueryAccountInfoRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }

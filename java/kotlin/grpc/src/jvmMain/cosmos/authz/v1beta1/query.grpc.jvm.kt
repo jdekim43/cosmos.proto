@@ -1,6 +1,6 @@
 // Transform from cosmos/authz/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.1")
+@file:GeneratorVersion(version = "0.2.2")
 
 package cosmos.authz.v1beta1
 
@@ -85,13 +85,9 @@ public object QueryJvm {
   }
 
   public open class Client(
-    option: ClientOption,
+    private val option: ClientOption,
   ) : AbstractCoroutineStub<Query.Client>(channel = option.channel, callOptions =
       option.callOptions), Query.Interface {
-    public val channel: Channel = option.channel
-
-    public val callOptions: CallOptions = option.callOptions
-
     public override fun build(channel: Channel, callOptions: CallOptions): Query.Client =
         Query.Client(ClientOption(channel, callOptions))
 
@@ -101,9 +97,9 @@ public object QueryJvm {
     public suspend fun grants(request: QueryGrantsRequest, metadata: Metadata): QueryGrantsResponse
         = QueryGrantsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, grantsDescriptor,
+    			option.channel, grantsDescriptor,
     			QueryGrantsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -113,9 +109,9 @@ public object QueryJvm {
     public suspend fun granterGrants(request: QueryGranterGrantsRequest, metadata: Metadata):
         QueryGranterGrantsResponse = QueryGranterGrantsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, granterGrantsDescriptor,
+    			option.channel, granterGrantsDescriptor,
     			QueryGranterGrantsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
 
@@ -125,9 +121,9 @@ public object QueryJvm {
     public suspend fun granteeGrants(request: QueryGranteeGrantsRequest, metadata: Metadata):
         QueryGranteeGrantsResponse = QueryGranteeGrantsResponseJvmConverter.convert(
     		ClientCalls.unaryRpc(
-    			channel, granteeGrantsDescriptor,
+    			option.channel, granteeGrantsDescriptor,
     			QueryGranteeGrantsRequestJvmConverter.convert(request),
-    			callOptions, metadata,
+    			option.callOptions, metadata,
     		),
     	)
   }
