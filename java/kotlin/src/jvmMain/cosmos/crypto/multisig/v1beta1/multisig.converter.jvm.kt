@@ -1,5 +1,5 @@
 // Transform from cosmos/crypto/multisig/v1beta1/multisig.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.multisig.v1beta1
 
@@ -18,7 +18,7 @@ public object MultiSignatureJvmConverter :
   public override val parser: Parser<Multisig.MultiSignature> = Multisig.MultiSignature.parser()
 
   public override fun convert(obj: Multisig.MultiSignature): MultiSignature = MultiSignature(
-  	signatures = obj.signaturesList.map { it.toByteArray() },
+  	signatures = obj.getSignaturesList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: MultiSignature): Multisig.MultiSignature {
@@ -35,8 +35,8 @@ public object CompactBitArrayJvmConverter :
   public override val parser: Parser<Multisig.CompactBitArray> = Multisig.CompactBitArray.parser()
 
   public override fun convert(obj: Multisig.CompactBitArray): CompactBitArray = CompactBitArray(
-  	extraBitsStored = obj.extraBitsStored.asKotlinType,
-  	elems = obj.elems.toByteArray(),
+  	extraBitsStored = obj.getExtraBitsStored().asKotlinType,
+  	elems = obj.getElems().toByteArray(),
   )
 
   public override fun convert(obj: CompactBitArray): Multisig.CompactBitArray {

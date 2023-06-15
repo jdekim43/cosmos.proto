@@ -1,6 +1,6 @@
 // Transform from cosmos/staking/v1beta1/genesis.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -21,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = GenesisState.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.GenesisState")
+@SerialName(value = GenesisState.TYPE_URL)
 public data class GenesisState(
   @ProtobufIndex(index = 1)
   public val params: Params,
@@ -41,7 +42,11 @@ public data class GenesisState(
   public val redelegations: List<Redelegation>,
   @ProtobufIndex(index = 8)
   public val exported: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.GenesisState"
+  }
+
   public object KotlinxSerializer : KSerializer<GenesisState> {
     private val delegator: KSerializer<GenesisState> = GenesisState.serializer()
 
@@ -65,13 +70,17 @@ public data class GenesisState(
 }
 
 @Serializable(with = LastValidatorPower.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.LastValidatorPower")
+@SerialName(value = LastValidatorPower.TYPE_URL)
 public data class LastValidatorPower(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val power: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.LastValidatorPower"
+  }
+
   public object KotlinxSerializer : KSerializer<LastValidatorPower> {
     private val delegator: KSerializer<LastValidatorPower> = LastValidatorPower.serializer()
 

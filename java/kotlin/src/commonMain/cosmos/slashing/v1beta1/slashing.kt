@@ -1,6 +1,6 @@
 // Transform from cosmos/slashing/v1beta1/slashing.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.slashing.v1beta1
 
@@ -22,9 +22,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = ValidatorSigningInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.ValidatorSigningInfo")
+@SerialName(value = ValidatorSigningInfo.TYPE_URL)
 public data class ValidatorSigningInfo(
   @ProtobufIndex(index = 1)
   public val address: String,
@@ -38,7 +39,11 @@ public data class ValidatorSigningInfo(
   public val tombstoned: Boolean,
   @ProtobufIndex(index = 6)
   public val missedBlocksCounter: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.ValidatorSigningInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorSigningInfo> {
     private val delegator: KSerializer<ValidatorSigningInfo> = ValidatorSigningInfo.serializer()
 
@@ -62,7 +67,7 @@ public data class ValidatorSigningInfo(
 }
 
 @Serializable(with = Params.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.Params")
+@SerialName(value = Params.TYPE_URL)
 public data class Params(
   @ProtobufIndex(index = 1)
   public val signedBlocksWindow: Long,
@@ -74,7 +79,11 @@ public data class Params(
   public val slashFractionDoubleSign: ByteArray,
   @ProtobufIndex(index = 5)
   public val slashFractionDowntime: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.Params"
+  }
+
   public object KotlinxSerializer : KSerializer<Params> {
     private val delegator: KSerializer<Params> = Params.serializer()
 

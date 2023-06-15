@@ -1,5 +1,5 @@
 // Transform from google/protobuf/descriptor.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package google.protobuf
 
@@ -22,7 +22,7 @@ public object FileDescriptorSetJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.FileDescriptorSet): FileDescriptorSet =
       FileDescriptorSet(
-  	`file` = obj.fileList.map { FileDescriptorProtoJvmConverter.convert(it) },
+  	`file` = obj.getFileList().map { FileDescriptorProtoJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: FileDescriptorSet): DescriptorProtos.FileDescriptorSet {
@@ -42,18 +42,18 @@ public object FileDescriptorProtoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.FileDescriptorProto): FileDescriptorProto =
       FileDescriptorProto(
-  	name = obj.name,
-  	`package` = obj.`package`,
-  	dependency = obj.dependencyList.map { it },
-  	publicDependency = obj.publicDependencyList.map { it },
-  	weakDependency = obj.weakDependencyList.map { it },
-  	messageType = obj.messageTypeList.map { DescriptorProtoJvmConverter.convert(it) },
-  	enumType = obj.enumTypeList.map { EnumDescriptorProtoJvmConverter.convert(it) },
-  	service = obj.serviceList.map { ServiceDescriptorProtoJvmConverter.convert(it) },
-  	extension = obj.extensionList.map { FieldDescriptorProtoJvmConverter.convert(it) },
-  	options = FileOptionsJvmConverter.convert(obj.options),
-  	sourceCodeInfo = SourceCodeInfoJvmConverter.convert(obj.sourceCodeInfo),
-  	syntax = obj.syntax,
+  	name = obj.getName(),
+  	`package` = obj.getPackage(),
+  	dependency = obj.getDependencyList().map { it },
+  	publicDependency = obj.getPublicDependencyList().map { it },
+  	weakDependency = obj.getWeakDependencyList().map { it },
+  	messageType = obj.getMessageTypeList().map { DescriptorProtoJvmConverter.convert(it) },
+  	enumType = obj.getEnumTypeList().map { EnumDescriptorProtoJvmConverter.convert(it) },
+  	service = obj.getServiceList().map { ServiceDescriptorProtoJvmConverter.convert(it) },
+  	extension = obj.getExtensionList().map { FieldDescriptorProtoJvmConverter.convert(it) },
+  	options = FileOptionsJvmConverter.convert(obj.getOptions()),
+  	sourceCodeInfo = SourceCodeInfoJvmConverter.convert(obj.getSourceCodeInfo()),
+  	syntax = obj.getSyntax(),
   )
 
   public override fun convert(obj: FileDescriptorProto): DescriptorProtos.FileDescriptorProto {
@@ -99,16 +99,16 @@ public object DescriptorProtoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.DescriptorProto): DescriptorProto =
       DescriptorProto(
-  	name = obj.name,
-  	`field` = obj.fieldList.map { FieldDescriptorProtoJvmConverter.convert(it) },
-  	extension = obj.extensionList.map { FieldDescriptorProtoJvmConverter.convert(it) },
-  	nestedType = obj.nestedTypeList.map { DescriptorProtoJvmConverter.convert(it) },
-  	enumType = obj.enumTypeList.map { EnumDescriptorProtoJvmConverter.convert(it) },
-  	extensionRange = obj.extensionRangeList.map { ExtensionRangeJvmConverter.convert(it) },
-  	oneofDecl = obj.oneofDeclList.map { OneofDescriptorProtoJvmConverter.convert(it) },
-  	options = MessageOptionsJvmConverter.convert(obj.options),
-  	reservedRange = obj.reservedRangeList.map { ReservedRangeJvmConverter.convert(it) },
-  	reservedName = obj.reservedNameList.map { it },
+  	name = obj.getName(),
+  	`field` = obj.getFieldList().map { FieldDescriptorProtoJvmConverter.convert(it) },
+  	extension = obj.getExtensionList().map { FieldDescriptorProtoJvmConverter.convert(it) },
+  	nestedType = obj.getNestedTypeList().map { DescriptorProtoJvmConverter.convert(it) },
+  	enumType = obj.getEnumTypeList().map { EnumDescriptorProtoJvmConverter.convert(it) },
+  	extensionRange = obj.getExtensionRangeList().map { ExtensionRangeJvmConverter.convert(it) },
+  	oneofDecl = obj.getOneofDeclList().map { OneofDescriptorProtoJvmConverter.convert(it) },
+  	options = MessageOptionsJvmConverter.convert(obj.getOptions()),
+  	reservedRange = obj.getReservedRangeList().map { ReservedRangeJvmConverter.convert(it) },
+  	reservedName = obj.getReservedNameList().map { it },
   )
 
   public override fun convert(obj: DescriptorProto): DescriptorProtos.DescriptorProto {
@@ -143,9 +143,9 @@ public object DescriptorProtoJvmConverter :
 
     public override fun convert(obj: DescriptorProtos.DescriptorProto.ExtensionRange):
         DescriptorProto.ExtensionRange = DescriptorProto.ExtensionRange(
-    	start = obj.start,
-    	end = obj.end,
-    	options = ExtensionRangeOptionsJvmConverter.convert(obj.options),
+    	start = obj.getStart(),
+    	end = obj.getEnd(),
+    	options = ExtensionRangeOptionsJvmConverter.convert(obj.getOptions()),
     )
 
     public override fun convert(obj: DescriptorProto.ExtensionRange):
@@ -178,8 +178,8 @@ public object DescriptorProtoJvmConverter :
 
     public override fun convert(obj: DescriptorProtos.DescriptorProto.ReservedRange):
         DescriptorProto.ReservedRange = DescriptorProto.ReservedRange(
-    	start = obj.start,
-    	end = obj.end,
+    	start = obj.getStart(),
+    	end = obj.getEnd(),
     )
 
     public override fun convert(obj: DescriptorProto.ReservedRange):
@@ -208,7 +208,7 @@ public object ExtensionRangeOptionsJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.ExtensionRangeOptions): ExtensionRangeOptions =
       ExtensionRangeOptions(
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -230,17 +230,17 @@ public object FieldDescriptorProtoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.FieldDescriptorProto): FieldDescriptorProto =
       FieldDescriptorProto(
-  	name = obj.name,
-  	number = obj.number,
-  	label = FieldDescriptorProto.Label.forNumber(obj.label.number),
-  	type = FieldDescriptorProto.Type.forNumber(obj.type.number),
-  	typeName = obj.typeName,
-  	extendee = obj.extendee,
-  	defaultValue = obj.defaultValue,
-  	oneofIndex = obj.oneofIndex,
-  	jsonName = obj.jsonName,
-  	options = FieldOptionsJvmConverter.convert(obj.options),
-  	proto3Optional = obj.proto3Optional,
+  	name = obj.getName(),
+  	number = obj.getNumber(),
+  	label = FieldDescriptorProto.Label.forNumber(obj.getLabel().number),
+  	type = FieldDescriptorProto.Type.forNumber(obj.getType().number),
+  	typeName = obj.getTypeName(),
+  	extendee = obj.getExtendee(),
+  	defaultValue = obj.getDefaultValue(),
+  	oneofIndex = obj.getOneofIndex(),
+  	jsonName = obj.getJsonName(),
+  	options = FieldOptionsJvmConverter.convert(obj.getOptions()),
+  	proto3Optional = obj.getProto3Optional(),
   )
 
   public override fun convert(obj: FieldDescriptorProto): DescriptorProtos.FieldDescriptorProto {
@@ -303,8 +303,8 @@ public object OneofDescriptorProtoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.OneofDescriptorProto): OneofDescriptorProto =
       OneofDescriptorProto(
-  	name = obj.name,
-  	options = OneofOptionsJvmConverter.convert(obj.options),
+  	name = obj.getName(),
+  	options = OneofOptionsJvmConverter.convert(obj.getOptions()),
   )
 
   public override fun convert(obj: OneofDescriptorProto): DescriptorProtos.OneofDescriptorProto {
@@ -331,11 +331,11 @@ public object EnumDescriptorProtoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.EnumDescriptorProto): EnumDescriptorProto =
       EnumDescriptorProto(
-  	name = obj.name,
-  	`value` = obj.valueList.map { EnumValueDescriptorProtoJvmConverter.convert(it) },
-  	options = EnumOptionsJvmConverter.convert(obj.options),
-  	reservedRange = obj.reservedRangeList.map { EnumReservedRangeJvmConverter.convert(it) },
-  	reservedName = obj.reservedNameList.map { it },
+  	name = obj.getName(),
+  	`value` = obj.getValueList().map { EnumValueDescriptorProtoJvmConverter.convert(it) },
+  	options = EnumOptionsJvmConverter.convert(obj.getOptions()),
+  	reservedRange = obj.getReservedRangeList().map { EnumReservedRangeJvmConverter.convert(it) },
+  	reservedName = obj.getReservedNameList().map { it },
   )
 
   public override fun convert(obj: EnumDescriptorProto): DescriptorProtos.EnumDescriptorProto {
@@ -365,8 +365,8 @@ public object EnumDescriptorProtoJvmConverter :
 
     public override fun convert(obj: DescriptorProtos.EnumDescriptorProto.EnumReservedRange):
         EnumDescriptorProto.EnumReservedRange = EnumDescriptorProto.EnumReservedRange(
-    	start = obj.start,
-    	end = obj.end,
+    	start = obj.getStart(),
+    	end = obj.getEnd(),
     )
 
     public override fun convert(obj: EnumDescriptorProto.EnumReservedRange):
@@ -395,9 +395,9 @@ public object EnumValueDescriptorProtoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.EnumValueDescriptorProto):
       EnumValueDescriptorProto = EnumValueDescriptorProto(
-  	name = obj.name,
-  	number = obj.number,
-  	options = EnumValueOptionsJvmConverter.convert(obj.options),
+  	name = obj.getName(),
+  	number = obj.getNumber(),
+  	options = EnumValueOptionsJvmConverter.convert(obj.getOptions()),
   )
 
   public override fun convert(obj: EnumValueDescriptorProto):
@@ -429,9 +429,9 @@ public object ServiceDescriptorProtoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.ServiceDescriptorProto): ServiceDescriptorProto
       = ServiceDescriptorProto(
-  	name = obj.name,
-  	method = obj.methodList.map { MethodDescriptorProtoJvmConverter.convert(it) },
-  	options = ServiceOptionsJvmConverter.convert(obj.options),
+  	name = obj.getName(),
+  	method = obj.getMethodList().map { MethodDescriptorProtoJvmConverter.convert(it) },
+  	options = ServiceOptionsJvmConverter.convert(obj.getOptions()),
   )
 
   public override fun convert(obj: ServiceDescriptorProto):
@@ -460,12 +460,12 @@ public object MethodDescriptorProtoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.MethodDescriptorProto): MethodDescriptorProto =
       MethodDescriptorProto(
-  	name = obj.name,
-  	inputType = obj.inputType,
-  	outputType = obj.outputType,
-  	options = MethodOptionsJvmConverter.convert(obj.options),
-  	clientStreaming = obj.clientStreaming,
-  	serverStreaming = obj.serverStreaming,
+  	name = obj.getName(),
+  	inputType = obj.getInputType(),
+  	outputType = obj.getOutputType(),
+  	options = MethodOptionsJvmConverter.convert(obj.getOptions()),
+  	clientStreaming = obj.getClientStreaming(),
+  	serverStreaming = obj.getServerStreaming(),
   )
 
   public override fun convert(obj: MethodDescriptorProto): DescriptorProtos.MethodDescriptorProto {
@@ -507,27 +507,27 @@ public object FileOptionsJvmConverter :
       DescriptorProtos.FileOptions.parser()
 
   public override fun convert(obj: DescriptorProtos.FileOptions): FileOptions = FileOptions(
-  	javaPackage = obj.javaPackage,
-  	javaOuterClassname = obj.javaOuterClassname,
-  	javaMultipleFiles = obj.javaMultipleFiles,
-  	javaGenerateEqualsAndHash = obj.javaGenerateEqualsAndHash,
-  	javaStringCheckUtf8 = obj.javaStringCheckUtf8,
-  	optimizeFor = FileOptions.OptimizeMode.forNumber(obj.optimizeFor.number),
-  	goPackage = obj.goPackage,
-  	ccGenericServices = obj.ccGenericServices,
-  	javaGenericServices = obj.javaGenericServices,
-  	pyGenericServices = obj.pyGenericServices,
-  	phpGenericServices = obj.phpGenericServices,
-  	deprecated = obj.deprecated,
-  	ccEnableArenas = obj.ccEnableArenas,
-  	objcClassPrefix = obj.objcClassPrefix,
-  	csharpNamespace = obj.csharpNamespace,
-  	swiftPrefix = obj.swiftPrefix,
-  	phpClassPrefix = obj.phpClassPrefix,
-  	phpNamespace = obj.phpNamespace,
-  	phpMetadataNamespace = obj.phpMetadataNamespace,
-  	rubyPackage = obj.rubyPackage,
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	javaPackage = obj.getJavaPackage(),
+  	javaOuterClassname = obj.getJavaOuterClassname(),
+  	javaMultipleFiles = obj.getJavaMultipleFiles(),
+  	javaGenerateEqualsAndHash = obj.getJavaGenerateEqualsAndHash(),
+  	javaStringCheckUtf8 = obj.getJavaStringCheckUtf8(),
+  	optimizeFor = FileOptions.OptimizeMode.forNumber(obj.getOptimizeFor().number),
+  	goPackage = obj.getGoPackage(),
+  	ccGenericServices = obj.getCcGenericServices(),
+  	javaGenericServices = obj.getJavaGenericServices(),
+  	pyGenericServices = obj.getPyGenericServices(),
+  	phpGenericServices = obj.getPhpGenericServices(),
+  	deprecated = obj.getDeprecated(),
+  	ccEnableArenas = obj.getCcEnableArenas(),
+  	objcClassPrefix = obj.getObjcClassPrefix(),
+  	csharpNamespace = obj.getCsharpNamespace(),
+  	swiftPrefix = obj.getSwiftPrefix(),
+  	phpClassPrefix = obj.getPhpClassPrefix(),
+  	phpNamespace = obj.getPhpNamespace(),
+  	phpMetadataNamespace = obj.getPhpMetadataNamespace(),
+  	rubyPackage = obj.getRubyPackage(),
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -629,11 +629,11 @@ public object MessageOptionsJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.MessageOptions): MessageOptions =
       MessageOptions(
-  	messageSetWireFormat = obj.messageSetWireFormat,
-  	noStandardDescriptorAccessor = obj.noStandardDescriptorAccessor,
-  	deprecated = obj.deprecated,
-  	mapEntry = obj.mapEntry,
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	messageSetWireFormat = obj.getMessageSetWireFormat(),
+  	noStandardDescriptorAccessor = obj.getNoStandardDescriptorAccessor(),
+  	deprecated = obj.getDeprecated(),
+  	mapEntry = obj.getMapEntry(),
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -670,14 +670,14 @@ public object FieldOptionsJvmConverter :
       DescriptorProtos.FieldOptions.parser()
 
   public override fun convert(obj: DescriptorProtos.FieldOptions): FieldOptions = FieldOptions(
-  	ctype = FieldOptions.CType.forNumber(obj.ctype.number),
-  	packed = obj.packed,
-  	jstype = FieldOptions.JSType.forNumber(obj.jstype.number),
-  	lazy = obj.lazy,
-  	unverifiedLazy = obj.unverifiedLazy,
-  	deprecated = obj.deprecated,
-  	weak = obj.weak,
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	ctype = FieldOptions.CType.forNumber(obj.getCtype().number),
+  	packed = obj.getPacked(),
+  	jstype = FieldOptions.JSType.forNumber(obj.getJstype().number),
+  	lazy = obj.getLazy(),
+  	unverifiedLazy = obj.getUnverifiedLazy(),
+  	deprecated = obj.getDeprecated(),
+  	weak = obj.getWeak(),
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -726,7 +726,7 @@ public object OneofOptionsJvmConverter :
       DescriptorProtos.OneofOptions.parser()
 
   public override fun convert(obj: DescriptorProtos.OneofOptions): OneofOptions = OneofOptions(
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -747,9 +747,9 @@ public object EnumOptionsJvmConverter :
       DescriptorProtos.EnumOptions.parser()
 
   public override fun convert(obj: DescriptorProtos.EnumOptions): EnumOptions = EnumOptions(
-  	allowAlias = obj.allowAlias,
-  	deprecated = obj.deprecated,
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	allowAlias = obj.getAllowAlias(),
+  	deprecated = obj.getDeprecated(),
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -779,8 +779,8 @@ public object EnumValueOptionsJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.EnumValueOptions): EnumValueOptions =
       EnumValueOptions(
-  	deprecated = obj.deprecated,
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	deprecated = obj.getDeprecated(),
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -806,8 +806,8 @@ public object ServiceOptionsJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.ServiceOptions): ServiceOptions =
       ServiceOptions(
-  	deprecated = obj.deprecated,
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	deprecated = obj.getDeprecated(),
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -832,9 +832,9 @@ public object MethodOptionsJvmConverter :
       DescriptorProtos.MethodOptions.parser()
 
   public override fun convert(obj: DescriptorProtos.MethodOptions): MethodOptions = MethodOptions(
-  	deprecated = obj.deprecated,
-  	idempotencyLevel = MethodOptions.IdempotencyLevel.forNumber(obj.idempotencyLevel.number),
-  	uninterpretedOption = obj.uninterpretedOptionList.map {
+  	deprecated = obj.getDeprecated(),
+  	idempotencyLevel = MethodOptions.IdempotencyLevel.forNumber(obj.getIdempotencyLevel().number),
+  	uninterpretedOption = obj.getUninterpretedOptionList().map {
       UninterpretedOptionJvmConverter.convert(it) },
   )
 
@@ -864,13 +864,13 @@ public object UninterpretedOptionJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.UninterpretedOption): UninterpretedOption =
       UninterpretedOption(
-  	name = obj.nameList.map { NamePartJvmConverter.convert(it) },
-  	identifierValue = obj.identifierValue,
-  	positiveIntValue = obj.positiveIntValue.asKotlinType,
-  	negativeIntValue = obj.negativeIntValue,
-  	doubleValue = obj.doubleValue,
-  	stringValue = obj.stringValue.toByteArray(),
-  	aggregateValue = obj.aggregateValue,
+  	name = obj.getNameList().map { NamePartJvmConverter.convert(it) },
+  	identifierValue = obj.getIdentifierValue(),
+  	positiveIntValue = obj.getPositiveIntValue().asKotlinType,
+  	negativeIntValue = obj.getNegativeIntValue(),
+  	doubleValue = obj.getDoubleValue(),
+  	stringValue = obj.getStringValue().toByteArray(),
+  	aggregateValue = obj.getAggregateValue(),
   )
 
   public override fun convert(obj: UninterpretedOption): DescriptorProtos.UninterpretedOption {
@@ -914,8 +914,8 @@ public object UninterpretedOptionJvmConverter :
 
     public override fun convert(obj: DescriptorProtos.UninterpretedOption.NamePart):
         UninterpretedOption.NamePart = UninterpretedOption.NamePart(
-    	namePart = obj.namePart,
-    	isExtension = obj.isExtension,
+    	namePart = obj.getNamePart(),
+    	isExtension = obj.getIsExtension(),
     )
 
     public override fun convert(obj: UninterpretedOption.NamePart):
@@ -938,7 +938,7 @@ public object SourceCodeInfoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.SourceCodeInfo): SourceCodeInfo =
       SourceCodeInfo(
-  	location = obj.locationList.map { LocationJvmConverter.convert(it) },
+  	location = obj.getLocationList().map { LocationJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: SourceCodeInfo): DescriptorProtos.SourceCodeInfo {
@@ -957,11 +957,11 @@ public object SourceCodeInfoJvmConverter :
 
     public override fun convert(obj: DescriptorProtos.SourceCodeInfo.Location):
         SourceCodeInfo.Location = SourceCodeInfo.Location(
-    	path = obj.pathList.map { it },
-    	span = obj.spanList.map { it },
-    	leadingComments = obj.leadingComments,
-    	trailingComments = obj.trailingComments,
-    	leadingDetachedComments = obj.leadingDetachedCommentsList.map { it },
+    	path = obj.getPathList().map { it },
+    	span = obj.getSpanList().map { it },
+    	leadingComments = obj.getLeadingComments(),
+    	trailingComments = obj.getTrailingComments(),
+    	leadingDetachedComments = obj.getLeadingDetachedCommentsList().map { it },
     )
 
     public override fun convert(obj: SourceCodeInfo.Location):
@@ -993,7 +993,7 @@ public object GeneratedCodeInfoJvmConverter :
 
   public override fun convert(obj: DescriptorProtos.GeneratedCodeInfo): GeneratedCodeInfo =
       GeneratedCodeInfo(
-  	`annotation` = obj.annotationList.map { AnnotationJvmConverter.convert(it) },
+  	`annotation` = obj.getAnnotationList().map { AnnotationJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: GeneratedCodeInfo): DescriptorProtos.GeneratedCodeInfo {
@@ -1013,10 +1013,10 @@ public object GeneratedCodeInfoJvmConverter :
 
     public override fun convert(obj: DescriptorProtos.GeneratedCodeInfo.Annotation):
         GeneratedCodeInfo.Annotation = GeneratedCodeInfo.Annotation(
-    	path = obj.pathList.map { it },
-    	sourceFile = obj.sourceFile,
-    	begin = obj.begin,
-    	end = obj.end,
+    	path = obj.getPathList().map { it },
+    	sourceFile = obj.getSourceFile(),
+    	begin = obj.getBegin(),
+    	end = obj.getEnd(),
     )
 
     public override fun convert(obj: GeneratedCodeInfo.Annotation):

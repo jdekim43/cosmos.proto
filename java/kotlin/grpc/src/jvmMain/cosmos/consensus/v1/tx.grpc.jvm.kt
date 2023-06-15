@@ -1,6 +1,6 @@
 // Transform from cosmos/consensus/v1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.consensus.v1
 

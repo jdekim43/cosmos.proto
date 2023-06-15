@@ -1,6 +1,6 @@
 // Transform from tendermint/types/params.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
@@ -21,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = ConsensusParams.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.ConsensusParams")
+@SerialName(value = ConsensusParams.TYPE_URL)
 public data class ConsensusParams(
   @ProtobufIndex(index = 1)
   public val block: BlockParams,
@@ -33,7 +34,11 @@ public data class ConsensusParams(
   public val validator: ValidatorParams,
   @ProtobufIndex(index = 4)
   public val version: VersionParams,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.ConsensusParams"
+  }
+
   public object KotlinxSerializer : KSerializer<ConsensusParams> {
     private val delegator: KSerializer<ConsensusParams> = ConsensusParams.serializer()
 
@@ -57,13 +62,17 @@ public data class ConsensusParams(
 }
 
 @Serializable(with = BlockParams.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.BlockParams")
+@SerialName(value = BlockParams.TYPE_URL)
 public data class BlockParams(
   @ProtobufIndex(index = 1)
   public val maxBytes: Long,
   @ProtobufIndex(index = 2)
   public val maxGas: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.BlockParams"
+  }
+
   public object KotlinxSerializer : KSerializer<BlockParams> {
     private val delegator: KSerializer<BlockParams> = BlockParams.serializer()
 
@@ -87,7 +96,7 @@ public data class BlockParams(
 }
 
 @Serializable(with = EvidenceParams.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.EvidenceParams")
+@SerialName(value = EvidenceParams.TYPE_URL)
 public data class EvidenceParams(
   @ProtobufIndex(index = 1)
   public val maxAgeNumBlocks: Long,
@@ -95,7 +104,11 @@ public data class EvidenceParams(
   public val maxAgeDuration: Duration,
   @ProtobufIndex(index = 3)
   public val maxBytes: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.EvidenceParams"
+  }
+
   public object KotlinxSerializer : KSerializer<EvidenceParams> {
     private val delegator: KSerializer<EvidenceParams> = EvidenceParams.serializer()
 
@@ -119,11 +132,15 @@ public data class EvidenceParams(
 }
 
 @Serializable(with = ValidatorParams.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.ValidatorParams")
+@SerialName(value = ValidatorParams.TYPE_URL)
 public data class ValidatorParams(
   @ProtobufIndex(index = 1)
   public val pubKeyTypes: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.ValidatorParams"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorParams> {
     private val delegator: KSerializer<ValidatorParams> = ValidatorParams.serializer()
 
@@ -147,11 +164,15 @@ public data class ValidatorParams(
 }
 
 @Serializable(with = VersionParams.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.VersionParams")
+@SerialName(value = VersionParams.TYPE_URL)
 public data class VersionParams(
   @ProtobufIndex(index = 1)
   public val app: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.VersionParams"
+  }
+
   public object KotlinxSerializer : KSerializer<VersionParams> {
     private val delegator: KSerializer<VersionParams> = VersionParams.serializer()
 
@@ -175,13 +196,17 @@ public data class VersionParams(
 }
 
 @Serializable(with = HashedParams.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.HashedParams")
+@SerialName(value = HashedParams.TYPE_URL)
 public data class HashedParams(
   @ProtobufIndex(index = 1)
   public val blockMaxBytes: Long,
   @ProtobufIndex(index = 2)
   public val blockMaxGas: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.HashedParams"
+  }
+
   public object KotlinxSerializer : KSerializer<HashedParams> {
     private val delegator: KSerializer<HashedParams> = HashedParams.serializer()
 

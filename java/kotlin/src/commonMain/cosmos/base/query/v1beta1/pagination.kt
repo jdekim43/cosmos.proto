@@ -1,11 +1,12 @@
 // Transform from cosmos/base/query/v1beta1/pagination.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.query.v1beta1
 
 import kotlin.Boolean
 import kotlin.ByteArray
+import kotlin.String
 import kotlin.ULong
 import kotlin.Unit
 import kotlinx.serialization.KSerializer
@@ -19,9 +20,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = PageRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.query.v1beta1.PageRequest")
+@SerialName(value = PageRequest.TYPE_URL)
 public data class PageRequest(
   @ProtobufIndex(index = 1)
   public val key: ByteArray,
@@ -33,7 +35,11 @@ public data class PageRequest(
   public val countTotal: Boolean,
   @ProtobufIndex(index = 5)
   public val reverse: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.query.v1beta1.PageRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<PageRequest> {
     private val delegator: KSerializer<PageRequest> = PageRequest.serializer()
 
@@ -57,13 +63,17 @@ public data class PageRequest(
 }
 
 @Serializable(with = PageResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.query.v1beta1.PageResponse")
+@SerialName(value = PageResponse.TYPE_URL)
 public data class PageResponse(
   @ProtobufIndex(index = 1)
   public val nextKey: ByteArray,
   @ProtobufIndex(index = 2)
   public val total: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.query.v1beta1.PageResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<PageResponse> {
     private val delegator: KSerializer<PageResponse> = PageResponse.serializer()
 

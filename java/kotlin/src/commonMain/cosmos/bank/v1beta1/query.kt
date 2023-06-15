@@ -1,6 +1,6 @@
 // Transform from cosmos/bank/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -21,15 +21,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryBalanceRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryBalanceRequest")
+@SerialName(value = QueryBalanceRequest.TYPE_URL)
 public data class QueryBalanceRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val denom: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryBalanceRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryBalanceRequest> {
     private val delegator: KSerializer<QueryBalanceRequest> = QueryBalanceRequest.serializer()
 
@@ -53,11 +58,15 @@ public data class QueryBalanceRequest(
 }
 
 @Serializable(with = QueryBalanceResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryBalanceResponse")
+@SerialName(value = QueryBalanceResponse.TYPE_URL)
 public data class QueryBalanceResponse(
   @ProtobufIndex(index = 1)
   public val balance: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryBalanceResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryBalanceResponse> {
     private val delegator: KSerializer<QueryBalanceResponse> = QueryBalanceResponse.serializer()
 
@@ -81,13 +90,17 @@ public data class QueryBalanceResponse(
 }
 
 @Serializable(with = QueryAllBalancesRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryAllBalancesRequest")
+@SerialName(value = QueryAllBalancesRequest.TYPE_URL)
 public data class QueryAllBalancesRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryAllBalancesRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllBalancesRequest> {
     private val delegator: KSerializer<QueryAllBalancesRequest> =
         QueryAllBalancesRequest.serializer()
@@ -112,13 +125,17 @@ public data class QueryAllBalancesRequest(
 }
 
 @Serializable(with = QueryAllBalancesResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryAllBalancesResponse")
+@SerialName(value = QueryAllBalancesResponse.TYPE_URL)
 public data class QueryAllBalancesResponse(
   @ProtobufIndex(index = 1)
   public val balances: List<Coin>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryAllBalancesResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllBalancesResponse> {
     private val delegator: KSerializer<QueryAllBalancesResponse> =
         QueryAllBalancesResponse.serializer()
@@ -143,13 +160,17 @@ public data class QueryAllBalancesResponse(
 }
 
 @Serializable(with = QuerySpendableBalancesRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QuerySpendableBalancesRequest")
+@SerialName(value = QuerySpendableBalancesRequest.TYPE_URL)
 public data class QuerySpendableBalancesRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QuerySpendableBalancesRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySpendableBalancesRequest> {
     private val delegator: KSerializer<QuerySpendableBalancesRequest> =
         QuerySpendableBalancesRequest.serializer()
@@ -174,13 +195,17 @@ public data class QuerySpendableBalancesRequest(
 }
 
 @Serializable(with = QuerySpendableBalancesResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QuerySpendableBalancesResponse")
+@SerialName(value = QuerySpendableBalancesResponse.TYPE_URL)
 public data class QuerySpendableBalancesResponse(
   @ProtobufIndex(index = 1)
   public val balances: List<Coin>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QuerySpendableBalancesResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySpendableBalancesResponse> {
     private val delegator: KSerializer<QuerySpendableBalancesResponse> =
         QuerySpendableBalancesResponse.serializer()
@@ -205,13 +230,17 @@ public data class QuerySpendableBalancesResponse(
 }
 
 @Serializable(with = QuerySpendableBalanceByDenomRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest")
+@SerialName(value = QuerySpendableBalanceByDenomRequest.TYPE_URL)
 public data class QuerySpendableBalanceByDenomRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val denom: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySpendableBalanceByDenomRequest> {
     private val delegator: KSerializer<QuerySpendableBalanceByDenomRequest> =
         QuerySpendableBalanceByDenomRequest.serializer()
@@ -237,11 +266,15 @@ public data class QuerySpendableBalanceByDenomRequest(
 }
 
 @Serializable(with = QuerySpendableBalanceByDenomResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse")
+@SerialName(value = QuerySpendableBalanceByDenomResponse.TYPE_URL)
 public data class QuerySpendableBalanceByDenomResponse(
   @ProtobufIndex(index = 1)
   public val balance: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySpendableBalanceByDenomResponse> {
     private val delegator: KSerializer<QuerySpendableBalanceByDenomResponse> =
         QuerySpendableBalanceByDenomResponse.serializer()
@@ -267,11 +300,15 @@ public data class QuerySpendableBalanceByDenomResponse(
 }
 
 @Serializable(with = QueryTotalSupplyRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryTotalSupplyRequest")
+@SerialName(value = QueryTotalSupplyRequest.TYPE_URL)
 public data class QueryTotalSupplyRequest(
   @ProtobufIndex(index = 1)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryTotalSupplyRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryTotalSupplyRequest> {
     private val delegator: KSerializer<QueryTotalSupplyRequest> =
         QueryTotalSupplyRequest.serializer()
@@ -296,13 +333,17 @@ public data class QueryTotalSupplyRequest(
 }
 
 @Serializable(with = QueryTotalSupplyResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryTotalSupplyResponse")
+@SerialName(value = QueryTotalSupplyResponse.TYPE_URL)
 public data class QueryTotalSupplyResponse(
   @ProtobufIndex(index = 1)
   public val supply: List<Coin>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryTotalSupplyResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryTotalSupplyResponse> {
     private val delegator: KSerializer<QueryTotalSupplyResponse> =
         QueryTotalSupplyResponse.serializer()
@@ -327,11 +368,15 @@ public data class QueryTotalSupplyResponse(
 }
 
 @Serializable(with = QuerySupplyOfRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QuerySupplyOfRequest")
+@SerialName(value = QuerySupplyOfRequest.TYPE_URL)
 public data class QuerySupplyOfRequest(
   @ProtobufIndex(index = 1)
   public val denom: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QuerySupplyOfRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySupplyOfRequest> {
     private val delegator: KSerializer<QuerySupplyOfRequest> = QuerySupplyOfRequest.serializer()
 
@@ -355,11 +400,15 @@ public data class QuerySupplyOfRequest(
 }
 
 @Serializable(with = QuerySupplyOfResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QuerySupplyOfResponse")
+@SerialName(value = QuerySupplyOfResponse.TYPE_URL)
 public data class QuerySupplyOfResponse(
   @ProtobufIndex(index = 1)
   public val amount: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QuerySupplyOfResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySupplyOfResponse> {
     private val delegator: KSerializer<QuerySupplyOfResponse> = QuerySupplyOfResponse.serializer()
 
@@ -383,8 +432,12 @@ public data class QuerySupplyOfResponse(
 }
 
 @Serializable(with = QueryParamsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryParamsRequest")
-public class QueryParamsRequest() {
+@SerialName(value = QueryParamsRequest.TYPE_URL)
+public class QueryParamsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryParamsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsRequest> {
     private val delegator: KSerializer<QueryParamsRequest> = QueryParamsRequest.serializer()
 
@@ -408,11 +461,15 @@ public class QueryParamsRequest() {
 }
 
 @Serializable(with = QueryParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryParamsResponse")
+@SerialName(value = QueryParamsResponse.TYPE_URL)
 public data class QueryParamsResponse(
   @ProtobufIndex(index = 1)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsResponse> {
     private val delegator: KSerializer<QueryParamsResponse> = QueryParamsResponse.serializer()
 
@@ -436,11 +493,15 @@ public data class QueryParamsResponse(
 }
 
 @Serializable(with = QueryDenomsMetadataRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryDenomsMetadataRequest")
+@SerialName(value = QueryDenomsMetadataRequest.TYPE_URL)
 public data class QueryDenomsMetadataRequest(
   @ProtobufIndex(index = 1)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryDenomsMetadataRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDenomsMetadataRequest> {
     private val delegator: KSerializer<QueryDenomsMetadataRequest> =
         QueryDenomsMetadataRequest.serializer()
@@ -465,13 +526,17 @@ public data class QueryDenomsMetadataRequest(
 }
 
 @Serializable(with = QueryDenomsMetadataResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryDenomsMetadataResponse")
+@SerialName(value = QueryDenomsMetadataResponse.TYPE_URL)
 public data class QueryDenomsMetadataResponse(
   @ProtobufIndex(index = 1)
   public val metadatas: List<Metadata>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryDenomsMetadataResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDenomsMetadataResponse> {
     private val delegator: KSerializer<QueryDenomsMetadataResponse> =
         QueryDenomsMetadataResponse.serializer()
@@ -496,11 +561,15 @@ public data class QueryDenomsMetadataResponse(
 }
 
 @Serializable(with = QueryDenomMetadataRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryDenomMetadataRequest")
+@SerialName(value = QueryDenomMetadataRequest.TYPE_URL)
 public data class QueryDenomMetadataRequest(
   @ProtobufIndex(index = 1)
   public val denom: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryDenomMetadataRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDenomMetadataRequest> {
     private val delegator: KSerializer<QueryDenomMetadataRequest> =
         QueryDenomMetadataRequest.serializer()
@@ -525,11 +594,15 @@ public data class QueryDenomMetadataRequest(
 }
 
 @Serializable(with = QueryDenomMetadataResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryDenomMetadataResponse")
+@SerialName(value = QueryDenomMetadataResponse.TYPE_URL)
 public data class QueryDenomMetadataResponse(
   @ProtobufIndex(index = 1)
   public val metadata: Metadata,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryDenomMetadataResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDenomMetadataResponse> {
     private val delegator: KSerializer<QueryDenomMetadataResponse> =
         QueryDenomMetadataResponse.serializer()
@@ -554,13 +627,17 @@ public data class QueryDenomMetadataResponse(
 }
 
 @Serializable(with = QueryDenomOwnersRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryDenomOwnersRequest")
+@SerialName(value = QueryDenomOwnersRequest.TYPE_URL)
 public data class QueryDenomOwnersRequest(
   @ProtobufIndex(index = 1)
   public val denom: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryDenomOwnersRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDenomOwnersRequest> {
     private val delegator: KSerializer<QueryDenomOwnersRequest> =
         QueryDenomOwnersRequest.serializer()
@@ -585,13 +662,17 @@ public data class QueryDenomOwnersRequest(
 }
 
 @Serializable(with = DenomOwner.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.DenomOwner")
+@SerialName(value = DenomOwner.TYPE_URL)
 public data class DenomOwner(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val balance: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.DenomOwner"
+  }
+
   public object KotlinxSerializer : KSerializer<DenomOwner> {
     private val delegator: KSerializer<DenomOwner> = DenomOwner.serializer()
 
@@ -615,13 +696,17 @@ public data class DenomOwner(
 }
 
 @Serializable(with = QueryDenomOwnersResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QueryDenomOwnersResponse")
+@SerialName(value = QueryDenomOwnersResponse.TYPE_URL)
 public data class QueryDenomOwnersResponse(
   @ProtobufIndex(index = 1)
   public val denomOwners: List<DenomOwner>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QueryDenomOwnersResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDenomOwnersResponse> {
     private val delegator: KSerializer<QueryDenomOwnersResponse> =
         QueryDenomOwnersResponse.serializer()
@@ -646,13 +731,17 @@ public data class QueryDenomOwnersResponse(
 }
 
 @Serializable(with = QuerySendEnabledRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QuerySendEnabledRequest")
+@SerialName(value = QuerySendEnabledRequest.TYPE_URL)
 public data class QuerySendEnabledRequest(
   @ProtobufIndex(index = 1)
   public val denoms: List<String>,
   @ProtobufIndex(index = 99)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QuerySendEnabledRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySendEnabledRequest> {
     private val delegator: KSerializer<QuerySendEnabledRequest> =
         QuerySendEnabledRequest.serializer()
@@ -677,13 +766,17 @@ public data class QuerySendEnabledRequest(
 }
 
 @Serializable(with = QuerySendEnabledResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.QuerySendEnabledResponse")
+@SerialName(value = QuerySendEnabledResponse.TYPE_URL)
 public data class QuerySendEnabledResponse(
   @ProtobufIndex(index = 1)
   public val sendEnabled: List<SendEnabled>,
   @ProtobufIndex(index = 99)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.QuerySendEnabledResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySendEnabledResponse> {
     private val delegator: KSerializer<QuerySendEnabledResponse> =
         QuerySendEnabledResponse.serializer()

@@ -1,6 +1,6 @@
 // Transform from cosmos/reflection/v1/reflection.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.reflection.v1
 

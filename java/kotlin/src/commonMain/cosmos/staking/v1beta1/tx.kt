@@ -1,6 +1,6 @@
 // Transform from cosmos/staking/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -21,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgCreateValidator.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgCreateValidator")
+@SerialName(value = MsgCreateValidator.TYPE_URL)
 public data class MsgCreateValidator(
   @ProtobufIndex(index = 1)
   public val description: Description,
@@ -39,7 +40,11 @@ public data class MsgCreateValidator(
   public val pubkey: Any,
   @ProtobufIndex(index = 7)
   public val `value`: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgCreateValidator"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateValidator> {
     private val delegator: KSerializer<MsgCreateValidator> = MsgCreateValidator.serializer()
 
@@ -63,8 +68,12 @@ public data class MsgCreateValidator(
 }
 
 @Serializable(with = MsgCreateValidatorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgCreateValidatorResponse")
-public class MsgCreateValidatorResponse() {
+@SerialName(value = MsgCreateValidatorResponse.TYPE_URL)
+public class MsgCreateValidatorResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgCreateValidatorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateValidatorResponse> {
     private val delegator: KSerializer<MsgCreateValidatorResponse> =
         MsgCreateValidatorResponse.serializer()
@@ -89,7 +98,7 @@ public class MsgCreateValidatorResponse() {
 }
 
 @Serializable(with = MsgEditValidator.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgEditValidator")
+@SerialName(value = MsgEditValidator.TYPE_URL)
 public data class MsgEditValidator(
   @ProtobufIndex(index = 1)
   public val description: Description,
@@ -99,7 +108,11 @@ public data class MsgEditValidator(
   public val commissionRate: String,
   @ProtobufIndex(index = 4)
   public val minSelfDelegation: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgEditValidator"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgEditValidator> {
     private val delegator: KSerializer<MsgEditValidator> = MsgEditValidator.serializer()
 
@@ -123,8 +136,12 @@ public data class MsgEditValidator(
 }
 
 @Serializable(with = MsgEditValidatorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgEditValidatorResponse")
-public class MsgEditValidatorResponse() {
+@SerialName(value = MsgEditValidatorResponse.TYPE_URL)
+public class MsgEditValidatorResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgEditValidatorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgEditValidatorResponse> {
     private val delegator: KSerializer<MsgEditValidatorResponse> =
         MsgEditValidatorResponse.serializer()
@@ -149,7 +166,7 @@ public class MsgEditValidatorResponse() {
 }
 
 @Serializable(with = MsgDelegate.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgDelegate")
+@SerialName(value = MsgDelegate.TYPE_URL)
 public data class MsgDelegate(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -157,7 +174,11 @@ public data class MsgDelegate(
   public val validatorAddress: String,
   @ProtobufIndex(index = 3)
   public val amount: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgDelegate"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgDelegate> {
     private val delegator: KSerializer<MsgDelegate> = MsgDelegate.serializer()
 
@@ -181,8 +202,12 @@ public data class MsgDelegate(
 }
 
 @Serializable(with = MsgDelegateResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgDelegateResponse")
-public class MsgDelegateResponse() {
+@SerialName(value = MsgDelegateResponse.TYPE_URL)
+public class MsgDelegateResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgDelegateResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgDelegateResponse> {
     private val delegator: KSerializer<MsgDelegateResponse> = MsgDelegateResponse.serializer()
 
@@ -206,7 +231,7 @@ public class MsgDelegateResponse() {
 }
 
 @Serializable(with = MsgBeginRedelegate.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgBeginRedelegate")
+@SerialName(value = MsgBeginRedelegate.TYPE_URL)
 public data class MsgBeginRedelegate(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -216,7 +241,11 @@ public data class MsgBeginRedelegate(
   public val validatorDstAddress: String,
   @ProtobufIndex(index = 4)
   public val amount: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgBeginRedelegate"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgBeginRedelegate> {
     private val delegator: KSerializer<MsgBeginRedelegate> = MsgBeginRedelegate.serializer()
 
@@ -240,11 +269,15 @@ public data class MsgBeginRedelegate(
 }
 
 @Serializable(with = MsgBeginRedelegateResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgBeginRedelegateResponse")
+@SerialName(value = MsgBeginRedelegateResponse.TYPE_URL)
 public data class MsgBeginRedelegateResponse(
   @ProtobufIndex(index = 1)
   public val completionTime: Timestamp,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgBeginRedelegateResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgBeginRedelegateResponse> {
     private val delegator: KSerializer<MsgBeginRedelegateResponse> =
         MsgBeginRedelegateResponse.serializer()
@@ -269,7 +302,7 @@ public data class MsgBeginRedelegateResponse(
 }
 
 @Serializable(with = MsgUndelegate.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgUndelegate")
+@SerialName(value = MsgUndelegate.TYPE_URL)
 public data class MsgUndelegate(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -277,7 +310,11 @@ public data class MsgUndelegate(
   public val validatorAddress: String,
   @ProtobufIndex(index = 3)
   public val amount: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgUndelegate"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUndelegate> {
     private val delegator: KSerializer<MsgUndelegate> = MsgUndelegate.serializer()
 
@@ -301,11 +338,15 @@ public data class MsgUndelegate(
 }
 
 @Serializable(with = MsgUndelegateResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgUndelegateResponse")
+@SerialName(value = MsgUndelegateResponse.TYPE_URL)
 public data class MsgUndelegateResponse(
   @ProtobufIndex(index = 1)
   public val completionTime: Timestamp,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgUndelegateResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUndelegateResponse> {
     private val delegator: KSerializer<MsgUndelegateResponse> = MsgUndelegateResponse.serializer()
 
@@ -329,7 +370,7 @@ public data class MsgUndelegateResponse(
 }
 
 @Serializable(with = MsgCancelUnbondingDelegation.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgCancelUnbondingDelegation")
+@SerialName(value = MsgCancelUnbondingDelegation.TYPE_URL)
 public data class MsgCancelUnbondingDelegation(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -339,7 +380,11 @@ public data class MsgCancelUnbondingDelegation(
   public val amount: Coin,
   @ProtobufIndex(index = 4)
   public val creationHeight: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCancelUnbondingDelegation> {
     private val delegator: KSerializer<MsgCancelUnbondingDelegation> =
         MsgCancelUnbondingDelegation.serializer()
@@ -364,8 +409,13 @@ public data class MsgCancelUnbondingDelegation(
 }
 
 @Serializable(with = MsgCancelUnbondingDelegationResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgCancelUnbondingDelegationResponse")
-public class MsgCancelUnbondingDelegationResponse() {
+@SerialName(value = MsgCancelUnbondingDelegationResponse.TYPE_URL)
+public class MsgCancelUnbondingDelegationResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegationResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCancelUnbondingDelegationResponse> {
     private val delegator: KSerializer<MsgCancelUnbondingDelegationResponse> =
         MsgCancelUnbondingDelegationResponse.serializer()
@@ -391,13 +441,17 @@ public class MsgCancelUnbondingDelegationResponse() {
 }
 
 @Serializable(with = MsgUpdateParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgUpdateParams")
+@SerialName(value = MsgUpdateParams.TYPE_URL)
 public data class MsgUpdateParams(
   @ProtobufIndex(index = 1)
   public val authority: String,
   @ProtobufIndex(index = 2)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgUpdateParams"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParams> {
     private val delegator: KSerializer<MsgUpdateParams> = MsgUpdateParams.serializer()
 
@@ -421,8 +475,12 @@ public data class MsgUpdateParams(
 }
 
 @Serializable(with = MsgUpdateParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.MsgUpdateParamsResponse")
-public class MsgUpdateParamsResponse() {
+@SerialName(value = MsgUpdateParamsResponse.TYPE_URL)
+public class MsgUpdateParamsResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.MsgUpdateParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParamsResponse> {
     private val delegator: KSerializer<MsgUpdateParamsResponse> =
         MsgUpdateParamsResponse.serializer()

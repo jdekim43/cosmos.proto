@@ -1,5 +1,5 @@
 // Transform from cosmos/nft/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.v1beta1
 
@@ -14,10 +14,10 @@ public object MsgSendJvmConverter : ProtobufTypeMapper<MsgSend, Tx.MsgSend> {
   public override val parser: Parser<Tx.MsgSend> = Tx.MsgSend.parser()
 
   public override fun convert(obj: Tx.MsgSend): MsgSend = MsgSend(
-  	classId = obj.classId,
-  	id = obj.id,
-  	sender = obj.sender,
-  	`receiver` = obj.`receiver`,
+  	classId = obj.getClassId(),
+  	id = obj.getId(),
+  	sender = obj.getSender(),
+  	`receiver` = obj.getReceiver(),
   )
 
   public override fun convert(obj: MsgSend): Tx.MsgSend {

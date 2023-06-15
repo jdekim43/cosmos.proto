@@ -1,5 +1,5 @@
 // Transform from cosmos/nft/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.v1beta1
 
@@ -22,8 +22,8 @@ public object QueryBalanceRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryBalanceRequest): QueryBalanceRequest =
       QueryBalanceRequest(
-  	classId = obj.classId,
-  	owner = obj.owner,
+  	classId = obj.getClassId(),
+  	owner = obj.getOwner(),
   )
 
   public override fun convert(obj: QueryBalanceRequest): QueryOuterClass.QueryBalanceRequest {
@@ -44,7 +44,7 @@ public object QueryBalanceResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryBalanceResponse): QueryBalanceResponse =
       QueryBalanceResponse(
-  	amount = obj.amount.asKotlinType,
+  	amount = obj.getAmount().asKotlinType,
   )
 
   public override fun convert(obj: QueryBalanceResponse): QueryOuterClass.QueryBalanceResponse {
@@ -64,8 +64,8 @@ public object QueryOwnerRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryOwnerRequest): QueryOwnerRequest =
       QueryOwnerRequest(
-  	classId = obj.classId,
-  	id = obj.id,
+  	classId = obj.getClassId(),
+  	id = obj.getId(),
   )
 
   public override fun convert(obj: QueryOwnerRequest): QueryOuterClass.QueryOwnerRequest {
@@ -86,7 +86,7 @@ public object QueryOwnerResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryOwnerResponse): QueryOwnerResponse =
       QueryOwnerResponse(
-  	owner = obj.owner,
+  	owner = obj.getOwner(),
   )
 
   public override fun convert(obj: QueryOwnerResponse): QueryOuterClass.QueryOwnerResponse {
@@ -106,7 +106,7 @@ public object QuerySupplyRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySupplyRequest): QuerySupplyRequest =
       QuerySupplyRequest(
-  	classId = obj.classId,
+  	classId = obj.getClassId(),
   )
 
   public override fun convert(obj: QuerySupplyRequest): QueryOuterClass.QuerySupplyRequest {
@@ -126,7 +126,7 @@ public object QuerySupplyResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySupplyResponse): QuerySupplyResponse =
       QuerySupplyResponse(
-  	amount = obj.amount.asKotlinType,
+  	amount = obj.getAmount().asKotlinType,
   )
 
   public override fun convert(obj: QuerySupplyResponse): QueryOuterClass.QuerySupplyResponse {
@@ -146,9 +146,9 @@ public object QueryNFTsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryNFTsRequest): QueryNFTsRequest =
       QueryNFTsRequest(
-  	classId = obj.classId,
-  	owner = obj.owner,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	classId = obj.getClassId(),
+  	owner = obj.getOwner(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryNFTsRequest): QueryOuterClass.QueryNFTsRequest {
@@ -170,8 +170,8 @@ public object QueryNFTsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryNFTsResponse): QueryNFTsResponse =
       QueryNFTsResponse(
-  	nfts = obj.nftsList.map { NFTJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	nfts = obj.getNftsList().map { NFTJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryNFTsResponse): QueryOuterClass.QueryNFTsResponse {
@@ -192,8 +192,8 @@ public object QueryNFTRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryNFTRequest): QueryNFTRequest =
       QueryNFTRequest(
-  	classId = obj.classId,
-  	id = obj.id,
+  	classId = obj.getClassId(),
+  	id = obj.getId(),
   )
 
   public override fun convert(obj: QueryNFTRequest): QueryOuterClass.QueryNFTRequest {
@@ -214,7 +214,7 @@ public object QueryNFTResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryNFTResponse): QueryNFTResponse =
       QueryNFTResponse(
-  	nft = NFTJvmConverter.convert(obj.nft),
+  	nft = NFTJvmConverter.convert(obj.getNft()),
   )
 
   public override fun convert(obj: QueryNFTResponse): QueryOuterClass.QueryNFTResponse {
@@ -234,7 +234,7 @@ public object QueryClassRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryClassRequest): QueryClassRequest =
       QueryClassRequest(
-  	classId = obj.classId,
+  	classId = obj.getClassId(),
   )
 
   public override fun convert(obj: QueryClassRequest): QueryOuterClass.QueryClassRequest {
@@ -254,7 +254,7 @@ public object QueryClassResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryClassResponse): QueryClassResponse =
       QueryClassResponse(
-  	`class` = ClassJvmConverter.convert(obj.class_),
+  	`class` = ClassJvmConverter.convert(obj.getClass_()),
   )
 
   public override fun convert(obj: QueryClassResponse): QueryOuterClass.QueryClassResponse {
@@ -274,7 +274,7 @@ public object QueryClassesRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryClassesRequest): QueryClassesRequest =
       QueryClassesRequest(
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryClassesRequest): QueryOuterClass.QueryClassesRequest {
@@ -294,8 +294,8 @@ public object QueryClassesResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryClassesResponse): QueryClassesResponse =
       QueryClassesResponse(
-  	classes = obj.classesList.map { ClassJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	classes = obj.getClassesList().map { ClassJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryClassesResponse): QueryOuterClass.QueryClassesResponse {

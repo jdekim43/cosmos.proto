@@ -1,5 +1,5 @@
 // Transform from cosmos/gov/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.v1beta1
 
@@ -16,13 +16,13 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	startingProposalId = obj.startingProposalId.asKotlinType,
-  	deposits = obj.depositsList.map { DepositJvmConverter.convert(it) },
-  	votes = obj.votesList.map { VoteJvmConverter.convert(it) },
-  	proposals = obj.proposalsList.map { ProposalJvmConverter.convert(it) },
-  	depositParams = DepositParamsJvmConverter.convert(obj.depositParams),
-  	votingParams = VotingParamsJvmConverter.convert(obj.votingParams),
-  	tallyParams = TallyParamsJvmConverter.convert(obj.tallyParams),
+  	startingProposalId = obj.getStartingProposalId().asKotlinType,
+  	deposits = obj.getDepositsList().map { DepositJvmConverter.convert(it) },
+  	votes = obj.getVotesList().map { VoteJvmConverter.convert(it) },
+  	proposals = obj.getProposalsList().map { ProposalJvmConverter.convert(it) },
+  	depositParams = DepositParamsJvmConverter.convert(obj.getDepositParams()),
+  	votingParams = VotingParamsJvmConverter.convert(obj.getVotingParams()),
+  	tallyParams = TallyParamsJvmConverter.convert(obj.getTallyParams()),
   )
 
   public override fun convert(obj: GenesisState): Genesis.GenesisState {

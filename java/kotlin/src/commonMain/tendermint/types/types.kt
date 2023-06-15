@@ -1,6 +1,6 @@
 // Transform from tendermint/types/types.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
@@ -23,11 +23,12 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 import tendermint.crypto.Proof
 import tendermint.version.Consensus
 
 @Serializable
-@SerialName(value = "tendermint.types.BlockIDFlag")
+@SerialName(value = "/tendermint.types.BlockIDFlag")
 public enum class BlockIDFlag(
   public val number: Int,
 ) {
@@ -48,7 +49,7 @@ public enum class BlockIDFlag(
 }
 
 @Serializable
-@SerialName(value = "tendermint.types.SignedMsgType")
+@SerialName(value = "/tendermint.types.SignedMsgType")
 public enum class SignedMsgType(
   public val number: Int,
 ) {
@@ -69,13 +70,17 @@ public enum class SignedMsgType(
 }
 
 @Serializable(with = PartSetHeader.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.PartSetHeader")
+@SerialName(value = PartSetHeader.TYPE_URL)
 public data class PartSetHeader(
   @ProtobufIndex(index = 1)
   public val total: UInt,
   @ProtobufIndex(index = 2)
   public val hash: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.PartSetHeader"
+  }
+
   public object KotlinxSerializer : KSerializer<PartSetHeader> {
     private val delegator: KSerializer<PartSetHeader> = PartSetHeader.serializer()
 
@@ -99,7 +104,7 @@ public data class PartSetHeader(
 }
 
 @Serializable(with = Part.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.Part")
+@SerialName(value = Part.TYPE_URL)
 public data class Part(
   @ProtobufIndex(index = 1)
   public val index: UInt,
@@ -107,7 +112,11 @@ public data class Part(
   public val bytes: ByteArray,
   @ProtobufIndex(index = 3)
   public val proof: Proof,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.Part"
+  }
+
   public object KotlinxSerializer : KSerializer<Part> {
     private val delegator: KSerializer<Part> = Part.serializer()
 
@@ -131,13 +140,17 @@ public data class Part(
 }
 
 @Serializable(with = BlockID.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.BlockID")
+@SerialName(value = BlockID.TYPE_URL)
 public data class BlockID(
   @ProtobufIndex(index = 1)
   public val hash: ByteArray,
   @ProtobufIndex(index = 2)
   public val partSetHeader: PartSetHeader,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.BlockID"
+  }
+
   public object KotlinxSerializer : KSerializer<BlockID> {
     private val delegator: KSerializer<BlockID> = BlockID.serializer()
 
@@ -161,7 +174,7 @@ public data class BlockID(
 }
 
 @Serializable(with = Header.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.Header")
+@SerialName(value = Header.TYPE_URL)
 public data class Header(
   @ProtobufIndex(index = 1)
   public val version: Consensus,
@@ -191,7 +204,11 @@ public data class Header(
   public val evidenceHash: ByteArray,
   @ProtobufIndex(index = 14)
   public val proposerAddress: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.Header"
+  }
+
   public object KotlinxSerializer : KSerializer<Header> {
     private val delegator: KSerializer<Header> = Header.serializer()
 
@@ -215,11 +232,15 @@ public data class Header(
 }
 
 @Serializable(with = Data.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.Data")
+@SerialName(value = Data.TYPE_URL)
 public data class Data(
   @ProtobufIndex(index = 1)
   public val txs: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.Data"
+  }
+
   public object KotlinxSerializer : KSerializer<Data> {
     private val delegator: KSerializer<Data> = Data.serializer()
 
@@ -243,7 +264,7 @@ public data class Data(
 }
 
 @Serializable(with = Vote.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.Vote")
+@SerialName(value = Vote.TYPE_URL)
 public data class Vote(
   @ProtobufIndex(index = 1)
   public val type: SignedMsgType,
@@ -261,7 +282,11 @@ public data class Vote(
   public val validatorIndex: Int,
   @ProtobufIndex(index = 8)
   public val signature: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.Vote"
+  }
+
   public object KotlinxSerializer : KSerializer<Vote> {
     private val delegator: KSerializer<Vote> = Vote.serializer()
 
@@ -285,7 +310,7 @@ public data class Vote(
 }
 
 @Serializable(with = Commit.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.Commit")
+@SerialName(value = Commit.TYPE_URL)
 public data class Commit(
   @ProtobufIndex(index = 1)
   public val height: Long,
@@ -295,7 +320,11 @@ public data class Commit(
   public val blockId: BlockID,
   @ProtobufIndex(index = 4)
   public val signatures: List<CommitSig>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.Commit"
+  }
+
   public object KotlinxSerializer : KSerializer<Commit> {
     private val delegator: KSerializer<Commit> = Commit.serializer()
 
@@ -319,7 +348,7 @@ public data class Commit(
 }
 
 @Serializable(with = CommitSig.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.CommitSig")
+@SerialName(value = CommitSig.TYPE_URL)
 public data class CommitSig(
   @ProtobufIndex(index = 1)
   public val blockIdFlag: BlockIDFlag,
@@ -329,7 +358,11 @@ public data class CommitSig(
   public val timestamp: Timestamp,
   @ProtobufIndex(index = 4)
   public val signature: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.CommitSig"
+  }
+
   public object KotlinxSerializer : KSerializer<CommitSig> {
     private val delegator: KSerializer<CommitSig> = CommitSig.serializer()
 
@@ -353,7 +386,7 @@ public data class CommitSig(
 }
 
 @Serializable(with = Proposal.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.Proposal")
+@SerialName(value = Proposal.TYPE_URL)
 public data class Proposal(
   @ProtobufIndex(index = 1)
   public val type: SignedMsgType,
@@ -369,7 +402,11 @@ public data class Proposal(
   public val timestamp: Timestamp,
   @ProtobufIndex(index = 7)
   public val signature: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.Proposal"
+  }
+
   public object KotlinxSerializer : KSerializer<Proposal> {
     private val delegator: KSerializer<Proposal> = Proposal.serializer()
 
@@ -393,13 +430,17 @@ public data class Proposal(
 }
 
 @Serializable(with = SignedHeader.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.SignedHeader")
+@SerialName(value = SignedHeader.TYPE_URL)
 public data class SignedHeader(
   @ProtobufIndex(index = 1)
   public val `header`: Header,
   @ProtobufIndex(index = 2)
   public val commit: Commit,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.SignedHeader"
+  }
+
   public object KotlinxSerializer : KSerializer<SignedHeader> {
     private val delegator: KSerializer<SignedHeader> = SignedHeader.serializer()
 
@@ -423,13 +464,17 @@ public data class SignedHeader(
 }
 
 @Serializable(with = LightBlock.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.LightBlock")
+@SerialName(value = LightBlock.TYPE_URL)
 public data class LightBlock(
   @ProtobufIndex(index = 1)
   public val signedHeader: SignedHeader,
   @ProtobufIndex(index = 2)
   public val validatorSet: ValidatorSet,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.LightBlock"
+  }
+
   public object KotlinxSerializer : KSerializer<LightBlock> {
     private val delegator: KSerializer<LightBlock> = LightBlock.serializer()
 
@@ -453,7 +498,7 @@ public data class LightBlock(
 }
 
 @Serializable(with = BlockMeta.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.BlockMeta")
+@SerialName(value = BlockMeta.TYPE_URL)
 public data class BlockMeta(
   @ProtobufIndex(index = 1)
   public val blockId: BlockID,
@@ -463,7 +508,11 @@ public data class BlockMeta(
   public val `header`: Header,
   @ProtobufIndex(index = 4)
   public val numTxs: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.BlockMeta"
+  }
+
   public object KotlinxSerializer : KSerializer<BlockMeta> {
     private val delegator: KSerializer<BlockMeta> = BlockMeta.serializer()
 
@@ -487,7 +536,7 @@ public data class BlockMeta(
 }
 
 @Serializable(with = TxProof.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.TxProof")
+@SerialName(value = TxProof.TYPE_URL)
 public data class TxProof(
   @ProtobufIndex(index = 1)
   public val rootHash: ByteArray,
@@ -495,7 +544,11 @@ public data class TxProof(
   public val `data`: ByteArray,
   @ProtobufIndex(index = 3)
   public val proof: Proof,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.TxProof"
+  }
+
   public object KotlinxSerializer : KSerializer<TxProof> {
     private val delegator: KSerializer<TxProof> = TxProof.serializer()
 

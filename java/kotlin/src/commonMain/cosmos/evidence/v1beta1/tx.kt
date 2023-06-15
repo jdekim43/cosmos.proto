@@ -1,6 +1,6 @@
 // Transform from cosmos/evidence/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.evidence.v1beta1
 
@@ -19,15 +19,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgSubmitEvidence.KotlinxSerializer::class)
-@SerialName(value = "cosmos.evidence.v1beta1.MsgSubmitEvidence")
+@SerialName(value = MsgSubmitEvidence.TYPE_URL)
 public data class MsgSubmitEvidence(
   @ProtobufIndex(index = 1)
   public val submitter: String,
   @ProtobufIndex(index = 2)
   public val evidence: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.evidence.v1beta1.MsgSubmitEvidence"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSubmitEvidence> {
     private val delegator: KSerializer<MsgSubmitEvidence> = MsgSubmitEvidence.serializer()
 
@@ -51,11 +56,15 @@ public data class MsgSubmitEvidence(
 }
 
 @Serializable(with = MsgSubmitEvidenceResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.evidence.v1beta1.MsgSubmitEvidenceResponse")
+@SerialName(value = MsgSubmitEvidenceResponse.TYPE_URL)
 public data class MsgSubmitEvidenceResponse(
   @ProtobufIndex(index = 4)
   public val hash: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.evidence.v1beta1.MsgSubmitEvidenceResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSubmitEvidenceResponse> {
     private val delegator: KSerializer<MsgSubmitEvidenceResponse> =
         MsgSubmitEvidenceResponse.serializer()

@@ -1,5 +1,5 @@
 // Transform from cosmos/authz/module/v1/module.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.authz.module.v1
 

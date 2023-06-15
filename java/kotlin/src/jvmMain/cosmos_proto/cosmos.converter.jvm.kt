@@ -1,5 +1,5 @@
 // Transform from cosmos_proto/cosmos.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos_proto
 
@@ -18,8 +18,8 @@ public object InterfaceDescriptorJvmConverter :
 
   public override fun convert(obj: Cosmos.InterfaceDescriptor): InterfaceDescriptor =
       InterfaceDescriptor(
-  	name = obj.name,
-  	description = obj.description,
+  	name = obj.getName(),
+  	description = obj.getDescription(),
   )
 
   public override fun convert(obj: InterfaceDescriptor): Cosmos.InterfaceDescriptor {
@@ -37,9 +37,9 @@ public object ScalarDescriptorJvmConverter :
   public override val parser: Parser<Cosmos.ScalarDescriptor> = Cosmos.ScalarDescriptor.parser()
 
   public override fun convert(obj: Cosmos.ScalarDescriptor): ScalarDescriptor = ScalarDescriptor(
-  	name = obj.name,
-  	description = obj.description,
-  	fieldType = obj.fieldTypeList.map { ScalarType.forNumber(it.number) },
+  	name = obj.getName(),
+  	description = obj.getDescription(),
+  	fieldType = obj.getFieldTypeList().map { ScalarType.forNumber(it.number) },
   )
 
   public override fun convert(obj: ScalarDescriptor): Cosmos.ScalarDescriptor {

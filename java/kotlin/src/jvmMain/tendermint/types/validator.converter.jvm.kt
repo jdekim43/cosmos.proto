@@ -1,5 +1,5 @@
 // Transform from tendermint/types/validator.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
@@ -19,9 +19,9 @@ public object ValidatorSetJvmConverter :
       ValidatorOuterClass.ValidatorSet.parser()
 
   public override fun convert(obj: ValidatorOuterClass.ValidatorSet): ValidatorSet = ValidatorSet(
-  	validators = obj.validatorsList.map { ValidatorJvmConverter.convert(it) },
-  	proposer = ValidatorJvmConverter.convert(obj.proposer),
-  	totalVotingPower = obj.totalVotingPower,
+  	validators = obj.getValidatorsList().map { ValidatorJvmConverter.convert(it) },
+  	proposer = ValidatorJvmConverter.convert(obj.getProposer()),
+  	totalVotingPower = obj.getTotalVotingPower(),
   )
 
   public override fun convert(obj: ValidatorSet): ValidatorOuterClass.ValidatorSet {
@@ -41,10 +41,10 @@ public object ValidatorJvmConverter : ProtobufTypeMapper<Validator, ValidatorOut
       ValidatorOuterClass.Validator.parser()
 
   public override fun convert(obj: ValidatorOuterClass.Validator): Validator = Validator(
-  	address = obj.address.toByteArray(),
-  	pubKey = PublicKeyJvmConverter.convert(obj.pubKey),
-  	votingPower = obj.votingPower,
-  	proposerPriority = obj.proposerPriority,
+  	address = obj.getAddress().toByteArray(),
+  	pubKey = PublicKeyJvmConverter.convert(obj.getPubKey()),
+  	votingPower = obj.getVotingPower(),
+  	proposerPriority = obj.getProposerPriority(),
   )
 
   public override fun convert(obj: Validator): ValidatorOuterClass.Validator {
@@ -67,8 +67,8 @@ public object SimpleValidatorJvmConverter :
 
   public override fun convert(obj: ValidatorOuterClass.SimpleValidator): SimpleValidator =
       SimpleValidator(
-  	pubKey = PublicKeyJvmConverter.convert(obj.pubKey),
-  	votingPower = obj.votingPower,
+  	pubKey = PublicKeyJvmConverter.convert(obj.getPubKey()),
+  	votingPower = obj.getVotingPower(),
   )
 
   public override fun convert(obj: SimpleValidator): ValidatorOuterClass.SimpleValidator {

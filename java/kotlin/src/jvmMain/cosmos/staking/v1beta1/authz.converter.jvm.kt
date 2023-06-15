@@ -1,5 +1,5 @@
 // Transform from cosmos/staking/v1beta1/authz.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -17,12 +17,14 @@ public object StakeAuthorizationJvmConverter :
 
   public override fun convert(obj: Authz.StakeAuthorization): StakeAuthorization =
       StakeAuthorization(
-  	maxTokens = CoinJvmConverter.convert(obj.maxTokens),
-  	authorizationType = AuthorizationType.forNumber(obj.authorizationType.number),
+  	maxTokens = CoinJvmConverter.convert(obj.getMaxTokens()),
+  	authorizationType = AuthorizationType.forNumber(obj.getAuthorizationType().number),
   	validators = mapOf(
-  2 to { StakeAuthorization.ValidatorsOneOf.AllowList(ValidatorsJvmConverter.convert(obj.allowList))
+  2 to {
+      StakeAuthorization.ValidatorsOneOf.AllowList(ValidatorsJvmConverter.convert(obj.getAllowList()))
       },
-  3 to { StakeAuthorization.ValidatorsOneOf.DenyList(ValidatorsJvmConverter.convert(obj.denyList))
+  3 to {
+      StakeAuthorization.ValidatorsOneOf.DenyList(ValidatorsJvmConverter.convert(obj.getDenyList()))
       },
   ).getValue(obj.validatorsCase.number)(),
   )
@@ -50,7 +52,7 @@ public object StakeAuthorizationJvmConverter :
 
     public override fun convert(obj: Authz.StakeAuthorization.Validators):
         StakeAuthorization.Validators = StakeAuthorization.Validators(
-    	address = obj.addressList.map { it },
+    	address = obj.getAddressList().map { it },
     )
 
     public override fun convert(obj: StakeAuthorization.Validators):

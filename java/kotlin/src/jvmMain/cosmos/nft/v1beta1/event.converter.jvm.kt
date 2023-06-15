@@ -1,5 +1,5 @@
 // Transform from cosmos/nft/v1beta1/event.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.v1beta1
 
@@ -14,10 +14,10 @@ public object EventSendJvmConverter : ProtobufTypeMapper<EventSend, Event.EventS
   public override val parser: Parser<Event.EventSend> = Event.EventSend.parser()
 
   public override fun convert(obj: Event.EventSend): EventSend = EventSend(
-  	classId = obj.classId,
-  	id = obj.id,
-  	sender = obj.sender,
-  	`receiver` = obj.`receiver`,
+  	classId = obj.getClassId(),
+  	id = obj.getId(),
+  	sender = obj.getSender(),
+  	`receiver` = obj.getReceiver(),
   )
 
   public override fun convert(obj: EventSend): Event.EventSend {
@@ -36,9 +36,9 @@ public object EventMintJvmConverter : ProtobufTypeMapper<EventMint, Event.EventM
   public override val parser: Parser<Event.EventMint> = Event.EventMint.parser()
 
   public override fun convert(obj: Event.EventMint): EventMint = EventMint(
-  	classId = obj.classId,
-  	id = obj.id,
-  	owner = obj.owner,
+  	classId = obj.getClassId(),
+  	id = obj.getId(),
+  	owner = obj.getOwner(),
   )
 
   public override fun convert(obj: EventMint): Event.EventMint {
@@ -56,9 +56,9 @@ public object EventBurnJvmConverter : ProtobufTypeMapper<EventBurn, Event.EventB
   public override val parser: Parser<Event.EventBurn> = Event.EventBurn.parser()
 
   public override fun convert(obj: Event.EventBurn): EventBurn = EventBurn(
-  	classId = obj.classId,
-  	id = obj.id,
-  	owner = obj.owner,
+  	classId = obj.getClassId(),
+  	id = obj.getId(),
+  	owner = obj.getOwner(),
   )
 
   public override fun convert(obj: EventBurn): Event.EventBurn {

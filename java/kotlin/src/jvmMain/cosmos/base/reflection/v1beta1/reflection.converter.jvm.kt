@@ -1,5 +1,5 @@
 // Transform from cosmos/base/reflection/v1beta1/reflection.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.reflection.v1beta1
 
@@ -36,7 +36,7 @@ public object ListAllInterfacesResponseJvmConverter :
 
   public override fun convert(obj: Reflection.ListAllInterfacesResponse): ListAllInterfacesResponse
       = ListAllInterfacesResponse(
-  	interfaceNames = obj.interfaceNamesList.map { it },
+  	interfaceNames = obj.getInterfaceNamesList().map { it },
   )
 
   public override fun convert(obj: ListAllInterfacesResponse):
@@ -57,7 +57,7 @@ public object ListImplementationsRequestJvmConverter :
 
   public override fun convert(obj: Reflection.ListImplementationsRequest):
       ListImplementationsRequest = ListImplementationsRequest(
-  	interfaceName = obj.interfaceName,
+  	interfaceName = obj.getInterfaceName(),
   )
 
   public override fun convert(obj: ListImplementationsRequest):
@@ -78,7 +78,7 @@ public object ListImplementationsResponseJvmConverter :
 
   public override fun convert(obj: Reflection.ListImplementationsResponse):
       ListImplementationsResponse = ListImplementationsResponse(
-  	implementationMessageNames = obj.implementationMessageNamesList.map { it },
+  	implementationMessageNames = obj.getImplementationMessageNamesList().map { it },
   )
 
   public override fun convert(obj: ListImplementationsResponse):

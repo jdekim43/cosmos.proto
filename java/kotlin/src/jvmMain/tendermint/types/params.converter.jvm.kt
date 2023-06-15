@@ -1,5 +1,5 @@
 // Transform from tendermint/types/params.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
@@ -18,10 +18,10 @@ public object ConsensusParamsJvmConverter :
   public override val parser: Parser<Params.ConsensusParams> = Params.ConsensusParams.parser()
 
   public override fun convert(obj: Params.ConsensusParams): ConsensusParams = ConsensusParams(
-  	block = BlockParamsJvmConverter.convert(obj.block),
-  	evidence = EvidenceParamsJvmConverter.convert(obj.evidence),
-  	validator = ValidatorParamsJvmConverter.convert(obj.validator),
-  	version = VersionParamsJvmConverter.convert(obj.version),
+  	block = BlockParamsJvmConverter.convert(obj.getBlock()),
+  	evidence = EvidenceParamsJvmConverter.convert(obj.getEvidence()),
+  	validator = ValidatorParamsJvmConverter.convert(obj.getValidator()),
+  	version = VersionParamsJvmConverter.convert(obj.getVersion()),
   )
 
   public override fun convert(obj: ConsensusParams): Params.ConsensusParams {
@@ -40,8 +40,8 @@ public object BlockParamsJvmConverter : ProtobufTypeMapper<BlockParams, Params.B
   public override val parser: Parser<Params.BlockParams> = Params.BlockParams.parser()
 
   public override fun convert(obj: Params.BlockParams): BlockParams = BlockParams(
-  	maxBytes = obj.maxBytes,
-  	maxGas = obj.maxGas,
+  	maxBytes = obj.getMaxBytes(),
+  	maxGas = obj.getMaxGas(),
   )
 
   public override fun convert(obj: BlockParams): Params.BlockParams {
@@ -59,9 +59,9 @@ public object EvidenceParamsJvmConverter : ProtobufTypeMapper<EvidenceParams, Pa
   public override val parser: Parser<Params.EvidenceParams> = Params.EvidenceParams.parser()
 
   public override fun convert(obj: Params.EvidenceParams): EvidenceParams = EvidenceParams(
-  	maxAgeNumBlocks = obj.maxAgeNumBlocks,
-  	maxAgeDuration = DurationJvmConverter.convert(obj.maxAgeDuration),
-  	maxBytes = obj.maxBytes,
+  	maxAgeNumBlocks = obj.getMaxAgeNumBlocks(),
+  	maxAgeDuration = DurationJvmConverter.convert(obj.getMaxAgeDuration()),
+  	maxBytes = obj.getMaxBytes(),
   )
 
   public override fun convert(obj: EvidenceParams): Params.EvidenceParams {
@@ -80,7 +80,7 @@ public object ValidatorParamsJvmConverter :
   public override val parser: Parser<Params.ValidatorParams> = Params.ValidatorParams.parser()
 
   public override fun convert(obj: Params.ValidatorParams): ValidatorParams = ValidatorParams(
-  	pubKeyTypes = obj.pubKeyTypesList.map { it },
+  	pubKeyTypes = obj.getPubKeyTypesList().map { it },
   )
 
   public override fun convert(obj: ValidatorParams): Params.ValidatorParams {
@@ -96,7 +96,7 @@ public object VersionParamsJvmConverter : ProtobufTypeMapper<VersionParams, Para
   public override val parser: Parser<Params.VersionParams> = Params.VersionParams.parser()
 
   public override fun convert(obj: Params.VersionParams): VersionParams = VersionParams(
-  	app = obj.app.asKotlinType,
+  	app = obj.getApp().asKotlinType,
   )
 
   public override fun convert(obj: VersionParams): Params.VersionParams {
@@ -112,8 +112,8 @@ public object HashedParamsJvmConverter : ProtobufTypeMapper<HashedParams, Params
   public override val parser: Parser<Params.HashedParams> = Params.HashedParams.parser()
 
   public override fun convert(obj: Params.HashedParams): HashedParams = HashedParams(
-  	blockMaxBytes = obj.blockMaxBytes,
-  	blockMaxGas = obj.blockMaxGas,
+  	blockMaxBytes = obj.getBlockMaxBytes(),
+  	blockMaxGas = obj.getBlockMaxGas(),
   )
 
   public override fun convert(obj: HashedParams): Params.HashedParams {

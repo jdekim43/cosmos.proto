@@ -1,5 +1,5 @@
 // Transform from cosmos/mint/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.mint.v1beta1
 
@@ -37,7 +37,7 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	params = ParamsJvmConverter.convert(obj.params),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {
@@ -75,7 +75,7 @@ public object QueryInflationResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryInflationResponse): QueryInflationResponse =
       QueryInflationResponse(
-  	inflation = obj.inflation.toByteArray(),
+  	inflation = obj.getInflation().toByteArray(),
   )
 
   public override fun convert(obj: QueryInflationResponse): QueryOuterClass.QueryInflationResponse {
@@ -115,7 +115,7 @@ public object QueryAnnualProvisionsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAnnualProvisionsResponse):
       QueryAnnualProvisionsResponse = QueryAnnualProvisionsResponse(
-  	annualProvisions = obj.annualProvisions.toByteArray(),
+  	annualProvisions = obj.getAnnualProvisions().toByteArray(),
   )
 
   public override fun convert(obj: QueryAnnualProvisionsResponse):

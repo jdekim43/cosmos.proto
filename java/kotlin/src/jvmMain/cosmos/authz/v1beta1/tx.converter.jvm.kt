@@ -1,5 +1,5 @@
 // Transform from cosmos/authz/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.authz.v1beta1
 
@@ -16,9 +16,9 @@ public object MsgGrantJvmConverter : ProtobufTypeMapper<MsgGrant, Tx.MsgGrant> {
   public override val parser: Parser<Tx.MsgGrant> = Tx.MsgGrant.parser()
 
   public override fun convert(obj: Tx.MsgGrant): MsgGrant = MsgGrant(
-  	granter = obj.granter,
-  	grantee = obj.grantee,
-  	grant = GrantJvmConverter.convert(obj.grant),
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
+  	grant = GrantJvmConverter.convert(obj.getGrant()),
   )
 
   public override fun convert(obj: MsgGrant): Tx.MsgGrant {
@@ -37,7 +37,7 @@ public object MsgExecResponseJvmConverter : ProtobufTypeMapper<MsgExecResponse, 
   public override val parser: Parser<Tx.MsgExecResponse> = Tx.MsgExecResponse.parser()
 
   public override fun convert(obj: Tx.MsgExecResponse): MsgExecResponse = MsgExecResponse(
-  	results = obj.resultsList.map { it.toByteArray() },
+  	results = obj.getResultsList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: MsgExecResponse): Tx.MsgExecResponse {
@@ -53,8 +53,8 @@ public object MsgExecJvmConverter : ProtobufTypeMapper<MsgExec, Tx.MsgExec> {
   public override val parser: Parser<Tx.MsgExec> = Tx.MsgExec.parser()
 
   public override fun convert(obj: Tx.MsgExec): MsgExec = MsgExec(
-  	grantee = obj.grantee,
-  	msgs = obj.msgsList.map { AnyJvmConverter.convert(it) },
+  	grantee = obj.getGrantee(),
+  	msgs = obj.getMsgsList().map { AnyJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgExec): Tx.MsgExec {
@@ -86,9 +86,9 @@ public object MsgRevokeJvmConverter : ProtobufTypeMapper<MsgRevoke, Tx.MsgRevoke
   public override val parser: Parser<Tx.MsgRevoke> = Tx.MsgRevoke.parser()
 
   public override fun convert(obj: Tx.MsgRevoke): MsgRevoke = MsgRevoke(
-  	granter = obj.granter,
-  	grantee = obj.grantee,
-  	msgTypeUrl = obj.msgTypeUrl,
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
+  	msgTypeUrl = obj.getMsgTypeUrl(),
   )
 
   public override fun convert(obj: MsgRevoke): Tx.MsgRevoke {

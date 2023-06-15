@@ -1,5 +1,5 @@
 // Transform from cosmos/crypto/hd/v1/hd.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.hd.v1
 
@@ -16,11 +16,11 @@ public object BIP44ParamsJvmConverter : ProtobufTypeMapper<BIP44Params, Hd.BIP44
   public override val parser: Parser<Hd.BIP44Params> = Hd.BIP44Params.parser()
 
   public override fun convert(obj: Hd.BIP44Params): BIP44Params = BIP44Params(
-  	purpose = obj.purpose.asKotlinType,
-  	coinType = obj.coinType.asKotlinType,
-  	account = obj.account.asKotlinType,
-  	change = obj.change,
-  	addressIndex = obj.addressIndex.asKotlinType,
+  	purpose = obj.getPurpose().asKotlinType,
+  	coinType = obj.getCoinType().asKotlinType,
+  	account = obj.getAccount().asKotlinType,
+  	change = obj.getChange(),
+  	addressIndex = obj.getAddressIndex().asKotlinType,
   )
 
   public override fun convert(obj: BIP44Params): Hd.BIP44Params {

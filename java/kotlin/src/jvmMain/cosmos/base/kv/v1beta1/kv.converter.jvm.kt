@@ -1,5 +1,5 @@
 // Transform from cosmos/base/kv/v1beta1/kv.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.kv.v1beta1
 
@@ -15,7 +15,7 @@ public object PairsJvmConverter : ProtobufTypeMapper<Pairs, Kv.Pairs> {
   public override val parser: Parser<Kv.Pairs> = Kv.Pairs.parser()
 
   public override fun convert(obj: Kv.Pairs): Pairs = Pairs(
-  	pairs = obj.pairsList.map { PairJvmConverter.convert(it) },
+  	pairs = obj.getPairsList().map { PairJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Pairs): Kv.Pairs {
@@ -31,8 +31,8 @@ public object PairJvmConverter : ProtobufTypeMapper<Pair, Kv.Pair> {
   public override val parser: Parser<Kv.Pair> = Kv.Pair.parser()
 
   public override fun convert(obj: Kv.Pair): Pair = Pair(
-  	key = obj.key.toByteArray(),
-  	`value` = obj.`value`.toByteArray(),
+  	key = obj.getKey().toByteArray(),
+  	`value` = obj.getValue().toByteArray(),
   )
 
   public override fun convert(obj: Pair): Kv.Pair {

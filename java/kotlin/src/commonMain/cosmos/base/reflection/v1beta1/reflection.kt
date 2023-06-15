@@ -1,6 +1,6 @@
 // Transform from cosmos/base/reflection/v1beta1/reflection.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.reflection.v1beta1
 
@@ -18,10 +18,15 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = ListAllInterfacesRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v1beta1.ListAllInterfacesRequest")
-public class ListAllInterfacesRequest() {
+@SerialName(value = ListAllInterfacesRequest.TYPE_URL)
+public class ListAllInterfacesRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v1beta1.ListAllInterfacesRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<ListAllInterfacesRequest> {
     private val delegator: KSerializer<ListAllInterfacesRequest> =
         ListAllInterfacesRequest.serializer()
@@ -46,11 +51,15 @@ public class ListAllInterfacesRequest() {
 }
 
 @Serializable(with = ListAllInterfacesResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v1beta1.ListAllInterfacesResponse")
+@SerialName(value = ListAllInterfacesResponse.TYPE_URL)
 public data class ListAllInterfacesResponse(
   @ProtobufIndex(index = 1)
   public val interfaceNames: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v1beta1.ListAllInterfacesResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<ListAllInterfacesResponse> {
     private val delegator: KSerializer<ListAllInterfacesResponse> =
         ListAllInterfacesResponse.serializer()
@@ -75,11 +84,15 @@ public data class ListAllInterfacesResponse(
 }
 
 @Serializable(with = ListImplementationsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v1beta1.ListImplementationsRequest")
+@SerialName(value = ListImplementationsRequest.TYPE_URL)
 public data class ListImplementationsRequest(
   @ProtobufIndex(index = 1)
   public val interfaceName: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v1beta1.ListImplementationsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<ListImplementationsRequest> {
     private val delegator: KSerializer<ListImplementationsRequest> =
         ListImplementationsRequest.serializer()
@@ -104,11 +117,16 @@ public data class ListImplementationsRequest(
 }
 
 @Serializable(with = ListImplementationsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v1beta1.ListImplementationsResponse")
+@SerialName(value = ListImplementationsResponse.TYPE_URL)
 public data class ListImplementationsResponse(
   @ProtobufIndex(index = 1)
   public val implementationMessageNames: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v1beta1.ListImplementationsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<ListImplementationsResponse> {
     private val delegator: KSerializer<ListImplementationsResponse> =
         ListImplementationsResponse.serializer()

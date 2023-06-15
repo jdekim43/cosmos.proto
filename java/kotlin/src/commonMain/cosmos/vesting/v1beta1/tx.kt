@@ -1,6 +1,6 @@
 // Transform from cosmos/vesting/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.vesting.v1beta1
 
@@ -21,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgCreateVestingAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.MsgCreateVestingAccount")
+@SerialName(value = MsgCreateVestingAccount.TYPE_URL)
 public data class MsgCreateVestingAccount(
   @ProtobufIndex(index = 1)
   public val fromAddress: String,
@@ -35,7 +36,11 @@ public data class MsgCreateVestingAccount(
   public val endTime: Long,
   @ProtobufIndex(index = 5)
   public val delayed: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.MsgCreateVestingAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateVestingAccount> {
     private val delegator: KSerializer<MsgCreateVestingAccount> =
         MsgCreateVestingAccount.serializer()
@@ -60,8 +65,12 @@ public data class MsgCreateVestingAccount(
 }
 
 @Serializable(with = MsgCreateVestingAccountResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.MsgCreateVestingAccountResponse")
-public class MsgCreateVestingAccountResponse() {
+@SerialName(value = MsgCreateVestingAccountResponse.TYPE_URL)
+public class MsgCreateVestingAccountResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.MsgCreateVestingAccountResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateVestingAccountResponse> {
     private val delegator: KSerializer<MsgCreateVestingAccountResponse> =
         MsgCreateVestingAccountResponse.serializer()
@@ -87,7 +96,7 @@ public class MsgCreateVestingAccountResponse() {
 }
 
 @Serializable(with = MsgCreatePermanentLockedAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccount")
+@SerialName(value = MsgCreatePermanentLockedAccount.TYPE_URL)
 public data class MsgCreatePermanentLockedAccount(
   @ProtobufIndex(index = 1)
   public val fromAddress: String,
@@ -95,7 +104,11 @@ public data class MsgCreatePermanentLockedAccount(
   public val toAddress: String,
   @ProtobufIndex(index = 3)
   public val amount: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreatePermanentLockedAccount> {
     private val delegator: KSerializer<MsgCreatePermanentLockedAccount> =
         MsgCreatePermanentLockedAccount.serializer()
@@ -121,8 +134,13 @@ public data class MsgCreatePermanentLockedAccount(
 }
 
 @Serializable(with = MsgCreatePermanentLockedAccountResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccountResponse")
-public class MsgCreatePermanentLockedAccountResponse() {
+@SerialName(value = MsgCreatePermanentLockedAccountResponse.TYPE_URL)
+public class MsgCreatePermanentLockedAccountResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccountResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreatePermanentLockedAccountResponse> {
     private val delegator: KSerializer<MsgCreatePermanentLockedAccountResponse> =
         MsgCreatePermanentLockedAccountResponse.serializer()
@@ -148,7 +166,7 @@ public class MsgCreatePermanentLockedAccountResponse() {
 }
 
 @Serializable(with = MsgCreatePeriodicVestingAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccount")
+@SerialName(value = MsgCreatePeriodicVestingAccount.TYPE_URL)
 public data class MsgCreatePeriodicVestingAccount(
   @ProtobufIndex(index = 1)
   public val fromAddress: String,
@@ -158,7 +176,11 @@ public data class MsgCreatePeriodicVestingAccount(
   public val startTime: Long,
   @ProtobufIndex(index = 4)
   public val vestingPeriods: List<Period>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreatePeriodicVestingAccount> {
     private val delegator: KSerializer<MsgCreatePeriodicVestingAccount> =
         MsgCreatePeriodicVestingAccount.serializer()
@@ -184,8 +206,13 @@ public data class MsgCreatePeriodicVestingAccount(
 }
 
 @Serializable(with = MsgCreatePeriodicVestingAccountResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccountResponse")
-public class MsgCreatePeriodicVestingAccountResponse() {
+@SerialName(value = MsgCreatePeriodicVestingAccountResponse.TYPE_URL)
+public class MsgCreatePeriodicVestingAccountResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccountResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreatePeriodicVestingAccountResponse> {
     private val delegator: KSerializer<MsgCreatePeriodicVestingAccountResponse> =
         MsgCreatePeriodicVestingAccountResponse.serializer()

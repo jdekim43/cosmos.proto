@@ -1,6 +1,6 @@
 // Transform from google/api/http.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package google.api
 
@@ -20,15 +20,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Http.KotlinxSerializer::class)
-@SerialName(value = "google.api.Http")
+@SerialName(value = Http.TYPE_URL)
 public data class Http(
   @ProtobufIndex(index = 1)
   public val rules: List<HttpRule>,
   @ProtobufIndex(index = 2)
   public val fullyDecodeReservedExpansion: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.api.Http"
+  }
+
   public object KotlinxSerializer : KSerializer<Http> {
     private val delegator: KSerializer<Http> = Http.serializer()
 
@@ -52,7 +57,7 @@ public data class Http(
 }
 
 @Serializable(with = HttpRule.KotlinxSerializer::class)
-@SerialName(value = "google.api.HttpRule")
+@SerialName(value = HttpRule.TYPE_URL)
 public data class HttpRule(
   @ProtobufIndex(index = 1)
   public val selector: String,
@@ -63,7 +68,11 @@ public data class HttpRule(
   @ProtobufIndex(index = 11)
   public val additionalBindings: List<HttpRule>,
   public val pattern: PatternOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.api.HttpRule"
+  }
+
   @Serializable
   public sealed interface PatternOneOf {
     @JvmInline
@@ -126,13 +135,17 @@ public data class HttpRule(
 }
 
 @Serializable(with = CustomHttpPattern.KotlinxSerializer::class)
-@SerialName(value = "google.api.CustomHttpPattern")
+@SerialName(value = CustomHttpPattern.TYPE_URL)
 public data class CustomHttpPattern(
   @ProtobufIndex(index = 1)
   public val kind: String,
   @ProtobufIndex(index = 2)
   public val path: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.api.CustomHttpPattern"
+  }
+
   public object KotlinxSerializer : KSerializer<CustomHttpPattern> {
     private val delegator: KSerializer<CustomHttpPattern> = CustomHttpPattern.serializer()
 

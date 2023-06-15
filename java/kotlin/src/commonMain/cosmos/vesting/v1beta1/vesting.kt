@@ -1,12 +1,13 @@
 // Transform from cosmos/vesting/v1beta1/vesting.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.vesting.v1beta1
 
 import cosmos.auth.v1beta1.BaseAccount
 import cosmos.base.v1beta1.Coin
 import kotlin.Long
+import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 import kotlinx.serialization.KSerializer
@@ -20,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = BaseVestingAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.BaseVestingAccount")
+@SerialName(value = BaseVestingAccount.TYPE_URL)
 public data class BaseVestingAccount(
   @ProtobufIndex(index = 1)
   public val baseAccount: BaseAccount,
@@ -34,7 +36,11 @@ public data class BaseVestingAccount(
   public val delegatedVesting: List<Coin>,
   @ProtobufIndex(index = 5)
   public val endTime: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.BaseVestingAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<BaseVestingAccount> {
     private val delegator: KSerializer<BaseVestingAccount> = BaseVestingAccount.serializer()
 
@@ -58,13 +64,17 @@ public data class BaseVestingAccount(
 }
 
 @Serializable(with = ContinuousVestingAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.ContinuousVestingAccount")
+@SerialName(value = ContinuousVestingAccount.TYPE_URL)
 public data class ContinuousVestingAccount(
   @ProtobufIndex(index = 1)
   public val baseVestingAccount: BaseVestingAccount,
   @ProtobufIndex(index = 2)
   public val startTime: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.ContinuousVestingAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<ContinuousVestingAccount> {
     private val delegator: KSerializer<ContinuousVestingAccount> =
         ContinuousVestingAccount.serializer()
@@ -89,11 +99,15 @@ public data class ContinuousVestingAccount(
 }
 
 @Serializable(with = DelayedVestingAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.DelayedVestingAccount")
+@SerialName(value = DelayedVestingAccount.TYPE_URL)
 public data class DelayedVestingAccount(
   @ProtobufIndex(index = 1)
   public val baseVestingAccount: BaseVestingAccount,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.DelayedVestingAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<DelayedVestingAccount> {
     private val delegator: KSerializer<DelayedVestingAccount> = DelayedVestingAccount.serializer()
 
@@ -117,13 +131,17 @@ public data class DelayedVestingAccount(
 }
 
 @Serializable(with = Period.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.Period")
+@SerialName(value = Period.TYPE_URL)
 public data class Period(
   @ProtobufIndex(index = 1)
   public val length: Long,
   @ProtobufIndex(index = 2)
   public val amount: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.Period"
+  }
+
   public object KotlinxSerializer : KSerializer<Period> {
     private val delegator: KSerializer<Period> = Period.serializer()
 
@@ -147,7 +165,7 @@ public data class Period(
 }
 
 @Serializable(with = PeriodicVestingAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.PeriodicVestingAccount")
+@SerialName(value = PeriodicVestingAccount.TYPE_URL)
 public data class PeriodicVestingAccount(
   @ProtobufIndex(index = 1)
   public val baseVestingAccount: BaseVestingAccount,
@@ -155,7 +173,11 @@ public data class PeriodicVestingAccount(
   public val startTime: Long,
   @ProtobufIndex(index = 3)
   public val vestingPeriods: List<Period>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.PeriodicVestingAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<PeriodicVestingAccount> {
     private val delegator: KSerializer<PeriodicVestingAccount> = PeriodicVestingAccount.serializer()
 
@@ -179,11 +201,15 @@ public data class PeriodicVestingAccount(
 }
 
 @Serializable(with = PermanentLockedAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.vesting.v1beta1.PermanentLockedAccount")
+@SerialName(value = PermanentLockedAccount.TYPE_URL)
 public data class PermanentLockedAccount(
   @ProtobufIndex(index = 1)
   public val baseVestingAccount: BaseVestingAccount,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.vesting.v1beta1.PermanentLockedAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<PermanentLockedAccount> {
     private val delegator: KSerializer<PermanentLockedAccount> = PermanentLockedAccount.serializer()
 

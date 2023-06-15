@@ -1,5 +1,5 @@
 // Transform from cosmos/orm/v1/orm.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.orm.v1
 
@@ -17,9 +17,9 @@ public object TableDescriptorJvmConverter : ProtobufTypeMapper<TableDescriptor, 
   public override val parser: Parser<Orm.TableDescriptor> = Orm.TableDescriptor.parser()
 
   public override fun convert(obj: Orm.TableDescriptor): TableDescriptor = TableDescriptor(
-  	primaryKey = PrimaryKeyDescriptorJvmConverter.convert(obj.primaryKey),
-  	index = obj.indexList.map { SecondaryIndexDescriptorJvmConverter.convert(it) },
-  	id = obj.id.asKotlinType,
+  	primaryKey = PrimaryKeyDescriptorJvmConverter.convert(obj.getPrimaryKey()),
+  	index = obj.getIndexList().map { SecondaryIndexDescriptorJvmConverter.convert(it) },
+  	id = obj.getId().asKotlinType,
   )
 
   public override fun convert(obj: TableDescriptor): Orm.TableDescriptor {
@@ -39,8 +39,8 @@ public object PrimaryKeyDescriptorJvmConverter :
 
   public override fun convert(obj: Orm.PrimaryKeyDescriptor): PrimaryKeyDescriptor =
       PrimaryKeyDescriptor(
-  	fields = obj.fields,
-  	autoIncrement = obj.autoIncrement,
+  	fields = obj.getFields(),
+  	autoIncrement = obj.getAutoIncrement(),
   )
 
   public override fun convert(obj: PrimaryKeyDescriptor): Orm.PrimaryKeyDescriptor {
@@ -61,9 +61,9 @@ public object SecondaryIndexDescriptorJvmConverter :
 
   public override fun convert(obj: Orm.SecondaryIndexDescriptor): SecondaryIndexDescriptor =
       SecondaryIndexDescriptor(
-  	fields = obj.fields,
-  	id = obj.id.asKotlinType,
-  	unique = obj.unique,
+  	fields = obj.getFields(),
+  	id = obj.getId().asKotlinType,
+  	unique = obj.getUnique(),
   )
 
   public override fun convert(obj: SecondaryIndexDescriptor): Orm.SecondaryIndexDescriptor {
@@ -83,7 +83,7 @@ public object SingletonDescriptorJvmConverter :
 
   public override fun convert(obj: Orm.SingletonDescriptor): SingletonDescriptor =
       SingletonDescriptor(
-  	id = obj.id.asKotlinType,
+  	id = obj.getId().asKotlinType,
   )
 
   public override fun convert(obj: SingletonDescriptor): Orm.SingletonDescriptor {

@@ -1,5 +1,5 @@
 // Transform from cosmos/app/v1alpha1/config.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.app.v1alpha1
 
@@ -15,8 +15,8 @@ public object ConfigJvmConverter : ProtobufTypeMapper<Config, ConfigOuterClass.C
   public override val parser: Parser<ConfigOuterClass.Config> = ConfigOuterClass.Config.parser()
 
   public override fun convert(obj: ConfigOuterClass.Config): Config = Config(
-  	modules = obj.modulesList.map { ModuleConfigJvmConverter.convert(it) },
-  	golangBindings = obj.golangBindingsList.map { GolangBindingJvmConverter.convert(it) },
+  	modules = obj.getModulesList().map { ModuleConfigJvmConverter.convert(it) },
+  	golangBindings = obj.getGolangBindingsList().map { GolangBindingJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Config): ConfigOuterClass.Config {
@@ -36,9 +36,9 @@ public object ModuleConfigJvmConverter :
       ConfigOuterClass.ModuleConfig.parser()
 
   public override fun convert(obj: ConfigOuterClass.ModuleConfig): ModuleConfig = ModuleConfig(
-  	name = obj.name,
-  	config = AnyJvmConverter.convert(obj.config),
-  	golangBindings = obj.golangBindingsList.map { GolangBindingJvmConverter.convert(it) },
+  	name = obj.getName(),
+  	config = AnyJvmConverter.convert(obj.getConfig()),
+  	golangBindings = obj.getGolangBindingsList().map { GolangBindingJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ModuleConfig): ConfigOuterClass.ModuleConfig {
@@ -59,8 +59,8 @@ public object GolangBindingJvmConverter :
       ConfigOuterClass.GolangBinding.parser()
 
   public override fun convert(obj: ConfigOuterClass.GolangBinding): GolangBinding = GolangBinding(
-  	interfaceType = obj.interfaceType,
-  	implementation = obj.implementation,
+  	interfaceType = obj.getInterfaceType(),
+  	implementation = obj.getImplementation(),
   )
 
   public override fun convert(obj: GolangBinding): ConfigOuterClass.GolangBinding {

@@ -1,5 +1,5 @@
 // Transform from cosmos/authz/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.authz.v1beta1
 
@@ -20,10 +20,10 @@ public object QueryGrantsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGrantsRequest): QueryGrantsRequest =
       QueryGrantsRequest(
-  	granter = obj.granter,
-  	grantee = obj.grantee,
-  	msgTypeUrl = obj.msgTypeUrl,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
+  	msgTypeUrl = obj.getMsgTypeUrl(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGrantsRequest): QueryOuterClass.QueryGrantsRequest {
@@ -46,8 +46,8 @@ public object QueryGrantsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGrantsResponse): QueryGrantsResponse =
       QueryGrantsResponse(
-  	grants = obj.grantsList.map { GrantJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	grants = obj.getGrantsList().map { GrantJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGrantsResponse): QueryOuterClass.QueryGrantsResponse {
@@ -68,8 +68,8 @@ public object QueryGranterGrantsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGranterGrantsRequest):
       QueryGranterGrantsRequest = QueryGranterGrantsRequest(
-  	granter = obj.granter,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	granter = obj.getGranter(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGranterGrantsRequest):
@@ -91,8 +91,8 @@ public object QueryGranterGrantsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGranterGrantsResponse):
       QueryGranterGrantsResponse = QueryGranterGrantsResponse(
-  	grants = obj.grantsList.map { GrantAuthorizationJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	grants = obj.getGrantsList().map { GrantAuthorizationJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGranterGrantsResponse):
@@ -114,8 +114,8 @@ public object QueryGranteeGrantsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGranteeGrantsRequest):
       QueryGranteeGrantsRequest = QueryGranteeGrantsRequest(
-  	grantee = obj.grantee,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	grantee = obj.getGrantee(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGranteeGrantsRequest):
@@ -137,8 +137,8 @@ public object QueryGranteeGrantsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGranteeGrantsResponse):
       QueryGranteeGrantsResponse = QueryGranteeGrantsResponse(
-  	grants = obj.grantsList.map { GrantAuthorizationJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	grants = obj.getGrantsList().map { GrantAuthorizationJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGranteeGrantsResponse):

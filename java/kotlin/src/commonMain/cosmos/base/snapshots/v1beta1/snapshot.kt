@@ -1,6 +1,6 @@
 // Transform from cosmos/base/snapshots/v1beta1/snapshot.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.snapshots.v1beta1
 
@@ -27,9 +27,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Snapshot.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.Snapshot")
+@SerialName(value = Snapshot.TYPE_URL)
 public data class Snapshot(
   @ProtobufIndex(index = 1)
   public val height: ULong,
@@ -41,7 +42,11 @@ public data class Snapshot(
   public val hash: ByteArray,
   @ProtobufIndex(index = 5)
   public val metadata: Metadata,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.Snapshot"
+  }
+
   public object KotlinxSerializer : KSerializer<Snapshot> {
     private val delegator: KSerializer<Snapshot> = Snapshot.serializer()
 
@@ -65,11 +70,15 @@ public data class Snapshot(
 }
 
 @Serializable(with = Metadata.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.Metadata")
+@SerialName(value = Metadata.TYPE_URL)
 public data class Metadata(
   @ProtobufIndex(index = 1)
   public val chunkHashes: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.Metadata"
+  }
+
   public object KotlinxSerializer : KSerializer<Metadata> {
     private val delegator: KSerializer<Metadata> = Metadata.serializer()
 
@@ -93,10 +102,14 @@ public data class Metadata(
 }
 
 @Serializable(with = SnapshotItem.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.SnapshotItem")
+@SerialName(value = SnapshotItem.TYPE_URL)
 public data class SnapshotItem(
   public val item: ItemOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.SnapshotItem"
+  }
+
   @Serializable
   public sealed interface ItemOneOf {
     @JvmInline
@@ -169,11 +182,15 @@ public data class SnapshotItem(
 }
 
 @Serializable(with = SnapshotStoreItem.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.SnapshotStoreItem")
+@SerialName(value = SnapshotStoreItem.TYPE_URL)
 public data class SnapshotStoreItem(
   @ProtobufIndex(index = 1)
   public val name: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.SnapshotStoreItem"
+  }
+
   public object KotlinxSerializer : KSerializer<SnapshotStoreItem> {
     private val delegator: KSerializer<SnapshotStoreItem> = SnapshotStoreItem.serializer()
 
@@ -197,7 +214,7 @@ public data class SnapshotStoreItem(
 }
 
 @Serializable(with = SnapshotIAVLItem.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.SnapshotIAVLItem")
+@SerialName(value = SnapshotIAVLItem.TYPE_URL)
 public data class SnapshotIAVLItem(
   @ProtobufIndex(index = 1)
   public val key: ByteArray,
@@ -207,7 +224,11 @@ public data class SnapshotIAVLItem(
   public val version: Long,
   @ProtobufIndex(index = 4)
   public val height: Int,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.SnapshotIAVLItem"
+  }
+
   public object KotlinxSerializer : KSerializer<SnapshotIAVLItem> {
     private val delegator: KSerializer<SnapshotIAVLItem> = SnapshotIAVLItem.serializer()
 
@@ -231,13 +252,17 @@ public data class SnapshotIAVLItem(
 }
 
 @Serializable(with = SnapshotExtensionMeta.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.SnapshotExtensionMeta")
+@SerialName(value = SnapshotExtensionMeta.TYPE_URL)
 public data class SnapshotExtensionMeta(
   @ProtobufIndex(index = 1)
   public val name: String,
   @ProtobufIndex(index = 2)
   public val format: UInt,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.SnapshotExtensionMeta"
+  }
+
   public object KotlinxSerializer : KSerializer<SnapshotExtensionMeta> {
     private val delegator: KSerializer<SnapshotExtensionMeta> = SnapshotExtensionMeta.serializer()
 
@@ -261,11 +286,15 @@ public data class SnapshotExtensionMeta(
 }
 
 @Serializable(with = SnapshotExtensionPayload.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.SnapshotExtensionPayload")
+@SerialName(value = SnapshotExtensionPayload.TYPE_URL)
 public data class SnapshotExtensionPayload(
   @ProtobufIndex(index = 1)
   public val payload: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.SnapshotExtensionPayload"
+  }
+
   public object KotlinxSerializer : KSerializer<SnapshotExtensionPayload> {
     private val delegator: KSerializer<SnapshotExtensionPayload> =
         SnapshotExtensionPayload.serializer()
@@ -290,13 +319,17 @@ public data class SnapshotExtensionPayload(
 }
 
 @Serializable(with = SnapshotKVItem.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.SnapshotKVItem")
+@SerialName(value = SnapshotKVItem.TYPE_URL)
 public data class SnapshotKVItem(
   @ProtobufIndex(index = 1)
   public val key: ByteArray,
   @ProtobufIndex(index = 2)
   public val `value`: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.SnapshotKVItem"
+  }
+
   public object KotlinxSerializer : KSerializer<SnapshotKVItem> {
     private val delegator: KSerializer<SnapshotKVItem> = SnapshotKVItem.serializer()
 
@@ -320,11 +353,15 @@ public data class SnapshotKVItem(
 }
 
 @Serializable(with = SnapshotSchema.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.snapshots.v1beta1.SnapshotSchema")
+@SerialName(value = SnapshotSchema.TYPE_URL)
 public data class SnapshotSchema(
   @ProtobufIndex(index = 1)
   public val keys: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.snapshots.v1beta1.SnapshotSchema"
+  }
+
   public object KotlinxSerializer : KSerializer<SnapshotSchema> {
     private val delegator: KSerializer<SnapshotSchema> = SnapshotSchema.serializer()
 

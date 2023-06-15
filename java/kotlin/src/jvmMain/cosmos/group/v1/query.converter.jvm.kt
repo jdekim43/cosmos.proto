@@ -1,5 +1,5 @@
 // Transform from cosmos/group/v1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.v1
 
@@ -22,7 +22,7 @@ public object QueryGroupInfoRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupInfoRequest): QueryGroupInfoRequest =
       QueryGroupInfoRequest(
-  	groupId = obj.groupId.asKotlinType,
+  	groupId = obj.getGroupId().asKotlinType,
   )
 
   public override fun convert(obj: QueryGroupInfoRequest): QueryOuterClass.QueryGroupInfoRequest {
@@ -42,7 +42,7 @@ public object QueryGroupInfoResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupInfoResponse): QueryGroupInfoResponse =
       QueryGroupInfoResponse(
-  	info = GroupInfoJvmConverter.convert(obj.info),
+  	info = GroupInfoJvmConverter.convert(obj.getInfo()),
   )
 
   public override fun convert(obj: QueryGroupInfoResponse): QueryOuterClass.QueryGroupInfoResponse {
@@ -62,7 +62,7 @@ public object QueryGroupPolicyInfoRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupPolicyInfoRequest):
       QueryGroupPolicyInfoRequest = QueryGroupPolicyInfoRequest(
-  	address = obj.address,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: QueryGroupPolicyInfoRequest):
@@ -83,7 +83,7 @@ public object QueryGroupPolicyInfoResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupPolicyInfoResponse):
       QueryGroupPolicyInfoResponse = QueryGroupPolicyInfoResponse(
-  	info = GroupPolicyInfoJvmConverter.convert(obj.info),
+  	info = GroupPolicyInfoJvmConverter.convert(obj.getInfo()),
   )
 
   public override fun convert(obj: QueryGroupPolicyInfoResponse):
@@ -104,8 +104,8 @@ public object QueryGroupMembersRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupMembersRequest):
       QueryGroupMembersRequest = QueryGroupMembersRequest(
-  	groupId = obj.groupId.asKotlinType,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	groupId = obj.getGroupId().asKotlinType,
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupMembersRequest):
@@ -127,8 +127,8 @@ public object QueryGroupMembersResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupMembersResponse):
       QueryGroupMembersResponse = QueryGroupMembersResponse(
-  	members = obj.membersList.map { GroupMemberJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	members = obj.getMembersList().map { GroupMemberJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupMembersResponse):
@@ -150,8 +150,8 @@ public object QueryGroupsByAdminRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupsByAdminRequest):
       QueryGroupsByAdminRequest = QueryGroupsByAdminRequest(
-  	admin = obj.admin,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	admin = obj.getAdmin(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupsByAdminRequest):
@@ -173,8 +173,8 @@ public object QueryGroupsByAdminResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupsByAdminResponse):
       QueryGroupsByAdminResponse = QueryGroupsByAdminResponse(
-  	groups = obj.groupsList.map { GroupInfoJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	groups = obj.getGroupsList().map { GroupInfoJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupsByAdminResponse):
@@ -197,8 +197,8 @@ public object QueryGroupPoliciesByGroupRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupPoliciesByGroupRequest):
       QueryGroupPoliciesByGroupRequest = QueryGroupPoliciesByGroupRequest(
-  	groupId = obj.groupId.asKotlinType,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	groupId = obj.getGroupId().asKotlinType,
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupPoliciesByGroupRequest):
@@ -221,8 +221,8 @@ public object QueryGroupPoliciesByGroupResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupPoliciesByGroupResponse):
       QueryGroupPoliciesByGroupResponse = QueryGroupPoliciesByGroupResponse(
-  	groupPolicies = obj.groupPoliciesList.map { GroupPolicyInfoJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	groupPolicies = obj.getGroupPoliciesList().map { GroupPolicyInfoJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupPoliciesByGroupResponse):
@@ -245,8 +245,8 @@ public object QueryGroupPoliciesByAdminRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupPoliciesByAdminRequest):
       QueryGroupPoliciesByAdminRequest = QueryGroupPoliciesByAdminRequest(
-  	admin = obj.admin,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	admin = obj.getAdmin(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupPoliciesByAdminRequest):
@@ -269,8 +269,8 @@ public object QueryGroupPoliciesByAdminResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupPoliciesByAdminResponse):
       QueryGroupPoliciesByAdminResponse = QueryGroupPoliciesByAdminResponse(
-  	groupPolicies = obj.groupPoliciesList.map { GroupPolicyInfoJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	groupPolicies = obj.getGroupPoliciesList().map { GroupPolicyInfoJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupPoliciesByAdminResponse):
@@ -292,7 +292,7 @@ public object QueryProposalRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryProposalRequest): QueryProposalRequest =
       QueryProposalRequest(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: QueryProposalRequest): QueryOuterClass.QueryProposalRequest {
@@ -312,7 +312,7 @@ public object QueryProposalResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryProposalResponse): QueryProposalResponse =
       QueryProposalResponse(
-  	proposal = ProposalJvmConverter.convert(obj.proposal),
+  	proposal = ProposalJvmConverter.convert(obj.getProposal()),
   )
 
   public override fun convert(obj: QueryProposalResponse): QueryOuterClass.QueryProposalResponse {
@@ -333,8 +333,8 @@ public object QueryProposalsByGroupPolicyRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryProposalsByGroupPolicyRequest):
       QueryProposalsByGroupPolicyRequest = QueryProposalsByGroupPolicyRequest(
-  	address = obj.address,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	address = obj.getAddress(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryProposalsByGroupPolicyRequest):
@@ -357,8 +357,8 @@ public object QueryProposalsByGroupPolicyResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryProposalsByGroupPolicyResponse):
       QueryProposalsByGroupPolicyResponse = QueryProposalsByGroupPolicyResponse(
-  	proposals = obj.proposalsList.map { ProposalJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	proposals = obj.getProposalsList().map { ProposalJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryProposalsByGroupPolicyResponse):
@@ -381,8 +381,8 @@ public object QueryVoteByProposalVoterRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVoteByProposalVoterRequest):
       QueryVoteByProposalVoterRequest = QueryVoteByProposalVoterRequest(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
   )
 
   public override fun convert(obj: QueryVoteByProposalVoterRequest):
@@ -405,7 +405,7 @@ public object QueryVoteByProposalVoterResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVoteByProposalVoterResponse):
       QueryVoteByProposalVoterResponse = QueryVoteByProposalVoterResponse(
-  	vote = VoteJvmConverter.convert(obj.vote),
+  	vote = VoteJvmConverter.convert(obj.getVote()),
   )
 
   public override fun convert(obj: QueryVoteByProposalVoterResponse):
@@ -426,8 +426,8 @@ public object QueryVotesByProposalRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVotesByProposalRequest):
       QueryVotesByProposalRequest = QueryVotesByProposalRequest(
-  	proposalId = obj.proposalId.asKotlinType,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	proposalId = obj.getProposalId().asKotlinType,
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryVotesByProposalRequest):
@@ -449,8 +449,8 @@ public object QueryVotesByProposalResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVotesByProposalResponse):
       QueryVotesByProposalResponse = QueryVotesByProposalResponse(
-  	votes = obj.votesList.map { VoteJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	votes = obj.getVotesList().map { VoteJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryVotesByProposalResponse):
@@ -472,8 +472,8 @@ public object QueryVotesByVoterRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVotesByVoterRequest):
       QueryVotesByVoterRequest = QueryVotesByVoterRequest(
-  	voter = obj.voter,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	voter = obj.getVoter(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryVotesByVoterRequest):
@@ -495,8 +495,8 @@ public object QueryVotesByVoterResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVotesByVoterResponse):
       QueryVotesByVoterResponse = QueryVotesByVoterResponse(
-  	votes = obj.votesList.map { VoteJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	votes = obj.getVotesList().map { VoteJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryVotesByVoterResponse):
@@ -518,8 +518,8 @@ public object QueryGroupsByMemberRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupsByMemberRequest):
       QueryGroupsByMemberRequest = QueryGroupsByMemberRequest(
-  	address = obj.address,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	address = obj.getAddress(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupsByMemberRequest):
@@ -541,8 +541,8 @@ public object QueryGroupsByMemberResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupsByMemberResponse):
       QueryGroupsByMemberResponse = QueryGroupsByMemberResponse(
-  	groups = obj.groupsList.map { GroupInfoJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	groups = obj.getGroupsList().map { GroupInfoJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupsByMemberResponse):
@@ -564,7 +564,7 @@ public object QueryTallyResultRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryTallyResultRequest): QueryTallyResultRequest
       = QueryTallyResultRequest(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: QueryTallyResultRequest):
@@ -585,7 +585,7 @@ public object QueryTallyResultResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryTallyResultResponse):
       QueryTallyResultResponse = QueryTallyResultResponse(
-  	tally = TallyResultJvmConverter.convert(obj.tally),
+  	tally = TallyResultJvmConverter.convert(obj.getTally()),
   )
 
   public override fun convert(obj: QueryTallyResultResponse):
@@ -606,7 +606,7 @@ public object QueryGroupsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupsRequest): QueryGroupsRequest =
       QueryGroupsRequest(
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupsRequest): QueryOuterClass.QueryGroupsRequest {
@@ -626,8 +626,8 @@ public object QueryGroupsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryGroupsResponse): QueryGroupsResponse =
       QueryGroupsResponse(
-  	groups = obj.groupsList.map { GroupInfoJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	groups = obj.getGroupsList().map { GroupInfoJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryGroupsResponse): QueryOuterClass.QueryGroupsResponse {

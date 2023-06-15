@@ -1,5 +1,5 @@
 // Transform from cosmos/tx/config/v1/config.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.tx.config.v1
 

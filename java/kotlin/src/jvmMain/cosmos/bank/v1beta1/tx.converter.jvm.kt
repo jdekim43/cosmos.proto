@@ -1,5 +1,5 @@
 // Transform from cosmos/bank/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -15,9 +15,9 @@ public object MsgSendJvmConverter : ProtobufTypeMapper<MsgSend, Tx.MsgSend> {
   public override val parser: Parser<Tx.MsgSend> = Tx.MsgSend.parser()
 
   public override fun convert(obj: Tx.MsgSend): MsgSend = MsgSend(
-  	fromAddress = obj.fromAddress,
-  	toAddress = obj.toAddress,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	fromAddress = obj.getFromAddress(),
+  	toAddress = obj.getToAddress(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgSend): Tx.MsgSend {
@@ -50,8 +50,8 @@ public object MsgMultiSendJvmConverter : ProtobufTypeMapper<MsgMultiSend, Tx.Msg
   public override val parser: Parser<Tx.MsgMultiSend> = Tx.MsgMultiSend.parser()
 
   public override fun convert(obj: Tx.MsgMultiSend): MsgMultiSend = MsgMultiSend(
-  	inputs = obj.inputsList.map { InputJvmConverter.convert(it) },
-  	outputs = obj.outputsList.map { OutputJvmConverter.convert(it) },
+  	inputs = obj.getInputsList().map { InputJvmConverter.convert(it) },
+  	outputs = obj.getOutputsList().map { OutputJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgMultiSend): Tx.MsgMultiSend {
@@ -85,8 +85,8 @@ public object MsgUpdateParamsJvmConverter : ProtobufTypeMapper<MsgUpdateParams, 
   public override val parser: Parser<Tx.MsgUpdateParams> = Tx.MsgUpdateParams.parser()
 
   public override fun convert(obj: Tx.MsgUpdateParams): MsgUpdateParams = MsgUpdateParams(
-  	authority = obj.authority,
-  	params = ParamsJvmConverter.convert(obj.params),
+  	authority = obj.getAuthority(),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: MsgUpdateParams): Tx.MsgUpdateParams {
@@ -122,9 +122,9 @@ public object MsgSetSendEnabledJvmConverter :
   public override val parser: Parser<Tx.MsgSetSendEnabled> = Tx.MsgSetSendEnabled.parser()
 
   public override fun convert(obj: Tx.MsgSetSendEnabled): MsgSetSendEnabled = MsgSetSendEnabled(
-  	authority = obj.authority,
-  	sendEnabled = obj.sendEnabledList.map { SendEnabledJvmConverter.convert(it) },
-  	useDefaultFor = obj.useDefaultForList.map { it },
+  	authority = obj.getAuthority(),
+  	sendEnabled = obj.getSendEnabledList().map { SendEnabledJvmConverter.convert(it) },
+  	useDefaultFor = obj.getUseDefaultForList().map { it },
   )
 
   public override fun convert(obj: MsgSetSendEnabled): Tx.MsgSetSendEnabled {

@@ -1,5 +1,5 @@
 // Transform from cosmos/base/snapshots/v1beta1/snapshot.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.snapshots.v1beta1
 
@@ -19,11 +19,11 @@ public object SnapshotJvmConverter : ProtobufTypeMapper<Snapshot, SnapshotOuterC
       SnapshotOuterClass.Snapshot.parser()
 
   public override fun convert(obj: SnapshotOuterClass.Snapshot): Snapshot = Snapshot(
-  	height = obj.height.asKotlinType,
-  	format = obj.format.asKotlinType,
-  	chunks = obj.chunks.asKotlinType,
-  	hash = obj.hash.toByteArray(),
-  	metadata = MetadataJvmConverter.convert(obj.metadata),
+  	height = obj.getHeight().asKotlinType,
+  	format = obj.getFormat().asKotlinType,
+  	chunks = obj.getChunks().asKotlinType,
+  	hash = obj.getHash().toByteArray(),
+  	metadata = MetadataJvmConverter.convert(obj.getMetadata()),
   )
 
   public override fun convert(obj: Snapshot): SnapshotOuterClass.Snapshot {
@@ -45,7 +45,7 @@ public object MetadataJvmConverter : ProtobufTypeMapper<Metadata, SnapshotOuterC
       SnapshotOuterClass.Metadata.parser()
 
   public override fun convert(obj: SnapshotOuterClass.Metadata): Metadata = Metadata(
-  	chunkHashes = obj.chunkHashesList.map { it.toByteArray() },
+  	chunkHashes = obj.getChunkHashesList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: Metadata): SnapshotOuterClass.Metadata {
@@ -65,15 +65,16 @@ public object SnapshotItemJvmConverter :
 
   public override fun convert(obj: SnapshotOuterClass.SnapshotItem): SnapshotItem = SnapshotItem(
   	item = mapOf(
-  1 to { SnapshotItem.ItemOneOf.Store(SnapshotStoreItemJvmConverter.convert(obj.store)) },
-  2 to { SnapshotItem.ItemOneOf.Iavl(SnapshotIAVLItemJvmConverter.convert(obj.iavl)) },
-  3 to { SnapshotItem.ItemOneOf.Extension(SnapshotExtensionMetaJvmConverter.convert(obj.extension))
+  1 to { SnapshotItem.ItemOneOf.Store(SnapshotStoreItemJvmConverter.convert(obj.getStore())) },
+  2 to { SnapshotItem.ItemOneOf.Iavl(SnapshotIAVLItemJvmConverter.convert(obj.getIavl())) },
+  3 to {
+      SnapshotItem.ItemOneOf.Extension(SnapshotExtensionMetaJvmConverter.convert(obj.getExtension()))
       },
   4 to {
-      SnapshotItem.ItemOneOf.ExtensionPayload(SnapshotExtensionPayloadJvmConverter.convert(obj.extensionPayload))
+      SnapshotItem.ItemOneOf.ExtensionPayload(SnapshotExtensionPayloadJvmConverter.convert(obj.getExtensionPayload()))
       },
-  5 to { SnapshotItem.ItemOneOf.Kv(SnapshotKVItemJvmConverter.convert(obj.kv)) },
-  6 to { SnapshotItem.ItemOneOf.Schema(SnapshotSchemaJvmConverter.convert(obj.schema)) },
+  5 to { SnapshotItem.ItemOneOf.Kv(SnapshotKVItemJvmConverter.convert(obj.getKv())) },
+  6 to { SnapshotItem.ItemOneOf.Schema(SnapshotSchemaJvmConverter.convert(obj.getSchema())) },
   ).getValue(obj.itemCase.number)(),
   )
 
@@ -107,7 +108,7 @@ public object SnapshotStoreItemJvmConverter :
 
   public override fun convert(obj: SnapshotOuterClass.SnapshotStoreItem): SnapshotStoreItem =
       SnapshotStoreItem(
-  	name = obj.name,
+  	name = obj.getName(),
   )
 
   public override fun convert(obj: SnapshotStoreItem): SnapshotOuterClass.SnapshotStoreItem {
@@ -127,10 +128,10 @@ public object SnapshotIAVLItemJvmConverter :
 
   public override fun convert(obj: SnapshotOuterClass.SnapshotIAVLItem): SnapshotIAVLItem =
       SnapshotIAVLItem(
-  	key = obj.key.toByteArray(),
-  	`value` = obj.`value`.toByteArray(),
-  	version = obj.version,
-  	height = obj.height,
+  	key = obj.getKey().toByteArray(),
+  	`value` = obj.getValue().toByteArray(),
+  	version = obj.getVersion(),
+  	height = obj.getHeight(),
   )
 
   public override fun convert(obj: SnapshotIAVLItem): SnapshotOuterClass.SnapshotIAVLItem {
@@ -153,8 +154,8 @@ public object SnapshotExtensionMetaJvmConverter :
 
   public override fun convert(obj: SnapshotOuterClass.SnapshotExtensionMeta): SnapshotExtensionMeta
       = SnapshotExtensionMeta(
-  	name = obj.name,
-  	format = obj.format.asKotlinType,
+  	name = obj.getName(),
+  	format = obj.getFormat().asKotlinType,
   )
 
   public override fun convert(obj: SnapshotExtensionMeta):
@@ -176,7 +177,7 @@ public object SnapshotExtensionPayloadJvmConverter :
 
   public override fun convert(obj: SnapshotOuterClass.SnapshotExtensionPayload):
       SnapshotExtensionPayload = SnapshotExtensionPayload(
-  	payload = obj.payload.toByteArray(),
+  	payload = obj.getPayload().toByteArray(),
   )
 
   public override fun convert(obj: SnapshotExtensionPayload):
@@ -197,8 +198,8 @@ public object SnapshotKVItemJvmConverter :
 
   public override fun convert(obj: SnapshotOuterClass.SnapshotKVItem): SnapshotKVItem =
       SnapshotKVItem(
-  	key = obj.key.toByteArray(),
-  	`value` = obj.`value`.toByteArray(),
+  	key = obj.getKey().toByteArray(),
+  	`value` = obj.getValue().toByteArray(),
   )
 
   public override fun convert(obj: SnapshotKVItem): SnapshotOuterClass.SnapshotKVItem {
@@ -219,7 +220,7 @@ public object SnapshotSchemaJvmConverter :
 
   public override fun convert(obj: SnapshotOuterClass.SnapshotSchema): SnapshotSchema =
       SnapshotSchema(
-  	keys = obj.keysList.map { it.toByteArray() },
+  	keys = obj.getKeysList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: SnapshotSchema): SnapshotOuterClass.SnapshotSchema {

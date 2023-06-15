@@ -1,5 +1,5 @@
 // Transform from cosmos/bank/v1beta1/bank.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -17,8 +17,8 @@ public object ParamsJvmConverter : ProtobufTypeMapper<Params, Bank.Params> {
   public override val parser: Parser<Bank.Params> = Bank.Params.parser()
 
   public override fun convert(obj: Bank.Params): Params = Params(
-  	sendEnabled = obj.sendEnabledList.map { SendEnabledJvmConverter.convert(it) },
-  	defaultSendEnabled = obj.defaultSendEnabled,
+  	sendEnabled = obj.getSendEnabledList().map { SendEnabledJvmConverter.convert(it) },
+  	defaultSendEnabled = obj.getDefaultSendEnabled(),
   )
 
   public override fun convert(obj: Params): Bank.Params {
@@ -35,8 +35,8 @@ public object SendEnabledJvmConverter : ProtobufTypeMapper<SendEnabled, Bank.Sen
   public override val parser: Parser<Bank.SendEnabled> = Bank.SendEnabled.parser()
 
   public override fun convert(obj: Bank.SendEnabled): SendEnabled = SendEnabled(
-  	denom = obj.denom,
-  	enabled = obj.enabled,
+  	denom = obj.getDenom(),
+  	enabled = obj.getEnabled(),
   )
 
   public override fun convert(obj: SendEnabled): Bank.SendEnabled {
@@ -53,8 +53,8 @@ public object InputJvmConverter : ProtobufTypeMapper<Input, Bank.Input> {
   public override val parser: Parser<Bank.Input> = Bank.Input.parser()
 
   public override fun convert(obj: Bank.Input): Input = Input(
-  	address = obj.address,
-  	coins = obj.coinsList.map { CoinJvmConverter.convert(it) },
+  	address = obj.getAddress(),
+  	coins = obj.getCoinsList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Input): Bank.Input {
@@ -71,8 +71,8 @@ public object OutputJvmConverter : ProtobufTypeMapper<Output, Bank.Output> {
   public override val parser: Parser<Bank.Output> = Bank.Output.parser()
 
   public override fun convert(obj: Bank.Output): Output = Output(
-  	address = obj.address,
-  	coins = obj.coinsList.map { CoinJvmConverter.convert(it) },
+  	address = obj.getAddress(),
+  	coins = obj.getCoinsList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Output): Bank.Output {
@@ -89,7 +89,7 @@ public object SupplyJvmConverter : ProtobufTypeMapper<Supply, Bank.Supply> {
   public override val parser: Parser<Bank.Supply> = Bank.Supply.parser()
 
   public override fun convert(obj: Bank.Supply): Supply = Supply(
-  	total = obj.totalList.map { CoinJvmConverter.convert(it) },
+  	total = obj.getTotalList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Supply): Bank.Supply {
@@ -105,9 +105,9 @@ public object DenomUnitJvmConverter : ProtobufTypeMapper<DenomUnit, Bank.DenomUn
   public override val parser: Parser<Bank.DenomUnit> = Bank.DenomUnit.parser()
 
   public override fun convert(obj: Bank.DenomUnit): DenomUnit = DenomUnit(
-  	denom = obj.denom,
-  	exponent = obj.exponent.asKotlinType,
-  	aliases = obj.aliasesList.map { it },
+  	denom = obj.getDenom(),
+  	exponent = obj.getExponent().asKotlinType,
+  	aliases = obj.getAliasesList().map { it },
   )
 
   public override fun convert(obj: DenomUnit): Bank.DenomUnit {
@@ -125,14 +125,14 @@ public object MetadataJvmConverter : ProtobufTypeMapper<Metadata, Bank.Metadata>
   public override val parser: Parser<Bank.Metadata> = Bank.Metadata.parser()
 
   public override fun convert(obj: Bank.Metadata): Metadata = Metadata(
-  	description = obj.description,
-  	denomUnits = obj.denomUnitsList.map { DenomUnitJvmConverter.convert(it) },
-  	base = obj.base,
-  	display = obj.display,
-  	name = obj.name,
-  	symbol = obj.symbol,
-  	uri = obj.uri,
-  	uriHash = obj.uriHash,
+  	description = obj.getDescription(),
+  	denomUnits = obj.getDenomUnitsList().map { DenomUnitJvmConverter.convert(it) },
+  	base = obj.getBase(),
+  	display = obj.getDisplay(),
+  	name = obj.getName(),
+  	symbol = obj.getSymbol(),
+  	uri = obj.getUri(),
+  	uriHash = obj.getUriHash(),
   )
 
   public override fun convert(obj: Metadata): Bank.Metadata {

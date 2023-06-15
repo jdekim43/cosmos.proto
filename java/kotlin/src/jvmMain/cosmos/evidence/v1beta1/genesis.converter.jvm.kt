@@ -1,5 +1,5 @@
 // Transform from cosmos/evidence/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.evidence.v1beta1
 
@@ -15,7 +15,7 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	evidence = obj.evidenceList.map { AnyJvmConverter.convert(it) },
+  	evidence = obj.getEvidenceList().map { AnyJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: GenesisState): Genesis.GenesisState {

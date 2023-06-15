@@ -1,5 +1,5 @@
 // Transform from cosmos/crisis/module/v1/module.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crisis.module.v1
 
@@ -14,8 +14,8 @@ public object ModuleJvmConverter : ProtobufTypeMapper<Module, ModuleOuterClass.M
   public override val parser: Parser<ModuleOuterClass.Module> = ModuleOuterClass.Module.parser()
 
   public override fun convert(obj: ModuleOuterClass.Module): Module = Module(
-  	feeCollectorName = obj.feeCollectorName,
-  	authority = obj.authority,
+  	feeCollectorName = obj.getFeeCollectorName(),
+  	authority = obj.getAuthority(),
   )
 
   public override fun convert(obj: Module): ModuleOuterClass.Module {

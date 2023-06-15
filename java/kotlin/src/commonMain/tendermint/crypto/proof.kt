@@ -1,6 +1,6 @@
 // Transform from tendermint/crypto/proof.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.crypto
 
@@ -20,9 +20,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Proof.KotlinxSerializer::class)
-@SerialName(value = "tendermint.crypto.Proof")
+@SerialName(value = Proof.TYPE_URL)
 public data class Proof(
   @ProtobufIndex(index = 1)
   public val total: Long,
@@ -32,7 +33,11 @@ public data class Proof(
   public val leafHash: ByteArray,
   @ProtobufIndex(index = 4)
   public val aunts: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.crypto.Proof"
+  }
+
   public object KotlinxSerializer : KSerializer<Proof> {
     private val delegator: KSerializer<Proof> = Proof.serializer()
 
@@ -56,13 +61,17 @@ public data class Proof(
 }
 
 @Serializable(with = ValueOp.KotlinxSerializer::class)
-@SerialName(value = "tendermint.crypto.ValueOp")
+@SerialName(value = ValueOp.TYPE_URL)
 public data class ValueOp(
   @ProtobufIndex(index = 1)
   public val key: ByteArray,
   @ProtobufIndex(index = 2)
   public val proof: Proof,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.crypto.ValueOp"
+  }
+
   public object KotlinxSerializer : KSerializer<ValueOp> {
     private val delegator: KSerializer<ValueOp> = ValueOp.serializer()
 
@@ -86,7 +95,7 @@ public data class ValueOp(
 }
 
 @Serializable(with = DominoOp.KotlinxSerializer::class)
-@SerialName(value = "tendermint.crypto.DominoOp")
+@SerialName(value = DominoOp.TYPE_URL)
 public data class DominoOp(
   @ProtobufIndex(index = 1)
   public val key: String,
@@ -94,7 +103,11 @@ public data class DominoOp(
   public val input: String,
   @ProtobufIndex(index = 3)
   public val output: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.crypto.DominoOp"
+  }
+
   public object KotlinxSerializer : KSerializer<DominoOp> {
     private val delegator: KSerializer<DominoOp> = DominoOp.serializer()
 
@@ -118,7 +131,7 @@ public data class DominoOp(
 }
 
 @Serializable(with = ProofOp.KotlinxSerializer::class)
-@SerialName(value = "tendermint.crypto.ProofOp")
+@SerialName(value = ProofOp.TYPE_URL)
 public data class ProofOp(
   @ProtobufIndex(index = 1)
   public val type: String,
@@ -126,7 +139,11 @@ public data class ProofOp(
   public val key: ByteArray,
   @ProtobufIndex(index = 3)
   public val `data`: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.crypto.ProofOp"
+  }
+
   public object KotlinxSerializer : KSerializer<ProofOp> {
     private val delegator: KSerializer<ProofOp> = ProofOp.serializer()
 
@@ -150,11 +167,15 @@ public data class ProofOp(
 }
 
 @Serializable(with = ProofOps.KotlinxSerializer::class)
-@SerialName(value = "tendermint.crypto.ProofOps")
+@SerialName(value = ProofOps.TYPE_URL)
 public data class ProofOps(
   @ProtobufIndex(index = 1)
   public val ops: List<ProofOp>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.crypto.ProofOps"
+  }
+
   public object KotlinxSerializer : KSerializer<ProofOps> {
     private val delegator: KSerializer<ProofOps> = ProofOps.serializer()
 

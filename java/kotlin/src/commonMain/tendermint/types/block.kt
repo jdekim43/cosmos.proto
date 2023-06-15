@@ -1,9 +1,10 @@
 // Transform from tendermint/types/block.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
+import kotlin.String
 import kotlin.Unit
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -16,9 +17,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Block.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.Block")
+@SerialName(value = Block.TYPE_URL)
 public data class Block(
   @ProtobufIndex(index = 1)
   public val `header`: Header,
@@ -28,7 +30,11 @@ public data class Block(
   public val evidence: EvidenceList,
   @ProtobufIndex(index = 4)
   public val lastCommit: Commit,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.Block"
+  }
+
   public object KotlinxSerializer : KSerializer<Block> {
     private val delegator: KSerializer<Block> = Block.serializer()
 

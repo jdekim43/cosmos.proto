@@ -1,5 +1,5 @@
 // Transform from cosmos/base/reflection/v2alpha1/reflection.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.reflection.v2alpha1
 
@@ -15,12 +15,12 @@ public object AppDescriptorJvmConverter :
   public override val parser: Parser<Reflection.AppDescriptor> = Reflection.AppDescriptor.parser()
 
   public override fun convert(obj: Reflection.AppDescriptor): AppDescriptor = AppDescriptor(
-  	authn = AuthnDescriptorJvmConverter.convert(obj.authn),
-  	chain = ChainDescriptorJvmConverter.convert(obj.chain),
-  	codec = CodecDescriptorJvmConverter.convert(obj.codec),
-  	configuration = ConfigurationDescriptorJvmConverter.convert(obj.configuration),
-  	queryServices = QueryServicesDescriptorJvmConverter.convert(obj.queryServices),
-  	tx = TxDescriptorJvmConverter.convert(obj.tx),
+  	authn = AuthnDescriptorJvmConverter.convert(obj.getAuthn()),
+  	chain = ChainDescriptorJvmConverter.convert(obj.getChain()),
+  	codec = CodecDescriptorJvmConverter.convert(obj.getCodec()),
+  	configuration = ConfigurationDescriptorJvmConverter.convert(obj.getConfiguration()),
+  	queryServices = QueryServicesDescriptorJvmConverter.convert(obj.getQueryServices()),
+  	tx = TxDescriptorJvmConverter.convert(obj.getTx()),
   )
 
   public override fun convert(obj: AppDescriptor): Reflection.AppDescriptor {
@@ -41,8 +41,8 @@ public object TxDescriptorJvmConverter : ProtobufTypeMapper<TxDescriptor, Reflec
   public override val parser: Parser<Reflection.TxDescriptor> = Reflection.TxDescriptor.parser()
 
   public override fun convert(obj: Reflection.TxDescriptor): TxDescriptor = TxDescriptor(
-  	fullname = obj.fullname,
-  	msgs = obj.msgsList.map { MsgDescriptorJvmConverter.convert(it) },
+  	fullname = obj.getFullname(),
+  	msgs = obj.getMsgsList().map { MsgDescriptorJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: TxDescriptor): Reflection.TxDescriptor {
@@ -62,7 +62,7 @@ public object AuthnDescriptorJvmConverter :
       Reflection.AuthnDescriptor.parser()
 
   public override fun convert(obj: Reflection.AuthnDescriptor): AuthnDescriptor = AuthnDescriptor(
-  	signModes = obj.signModesList.map { SigningModeDescriptorJvmConverter.convert(it) },
+  	signModes = obj.getSignModesList().map { SigningModeDescriptorJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: AuthnDescriptor): Reflection.AuthnDescriptor {
@@ -82,9 +82,9 @@ public object SigningModeDescriptorJvmConverter :
 
   public override fun convert(obj: Reflection.SigningModeDescriptor): SigningModeDescriptor =
       SigningModeDescriptor(
-  	name = obj.name,
-  	number = obj.number,
-  	authnInfoProviderMethodFullname = obj.authnInfoProviderMethodFullname,
+  	name = obj.getName(),
+  	number = obj.getNumber(),
+  	authnInfoProviderMethodFullname = obj.getAuthnInfoProviderMethodFullname(),
   )
 
   public override fun convert(obj: SigningModeDescriptor): Reflection.SigningModeDescriptor {
@@ -105,7 +105,7 @@ public object ChainDescriptorJvmConverter :
       Reflection.ChainDescriptor.parser()
 
   public override fun convert(obj: Reflection.ChainDescriptor): ChainDescriptor = ChainDescriptor(
-  	id = obj.id,
+  	id = obj.getId(),
   )
 
   public override fun convert(obj: ChainDescriptor): Reflection.ChainDescriptor {
@@ -124,7 +124,7 @@ public object CodecDescriptorJvmConverter :
       Reflection.CodecDescriptor.parser()
 
   public override fun convert(obj: Reflection.CodecDescriptor): CodecDescriptor = CodecDescriptor(
-  	interfaces = obj.interfacesList.map { InterfaceDescriptorJvmConverter.convert(it) },
+  	interfaces = obj.getInterfacesList().map { InterfaceDescriptorJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: CodecDescriptor): Reflection.CodecDescriptor {
@@ -144,10 +144,10 @@ public object InterfaceDescriptorJvmConverter :
 
   public override fun convert(obj: Reflection.InterfaceDescriptor): InterfaceDescriptor =
       InterfaceDescriptor(
-  	fullname = obj.fullname,
-  	interfaceAcceptingMessages = obj.interfaceAcceptingMessagesList.map {
+  	fullname = obj.getFullname(),
+  	interfaceAcceptingMessages = obj.getInterfaceAcceptingMessagesList().map {
       InterfaceAcceptingMessageDescriptorJvmConverter.convert(it) },
-  	interfaceImplementers = obj.interfaceImplementersList.map {
+  	interfaceImplementers = obj.getInterfaceImplementersList().map {
       InterfaceImplementerDescriptorJvmConverter.convert(it) },
   )
 
@@ -172,8 +172,8 @@ public object InterfaceImplementerDescriptorJvmConverter :
 
   public override fun convert(obj: Reflection.InterfaceImplementerDescriptor):
       InterfaceImplementerDescriptor = InterfaceImplementerDescriptor(
-  	fullname = obj.fullname,
-  	typeUrl = obj.typeUrl,
+  	fullname = obj.getFullname(),
+  	typeUrl = obj.getTypeUrl(),
   )
 
   public override fun convert(obj: InterfaceImplementerDescriptor):
@@ -196,8 +196,8 @@ public object InterfaceAcceptingMessageDescriptorJvmConverter :
 
   public override fun convert(obj: Reflection.InterfaceAcceptingMessageDescriptor):
       InterfaceAcceptingMessageDescriptor = InterfaceAcceptingMessageDescriptor(
-  	fullname = obj.fullname,
-  	fieldDescriptorNames = obj.fieldDescriptorNamesList.map { it },
+  	fullname = obj.getFullname(),
+  	fieldDescriptorNames = obj.getFieldDescriptorNamesList().map { it },
   )
 
   public override fun convert(obj: InterfaceAcceptingMessageDescriptor):
@@ -219,7 +219,7 @@ public object ConfigurationDescriptorJvmConverter :
 
   public override fun convert(obj: Reflection.ConfigurationDescriptor): ConfigurationDescriptor =
       ConfigurationDescriptor(
-  	bech32AccountAddressPrefix = obj.bech32AccountAddressPrefix,
+  	bech32AccountAddressPrefix = obj.getBech32AccountAddressPrefix(),
   )
 
   public override fun convert(obj: ConfigurationDescriptor): Reflection.ConfigurationDescriptor {
@@ -236,7 +236,7 @@ public object MsgDescriptorJvmConverter :
   public override val parser: Parser<Reflection.MsgDescriptor> = Reflection.MsgDescriptor.parser()
 
   public override fun convert(obj: Reflection.MsgDescriptor): MsgDescriptor = MsgDescriptor(
-  	msgTypeUrl = obj.msgTypeUrl,
+  	msgTypeUrl = obj.getMsgTypeUrl(),
   )
 
   public override fun convert(obj: MsgDescriptor): Reflection.MsgDescriptor {
@@ -275,7 +275,7 @@ public object GetAuthnDescriptorResponseJvmConverter :
 
   public override fun convert(obj: Reflection.GetAuthnDescriptorResponse):
       GetAuthnDescriptorResponse = GetAuthnDescriptorResponse(
-  	authn = AuthnDescriptorJvmConverter.convert(obj.authn),
+  	authn = AuthnDescriptorJvmConverter.convert(obj.getAuthn()),
   )
 
   public override fun convert(obj: GetAuthnDescriptorResponse):
@@ -315,7 +315,7 @@ public object GetChainDescriptorResponseJvmConverter :
 
   public override fun convert(obj: Reflection.GetChainDescriptorResponse):
       GetChainDescriptorResponse = GetChainDescriptorResponse(
-  	chain = ChainDescriptorJvmConverter.convert(obj.chain),
+  	chain = ChainDescriptorJvmConverter.convert(obj.getChain()),
   )
 
   public override fun convert(obj: GetChainDescriptorResponse):
@@ -355,7 +355,7 @@ public object GetCodecDescriptorResponseJvmConverter :
 
   public override fun convert(obj: Reflection.GetCodecDescriptorResponse):
       GetCodecDescriptorResponse = GetCodecDescriptorResponse(
-  	codec = CodecDescriptorJvmConverter.convert(obj.codec),
+  	codec = CodecDescriptorJvmConverter.convert(obj.getCodec()),
   )
 
   public override fun convert(obj: GetCodecDescriptorResponse):
@@ -397,7 +397,7 @@ public object GetConfigurationDescriptorResponseJvmConverter :
 
   public override fun convert(obj: Reflection.GetConfigurationDescriptorResponse):
       GetConfigurationDescriptorResponse = GetConfigurationDescriptorResponse(
-  	config = ConfigurationDescriptorJvmConverter.convert(obj.config),
+  	config = ConfigurationDescriptorJvmConverter.convert(obj.getConfig()),
   )
 
   public override fun convert(obj: GetConfigurationDescriptorResponse):
@@ -439,7 +439,7 @@ public object GetQueryServicesDescriptorResponseJvmConverter :
 
   public override fun convert(obj: Reflection.GetQueryServicesDescriptorResponse):
       GetQueryServicesDescriptorResponse = GetQueryServicesDescriptorResponse(
-  	queries = QueryServicesDescriptorJvmConverter.convert(obj.queries),
+  	queries = QueryServicesDescriptorJvmConverter.convert(obj.getQueries()),
   )
 
   public override fun convert(obj: GetQueryServicesDescriptorResponse):
@@ -478,7 +478,7 @@ public object GetTxDescriptorResponseJvmConverter :
 
   public override fun convert(obj: Reflection.GetTxDescriptorResponse): GetTxDescriptorResponse =
       GetTxDescriptorResponse(
-  	tx = TxDescriptorJvmConverter.convert(obj.tx),
+  	tx = TxDescriptorJvmConverter.convert(obj.getTx()),
   )
 
   public override fun convert(obj: GetTxDescriptorResponse): Reflection.GetTxDescriptorResponse {
@@ -498,7 +498,8 @@ public object QueryServicesDescriptorJvmConverter :
 
   public override fun convert(obj: Reflection.QueryServicesDescriptor): QueryServicesDescriptor =
       QueryServicesDescriptor(
-  	queryServices = obj.queryServicesList.map { QueryServiceDescriptorJvmConverter.convert(it) },
+  	queryServices = obj.getQueryServicesList().map { QueryServiceDescriptorJvmConverter.convert(it)
+      },
   )
 
   public override fun convert(obj: QueryServicesDescriptor): Reflection.QueryServicesDescriptor {
@@ -519,9 +520,9 @@ public object QueryServiceDescriptorJvmConverter :
 
   public override fun convert(obj: Reflection.QueryServiceDescriptor): QueryServiceDescriptor =
       QueryServiceDescriptor(
-  	fullname = obj.fullname,
-  	isModule = obj.isModule,
-  	methods = obj.methodsList.map { QueryMethodDescriptorJvmConverter.convert(it) },
+  	fullname = obj.getFullname(),
+  	isModule = obj.getIsModule(),
+  	methods = obj.getMethodsList().map { QueryMethodDescriptorJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: QueryServiceDescriptor): Reflection.QueryServiceDescriptor {
@@ -543,8 +544,8 @@ public object QueryMethodDescriptorJvmConverter :
 
   public override fun convert(obj: Reflection.QueryMethodDescriptor): QueryMethodDescriptor =
       QueryMethodDescriptor(
-  	name = obj.name,
-  	fullQueryPath = obj.fullQueryPath,
+  	name = obj.getName(),
+  	fullQueryPath = obj.getFullQueryPath(),
   )
 
   public override fun convert(obj: QueryMethodDescriptor): Reflection.QueryMethodDescriptor {

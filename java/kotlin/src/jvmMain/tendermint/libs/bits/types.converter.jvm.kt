@@ -1,5 +1,5 @@
 // Transform from tendermint/libs/bits/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.libs.bits
 
@@ -16,8 +16,8 @@ public object BitArrayJvmConverter : ProtobufTypeMapper<BitArray, Types.BitArray
   public override val parser: Parser<Types.BitArray> = Types.BitArray.parser()
 
   public override fun convert(obj: Types.BitArray): BitArray = BitArray(
-  	bits = obj.bits,
-  	elems = obj.elemsList.map { it.asKotlinType },
+  	bits = obj.getBits(),
+  	elems = obj.getElemsList().map { it.asKotlinType },
   )
 
   public override fun convert(obj: BitArray): Types.BitArray {

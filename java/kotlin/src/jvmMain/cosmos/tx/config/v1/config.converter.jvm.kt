@@ -1,5 +1,5 @@
 // Transform from cosmos/tx/config/v1/config.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.tx.config.v1
 
@@ -14,8 +14,8 @@ public object ConfigJvmConverter : ProtobufTypeMapper<Config, ConfigOuterClass.C
   public override val parser: Parser<ConfigOuterClass.Config> = ConfigOuterClass.Config.parser()
 
   public override fun convert(obj: ConfigOuterClass.Config): Config = Config(
-  	skipAnteHandler = obj.skipAnteHandler,
-  	skipPostHandler = obj.skipPostHandler,
+  	skipAnteHandler = obj.getSkipAnteHandler(),
+  	skipPostHandler = obj.getSkipPostHandler(),
   )
 
   public override fun convert(obj: Config): ConfigOuterClass.Config {

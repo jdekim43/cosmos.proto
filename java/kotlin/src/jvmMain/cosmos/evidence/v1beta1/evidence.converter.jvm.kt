@@ -1,5 +1,5 @@
 // Transform from cosmos/evidence/v1beta1/evidence.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.evidence.v1beta1
 
@@ -15,10 +15,10 @@ public object EquivocationJvmConverter : ProtobufTypeMapper<Equivocation, Eviden
   public override val parser: Parser<Evidence.Equivocation> = Evidence.Equivocation.parser()
 
   public override fun convert(obj: Evidence.Equivocation): Equivocation = Equivocation(
-  	height = obj.height,
-  	time = TimestampJvmConverter.convert(obj.time),
-  	power = obj.power,
-  	consensusAddress = obj.consensusAddress,
+  	height = obj.getHeight(),
+  	time = TimestampJvmConverter.convert(obj.getTime()),
+  	power = obj.getPower(),
+  	consensusAddress = obj.getConsensusAddress(),
   )
 
   public override fun convert(obj: Equivocation): Evidence.Equivocation {

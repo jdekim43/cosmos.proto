@@ -1,5 +1,5 @@
 // Transform from cosmos/app/v1alpha1/module.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.app.v1alpha1
 
@@ -17,9 +17,9 @@ public object ModuleDescriptorJvmConverter :
   public override val parser: Parser<Module.ModuleDescriptor> = Module.ModuleDescriptor.parser()
 
   public override fun convert(obj: Module.ModuleDescriptor): ModuleDescriptor = ModuleDescriptor(
-  	goImport = obj.goImport,
-  	usePackage = obj.usePackageList.map { PackageReferenceJvmConverter.convert(it) },
-  	canMigrateFrom = obj.canMigrateFromList.map { MigrateFromInfoJvmConverter.convert(it) },
+  	goImport = obj.getGoImport(),
+  	usePackage = obj.getUsePackageList().map { PackageReferenceJvmConverter.convert(it) },
+  	canMigrateFrom = obj.getCanMigrateFromList().map { MigrateFromInfoJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ModuleDescriptor): Module.ModuleDescriptor {
@@ -38,8 +38,8 @@ public object PackageReferenceJvmConverter :
   public override val parser: Parser<Module.PackageReference> = Module.PackageReference.parser()
 
   public override fun convert(obj: Module.PackageReference): PackageReference = PackageReference(
-  	name = obj.name,
-  	revision = obj.revision.asKotlinType,
+  	name = obj.getName(),
+  	revision = obj.getRevision().asKotlinType,
   )
 
   public override fun convert(obj: PackageReference): Module.PackageReference {
@@ -57,7 +57,7 @@ public object MigrateFromInfoJvmConverter :
   public override val parser: Parser<Module.MigrateFromInfo> = Module.MigrateFromInfo.parser()
 
   public override fun convert(obj: Module.MigrateFromInfo): MigrateFromInfo = MigrateFromInfo(
-  	module = obj.module,
+  	module = obj.getModule(),
   )
 
   public override fun convert(obj: MigrateFromInfo): Module.MigrateFromInfo {

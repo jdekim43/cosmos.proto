@@ -1,10 +1,11 @@
 // Transform from cosmos/crypto/secp256r1/keys.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.secp256r1
 
 import kotlin.ByteArray
+import kotlin.String
 import kotlin.Unit
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -17,13 +18,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = PubKey.KotlinxSerializer::class)
-@SerialName(value = "cosmos.crypto.secp256r1.PubKey")
+@SerialName(value = PubKey.TYPE_URL)
 public data class PubKey(
   @ProtobufIndex(index = 1)
   public val key: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.crypto.secp256r1.PubKey"
+  }
+
   public object KotlinxSerializer : KSerializer<PubKey> {
     private val delegator: KSerializer<PubKey> = PubKey.serializer()
 
@@ -47,11 +53,15 @@ public data class PubKey(
 }
 
 @Serializable(with = PrivKey.KotlinxSerializer::class)
-@SerialName(value = "cosmos.crypto.secp256r1.PrivKey")
+@SerialName(value = PrivKey.TYPE_URL)
 public data class PrivKey(
   @ProtobufIndex(index = 1)
   public val secret: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.crypto.secp256r1.PrivKey"
+  }
+
   public object KotlinxSerializer : KSerializer<PrivKey> {
     private val delegator: KSerializer<PrivKey> = PrivKey.serializer()
 

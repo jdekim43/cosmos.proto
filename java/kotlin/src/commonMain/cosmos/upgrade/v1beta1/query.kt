@@ -1,6 +1,6 @@
 // Transform from cosmos/upgrade/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.upgrade.v1beta1
 
@@ -20,10 +20,15 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryCurrentPlanRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryCurrentPlanRequest")
-public class QueryCurrentPlanRequest() {
+@SerialName(value = QueryCurrentPlanRequest.TYPE_URL)
+public class QueryCurrentPlanRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryCurrentPlanRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryCurrentPlanRequest> {
     private val delegator: KSerializer<QueryCurrentPlanRequest> =
         QueryCurrentPlanRequest.serializer()
@@ -48,11 +53,15 @@ public class QueryCurrentPlanRequest() {
 }
 
 @Serializable(with = QueryCurrentPlanResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryCurrentPlanResponse")
+@SerialName(value = QueryCurrentPlanResponse.TYPE_URL)
 public data class QueryCurrentPlanResponse(
   @ProtobufIndex(index = 1)
   public val plan: Plan,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryCurrentPlanResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryCurrentPlanResponse> {
     private val delegator: KSerializer<QueryCurrentPlanResponse> =
         QueryCurrentPlanResponse.serializer()
@@ -77,11 +86,15 @@ public data class QueryCurrentPlanResponse(
 }
 
 @Serializable(with = QueryAppliedPlanRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryAppliedPlanRequest")
+@SerialName(value = QueryAppliedPlanRequest.TYPE_URL)
 public data class QueryAppliedPlanRequest(
   @ProtobufIndex(index = 1)
   public val name: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryAppliedPlanRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAppliedPlanRequest> {
     private val delegator: KSerializer<QueryAppliedPlanRequest> =
         QueryAppliedPlanRequest.serializer()
@@ -106,11 +119,15 @@ public data class QueryAppliedPlanRequest(
 }
 
 @Serializable(with = QueryAppliedPlanResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryAppliedPlanResponse")
+@SerialName(value = QueryAppliedPlanResponse.TYPE_URL)
 public data class QueryAppliedPlanResponse(
   @ProtobufIndex(index = 1)
   public val height: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryAppliedPlanResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAppliedPlanResponse> {
     private val delegator: KSerializer<QueryAppliedPlanResponse> =
         QueryAppliedPlanResponse.serializer()
@@ -135,11 +152,15 @@ public data class QueryAppliedPlanResponse(
 }
 
 @Serializable(with = QueryUpgradedConsensusStateRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest")
+@SerialName(value = QueryUpgradedConsensusStateRequest.TYPE_URL)
 public data class QueryUpgradedConsensusStateRequest(
   @ProtobufIndex(index = 1)
   public val lastHeight: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryUpgradedConsensusStateRequest> {
     private val delegator: KSerializer<QueryUpgradedConsensusStateRequest> =
         QueryUpgradedConsensusStateRequest.serializer()
@@ -165,11 +186,16 @@ public data class QueryUpgradedConsensusStateRequest(
 }
 
 @Serializable(with = QueryUpgradedConsensusStateResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateResponse")
+@SerialName(value = QueryUpgradedConsensusStateResponse.TYPE_URL)
 public data class QueryUpgradedConsensusStateResponse(
   @ProtobufIndex(index = 2)
   public val upgradedConsensusState: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryUpgradedConsensusStateResponse> {
     private val delegator: KSerializer<QueryUpgradedConsensusStateResponse> =
         QueryUpgradedConsensusStateResponse.serializer()
@@ -195,11 +221,15 @@ public data class QueryUpgradedConsensusStateResponse(
 }
 
 @Serializable(with = QueryModuleVersionsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryModuleVersionsRequest")
+@SerialName(value = QueryModuleVersionsRequest.TYPE_URL)
 public data class QueryModuleVersionsRequest(
   @ProtobufIndex(index = 1)
   public val moduleName: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryModuleVersionsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryModuleVersionsRequest> {
     private val delegator: KSerializer<QueryModuleVersionsRequest> =
         QueryModuleVersionsRequest.serializer()
@@ -224,11 +254,15 @@ public data class QueryModuleVersionsRequest(
 }
 
 @Serializable(with = QueryModuleVersionsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryModuleVersionsResponse")
+@SerialName(value = QueryModuleVersionsResponse.TYPE_URL)
 public data class QueryModuleVersionsResponse(
   @ProtobufIndex(index = 1)
   public val moduleVersions: List<ModuleVersion>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryModuleVersionsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryModuleVersionsResponse> {
     private val delegator: KSerializer<QueryModuleVersionsResponse> =
         QueryModuleVersionsResponse.serializer()
@@ -253,8 +287,12 @@ public data class QueryModuleVersionsResponse(
 }
 
 @Serializable(with = QueryAuthorityRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryAuthorityRequest")
-public class QueryAuthorityRequest() {
+@SerialName(value = QueryAuthorityRequest.TYPE_URL)
+public class QueryAuthorityRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryAuthorityRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAuthorityRequest> {
     private val delegator: KSerializer<QueryAuthorityRequest> = QueryAuthorityRequest.serializer()
 
@@ -278,11 +316,15 @@ public class QueryAuthorityRequest() {
 }
 
 @Serializable(with = QueryAuthorityResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.QueryAuthorityResponse")
+@SerialName(value = QueryAuthorityResponse.TYPE_URL)
 public data class QueryAuthorityResponse(
   @ProtobufIndex(index = 1)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.QueryAuthorityResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAuthorityResponse> {
     private val delegator: KSerializer<QueryAuthorityResponse> = QueryAuthorityResponse.serializer()
 

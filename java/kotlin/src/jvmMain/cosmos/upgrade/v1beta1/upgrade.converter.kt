@@ -1,5 +1,5 @@
 // Transform from cosmos/upgrade/v1beta1/upgrade.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.upgrade.v1beta1
 

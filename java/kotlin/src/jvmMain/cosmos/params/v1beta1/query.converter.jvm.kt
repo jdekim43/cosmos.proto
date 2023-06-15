@@ -1,5 +1,5 @@
 // Transform from cosmos/params/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.params.v1beta1
 
@@ -18,8 +18,8 @@ public object QueryParamsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsRequest): QueryParamsRequest =
       QueryParamsRequest(
-  	subspace = obj.subspace,
-  	key = obj.key,
+  	subspace = obj.getSubspace(),
+  	key = obj.getKey(),
   )
 
   public override fun convert(obj: QueryParamsRequest): QueryOuterClass.QueryParamsRequest {
@@ -40,7 +40,7 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	`param` = ParamChangeJvmConverter.convert(obj.`param`),
+  	`param` = ParamChangeJvmConverter.convert(obj.getParam()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {
@@ -78,7 +78,7 @@ public object QuerySubspacesResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySubspacesResponse): QuerySubspacesResponse =
       QuerySubspacesResponse(
-  	subspaces = obj.subspacesList.map { SubspaceJvmConverter.convert(it) },
+  	subspaces = obj.getSubspacesList().map { SubspaceJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: QuerySubspacesResponse): QueryOuterClass.QuerySubspacesResponse {
@@ -94,8 +94,8 @@ public object SubspaceJvmConverter : ProtobufTypeMapper<Subspace, QueryOuterClas
   public override val parser: Parser<QueryOuterClass.Subspace> = QueryOuterClass.Subspace.parser()
 
   public override fun convert(obj: QueryOuterClass.Subspace): Subspace = Subspace(
-  	subspace = obj.subspace,
-  	keys = obj.keysList.map { it },
+  	subspace = obj.getSubspace(),
+  	keys = obj.getKeysList().map { it },
   )
 
   public override fun convert(obj: Subspace): QueryOuterClass.Subspace {

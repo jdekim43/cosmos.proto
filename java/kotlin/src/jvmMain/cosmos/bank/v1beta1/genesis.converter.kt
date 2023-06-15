@@ -1,5 +1,5 @@
 // Transform from cosmos/bank/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 

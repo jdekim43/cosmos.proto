@@ -1,10 +1,11 @@
 // Transform from cosmos/base/kv/v1beta1/kv.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.kv.v1beta1
 
 import kotlin.ByteArray
+import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 import kotlinx.serialization.KSerializer
@@ -18,13 +19,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Pairs.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.kv.v1beta1.Pairs")
+@SerialName(value = Pairs.TYPE_URL)
 public data class Pairs(
   @ProtobufIndex(index = 1)
   public val pairs: List<Pair>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.kv.v1beta1.Pairs"
+  }
+
   public object KotlinxSerializer : KSerializer<Pairs> {
     private val delegator: KSerializer<Pairs> = Pairs.serializer()
 
@@ -48,13 +54,17 @@ public data class Pairs(
 }
 
 @Serializable(with = Pair.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.kv.v1beta1.Pair")
+@SerialName(value = Pair.TYPE_URL)
 public data class Pair(
   @ProtobufIndex(index = 1)
   public val key: ByteArray,
   @ProtobufIndex(index = 2)
   public val `value`: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.kv.v1beta1.Pair"
+  }
+
   public object KotlinxSerializer : KSerializer<Pair> {
     private val delegator: KSerializer<Pair> = Pair.serializer()
 

@@ -1,6 +1,6 @@
 // Transform from cosmos/authz/v1beta1/event.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.authz.v1beta1
 
@@ -17,9 +17,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = EventGrant.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.EventGrant")
+@SerialName(value = EventGrant.TYPE_URL)
 public data class EventGrant(
   @ProtobufIndex(index = 2)
   public val msgTypeUrl: String,
@@ -27,7 +28,11 @@ public data class EventGrant(
   public val granter: String,
   @ProtobufIndex(index = 4)
   public val grantee: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.EventGrant"
+  }
+
   public object KotlinxSerializer : KSerializer<EventGrant> {
     private val delegator: KSerializer<EventGrant> = EventGrant.serializer()
 
@@ -51,7 +56,7 @@ public data class EventGrant(
 }
 
 @Serializable(with = EventRevoke.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.EventRevoke")
+@SerialName(value = EventRevoke.TYPE_URL)
 public data class EventRevoke(
   @ProtobufIndex(index = 2)
   public val msgTypeUrl: String,
@@ -59,7 +64,11 @@ public data class EventRevoke(
   public val granter: String,
   @ProtobufIndex(index = 4)
   public val grantee: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.EventRevoke"
+  }
+
   public object KotlinxSerializer : KSerializer<EventRevoke> {
     private val delegator: KSerializer<EventRevoke> = EventRevoke.serializer()
 

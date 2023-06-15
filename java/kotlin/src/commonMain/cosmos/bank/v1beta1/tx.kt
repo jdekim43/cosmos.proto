@@ -1,6 +1,6 @@
 // Transform from cosmos/bank/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -19,9 +19,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgSend.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.MsgSend")
+@SerialName(value = MsgSend.TYPE_URL)
 public data class MsgSend(
   @ProtobufIndex(index = 1)
   public val fromAddress: String,
@@ -29,7 +30,11 @@ public data class MsgSend(
   public val toAddress: String,
   @ProtobufIndex(index = 3)
   public val amount: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.MsgSend"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSend> {
     private val delegator: KSerializer<MsgSend> = MsgSend.serializer()
 
@@ -53,8 +58,12 @@ public data class MsgSend(
 }
 
 @Serializable(with = MsgSendResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.MsgSendResponse")
-public class MsgSendResponse() {
+@SerialName(value = MsgSendResponse.TYPE_URL)
+public class MsgSendResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.MsgSendResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSendResponse> {
     private val delegator: KSerializer<MsgSendResponse> = MsgSendResponse.serializer()
 
@@ -78,13 +87,17 @@ public class MsgSendResponse() {
 }
 
 @Serializable(with = MsgMultiSend.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.MsgMultiSend")
+@SerialName(value = MsgMultiSend.TYPE_URL)
 public data class MsgMultiSend(
   @ProtobufIndex(index = 1)
   public val inputs: List<Input>,
   @ProtobufIndex(index = 2)
   public val outputs: List<Output>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.MsgMultiSend"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgMultiSend> {
     private val delegator: KSerializer<MsgMultiSend> = MsgMultiSend.serializer()
 
@@ -108,8 +121,12 @@ public data class MsgMultiSend(
 }
 
 @Serializable(with = MsgMultiSendResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.MsgMultiSendResponse")
-public class MsgMultiSendResponse() {
+@SerialName(value = MsgMultiSendResponse.TYPE_URL)
+public class MsgMultiSendResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.MsgMultiSendResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgMultiSendResponse> {
     private val delegator: KSerializer<MsgMultiSendResponse> = MsgMultiSendResponse.serializer()
 
@@ -133,13 +150,17 @@ public class MsgMultiSendResponse() {
 }
 
 @Serializable(with = MsgUpdateParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.MsgUpdateParams")
+@SerialName(value = MsgUpdateParams.TYPE_URL)
 public data class MsgUpdateParams(
   @ProtobufIndex(index = 1)
   public val authority: String,
   @ProtobufIndex(index = 2)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.MsgUpdateParams"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParams> {
     private val delegator: KSerializer<MsgUpdateParams> = MsgUpdateParams.serializer()
 
@@ -163,8 +184,12 @@ public data class MsgUpdateParams(
 }
 
 @Serializable(with = MsgUpdateParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.MsgUpdateParamsResponse")
-public class MsgUpdateParamsResponse() {
+@SerialName(value = MsgUpdateParamsResponse.TYPE_URL)
+public class MsgUpdateParamsResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.MsgUpdateParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParamsResponse> {
     private val delegator: KSerializer<MsgUpdateParamsResponse> =
         MsgUpdateParamsResponse.serializer()
@@ -189,7 +214,7 @@ public class MsgUpdateParamsResponse() {
 }
 
 @Serializable(with = MsgSetSendEnabled.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.MsgSetSendEnabled")
+@SerialName(value = MsgSetSendEnabled.TYPE_URL)
 public data class MsgSetSendEnabled(
   @ProtobufIndex(index = 1)
   public val authority: String,
@@ -197,7 +222,11 @@ public data class MsgSetSendEnabled(
   public val sendEnabled: List<SendEnabled>,
   @ProtobufIndex(index = 3)
   public val useDefaultFor: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.MsgSetSendEnabled"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSetSendEnabled> {
     private val delegator: KSerializer<MsgSetSendEnabled> = MsgSetSendEnabled.serializer()
 
@@ -221,8 +250,12 @@ public data class MsgSetSendEnabled(
 }
 
 @Serializable(with = MsgSetSendEnabledResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.MsgSetSendEnabledResponse")
-public class MsgSetSendEnabledResponse() {
+@SerialName(value = MsgSetSendEnabledResponse.TYPE_URL)
+public class MsgSetSendEnabledResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.MsgSetSendEnabledResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSetSendEnabledResponse> {
     private val delegator: KSerializer<MsgSetSendEnabledResponse> =
         MsgSetSendEnabledResponse.serializer()

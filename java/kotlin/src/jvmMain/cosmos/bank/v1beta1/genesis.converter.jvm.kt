@@ -1,5 +1,5 @@
 // Transform from cosmos/bank/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -15,11 +15,11 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	params = ParamsJvmConverter.convert(obj.params),
-  	balances = obj.balancesList.map { BalanceJvmConverter.convert(it) },
-  	supply = obj.supplyList.map { CoinJvmConverter.convert(it) },
-  	denomMetadata = obj.denomMetadataList.map { MetadataJvmConverter.convert(it) },
-  	sendEnabled = obj.sendEnabledList.map { SendEnabledJvmConverter.convert(it) },
+  	params = ParamsJvmConverter.convert(obj.getParams()),
+  	balances = obj.getBalancesList().map { BalanceJvmConverter.convert(it) },
+  	supply = obj.getSupplyList().map { CoinJvmConverter.convert(it) },
+  	denomMetadata = obj.getDenomMetadataList().map { MetadataJvmConverter.convert(it) },
+  	sendEnabled = obj.getSendEnabledList().map { SendEnabledJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: GenesisState): Genesis.GenesisState {
@@ -39,8 +39,8 @@ public object BalanceJvmConverter : ProtobufTypeMapper<Balance, Genesis.Balance>
   public override val parser: Parser<Genesis.Balance> = Genesis.Balance.parser()
 
   public override fun convert(obj: Genesis.Balance): Balance = Balance(
-  	address = obj.address,
-  	coins = obj.coinsList.map { CoinJvmConverter.convert(it) },
+  	address = obj.getAddress(),
+  	coins = obj.getCoinsList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Balance): Genesis.Balance {

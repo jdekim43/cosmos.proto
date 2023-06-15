@@ -1,5 +1,5 @@
 // Transform from cosmos/app/v1alpha1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.app.v1alpha1
 
@@ -36,7 +36,7 @@ public object QueryConfigResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryConfigResponse): QueryConfigResponse =
       QueryConfigResponse(
-  	config = ConfigJvmConverter.convert(obj.config),
+  	config = ConfigJvmConverter.convert(obj.getConfig()),
   )
 
   public override fun convert(obj: QueryConfigResponse): QueryOuterClass.QueryConfigResponse {

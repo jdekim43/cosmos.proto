@@ -1,5 +1,5 @@
 // Transform from tendermint/version/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.version
 
@@ -16,8 +16,8 @@ public object AppJvmConverter : ProtobufTypeMapper<App, Types.App> {
   public override val parser: Parser<Types.App> = Types.App.parser()
 
   public override fun convert(obj: Types.App): App = App(
-  	protocol = obj.protocol.asKotlinType,
-  	software = obj.software,
+  	protocol = obj.getProtocol().asKotlinType,
+  	software = obj.getSoftware(),
   )
 
   public override fun convert(obj: App): Types.App {
@@ -34,8 +34,8 @@ public object ConsensusJvmConverter : ProtobufTypeMapper<Consensus, Types.Consen
   public override val parser: Parser<Types.Consensus> = Types.Consensus.parser()
 
   public override fun convert(obj: Types.Consensus): Consensus = Consensus(
-  	block = obj.block.asKotlinType,
-  	app = obj.app.asKotlinType,
+  	block = obj.getBlock().asKotlinType,
+  	app = obj.getApp().asKotlinType,
   )
 
   public override fun convert(obj: Consensus): Types.Consensus {

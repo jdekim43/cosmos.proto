@@ -1,6 +1,6 @@
 // Transform from cosmos/bank/v1beta1/bank.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -24,9 +24,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Params.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.Params")
+@SerialName(value = Params.TYPE_URL)
 public data class Params(
   @Deprecated(
     message = "",
@@ -37,7 +38,11 @@ public data class Params(
   public val sendEnabled: List<SendEnabled>,
   @ProtobufIndex(index = 2)
   public val defaultSendEnabled: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.Params"
+  }
+
   public object KotlinxSerializer : KSerializer<Params> {
     private val delegator: KSerializer<Params> = Params.serializer()
 
@@ -61,13 +66,17 @@ public data class Params(
 }
 
 @Serializable(with = SendEnabled.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.SendEnabled")
+@SerialName(value = SendEnabled.TYPE_URL)
 public data class SendEnabled(
   @ProtobufIndex(index = 1)
   public val denom: String,
   @ProtobufIndex(index = 2)
   public val enabled: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.SendEnabled"
+  }
+
   public object KotlinxSerializer : KSerializer<SendEnabled> {
     private val delegator: KSerializer<SendEnabled> = SendEnabled.serializer()
 
@@ -91,13 +100,17 @@ public data class SendEnabled(
 }
 
 @Serializable(with = Input.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.Input")
+@SerialName(value = Input.TYPE_URL)
 public data class Input(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val coins: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.Input"
+  }
+
   public object KotlinxSerializer : KSerializer<Input> {
     private val delegator: KSerializer<Input> = Input.serializer()
 
@@ -121,13 +134,17 @@ public data class Input(
 }
 
 @Serializable(with = Output.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.Output")
+@SerialName(value = Output.TYPE_URL)
 public data class Output(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val coins: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.Output"
+  }
+
   public object KotlinxSerializer : KSerializer<Output> {
     private val delegator: KSerializer<Output> = Output.serializer()
 
@@ -151,11 +168,15 @@ public data class Output(
 }
 
 @Serializable(with = Supply.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.Supply")
+@SerialName(value = Supply.TYPE_URL)
 public data class Supply(
   @ProtobufIndex(index = 1)
   public val total: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.Supply"
+  }
+
   public object KotlinxSerializer : KSerializer<Supply> {
     private val delegator: KSerializer<Supply> = Supply.serializer()
 
@@ -179,7 +200,7 @@ public data class Supply(
 }
 
 @Serializable(with = DenomUnit.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.DenomUnit")
+@SerialName(value = DenomUnit.TYPE_URL)
 public data class DenomUnit(
   @ProtobufIndex(index = 1)
   public val denom: String,
@@ -187,7 +208,11 @@ public data class DenomUnit(
   public val exponent: UInt,
   @ProtobufIndex(index = 3)
   public val aliases: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.DenomUnit"
+  }
+
   public object KotlinxSerializer : KSerializer<DenomUnit> {
     private val delegator: KSerializer<DenomUnit> = DenomUnit.serializer()
 
@@ -211,7 +236,7 @@ public data class DenomUnit(
 }
 
 @Serializable(with = Metadata.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.Metadata")
+@SerialName(value = Metadata.TYPE_URL)
 public data class Metadata(
   @ProtobufIndex(index = 1)
   public val description: String,
@@ -229,7 +254,11 @@ public data class Metadata(
   public val uri: String,
   @ProtobufIndex(index = 8)
   public val uriHash: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.Metadata"
+  }
+
   public object KotlinxSerializer : KSerializer<Metadata> {
     private val delegator: KSerializer<Metadata> = Metadata.serializer()
 

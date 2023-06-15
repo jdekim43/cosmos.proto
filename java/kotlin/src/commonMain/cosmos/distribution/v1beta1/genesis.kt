@@ -1,6 +1,6 @@
 // Transform from cosmos/distribution/v1beta1/genesis.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.distribution.v1beta1
 
@@ -20,15 +20,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = DelegatorWithdrawInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.DelegatorWithdrawInfo")
+@SerialName(value = DelegatorWithdrawInfo.TYPE_URL)
 public data class DelegatorWithdrawInfo(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
   @ProtobufIndex(index = 2)
   public val withdrawAddress: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.DelegatorWithdrawInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<DelegatorWithdrawInfo> {
     private val delegator: KSerializer<DelegatorWithdrawInfo> = DelegatorWithdrawInfo.serializer()
 
@@ -52,13 +57,18 @@ public data class DelegatorWithdrawInfo(
 }
 
 @Serializable(with = ValidatorOutstandingRewardsRecord.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorOutstandingRewardsRecord")
+@SerialName(value = ValidatorOutstandingRewardsRecord.TYPE_URL)
 public data class ValidatorOutstandingRewardsRecord(
   @ProtobufIndex(index = 1)
   public val validatorAddress: String,
   @ProtobufIndex(index = 2)
   public val outstandingRewards: List<DecCoin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.distribution.v1beta1.ValidatorOutstandingRewardsRecord"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorOutstandingRewardsRecord> {
     private val delegator: KSerializer<ValidatorOutstandingRewardsRecord> =
         ValidatorOutstandingRewardsRecord.serializer()
@@ -84,13 +94,18 @@ public data class ValidatorOutstandingRewardsRecord(
 }
 
 @Serializable(with = ValidatorAccumulatedCommissionRecord.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorAccumulatedCommissionRecord")
+@SerialName(value = ValidatorAccumulatedCommissionRecord.TYPE_URL)
 public data class ValidatorAccumulatedCommissionRecord(
   @ProtobufIndex(index = 1)
   public val validatorAddress: String,
   @ProtobufIndex(index = 2)
   public val accumulated: ValidatorAccumulatedCommission,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.distribution.v1beta1.ValidatorAccumulatedCommissionRecord"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorAccumulatedCommissionRecord> {
     private val delegator: KSerializer<ValidatorAccumulatedCommissionRecord> =
         ValidatorAccumulatedCommissionRecord.serializer()
@@ -116,7 +131,7 @@ public data class ValidatorAccumulatedCommissionRecord(
 }
 
 @Serializable(with = ValidatorHistoricalRewardsRecord.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorHistoricalRewardsRecord")
+@SerialName(value = ValidatorHistoricalRewardsRecord.TYPE_URL)
 public data class ValidatorHistoricalRewardsRecord(
   @ProtobufIndex(index = 1)
   public val validatorAddress: String,
@@ -124,7 +139,12 @@ public data class ValidatorHistoricalRewardsRecord(
   public val period: ULong,
   @ProtobufIndex(index = 3)
   public val rewards: ValidatorHistoricalRewards,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.distribution.v1beta1.ValidatorHistoricalRewardsRecord"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorHistoricalRewardsRecord> {
     private val delegator: KSerializer<ValidatorHistoricalRewardsRecord> =
         ValidatorHistoricalRewardsRecord.serializer()
@@ -150,13 +170,17 @@ public data class ValidatorHistoricalRewardsRecord(
 }
 
 @Serializable(with = ValidatorCurrentRewardsRecord.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorCurrentRewardsRecord")
+@SerialName(value = ValidatorCurrentRewardsRecord.TYPE_URL)
 public data class ValidatorCurrentRewardsRecord(
   @ProtobufIndex(index = 1)
   public val validatorAddress: String,
   @ProtobufIndex(index = 2)
   public val rewards: ValidatorCurrentRewards,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.ValidatorCurrentRewardsRecord"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorCurrentRewardsRecord> {
     private val delegator: KSerializer<ValidatorCurrentRewardsRecord> =
         ValidatorCurrentRewardsRecord.serializer()
@@ -181,7 +205,7 @@ public data class ValidatorCurrentRewardsRecord(
 }
 
 @Serializable(with = DelegatorStartingInfoRecord.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.DelegatorStartingInfoRecord")
+@SerialName(value = DelegatorStartingInfoRecord.TYPE_URL)
 public data class DelegatorStartingInfoRecord(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -189,7 +213,11 @@ public data class DelegatorStartingInfoRecord(
   public val validatorAddress: String,
   @ProtobufIndex(index = 3)
   public val startingInfo: DelegatorStartingInfo,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.DelegatorStartingInfoRecord"
+  }
+
   public object KotlinxSerializer : KSerializer<DelegatorStartingInfoRecord> {
     private val delegator: KSerializer<DelegatorStartingInfoRecord> =
         DelegatorStartingInfoRecord.serializer()
@@ -214,7 +242,7 @@ public data class DelegatorStartingInfoRecord(
 }
 
 @Serializable(with = ValidatorSlashEventRecord.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorSlashEventRecord")
+@SerialName(value = ValidatorSlashEventRecord.TYPE_URL)
 public data class ValidatorSlashEventRecord(
   @ProtobufIndex(index = 1)
   public val validatorAddress: String,
@@ -224,7 +252,11 @@ public data class ValidatorSlashEventRecord(
   public val period: ULong,
   @ProtobufIndex(index = 4)
   public val validatorSlashEvent: ValidatorSlashEvent,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.ValidatorSlashEventRecord"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorSlashEventRecord> {
     private val delegator: KSerializer<ValidatorSlashEventRecord> =
         ValidatorSlashEventRecord.serializer()
@@ -249,7 +281,7 @@ public data class ValidatorSlashEventRecord(
 }
 
 @Serializable(with = GenesisState.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.GenesisState")
+@SerialName(value = GenesisState.TYPE_URL)
 public data class GenesisState(
   @ProtobufIndex(index = 1)
   public val params: Params,
@@ -271,7 +303,11 @@ public data class GenesisState(
   public val delegatorStartingInfos: List<DelegatorStartingInfoRecord>,
   @ProtobufIndex(index = 10)
   public val validatorSlashEvents: List<ValidatorSlashEventRecord>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.GenesisState"
+  }
+
   public object KotlinxSerializer : KSerializer<GenesisState> {
     private val delegator: KSerializer<GenesisState> = GenesisState.serializer()
 

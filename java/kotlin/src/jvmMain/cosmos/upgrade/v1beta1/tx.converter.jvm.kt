@@ -1,5 +1,5 @@
 // Transform from cosmos/upgrade/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.upgrade.v1beta1
 
@@ -15,8 +15,8 @@ public object MsgSoftwareUpgradeJvmConverter :
   public override val parser: Parser<Tx.MsgSoftwareUpgrade> = Tx.MsgSoftwareUpgrade.parser()
 
   public override fun convert(obj: Tx.MsgSoftwareUpgrade): MsgSoftwareUpgrade = MsgSoftwareUpgrade(
-  	authority = obj.authority,
-  	plan = PlanJvmConverter.convert(obj.plan),
+  	authority = obj.getAuthority(),
+  	plan = PlanJvmConverter.convert(obj.getPlan()),
   )
 
   public override fun convert(obj: MsgSoftwareUpgrade): Tx.MsgSoftwareUpgrade {
@@ -52,7 +52,7 @@ public object MsgCancelUpgradeJvmConverter :
   public override val parser: Parser<Tx.MsgCancelUpgrade> = Tx.MsgCancelUpgrade.parser()
 
   public override fun convert(obj: Tx.MsgCancelUpgrade): MsgCancelUpgrade = MsgCancelUpgrade(
-  	authority = obj.authority,
+  	authority = obj.getAuthority(),
   )
 
   public override fun convert(obj: MsgCancelUpgrade): Tx.MsgCancelUpgrade {

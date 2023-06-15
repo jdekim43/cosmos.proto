@@ -1,5 +1,5 @@
 // Transform from cosmos/capability/v1beta1/capability.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.capability.v1beta1
 
@@ -19,7 +19,7 @@ public object CapabilityJvmConverter :
       CapabilityOuterClass.Capability.parser()
 
   public override fun convert(obj: CapabilityOuterClass.Capability): Capability = Capability(
-  	index = obj.index.asKotlinType,
+  	index = obj.getIndex().asKotlinType,
   )
 
   public override fun convert(obj: Capability): CapabilityOuterClass.Capability {
@@ -37,8 +37,8 @@ public object OwnerJvmConverter : ProtobufTypeMapper<Owner, CapabilityOuterClass
       CapabilityOuterClass.Owner.parser()
 
   public override fun convert(obj: CapabilityOuterClass.Owner): Owner = Owner(
-  	module = obj.module,
-  	name = obj.name,
+  	module = obj.getModule(),
+  	name = obj.getName(),
   )
 
   public override fun convert(obj: Owner): CapabilityOuterClass.Owner {
@@ -59,7 +59,7 @@ public object CapabilityOwnersJvmConverter :
 
   public override fun convert(obj: CapabilityOuterClass.CapabilityOwners): CapabilityOwners =
       CapabilityOwners(
-  	owners = obj.ownersList.map { OwnerJvmConverter.convert(it) },
+  	owners = obj.getOwnersList().map { OwnerJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: CapabilityOwners): CapabilityOuterClass.CapabilityOwners {

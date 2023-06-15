@@ -1,6 +1,6 @@
 // Transform from cosmos/orm/v1/orm.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.orm.v1
 
@@ -20,9 +20,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = TableDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.v1.TableDescriptor")
+@SerialName(value = TableDescriptor.TYPE_URL)
 public data class TableDescriptor(
   @ProtobufIndex(index = 1)
   public val primaryKey: PrimaryKeyDescriptor,
@@ -30,7 +31,11 @@ public data class TableDescriptor(
   public val index: List<SecondaryIndexDescriptor>,
   @ProtobufIndex(index = 3)
   public val id: UInt,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.v1.TableDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<TableDescriptor> {
     private val delegator: KSerializer<TableDescriptor> = TableDescriptor.serializer()
 
@@ -54,13 +59,17 @@ public data class TableDescriptor(
 }
 
 @Serializable(with = PrimaryKeyDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.v1.PrimaryKeyDescriptor")
+@SerialName(value = PrimaryKeyDescriptor.TYPE_URL)
 public data class PrimaryKeyDescriptor(
   @ProtobufIndex(index = 1)
   public val fields: String,
   @ProtobufIndex(index = 2)
   public val autoIncrement: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.v1.PrimaryKeyDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<PrimaryKeyDescriptor> {
     private val delegator: KSerializer<PrimaryKeyDescriptor> = PrimaryKeyDescriptor.serializer()
 
@@ -84,7 +93,7 @@ public data class PrimaryKeyDescriptor(
 }
 
 @Serializable(with = SecondaryIndexDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.v1.SecondaryIndexDescriptor")
+@SerialName(value = SecondaryIndexDescriptor.TYPE_URL)
 public data class SecondaryIndexDescriptor(
   @ProtobufIndex(index = 1)
   public val fields: String,
@@ -92,7 +101,11 @@ public data class SecondaryIndexDescriptor(
   public val id: UInt,
   @ProtobufIndex(index = 3)
   public val unique: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.v1.SecondaryIndexDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<SecondaryIndexDescriptor> {
     private val delegator: KSerializer<SecondaryIndexDescriptor> =
         SecondaryIndexDescriptor.serializer()
@@ -117,11 +130,15 @@ public data class SecondaryIndexDescriptor(
 }
 
 @Serializable(with = SingletonDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.v1.SingletonDescriptor")
+@SerialName(value = SingletonDescriptor.TYPE_URL)
 public data class SingletonDescriptor(
   @ProtobufIndex(index = 1)
   public val id: UInt,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.v1.SingletonDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<SingletonDescriptor> {
     private val delegator: KSerializer<SingletonDescriptor> = SingletonDescriptor.serializer()
 

@@ -1,5 +1,5 @@
 // Transform from cosmos/auth/module/v1/module.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.auth.module.v1
 
@@ -14,10 +14,10 @@ public object ModuleJvmConverter : ProtobufTypeMapper<Module, ModuleOuterClass.M
   public override val parser: Parser<ModuleOuterClass.Module> = ModuleOuterClass.Module.parser()
 
   public override fun convert(obj: ModuleOuterClass.Module): Module = Module(
-  	bech32Prefix = obj.bech32Prefix,
-  	moduleAccountPermissions = obj.moduleAccountPermissionsList.map {
+  	bech32Prefix = obj.getBech32Prefix(),
+  	moduleAccountPermissions = obj.getModuleAccountPermissionsList().map {
       ModuleAccountPermissionJvmConverter.convert(it) },
-  	authority = obj.authority,
+  	authority = obj.getAuthority(),
   )
 
   public override fun convert(obj: Module): ModuleOuterClass.Module {
@@ -40,8 +40,8 @@ public object ModuleAccountPermissionJvmConverter :
 
   public override fun convert(obj: ModuleOuterClass.ModuleAccountPermission):
       ModuleAccountPermission = ModuleAccountPermission(
-  	account = obj.account,
-  	permissions = obj.permissionsList.map { it },
+  	account = obj.getAccount(),
+  	permissions = obj.getPermissionsList().map { it },
   )
 
   public override fun convert(obj: ModuleAccountPermission):

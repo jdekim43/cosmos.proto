@@ -1,5 +1,5 @@
 // Transform from cosmos/gov/module/v1/module.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.module.v1
 
@@ -16,8 +16,8 @@ public object ModuleJvmConverter : ProtobufTypeMapper<Module, ModuleOuterClass.M
   public override val parser: Parser<ModuleOuterClass.Module> = ModuleOuterClass.Module.parser()
 
   public override fun convert(obj: ModuleOuterClass.Module): Module = Module(
-  	maxMetadataLen = obj.maxMetadataLen.asKotlinType,
-  	authority = obj.authority,
+  	maxMetadataLen = obj.getMaxMetadataLen().asKotlinType,
+  	authority = obj.getAuthority(),
   )
 
   public override fun convert(obj: Module): ModuleOuterClass.Module {

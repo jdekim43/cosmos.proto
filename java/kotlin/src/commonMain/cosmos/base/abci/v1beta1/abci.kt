@@ -1,6 +1,6 @@
 // Transform from cosmos/base/abci/v1beta1/abci.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.abci.v1beta1
 
@@ -26,10 +26,11 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 import tendermint.abci.Event
 
 @Serializable(with = TxResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.TxResponse")
+@SerialName(value = TxResponse.TYPE_URL)
 public data class TxResponse(
   @ProtobufIndex(index = 1)
   public val height: Long,
@@ -57,7 +58,11 @@ public data class TxResponse(
   public val timestamp: String,
   @ProtobufIndex(index = 13)
   public val events: List<Event>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.TxResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<TxResponse> {
     private val delegator: KSerializer<TxResponse> = TxResponse.serializer()
 
@@ -81,7 +86,7 @@ public data class TxResponse(
 }
 
 @Serializable(with = ABCIMessageLog.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.ABCIMessageLog")
+@SerialName(value = ABCIMessageLog.TYPE_URL)
 public data class ABCIMessageLog(
   @ProtobufIndex(index = 1)
   public val msgIndex: UInt,
@@ -89,7 +94,11 @@ public data class ABCIMessageLog(
   public val log: String,
   @ProtobufIndex(index = 3)
   public val events: List<StringEvent>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.ABCIMessageLog"
+  }
+
   public object KotlinxSerializer : KSerializer<ABCIMessageLog> {
     private val delegator: KSerializer<ABCIMessageLog> = ABCIMessageLog.serializer()
 
@@ -113,13 +122,17 @@ public data class ABCIMessageLog(
 }
 
 @Serializable(with = StringEvent.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.StringEvent")
+@SerialName(value = StringEvent.TYPE_URL)
 public data class StringEvent(
   @ProtobufIndex(index = 1)
   public val type: String,
   @ProtobufIndex(index = 2)
   public val attributes: List<Attribute>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.StringEvent"
+  }
+
   public object KotlinxSerializer : KSerializer<StringEvent> {
     private val delegator: KSerializer<StringEvent> = StringEvent.serializer()
 
@@ -143,13 +156,17 @@ public data class StringEvent(
 }
 
 @Serializable(with = Attribute.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.Attribute")
+@SerialName(value = Attribute.TYPE_URL)
 public data class Attribute(
   @ProtobufIndex(index = 1)
   public val key: String,
   @ProtobufIndex(index = 2)
   public val `value`: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.Attribute"
+  }
+
   public object KotlinxSerializer : KSerializer<Attribute> {
     private val delegator: KSerializer<Attribute> = Attribute.serializer()
 
@@ -173,13 +190,17 @@ public data class Attribute(
 }
 
 @Serializable(with = GasInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.GasInfo")
+@SerialName(value = GasInfo.TYPE_URL)
 public data class GasInfo(
   @ProtobufIndex(index = 1)
   public val gasWanted: ULong,
   @ProtobufIndex(index = 2)
   public val gasUsed: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.GasInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<GasInfo> {
     private val delegator: KSerializer<GasInfo> = GasInfo.serializer()
 
@@ -203,7 +224,7 @@ public data class GasInfo(
 }
 
 @Serializable(with = Result.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.Result")
+@SerialName(value = Result.TYPE_URL)
 public data class Result(
   @Deprecated(
     message = "",
@@ -218,7 +239,11 @@ public data class Result(
   public val events: List<Event>,
   @ProtobufIndex(index = 4)
   public val msgResponses: List<Any>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.Result"
+  }
+
   public object KotlinxSerializer : KSerializer<Result> {
     private val delegator: KSerializer<Result> = Result.serializer()
 
@@ -242,13 +267,17 @@ public data class Result(
 }
 
 @Serializable(with = SimulationResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.SimulationResponse")
+@SerialName(value = SimulationResponse.TYPE_URL)
 public data class SimulationResponse(
   @ProtobufIndex(index = 1)
   public val gasInfo: GasInfo,
   @ProtobufIndex(index = 2)
   public val result: Result,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.SimulationResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<SimulationResponse> {
     private val delegator: KSerializer<SimulationResponse> = SimulationResponse.serializer()
 
@@ -272,13 +301,17 @@ public data class SimulationResponse(
 }
 
 @Serializable(with = MsgData.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.MsgData")
+@SerialName(value = MsgData.TYPE_URL)
 public data class MsgData(
   @ProtobufIndex(index = 1)
   public val msgType: String,
   @ProtobufIndex(index = 2)
   public val `data`: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.MsgData"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgData> {
     private val delegator: KSerializer<MsgData> = MsgData.serializer()
 
@@ -302,7 +335,7 @@ public data class MsgData(
 }
 
 @Serializable(with = TxMsgData.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.TxMsgData")
+@SerialName(value = TxMsgData.TYPE_URL)
 public data class TxMsgData(
   @Deprecated(
     message = "",
@@ -313,7 +346,11 @@ public data class TxMsgData(
   public val `data`: List<MsgData>,
   @ProtobufIndex(index = 2)
   public val msgResponses: List<Any>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.TxMsgData"
+  }
+
   public object KotlinxSerializer : KSerializer<TxMsgData> {
     private val delegator: KSerializer<TxMsgData> = TxMsgData.serializer()
 
@@ -337,7 +374,7 @@ public data class TxMsgData(
 }
 
 @Serializable(with = SearchTxsResult.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.abci.v1beta1.SearchTxsResult")
+@SerialName(value = SearchTxsResult.TYPE_URL)
 public data class SearchTxsResult(
   @ProtobufIndex(index = 1)
   public val totalCount: ULong,
@@ -351,7 +388,11 @@ public data class SearchTxsResult(
   public val limit: ULong,
   @ProtobufIndex(index = 6)
   public val txs: List<TxResponse>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.abci.v1beta1.SearchTxsResult"
+  }
+
   public object KotlinxSerializer : KSerializer<SearchTxsResult> {
     private val delegator: KSerializer<SearchTxsResult> = SearchTxsResult.serializer()
 

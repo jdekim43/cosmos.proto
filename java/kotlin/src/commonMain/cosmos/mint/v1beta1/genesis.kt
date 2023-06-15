@@ -1,9 +1,10 @@
 // Transform from cosmos/mint/v1beta1/genesis.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.mint.v1beta1
 
+import kotlin.String
 import kotlin.Unit
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -16,15 +17,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = GenesisState.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.GenesisState")
+@SerialName(value = GenesisState.TYPE_URL)
 public data class GenesisState(
   @ProtobufIndex(index = 1)
   public val minter: Minter,
   @ProtobufIndex(index = 2)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.GenesisState"
+  }
+
   public object KotlinxSerializer : KSerializer<GenesisState> {
     private val delegator: KSerializer<GenesisState> = GenesisState.serializer()
 

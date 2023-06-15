@@ -1,5 +1,5 @@
 // Transform from cosmos/app/runtime/v1alpha1/module.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.app.runtime.v1alpha1
 
@@ -14,12 +14,13 @@ public object ModuleJvmConverter : ProtobufTypeMapper<Module, ModuleOuterClass.M
   public override val parser: Parser<ModuleOuterClass.Module> = ModuleOuterClass.Module.parser()
 
   public override fun convert(obj: ModuleOuterClass.Module): Module = Module(
-  	appName = obj.appName,
-  	beginBlockers = obj.beginBlockersList.map { it },
-  	endBlockers = obj.endBlockersList.map { it },
-  	initGenesis = obj.initGenesisList.map { it },
-  	exportGenesis = obj.exportGenesisList.map { it },
-  	overrideStoreKeys = obj.overrideStoreKeysList.map { StoreKeyConfigJvmConverter.convert(it) },
+  	appName = obj.getAppName(),
+  	beginBlockers = obj.getBeginBlockersList().map { it },
+  	endBlockers = obj.getEndBlockersList().map { it },
+  	initGenesis = obj.getInitGenesisList().map { it },
+  	exportGenesis = obj.getExportGenesisList().map { it },
+  	overrideStoreKeys = obj.getOverrideStoreKeysList().map { StoreKeyConfigJvmConverter.convert(it)
+      },
   )
 
   public override fun convert(obj: Module): ModuleOuterClass.Module {
@@ -45,8 +46,8 @@ public object StoreKeyConfigJvmConverter :
 
   public override fun convert(obj: ModuleOuterClass.StoreKeyConfig): StoreKeyConfig =
       StoreKeyConfig(
-  	moduleName = obj.moduleName,
-  	kvStoreKey = obj.kvStoreKey,
+  	moduleName = obj.getModuleName(),
+  	kvStoreKey = obj.getKvStoreKey(),
   )
 
   public override fun convert(obj: StoreKeyConfig): ModuleOuterClass.StoreKeyConfig {

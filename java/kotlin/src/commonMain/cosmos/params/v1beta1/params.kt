@@ -1,6 +1,6 @@
 // Transform from cosmos/params/v1beta1/params.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.params.v1beta1
 
@@ -18,9 +18,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = ParameterChangeProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.params.v1beta1.ParameterChangeProposal")
+@SerialName(value = ParameterChangeProposal.TYPE_URL)
 public data class ParameterChangeProposal(
   @ProtobufIndex(index = 1)
   public val title: String,
@@ -28,7 +29,11 @@ public data class ParameterChangeProposal(
   public val description: String,
   @ProtobufIndex(index = 3)
   public val changes: List<ParamChange>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.params.v1beta1.ParameterChangeProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<ParameterChangeProposal> {
     private val delegator: KSerializer<ParameterChangeProposal> =
         ParameterChangeProposal.serializer()
@@ -53,7 +58,7 @@ public data class ParameterChangeProposal(
 }
 
 @Serializable(with = ParamChange.KotlinxSerializer::class)
-@SerialName(value = "cosmos.params.v1beta1.ParamChange")
+@SerialName(value = ParamChange.TYPE_URL)
 public data class ParamChange(
   @ProtobufIndex(index = 1)
   public val subspace: String,
@@ -61,7 +66,11 @@ public data class ParamChange(
   public val key: String,
   @ProtobufIndex(index = 3)
   public val `value`: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.params.v1beta1.ParamChange"
+  }
+
   public object KotlinxSerializer : KSerializer<ParamChange> {
     private val delegator: KSerializer<ParamChange> = ParamChange.serializer()
 

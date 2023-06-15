@@ -1,5 +1,5 @@
 // Transform from cosmos/gov/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.v1beta1
 
@@ -19,9 +19,9 @@ public object MsgSubmitProposalJvmConverter :
   public override val parser: Parser<Tx.MsgSubmitProposal> = Tx.MsgSubmitProposal.parser()
 
   public override fun convert(obj: Tx.MsgSubmitProposal): MsgSubmitProposal = MsgSubmitProposal(
-  	content = AnyJvmConverter.convert(obj.content),
-  	initialDeposit = obj.initialDepositList.map { CoinJvmConverter.convert(it) },
-  	proposer = obj.proposer,
+  	content = AnyJvmConverter.convert(obj.getContent()),
+  	initialDeposit = obj.getInitialDepositList().map { CoinJvmConverter.convert(it) },
+  	proposer = obj.getProposer(),
   )
 
   public override fun convert(obj: MsgSubmitProposal): Tx.MsgSubmitProposal {
@@ -43,7 +43,7 @@ public object MsgSubmitProposalResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgSubmitProposalResponse): MsgSubmitProposalResponse =
       MsgSubmitProposalResponse(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: MsgSubmitProposalResponse): Tx.MsgSubmitProposalResponse {
@@ -59,9 +59,9 @@ public object MsgVoteJvmConverter : ProtobufTypeMapper<MsgVote, Tx.MsgVote> {
   public override val parser: Parser<Tx.MsgVote> = Tx.MsgVote.parser()
 
   public override fun convert(obj: Tx.MsgVote): MsgVote = MsgVote(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
-  	option = VoteOption.forNumber(obj.option.number),
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
+  	option = VoteOption.forNumber(obj.getOption().number),
   )
 
   public override fun convert(obj: MsgVote): Tx.MsgVote {
@@ -95,9 +95,9 @@ public object MsgVoteWeightedJvmConverter : ProtobufTypeMapper<MsgVoteWeighted, 
   public override val parser: Parser<Tx.MsgVoteWeighted> = Tx.MsgVoteWeighted.parser()
 
   public override fun convert(obj: Tx.MsgVoteWeighted): MsgVoteWeighted = MsgVoteWeighted(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
-  	options = obj.optionsList.map { WeightedVoteOptionJvmConverter.convert(it) },
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
+  	options = obj.getOptionsList().map { WeightedVoteOptionJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgVoteWeighted): Tx.MsgVoteWeighted {
@@ -133,9 +133,9 @@ public object MsgDepositJvmConverter : ProtobufTypeMapper<MsgDeposit, Tx.MsgDepo
   public override val parser: Parser<Tx.MsgDeposit> = Tx.MsgDeposit.parser()
 
   public override fun convert(obj: Tx.MsgDeposit): MsgDeposit = MsgDeposit(
-  	proposalId = obj.proposalId.asKotlinType,
-  	depositor = obj.depositor,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	proposalId = obj.getProposalId().asKotlinType,
+  	depositor = obj.getDepositor(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgDeposit): Tx.MsgDeposit {

@@ -1,6 +1,6 @@
 // Transform from cosmos/base/node/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.node.v1beta1
 
@@ -17,10 +17,15 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = ConfigRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.node.v1beta1.ConfigRequest")
-public class ConfigRequest() {
+@SerialName(value = ConfigRequest.TYPE_URL)
+public class ConfigRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.node.v1beta1.ConfigRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<ConfigRequest> {
     private val delegator: KSerializer<ConfigRequest> = ConfigRequest.serializer()
 
@@ -44,11 +49,15 @@ public class ConfigRequest() {
 }
 
 @Serializable(with = ConfigResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.node.v1beta1.ConfigResponse")
+@SerialName(value = ConfigResponse.TYPE_URL)
 public data class ConfigResponse(
   @ProtobufIndex(index = 1)
   public val minimumGasPrice: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.node.v1beta1.ConfigResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<ConfigResponse> {
     private val delegator: KSerializer<ConfigResponse> = ConfigResponse.serializer()
 

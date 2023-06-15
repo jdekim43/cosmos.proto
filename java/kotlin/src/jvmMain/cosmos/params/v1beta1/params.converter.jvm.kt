@@ -1,5 +1,5 @@
 // Transform from cosmos/params/v1beta1/params.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.params.v1beta1
 
@@ -18,9 +18,9 @@ public object ParameterChangeProposalJvmConverter :
 
   public override fun convert(obj: Params.ParameterChangeProposal): ParameterChangeProposal =
       ParameterChangeProposal(
-  	title = obj.title,
-  	description = obj.description,
-  	changes = obj.changesList.map { ParamChangeJvmConverter.convert(it) },
+  	title = obj.getTitle(),
+  	description = obj.getDescription(),
+  	changes = obj.getChangesList().map { ParamChangeJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ParameterChangeProposal): Params.ParameterChangeProposal {
@@ -38,9 +38,9 @@ public object ParamChangeJvmConverter : ProtobufTypeMapper<ParamChange, Params.P
   public override val parser: Parser<Params.ParamChange> = Params.ParamChange.parser()
 
   public override fun convert(obj: Params.ParamChange): ParamChange = ParamChange(
-  	subspace = obj.subspace,
-  	key = obj.key,
-  	`value` = obj.`value`,
+  	subspace = obj.getSubspace(),
+  	key = obj.getKey(),
+  	`value` = obj.getValue(),
   )
 
   public override fun convert(obj: ParamChange): Params.ParamChange {

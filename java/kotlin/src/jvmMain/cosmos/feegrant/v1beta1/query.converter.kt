@@ -1,5 +1,5 @@
 // Transform from cosmos/feegrant/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.feegrant.v1beta1
 

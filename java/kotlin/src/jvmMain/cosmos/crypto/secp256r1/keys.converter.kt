@@ -1,5 +1,5 @@
 // Transform from cosmos/crypto/secp256r1/keys.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.secp256r1
 

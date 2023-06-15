@@ -1,5 +1,5 @@
 // Transform from cosmos/evidence/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.evidence.v1beta1
 
@@ -17,8 +17,8 @@ public object MsgSubmitEvidenceJvmConverter :
   public override val parser: Parser<Tx.MsgSubmitEvidence> = Tx.MsgSubmitEvidence.parser()
 
   public override fun convert(obj: Tx.MsgSubmitEvidence): MsgSubmitEvidence = MsgSubmitEvidence(
-  	submitter = obj.submitter,
-  	evidence = AnyJvmConverter.convert(obj.evidence),
+  	submitter = obj.getSubmitter(),
+  	evidence = AnyJvmConverter.convert(obj.getEvidence()),
   )
 
   public override fun convert(obj: MsgSubmitEvidence): Tx.MsgSubmitEvidence {
@@ -39,7 +39,7 @@ public object MsgSubmitEvidenceResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgSubmitEvidenceResponse): MsgSubmitEvidenceResponse =
       MsgSubmitEvidenceResponse(
-  	hash = obj.hash.toByteArray(),
+  	hash = obj.getHash().toByteArray(),
   )
 
   public override fun convert(obj: MsgSubmitEvidenceResponse): Tx.MsgSubmitEvidenceResponse {

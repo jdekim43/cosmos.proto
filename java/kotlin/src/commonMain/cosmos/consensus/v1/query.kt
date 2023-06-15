@@ -1,9 +1,10 @@
 // Transform from cosmos/consensus/v1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.consensus.v1
 
+import kotlin.String
 import kotlin.Unit
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -16,11 +17,16 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 import tendermint.types.ConsensusParams
 
 @Serializable(with = QueryParamsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.consensus.v1.QueryParamsRequest")
-public class QueryParamsRequest() {
+@SerialName(value = QueryParamsRequest.TYPE_URL)
+public class QueryParamsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.consensus.v1.QueryParamsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsRequest> {
     private val delegator: KSerializer<QueryParamsRequest> = QueryParamsRequest.serializer()
 
@@ -44,11 +50,15 @@ public class QueryParamsRequest() {
 }
 
 @Serializable(with = QueryParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.consensus.v1.QueryParamsResponse")
+@SerialName(value = QueryParamsResponse.TYPE_URL)
 public data class QueryParamsResponse(
   @ProtobufIndex(index = 1)
   public val params: ConsensusParams,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.consensus.v1.QueryParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsResponse> {
     private val delegator: KSerializer<QueryParamsResponse> = QueryParamsResponse.serializer()
 

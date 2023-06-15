@@ -1,6 +1,6 @@
 // Transform from cosmos/base/tendermint/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.tendermint.v1beta1
 
@@ -25,17 +25,23 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 import tendermint.p2p.DefaultNodeInfo
 import tendermint.types.BlockID
 
 @Serializable(with = GetValidatorSetByHeightRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetValidatorSetByHeightRequest")
+@SerialName(value = GetValidatorSetByHeightRequest.TYPE_URL)
 public data class GetValidatorSetByHeightRequest(
   @ProtobufIndex(index = 1)
   public val height: Long,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.tendermint.v1beta1.GetValidatorSetByHeightRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetValidatorSetByHeightRequest> {
     private val delegator: KSerializer<GetValidatorSetByHeightRequest> =
         GetValidatorSetByHeightRequest.serializer()
@@ -60,7 +66,7 @@ public data class GetValidatorSetByHeightRequest(
 }
 
 @Serializable(with = GetValidatorSetByHeightResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetValidatorSetByHeightResponse")
+@SerialName(value = GetValidatorSetByHeightResponse.TYPE_URL)
 public data class GetValidatorSetByHeightResponse(
   @ProtobufIndex(index = 1)
   public val blockHeight: Long,
@@ -68,7 +74,12 @@ public data class GetValidatorSetByHeightResponse(
   public val validators: List<Validator>,
   @ProtobufIndex(index = 3)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.tendermint.v1beta1.GetValidatorSetByHeightResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetValidatorSetByHeightResponse> {
     private val delegator: KSerializer<GetValidatorSetByHeightResponse> =
         GetValidatorSetByHeightResponse.serializer()
@@ -94,11 +105,16 @@ public data class GetValidatorSetByHeightResponse(
 }
 
 @Serializable(with = GetLatestValidatorSetRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetLatestValidatorSetRequest")
+@SerialName(value = GetLatestValidatorSetRequest.TYPE_URL)
 public data class GetLatestValidatorSetRequest(
   @ProtobufIndex(index = 1)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.tendermint.v1beta1.GetLatestValidatorSetRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetLatestValidatorSetRequest> {
     private val delegator: KSerializer<GetLatestValidatorSetRequest> =
         GetLatestValidatorSetRequest.serializer()
@@ -123,7 +139,7 @@ public data class GetLatestValidatorSetRequest(
 }
 
 @Serializable(with = GetLatestValidatorSetResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetLatestValidatorSetResponse")
+@SerialName(value = GetLatestValidatorSetResponse.TYPE_URL)
 public data class GetLatestValidatorSetResponse(
   @ProtobufIndex(index = 1)
   public val blockHeight: Long,
@@ -131,7 +147,12 @@ public data class GetLatestValidatorSetResponse(
   public val validators: List<Validator>,
   @ProtobufIndex(index = 3)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.tendermint.v1beta1.GetLatestValidatorSetResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetLatestValidatorSetResponse> {
     private val delegator: KSerializer<GetLatestValidatorSetResponse> =
         GetLatestValidatorSetResponse.serializer()
@@ -156,7 +177,7 @@ public data class GetLatestValidatorSetResponse(
 }
 
 @Serializable(with = Validator.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.Validator")
+@SerialName(value = Validator.TYPE_URL)
 public data class Validator(
   @ProtobufIndex(index = 1)
   public val address: String,
@@ -166,7 +187,11 @@ public data class Validator(
   public val votingPower: Long,
   @ProtobufIndex(index = 4)
   public val proposerPriority: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.Validator"
+  }
+
   public object KotlinxSerializer : KSerializer<Validator> {
     private val delegator: KSerializer<Validator> = Validator.serializer()
 
@@ -190,11 +215,15 @@ public data class Validator(
 }
 
 @Serializable(with = GetBlockByHeightRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetBlockByHeightRequest")
+@SerialName(value = GetBlockByHeightRequest.TYPE_URL)
 public data class GetBlockByHeightRequest(
   @ProtobufIndex(index = 1)
   public val height: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.GetBlockByHeightRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetBlockByHeightRequest> {
     private val delegator: KSerializer<GetBlockByHeightRequest> =
         GetBlockByHeightRequest.serializer()
@@ -219,7 +248,7 @@ public data class GetBlockByHeightRequest(
 }
 
 @Serializable(with = GetBlockByHeightResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse")
+@SerialName(value = GetBlockByHeightResponse.TYPE_URL)
 public data class GetBlockByHeightResponse(
   @ProtobufIndex(index = 1)
   public val blockId: BlockID,
@@ -227,7 +256,11 @@ public data class GetBlockByHeightResponse(
   public val block: tendermint.types.Block,
   @ProtobufIndex(index = 3)
   public val sdkBlock: Block,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetBlockByHeightResponse> {
     private val delegator: KSerializer<GetBlockByHeightResponse> =
         GetBlockByHeightResponse.serializer()
@@ -252,8 +285,12 @@ public data class GetBlockByHeightResponse(
 }
 
 @Serializable(with = GetLatestBlockRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetLatestBlockRequest")
-public class GetLatestBlockRequest() {
+@SerialName(value = GetLatestBlockRequest.TYPE_URL)
+public class GetLatestBlockRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.GetLatestBlockRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetLatestBlockRequest> {
     private val delegator: KSerializer<GetLatestBlockRequest> = GetLatestBlockRequest.serializer()
 
@@ -277,7 +314,7 @@ public class GetLatestBlockRequest() {
 }
 
 @Serializable(with = GetLatestBlockResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetLatestBlockResponse")
+@SerialName(value = GetLatestBlockResponse.TYPE_URL)
 public data class GetLatestBlockResponse(
   @ProtobufIndex(index = 1)
   public val blockId: BlockID,
@@ -285,7 +322,11 @@ public data class GetLatestBlockResponse(
   public val block: tendermint.types.Block,
   @ProtobufIndex(index = 3)
   public val sdkBlock: Block,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.GetLatestBlockResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetLatestBlockResponse> {
     private val delegator: KSerializer<GetLatestBlockResponse> = GetLatestBlockResponse.serializer()
 
@@ -309,8 +350,12 @@ public data class GetLatestBlockResponse(
 }
 
 @Serializable(with = GetSyncingRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetSyncingRequest")
-public class GetSyncingRequest() {
+@SerialName(value = GetSyncingRequest.TYPE_URL)
+public class GetSyncingRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.GetSyncingRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetSyncingRequest> {
     private val delegator: KSerializer<GetSyncingRequest> = GetSyncingRequest.serializer()
 
@@ -334,11 +379,15 @@ public class GetSyncingRequest() {
 }
 
 @Serializable(with = GetSyncingResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetSyncingResponse")
+@SerialName(value = GetSyncingResponse.TYPE_URL)
 public data class GetSyncingResponse(
   @ProtobufIndex(index = 1)
   public val syncing: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.GetSyncingResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetSyncingResponse> {
     private val delegator: KSerializer<GetSyncingResponse> = GetSyncingResponse.serializer()
 
@@ -362,8 +411,12 @@ public data class GetSyncingResponse(
 }
 
 @Serializable(with = GetNodeInfoRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetNodeInfoRequest")
-public class GetNodeInfoRequest() {
+@SerialName(value = GetNodeInfoRequest.TYPE_URL)
+public class GetNodeInfoRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.GetNodeInfoRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetNodeInfoRequest> {
     private val delegator: KSerializer<GetNodeInfoRequest> = GetNodeInfoRequest.serializer()
 
@@ -387,13 +440,17 @@ public class GetNodeInfoRequest() {
 }
 
 @Serializable(with = GetNodeInfoResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.GetNodeInfoResponse")
+@SerialName(value = GetNodeInfoResponse.TYPE_URL)
 public data class GetNodeInfoResponse(
   @ProtobufIndex(index = 1)
   public val defaultNodeInfo: DefaultNodeInfo,
   @ProtobufIndex(index = 2)
   public val applicationVersion: VersionInfo,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.GetNodeInfoResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetNodeInfoResponse> {
     private val delegator: KSerializer<GetNodeInfoResponse> = GetNodeInfoResponse.serializer()
 
@@ -417,7 +474,7 @@ public data class GetNodeInfoResponse(
 }
 
 @Serializable(with = VersionInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.VersionInfo")
+@SerialName(value = VersionInfo.TYPE_URL)
 public data class VersionInfo(
   @ProtobufIndex(index = 1)
   public val name: String,
@@ -435,7 +492,11 @@ public data class VersionInfo(
   public val buildDeps: List<Module>,
   @ProtobufIndex(index = 8)
   public val cosmosSdkVersion: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.VersionInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<VersionInfo> {
     private val delegator: KSerializer<VersionInfo> = VersionInfo.serializer()
 
@@ -459,7 +520,7 @@ public data class VersionInfo(
 }
 
 @Serializable(with = Module.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.Module")
+@SerialName(value = Module.TYPE_URL)
 public data class Module(
   @ProtobufIndex(index = 1)
   public val path: String,
@@ -467,7 +528,11 @@ public data class Module(
   public val version: String,
   @ProtobufIndex(index = 3)
   public val sum: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.Module"
+  }
+
   public object KotlinxSerializer : KSerializer<Module> {
     private val delegator: KSerializer<Module> = Module.serializer()
 
@@ -491,7 +556,7 @@ public data class Module(
 }
 
 @Serializable(with = ABCIQueryRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.ABCIQueryRequest")
+@SerialName(value = ABCIQueryRequest.TYPE_URL)
 public data class ABCIQueryRequest(
   @ProtobufIndex(index = 1)
   public val `data`: ByteArray,
@@ -501,7 +566,11 @@ public data class ABCIQueryRequest(
   public val height: Long,
   @ProtobufIndex(index = 4)
   public val prove: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.ABCIQueryRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<ABCIQueryRequest> {
     private val delegator: KSerializer<ABCIQueryRequest> = ABCIQueryRequest.serializer()
 
@@ -525,7 +594,7 @@ public data class ABCIQueryRequest(
 }
 
 @Serializable(with = ABCIQueryResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.ABCIQueryResponse")
+@SerialName(value = ABCIQueryResponse.TYPE_URL)
 public data class ABCIQueryResponse(
   @ProtobufIndex(index = 1)
   public val code: UInt,
@@ -545,7 +614,11 @@ public data class ABCIQueryResponse(
   public val height: Long,
   @ProtobufIndex(index = 10)
   public val codespace: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.ABCIQueryResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<ABCIQueryResponse> {
     private val delegator: KSerializer<ABCIQueryResponse> = ABCIQueryResponse.serializer()
 
@@ -569,7 +642,7 @@ public data class ABCIQueryResponse(
 }
 
 @Serializable(with = ProofOp.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.ProofOp")
+@SerialName(value = ProofOp.TYPE_URL)
 public data class ProofOp(
   @ProtobufIndex(index = 1)
   public val type: String,
@@ -577,7 +650,11 @@ public data class ProofOp(
   public val key: ByteArray,
   @ProtobufIndex(index = 3)
   public val `data`: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.ProofOp"
+  }
+
   public object KotlinxSerializer : KSerializer<ProofOp> {
     private val delegator: KSerializer<ProofOp> = ProofOp.serializer()
 
@@ -601,11 +678,15 @@ public data class ProofOp(
 }
 
 @Serializable(with = ProofOps.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.tendermint.v1beta1.ProofOps")
+@SerialName(value = ProofOps.TYPE_URL)
 public data class ProofOps(
   @ProtobufIndex(index = 1)
   public val ops: List<ProofOp>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.tendermint.v1beta1.ProofOps"
+  }
+
   public object KotlinxSerializer : KSerializer<ProofOps> {
     private val delegator: KSerializer<ProofOps> = ProofOps.serializer()
 

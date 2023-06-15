@@ -1,6 +1,6 @@
 // Transform from cosmos/gov/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.v1beta1
 
@@ -21,13 +21,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryProposalRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryProposalRequest")
+@SerialName(value = QueryProposalRequest.TYPE_URL)
 public data class QueryProposalRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryProposalRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryProposalRequest> {
     private val delegator: KSerializer<QueryProposalRequest> = QueryProposalRequest.serializer()
 
@@ -51,11 +56,15 @@ public data class QueryProposalRequest(
 }
 
 @Serializable(with = QueryProposalResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryProposalResponse")
+@SerialName(value = QueryProposalResponse.TYPE_URL)
 public data class QueryProposalResponse(
   @ProtobufIndex(index = 1)
   public val proposal: Proposal,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryProposalResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryProposalResponse> {
     private val delegator: KSerializer<QueryProposalResponse> = QueryProposalResponse.serializer()
 
@@ -79,7 +88,7 @@ public data class QueryProposalResponse(
 }
 
 @Serializable(with = QueryProposalsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryProposalsRequest")
+@SerialName(value = QueryProposalsRequest.TYPE_URL)
 public data class QueryProposalsRequest(
   @ProtobufIndex(index = 1)
   public val proposalStatus: ProposalStatus,
@@ -89,7 +98,11 @@ public data class QueryProposalsRequest(
   public val depositor: String,
   @ProtobufIndex(index = 4)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryProposalsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryProposalsRequest> {
     private val delegator: KSerializer<QueryProposalsRequest> = QueryProposalsRequest.serializer()
 
@@ -113,13 +126,17 @@ public data class QueryProposalsRequest(
 }
 
 @Serializable(with = QueryProposalsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryProposalsResponse")
+@SerialName(value = QueryProposalsResponse.TYPE_URL)
 public data class QueryProposalsResponse(
   @ProtobufIndex(index = 1)
   public val proposals: List<Proposal>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryProposalsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryProposalsResponse> {
     private val delegator: KSerializer<QueryProposalsResponse> = QueryProposalsResponse.serializer()
 
@@ -143,13 +160,17 @@ public data class QueryProposalsResponse(
 }
 
 @Serializable(with = QueryVoteRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryVoteRequest")
+@SerialName(value = QueryVoteRequest.TYPE_URL)
 public data class QueryVoteRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
   @ProtobufIndex(index = 2)
   public val voter: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryVoteRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVoteRequest> {
     private val delegator: KSerializer<QueryVoteRequest> = QueryVoteRequest.serializer()
 
@@ -173,11 +194,15 @@ public data class QueryVoteRequest(
 }
 
 @Serializable(with = QueryVoteResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryVoteResponse")
+@SerialName(value = QueryVoteResponse.TYPE_URL)
 public data class QueryVoteResponse(
   @ProtobufIndex(index = 1)
   public val vote: Vote,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryVoteResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVoteResponse> {
     private val delegator: KSerializer<QueryVoteResponse> = QueryVoteResponse.serializer()
 
@@ -201,13 +226,17 @@ public data class QueryVoteResponse(
 }
 
 @Serializable(with = QueryVotesRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryVotesRequest")
+@SerialName(value = QueryVotesRequest.TYPE_URL)
 public data class QueryVotesRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryVotesRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVotesRequest> {
     private val delegator: KSerializer<QueryVotesRequest> = QueryVotesRequest.serializer()
 
@@ -231,13 +260,17 @@ public data class QueryVotesRequest(
 }
 
 @Serializable(with = QueryVotesResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryVotesResponse")
+@SerialName(value = QueryVotesResponse.TYPE_URL)
 public data class QueryVotesResponse(
   @ProtobufIndex(index = 1)
   public val votes: List<Vote>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryVotesResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVotesResponse> {
     private val delegator: KSerializer<QueryVotesResponse> = QueryVotesResponse.serializer()
 
@@ -261,11 +294,15 @@ public data class QueryVotesResponse(
 }
 
 @Serializable(with = QueryParamsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryParamsRequest")
+@SerialName(value = QueryParamsRequest.TYPE_URL)
 public data class QueryParamsRequest(
   @ProtobufIndex(index = 1)
   public val paramsType: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryParamsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsRequest> {
     private val delegator: KSerializer<QueryParamsRequest> = QueryParamsRequest.serializer()
 
@@ -289,7 +326,7 @@ public data class QueryParamsRequest(
 }
 
 @Serializable(with = QueryParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryParamsResponse")
+@SerialName(value = QueryParamsResponse.TYPE_URL)
 public data class QueryParamsResponse(
   @ProtobufIndex(index = 1)
   public val votingParams: VotingParams,
@@ -297,7 +334,11 @@ public data class QueryParamsResponse(
   public val depositParams: DepositParams,
   @ProtobufIndex(index = 3)
   public val tallyParams: TallyParams,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsResponse> {
     private val delegator: KSerializer<QueryParamsResponse> = QueryParamsResponse.serializer()
 
@@ -321,13 +362,17 @@ public data class QueryParamsResponse(
 }
 
 @Serializable(with = QueryDepositRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryDepositRequest")
+@SerialName(value = QueryDepositRequest.TYPE_URL)
 public data class QueryDepositRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
   @ProtobufIndex(index = 2)
   public val depositor: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryDepositRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDepositRequest> {
     private val delegator: KSerializer<QueryDepositRequest> = QueryDepositRequest.serializer()
 
@@ -351,11 +396,15 @@ public data class QueryDepositRequest(
 }
 
 @Serializable(with = QueryDepositResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryDepositResponse")
+@SerialName(value = QueryDepositResponse.TYPE_URL)
 public data class QueryDepositResponse(
   @ProtobufIndex(index = 1)
   public val deposit: Deposit,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryDepositResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDepositResponse> {
     private val delegator: KSerializer<QueryDepositResponse> = QueryDepositResponse.serializer()
 
@@ -379,13 +428,17 @@ public data class QueryDepositResponse(
 }
 
 @Serializable(with = QueryDepositsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryDepositsRequest")
+@SerialName(value = QueryDepositsRequest.TYPE_URL)
 public data class QueryDepositsRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryDepositsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDepositsRequest> {
     private val delegator: KSerializer<QueryDepositsRequest> = QueryDepositsRequest.serializer()
 
@@ -409,13 +462,17 @@ public data class QueryDepositsRequest(
 }
 
 @Serializable(with = QueryDepositsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryDepositsResponse")
+@SerialName(value = QueryDepositsResponse.TYPE_URL)
 public data class QueryDepositsResponse(
   @ProtobufIndex(index = 1)
   public val deposits: List<Deposit>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryDepositsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDepositsResponse> {
     private val delegator: KSerializer<QueryDepositsResponse> = QueryDepositsResponse.serializer()
 
@@ -439,11 +496,15 @@ public data class QueryDepositsResponse(
 }
 
 @Serializable(with = QueryTallyResultRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryTallyResultRequest")
+@SerialName(value = QueryTallyResultRequest.TYPE_URL)
 public data class QueryTallyResultRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryTallyResultRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryTallyResultRequest> {
     private val delegator: KSerializer<QueryTallyResultRequest> =
         QueryTallyResultRequest.serializer()
@@ -468,11 +529,15 @@ public data class QueryTallyResultRequest(
 }
 
 @Serializable(with = QueryTallyResultResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1beta1.QueryTallyResultResponse")
+@SerialName(value = QueryTallyResultResponse.TYPE_URL)
 public data class QueryTallyResultResponse(
   @ProtobufIndex(index = 1)
   public val tally: TallyResult,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1beta1.QueryTallyResultResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryTallyResultResponse> {
     private val delegator: KSerializer<QueryTallyResultResponse> =
         QueryTallyResultResponse.serializer()

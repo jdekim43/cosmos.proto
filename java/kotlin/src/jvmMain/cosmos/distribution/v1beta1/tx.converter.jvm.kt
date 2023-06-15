@@ -1,5 +1,5 @@
 // Transform from cosmos/distribution/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.distribution.v1beta1
 
@@ -17,8 +17,8 @@ public object MsgSetWithdrawAddressJvmConverter :
 
   public override fun convert(obj: Tx.MsgSetWithdrawAddress): MsgSetWithdrawAddress =
       MsgSetWithdrawAddress(
-  	delegatorAddress = obj.delegatorAddress,
-  	withdrawAddress = obj.withdrawAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	withdrawAddress = obj.getWithdrawAddress(),
   )
 
   public override fun convert(obj: MsgSetWithdrawAddress): Tx.MsgSetWithdrawAddress {
@@ -58,8 +58,8 @@ public object MsgWithdrawDelegatorRewardJvmConverter :
 
   public override fun convert(obj: Tx.MsgWithdrawDelegatorReward): MsgWithdrawDelegatorReward =
       MsgWithdrawDelegatorReward(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
   )
 
   public override fun convert(obj: MsgWithdrawDelegatorReward): Tx.MsgWithdrawDelegatorReward {
@@ -80,7 +80,7 @@ public object MsgWithdrawDelegatorRewardResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgWithdrawDelegatorRewardResponse):
       MsgWithdrawDelegatorRewardResponse = MsgWithdrawDelegatorRewardResponse(
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgWithdrawDelegatorRewardResponse):
@@ -101,7 +101,7 @@ public object MsgWithdrawValidatorCommissionJvmConverter :
 
   public override fun convert(obj: Tx.MsgWithdrawValidatorCommission):
       MsgWithdrawValidatorCommission = MsgWithdrawValidatorCommission(
-  	validatorAddress = obj.validatorAddress,
+  	validatorAddress = obj.getValidatorAddress(),
   )
 
   public override fun convert(obj: MsgWithdrawValidatorCommission):
@@ -123,7 +123,7 @@ public object MsgWithdrawValidatorCommissionResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgWithdrawValidatorCommissionResponse):
       MsgWithdrawValidatorCommissionResponse = MsgWithdrawValidatorCommissionResponse(
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgWithdrawValidatorCommissionResponse):
@@ -142,8 +142,8 @@ public object MsgFundCommunityPoolJvmConverter :
 
   public override fun convert(obj: Tx.MsgFundCommunityPool): MsgFundCommunityPool =
       MsgFundCommunityPool(
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
-  	depositor = obj.depositor,
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
+  	depositor = obj.getDepositor(),
   )
 
   public override fun convert(obj: MsgFundCommunityPool): Tx.MsgFundCommunityPool {
@@ -179,8 +179,8 @@ public object MsgUpdateParamsJvmConverter : ProtobufTypeMapper<MsgUpdateParams, 
   public override val parser: Parser<Tx.MsgUpdateParams> = Tx.MsgUpdateParams.parser()
 
   public override fun convert(obj: Tx.MsgUpdateParams): MsgUpdateParams = MsgUpdateParams(
-  	authority = obj.authority,
-  	params = ParamsJvmConverter.convert(obj.params),
+  	authority = obj.getAuthority(),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: MsgUpdateParams): Tx.MsgUpdateParams {
@@ -217,9 +217,9 @@ public object MsgCommunityPoolSpendJvmConverter :
 
   public override fun convert(obj: Tx.MsgCommunityPoolSpend): MsgCommunityPoolSpend =
       MsgCommunityPoolSpend(
-  	authority = obj.authority,
-  	recipient = obj.recipient,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	authority = obj.getAuthority(),
+  	recipient = obj.getRecipient(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgCommunityPoolSpend): Tx.MsgCommunityPoolSpend {

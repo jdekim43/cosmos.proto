@@ -1,5 +1,5 @@
 // Transform from tendermint/p2p/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.p2p
 

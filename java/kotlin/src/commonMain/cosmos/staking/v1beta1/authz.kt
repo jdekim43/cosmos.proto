@@ -1,6 +1,6 @@
 // Transform from cosmos/staking/v1beta1/authz.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -21,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable
-@SerialName(value = "cosmos.staking.v1beta1.AuthorizationType")
+@SerialName(value = "/cosmos.staking.v1beta1.AuthorizationType")
 public enum class AuthorizationType(
   public val number: Int,
 ) {
@@ -44,14 +45,18 @@ public enum class AuthorizationType(
 }
 
 @Serializable(with = StakeAuthorization.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.StakeAuthorization")
+@SerialName(value = StakeAuthorization.TYPE_URL)
 public data class StakeAuthorization(
   @ProtobufIndex(index = 1)
   public val maxTokens: Coin,
   @ProtobufIndex(index = 4)
   public val authorizationType: AuthorizationType,
   public val validators: ValidatorsOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.StakeAuthorization"
+  }
+
   @Serializable
   public sealed interface ValidatorsOneOf {
     @JvmInline
@@ -68,11 +73,15 @@ public data class StakeAuthorization(
   }
 
   @Serializable(with = Validators.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.staking.v1beta1.StakeAuthorization.Validators")
+  @SerialName(value = Validators.TYPE_URL)
   public data class Validators(
     @ProtobufIndex(index = 1)
     public val address: List<String>,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.staking.v1beta1.StakeAuthorization.Validators"
+    }
+
     public object KotlinxSerializer : KSerializer<Validators> {
       private val delegator: KSerializer<Validators> = Validators.serializer()
 

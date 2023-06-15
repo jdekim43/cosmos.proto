@@ -39,7 +39,7 @@ allprojects {
     }
 
     group = "kr.jadekim"
-    version = resolveCosmosSdkVersion() + ".2"
+    version = resolveCosmosSdkVersion() + ".3"
 
     sourceSets {
         main {

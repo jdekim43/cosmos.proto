@@ -1,6 +1,6 @@
 // Transform from tendermint/abci/types.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.abci
 
@@ -26,13 +26,14 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 import tendermint.crypto.ProofOps
 import tendermint.crypto.PublicKey
 import tendermint.types.ConsensusParams
 import tendermint.types.Header
 
 @Serializable
-@SerialName(value = "tendermint.abci.CheckTxType")
+@SerialName(value = "/tendermint.abci.CheckTxType")
 public enum class CheckTxType(
   public val number: Int,
 ) {
@@ -49,7 +50,7 @@ public enum class CheckTxType(
 }
 
 @Serializable
-@SerialName(value = "tendermint.abci.MisbehaviorType")
+@SerialName(value = "/tendermint.abci.MisbehaviorType")
 public enum class MisbehaviorType(
   public val number: Int,
 ) {
@@ -68,10 +69,14 @@ public enum class MisbehaviorType(
 }
 
 @Serializable(with = Request.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.Request")
+@SerialName(value = Request.TYPE_URL)
 public data class Request(
   public val `value`: ValueOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.Request"
+  }
+
   @Serializable
   public sealed interface ValueOneOf {
     @JvmInline
@@ -194,11 +199,15 @@ public data class Request(
 }
 
 @Serializable(with = RequestEcho.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestEcho")
+@SerialName(value = RequestEcho.TYPE_URL)
 public data class RequestEcho(
   @ProtobufIndex(index = 1)
   public val message: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestEcho"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestEcho> {
     private val delegator: KSerializer<RequestEcho> = RequestEcho.serializer()
 
@@ -222,8 +231,12 @@ public data class RequestEcho(
 }
 
 @Serializable(with = RequestFlush.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestFlush")
-public class RequestFlush() {
+@SerialName(value = RequestFlush.TYPE_URL)
+public class RequestFlush() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestFlush"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestFlush> {
     private val delegator: KSerializer<RequestFlush> = RequestFlush.serializer()
 
@@ -247,7 +260,7 @@ public class RequestFlush() {
 }
 
 @Serializable(with = RequestInfo.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestInfo")
+@SerialName(value = RequestInfo.TYPE_URL)
 public data class RequestInfo(
   @ProtobufIndex(index = 1)
   public val version: String,
@@ -257,7 +270,11 @@ public data class RequestInfo(
   public val p2PVersion: ULong,
   @ProtobufIndex(index = 4)
   public val abciVersion: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestInfo> {
     private val delegator: KSerializer<RequestInfo> = RequestInfo.serializer()
 
@@ -281,7 +298,7 @@ public data class RequestInfo(
 }
 
 @Serializable(with = RequestInitChain.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestInitChain")
+@SerialName(value = RequestInitChain.TYPE_URL)
 public data class RequestInitChain(
   @ProtobufIndex(index = 1)
   public val time: Timestamp,
@@ -295,7 +312,11 @@ public data class RequestInitChain(
   public val appStateBytes: ByteArray,
   @ProtobufIndex(index = 6)
   public val initialHeight: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestInitChain"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestInitChain> {
     private val delegator: KSerializer<RequestInitChain> = RequestInitChain.serializer()
 
@@ -319,7 +340,7 @@ public data class RequestInitChain(
 }
 
 @Serializable(with = RequestQuery.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestQuery")
+@SerialName(value = RequestQuery.TYPE_URL)
 public data class RequestQuery(
   @ProtobufIndex(index = 1)
   public val `data`: ByteArray,
@@ -329,7 +350,11 @@ public data class RequestQuery(
   public val height: Long,
   @ProtobufIndex(index = 4)
   public val prove: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestQuery"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestQuery> {
     private val delegator: KSerializer<RequestQuery> = RequestQuery.serializer()
 
@@ -353,7 +378,7 @@ public data class RequestQuery(
 }
 
 @Serializable(with = RequestBeginBlock.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestBeginBlock")
+@SerialName(value = RequestBeginBlock.TYPE_URL)
 public data class RequestBeginBlock(
   @ProtobufIndex(index = 1)
   public val hash: ByteArray,
@@ -363,7 +388,11 @@ public data class RequestBeginBlock(
   public val lastCommitInfo: CommitInfo,
   @ProtobufIndex(index = 4)
   public val byzantineValidators: List<Misbehavior>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestBeginBlock"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestBeginBlock> {
     private val delegator: KSerializer<RequestBeginBlock> = RequestBeginBlock.serializer()
 
@@ -387,13 +416,17 @@ public data class RequestBeginBlock(
 }
 
 @Serializable(with = RequestCheckTx.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestCheckTx")
+@SerialName(value = RequestCheckTx.TYPE_URL)
 public data class RequestCheckTx(
   @ProtobufIndex(index = 1)
   public val tx: ByteArray,
   @ProtobufIndex(index = 2)
   public val type: CheckTxType,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestCheckTx"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestCheckTx> {
     private val delegator: KSerializer<RequestCheckTx> = RequestCheckTx.serializer()
 
@@ -417,11 +450,15 @@ public data class RequestCheckTx(
 }
 
 @Serializable(with = RequestDeliverTx.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestDeliverTx")
+@SerialName(value = RequestDeliverTx.TYPE_URL)
 public data class RequestDeliverTx(
   @ProtobufIndex(index = 1)
   public val tx: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestDeliverTx"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestDeliverTx> {
     private val delegator: KSerializer<RequestDeliverTx> = RequestDeliverTx.serializer()
 
@@ -445,11 +482,15 @@ public data class RequestDeliverTx(
 }
 
 @Serializable(with = RequestEndBlock.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestEndBlock")
+@SerialName(value = RequestEndBlock.TYPE_URL)
 public data class RequestEndBlock(
   @ProtobufIndex(index = 1)
   public val height: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestEndBlock"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestEndBlock> {
     private val delegator: KSerializer<RequestEndBlock> = RequestEndBlock.serializer()
 
@@ -473,8 +514,12 @@ public data class RequestEndBlock(
 }
 
 @Serializable(with = RequestCommit.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestCommit")
-public class RequestCommit() {
+@SerialName(value = RequestCommit.TYPE_URL)
+public class RequestCommit() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestCommit"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestCommit> {
     private val delegator: KSerializer<RequestCommit> = RequestCommit.serializer()
 
@@ -498,8 +543,12 @@ public class RequestCommit() {
 }
 
 @Serializable(with = RequestListSnapshots.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestListSnapshots")
-public class RequestListSnapshots() {
+@SerialName(value = RequestListSnapshots.TYPE_URL)
+public class RequestListSnapshots() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestListSnapshots"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestListSnapshots> {
     private val delegator: KSerializer<RequestListSnapshots> = RequestListSnapshots.serializer()
 
@@ -523,13 +572,17 @@ public class RequestListSnapshots() {
 }
 
 @Serializable(with = RequestOfferSnapshot.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestOfferSnapshot")
+@SerialName(value = RequestOfferSnapshot.TYPE_URL)
 public data class RequestOfferSnapshot(
   @ProtobufIndex(index = 1)
   public val snapshot: Snapshot,
   @ProtobufIndex(index = 2)
   public val appHash: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestOfferSnapshot"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestOfferSnapshot> {
     private val delegator: KSerializer<RequestOfferSnapshot> = RequestOfferSnapshot.serializer()
 
@@ -553,7 +606,7 @@ public data class RequestOfferSnapshot(
 }
 
 @Serializable(with = RequestLoadSnapshotChunk.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestLoadSnapshotChunk")
+@SerialName(value = RequestLoadSnapshotChunk.TYPE_URL)
 public data class RequestLoadSnapshotChunk(
   @ProtobufIndex(index = 1)
   public val height: ULong,
@@ -561,7 +614,11 @@ public data class RequestLoadSnapshotChunk(
   public val format: UInt,
   @ProtobufIndex(index = 3)
   public val chunk: UInt,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestLoadSnapshotChunk"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestLoadSnapshotChunk> {
     private val delegator: KSerializer<RequestLoadSnapshotChunk> =
         RequestLoadSnapshotChunk.serializer()
@@ -586,7 +643,7 @@ public data class RequestLoadSnapshotChunk(
 }
 
 @Serializable(with = RequestApplySnapshotChunk.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestApplySnapshotChunk")
+@SerialName(value = RequestApplySnapshotChunk.TYPE_URL)
 public data class RequestApplySnapshotChunk(
   @ProtobufIndex(index = 1)
   public val index: UInt,
@@ -594,7 +651,11 @@ public data class RequestApplySnapshotChunk(
   public val chunk: ByteArray,
   @ProtobufIndex(index = 3)
   public val sender: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestApplySnapshotChunk"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestApplySnapshotChunk> {
     private val delegator: KSerializer<RequestApplySnapshotChunk> =
         RequestApplySnapshotChunk.serializer()
@@ -619,7 +680,7 @@ public data class RequestApplySnapshotChunk(
 }
 
 @Serializable(with = RequestPrepareProposal.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestPrepareProposal")
+@SerialName(value = RequestPrepareProposal.TYPE_URL)
 public data class RequestPrepareProposal(
   @ProtobufIndex(index = 1)
   public val maxTxBytes: Long,
@@ -637,7 +698,11 @@ public data class RequestPrepareProposal(
   public val nextValidatorsHash: ByteArray,
   @ProtobufIndex(index = 8)
   public val proposerAddress: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestPrepareProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestPrepareProposal> {
     private val delegator: KSerializer<RequestPrepareProposal> = RequestPrepareProposal.serializer()
 
@@ -661,7 +726,7 @@ public data class RequestPrepareProposal(
 }
 
 @Serializable(with = RequestProcessProposal.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.RequestProcessProposal")
+@SerialName(value = RequestProcessProposal.TYPE_URL)
 public data class RequestProcessProposal(
   @ProtobufIndex(index = 1)
   public val txs: List<ByteArray>,
@@ -679,7 +744,11 @@ public data class RequestProcessProposal(
   public val nextValidatorsHash: ByteArray,
   @ProtobufIndex(index = 8)
   public val proposerAddress: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.RequestProcessProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<RequestProcessProposal> {
     private val delegator: KSerializer<RequestProcessProposal> = RequestProcessProposal.serializer()
 
@@ -703,10 +772,14 @@ public data class RequestProcessProposal(
 }
 
 @Serializable(with = Response.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.Response")
+@SerialName(value = Response.TYPE_URL)
 public data class Response(
   public val `value`: ValueOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.Response"
+  }
+
   @Serializable
   public sealed interface ValueOneOf {
     @JvmInline
@@ -835,11 +908,15 @@ public data class Response(
 }
 
 @Serializable(with = ResponseException.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseException")
+@SerialName(value = ResponseException.TYPE_URL)
 public data class ResponseException(
   @ProtobufIndex(index = 1)
   public val error: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseException"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseException> {
     private val delegator: KSerializer<ResponseException> = ResponseException.serializer()
 
@@ -863,11 +940,15 @@ public data class ResponseException(
 }
 
 @Serializable(with = ResponseEcho.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseEcho")
+@SerialName(value = ResponseEcho.TYPE_URL)
 public data class ResponseEcho(
   @ProtobufIndex(index = 1)
   public val message: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseEcho"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseEcho> {
     private val delegator: KSerializer<ResponseEcho> = ResponseEcho.serializer()
 
@@ -891,8 +972,12 @@ public data class ResponseEcho(
 }
 
 @Serializable(with = ResponseFlush.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseFlush")
-public class ResponseFlush() {
+@SerialName(value = ResponseFlush.TYPE_URL)
+public class ResponseFlush() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseFlush"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseFlush> {
     private val delegator: KSerializer<ResponseFlush> = ResponseFlush.serializer()
 
@@ -916,7 +1001,7 @@ public class ResponseFlush() {
 }
 
 @Serializable(with = ResponseInfo.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseInfo")
+@SerialName(value = ResponseInfo.TYPE_URL)
 public data class ResponseInfo(
   @ProtobufIndex(index = 1)
   public val `data`: String,
@@ -928,7 +1013,11 @@ public data class ResponseInfo(
   public val lastBlockHeight: Long,
   @ProtobufIndex(index = 5)
   public val lastBlockAppHash: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseInfo> {
     private val delegator: KSerializer<ResponseInfo> = ResponseInfo.serializer()
 
@@ -952,7 +1041,7 @@ public data class ResponseInfo(
 }
 
 @Serializable(with = ResponseInitChain.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseInitChain")
+@SerialName(value = ResponseInitChain.TYPE_URL)
 public data class ResponseInitChain(
   @ProtobufIndex(index = 1)
   public val consensusParams: ConsensusParams,
@@ -960,7 +1049,11 @@ public data class ResponseInitChain(
   public val validators: List<ValidatorUpdate>,
   @ProtobufIndex(index = 3)
   public val appHash: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseInitChain"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseInitChain> {
     private val delegator: KSerializer<ResponseInitChain> = ResponseInitChain.serializer()
 
@@ -984,7 +1077,7 @@ public data class ResponseInitChain(
 }
 
 @Serializable(with = ResponseQuery.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseQuery")
+@SerialName(value = ResponseQuery.TYPE_URL)
 public data class ResponseQuery(
   @ProtobufIndex(index = 1)
   public val code: UInt,
@@ -1004,7 +1097,11 @@ public data class ResponseQuery(
   public val height: Long,
   @ProtobufIndex(index = 10)
   public val codespace: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseQuery"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseQuery> {
     private val delegator: KSerializer<ResponseQuery> = ResponseQuery.serializer()
 
@@ -1028,11 +1125,15 @@ public data class ResponseQuery(
 }
 
 @Serializable(with = ResponseBeginBlock.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseBeginBlock")
+@SerialName(value = ResponseBeginBlock.TYPE_URL)
 public data class ResponseBeginBlock(
   @ProtobufIndex(index = 1)
   public val events: List<Event>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseBeginBlock"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseBeginBlock> {
     private val delegator: KSerializer<ResponseBeginBlock> = ResponseBeginBlock.serializer()
 
@@ -1056,7 +1157,7 @@ public data class ResponseBeginBlock(
 }
 
 @Serializable(with = ResponseCheckTx.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseCheckTx")
+@SerialName(value = ResponseCheckTx.TYPE_URL)
 public data class ResponseCheckTx(
   @ProtobufIndex(index = 1)
   public val code: UInt,
@@ -1080,7 +1181,11 @@ public data class ResponseCheckTx(
   public val priority: Long,
   @ProtobufIndex(index = 11)
   public val mempoolError: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseCheckTx"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseCheckTx> {
     private val delegator: KSerializer<ResponseCheckTx> = ResponseCheckTx.serializer()
 
@@ -1104,7 +1209,7 @@ public data class ResponseCheckTx(
 }
 
 @Serializable(with = ResponseDeliverTx.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseDeliverTx")
+@SerialName(value = ResponseDeliverTx.TYPE_URL)
 public data class ResponseDeliverTx(
   @ProtobufIndex(index = 1)
   public val code: UInt,
@@ -1122,7 +1227,11 @@ public data class ResponseDeliverTx(
   public val events: List<Event>,
   @ProtobufIndex(index = 8)
   public val codespace: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseDeliverTx"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseDeliverTx> {
     private val delegator: KSerializer<ResponseDeliverTx> = ResponseDeliverTx.serializer()
 
@@ -1146,7 +1255,7 @@ public data class ResponseDeliverTx(
 }
 
 @Serializable(with = ResponseEndBlock.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseEndBlock")
+@SerialName(value = ResponseEndBlock.TYPE_URL)
 public data class ResponseEndBlock(
   @ProtobufIndex(index = 1)
   public val validatorUpdates: List<ValidatorUpdate>,
@@ -1154,7 +1263,11 @@ public data class ResponseEndBlock(
   public val consensusParamUpdates: ConsensusParams,
   @ProtobufIndex(index = 3)
   public val events: List<Event>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseEndBlock"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseEndBlock> {
     private val delegator: KSerializer<ResponseEndBlock> = ResponseEndBlock.serializer()
 
@@ -1178,13 +1291,17 @@ public data class ResponseEndBlock(
 }
 
 @Serializable(with = ResponseCommit.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseCommit")
+@SerialName(value = ResponseCommit.TYPE_URL)
 public data class ResponseCommit(
   @ProtobufIndex(index = 2)
   public val `data`: ByteArray,
   @ProtobufIndex(index = 3)
   public val retainHeight: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseCommit"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseCommit> {
     private val delegator: KSerializer<ResponseCommit> = ResponseCommit.serializer()
 
@@ -1208,11 +1325,15 @@ public data class ResponseCommit(
 }
 
 @Serializable(with = ResponseListSnapshots.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseListSnapshots")
+@SerialName(value = ResponseListSnapshots.TYPE_URL)
 public data class ResponseListSnapshots(
   @ProtobufIndex(index = 1)
   public val snapshots: List<Snapshot>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseListSnapshots"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseListSnapshots> {
     private val delegator: KSerializer<ResponseListSnapshots> = ResponseListSnapshots.serializer()
 
@@ -1236,13 +1357,17 @@ public data class ResponseListSnapshots(
 }
 
 @Serializable(with = ResponseOfferSnapshot.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseOfferSnapshot")
+@SerialName(value = ResponseOfferSnapshot.TYPE_URL)
 public data class ResponseOfferSnapshot(
   @ProtobufIndex(index = 1)
   public val result: Result,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseOfferSnapshot"
+  }
+
   @Serializable
-  @SerialName(value = "tendermint.abci.ResponseOfferSnapshot.Result")
+  @SerialName(value = "/tendermint.abci.ResponseOfferSnapshot.Result")
   public enum class Result(
     public val number: Int,
   ) {
@@ -1289,11 +1414,15 @@ public data class ResponseOfferSnapshot(
 }
 
 @Serializable(with = ResponseLoadSnapshotChunk.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseLoadSnapshotChunk")
+@SerialName(value = ResponseLoadSnapshotChunk.TYPE_URL)
 public data class ResponseLoadSnapshotChunk(
   @ProtobufIndex(index = 1)
   public val chunk: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseLoadSnapshotChunk"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponseLoadSnapshotChunk> {
     private val delegator: KSerializer<ResponseLoadSnapshotChunk> =
         ResponseLoadSnapshotChunk.serializer()
@@ -1318,7 +1447,7 @@ public data class ResponseLoadSnapshotChunk(
 }
 
 @Serializable(with = ResponseApplySnapshotChunk.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseApplySnapshotChunk")
+@SerialName(value = ResponseApplySnapshotChunk.TYPE_URL)
 public data class ResponseApplySnapshotChunk(
   @ProtobufIndex(index = 1)
   public val result: Result,
@@ -1326,9 +1455,13 @@ public data class ResponseApplySnapshotChunk(
   public val refetchChunks: List<UInt>,
   @ProtobufIndex(index = 3)
   public val rejectSenders: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseApplySnapshotChunk"
+  }
+
   @Serializable
-  @SerialName(value = "tendermint.abci.ResponseApplySnapshotChunk.Result")
+  @SerialName(value = "/tendermint.abci.ResponseApplySnapshotChunk.Result")
   public enum class Result(
     public val number: Int,
   ) {
@@ -1376,11 +1509,15 @@ public data class ResponseApplySnapshotChunk(
 }
 
 @Serializable(with = ResponsePrepareProposal.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponsePrepareProposal")
+@SerialName(value = ResponsePrepareProposal.TYPE_URL)
 public data class ResponsePrepareProposal(
   @ProtobufIndex(index = 1)
   public val txs: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponsePrepareProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<ResponsePrepareProposal> {
     private val delegator: KSerializer<ResponsePrepareProposal> =
         ResponsePrepareProposal.serializer()
@@ -1405,13 +1542,17 @@ public data class ResponsePrepareProposal(
 }
 
 @Serializable(with = ResponseProcessProposal.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ResponseProcessProposal")
+@SerialName(value = ResponseProcessProposal.TYPE_URL)
 public data class ResponseProcessProposal(
   @ProtobufIndex(index = 1)
   public val status: ProposalStatus,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ResponseProcessProposal"
+  }
+
   @Serializable
-  @SerialName(value = "tendermint.abci.ResponseProcessProposal.ProposalStatus")
+  @SerialName(value = "/tendermint.abci.ResponseProcessProposal.ProposalStatus")
   public enum class ProposalStatus(
     public val number: Int,
   ) {
@@ -1453,13 +1594,17 @@ public data class ResponseProcessProposal(
 }
 
 @Serializable(with = CommitInfo.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.CommitInfo")
+@SerialName(value = CommitInfo.TYPE_URL)
 public data class CommitInfo(
   @ProtobufIndex(index = 1)
   public val round: Int,
   @ProtobufIndex(index = 2)
   public val votes: List<VoteInfo>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.CommitInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<CommitInfo> {
     private val delegator: KSerializer<CommitInfo> = CommitInfo.serializer()
 
@@ -1483,13 +1628,17 @@ public data class CommitInfo(
 }
 
 @Serializable(with = ExtendedCommitInfo.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ExtendedCommitInfo")
+@SerialName(value = ExtendedCommitInfo.TYPE_URL)
 public data class ExtendedCommitInfo(
   @ProtobufIndex(index = 1)
   public val round: Int,
   @ProtobufIndex(index = 2)
   public val votes: List<ExtendedVoteInfo>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ExtendedCommitInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<ExtendedCommitInfo> {
     private val delegator: KSerializer<ExtendedCommitInfo> = ExtendedCommitInfo.serializer()
 
@@ -1513,13 +1662,17 @@ public data class ExtendedCommitInfo(
 }
 
 @Serializable(with = Event.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.Event")
+@SerialName(value = Event.TYPE_URL)
 public data class Event(
   @ProtobufIndex(index = 1)
   public val type: String,
   @ProtobufIndex(index = 2)
   public val attributes: List<EventAttribute>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.Event"
+  }
+
   public object KotlinxSerializer : KSerializer<Event> {
     private val delegator: KSerializer<Event> = Event.serializer()
 
@@ -1543,7 +1696,7 @@ public data class Event(
 }
 
 @Serializable(with = EventAttribute.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.EventAttribute")
+@SerialName(value = EventAttribute.TYPE_URL)
 public data class EventAttribute(
   @ProtobufIndex(index = 1)
   public val key: String,
@@ -1551,7 +1704,11 @@ public data class EventAttribute(
   public val `value`: String,
   @ProtobufIndex(index = 3)
   public val index: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.EventAttribute"
+  }
+
   public object KotlinxSerializer : KSerializer<EventAttribute> {
     private val delegator: KSerializer<EventAttribute> = EventAttribute.serializer()
 
@@ -1575,7 +1732,7 @@ public data class EventAttribute(
 }
 
 @Serializable(with = TxResult.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.TxResult")
+@SerialName(value = TxResult.TYPE_URL)
 public data class TxResult(
   @ProtobufIndex(index = 1)
   public val height: Long,
@@ -1585,7 +1742,11 @@ public data class TxResult(
   public val tx: ByteArray,
   @ProtobufIndex(index = 4)
   public val result: ResponseDeliverTx,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.TxResult"
+  }
+
   public object KotlinxSerializer : KSerializer<TxResult> {
     private val delegator: KSerializer<TxResult> = TxResult.serializer()
 
@@ -1609,13 +1770,17 @@ public data class TxResult(
 }
 
 @Serializable(with = Validator.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.Validator")
+@SerialName(value = Validator.TYPE_URL)
 public data class Validator(
   @ProtobufIndex(index = 1)
   public val address: ByteArray,
   @ProtobufIndex(index = 3)
   public val power: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.Validator"
+  }
+
   public object KotlinxSerializer : KSerializer<Validator> {
     private val delegator: KSerializer<Validator> = Validator.serializer()
 
@@ -1639,13 +1804,17 @@ public data class Validator(
 }
 
 @Serializable(with = ValidatorUpdate.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ValidatorUpdate")
+@SerialName(value = ValidatorUpdate.TYPE_URL)
 public data class ValidatorUpdate(
   @ProtobufIndex(index = 1)
   public val pubKey: PublicKey,
   @ProtobufIndex(index = 2)
   public val power: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ValidatorUpdate"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorUpdate> {
     private val delegator: KSerializer<ValidatorUpdate> = ValidatorUpdate.serializer()
 
@@ -1669,13 +1838,17 @@ public data class ValidatorUpdate(
 }
 
 @Serializable(with = VoteInfo.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.VoteInfo")
+@SerialName(value = VoteInfo.TYPE_URL)
 public data class VoteInfo(
   @ProtobufIndex(index = 1)
   public val validator: Validator,
   @ProtobufIndex(index = 2)
   public val signedLastBlock: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.VoteInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<VoteInfo> {
     private val delegator: KSerializer<VoteInfo> = VoteInfo.serializer()
 
@@ -1699,7 +1872,7 @@ public data class VoteInfo(
 }
 
 @Serializable(with = ExtendedVoteInfo.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.ExtendedVoteInfo")
+@SerialName(value = ExtendedVoteInfo.TYPE_URL)
 public data class ExtendedVoteInfo(
   @ProtobufIndex(index = 1)
   public val validator: Validator,
@@ -1707,7 +1880,11 @@ public data class ExtendedVoteInfo(
   public val signedLastBlock: Boolean,
   @ProtobufIndex(index = 3)
   public val voteExtension: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.ExtendedVoteInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<ExtendedVoteInfo> {
     private val delegator: KSerializer<ExtendedVoteInfo> = ExtendedVoteInfo.serializer()
 
@@ -1731,7 +1908,7 @@ public data class ExtendedVoteInfo(
 }
 
 @Serializable(with = Misbehavior.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.Misbehavior")
+@SerialName(value = Misbehavior.TYPE_URL)
 public data class Misbehavior(
   @ProtobufIndex(index = 1)
   public val type: MisbehaviorType,
@@ -1743,7 +1920,11 @@ public data class Misbehavior(
   public val time: Timestamp,
   @ProtobufIndex(index = 5)
   public val totalVotingPower: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.Misbehavior"
+  }
+
   public object KotlinxSerializer : KSerializer<Misbehavior> {
     private val delegator: KSerializer<Misbehavior> = Misbehavior.serializer()
 
@@ -1767,7 +1948,7 @@ public data class Misbehavior(
 }
 
 @Serializable(with = Snapshot.KotlinxSerializer::class)
-@SerialName(value = "tendermint.abci.Snapshot")
+@SerialName(value = Snapshot.TYPE_URL)
 public data class Snapshot(
   @ProtobufIndex(index = 1)
   public val height: ULong,
@@ -1779,7 +1960,11 @@ public data class Snapshot(
   public val hash: ByteArray,
   @ProtobufIndex(index = 5)
   public val metadata: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.abci.Snapshot"
+  }
+
   public object KotlinxSerializer : KSerializer<Snapshot> {
     private val delegator: KSerializer<Snapshot> = Snapshot.serializer()
 

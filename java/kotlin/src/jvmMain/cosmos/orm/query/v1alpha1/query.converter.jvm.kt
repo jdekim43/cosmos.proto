@@ -1,5 +1,5 @@
 // Transform from cosmos/orm/query/v1alpha1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.orm.query.v1alpha1
 
@@ -24,9 +24,9 @@ public object GetRequestJvmConverter : ProtobufTypeMapper<GetRequest, QueryOuter
       QueryOuterClass.GetRequest.parser()
 
   public override fun convert(obj: QueryOuterClass.GetRequest): GetRequest = GetRequest(
-  	messageName = obj.messageName,
-  	index = obj.index,
-  	values = obj.valuesList.map { IndexValueJvmConverter.convert(it) },
+  	messageName = obj.getMessageName(),
+  	index = obj.getIndex(),
+  	values = obj.getValuesList().map { IndexValueJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: GetRequest): QueryOuterClass.GetRequest {
@@ -47,7 +47,7 @@ public object GetResponseJvmConverter : ProtobufTypeMapper<GetResponse, QueryOut
       QueryOuterClass.GetResponse.parser()
 
   public override fun convert(obj: QueryOuterClass.GetResponse): GetResponse = GetResponse(
-  	result = AnyJvmConverter.convert(obj.result),
+  	result = AnyJvmConverter.convert(obj.getResult()),
   )
 
   public override fun convert(obj: GetResponse): QueryOuterClass.GetResponse {
@@ -66,12 +66,12 @@ public object ListRequestJvmConverter : ProtobufTypeMapper<ListRequest, QueryOut
       QueryOuterClass.ListRequest.parser()
 
   public override fun convert(obj: QueryOuterClass.ListRequest): ListRequest = ListRequest(
-  	messageName = obj.messageName,
-  	index = obj.index,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	messageName = obj.getMessageName(),
+  	index = obj.getIndex(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   	query = mapOf(
-  3 to { ListRequest.QueryOneOf.Prefix(PrefixJvmConverter.convert(obj.prefix)) },
-  4 to { ListRequest.QueryOneOf.Range(RangeJvmConverter.convert(obj.range)) },
+  3 to { ListRequest.QueryOneOf.Prefix(PrefixJvmConverter.convert(obj.getPrefix())) },
+  4 to { ListRequest.QueryOneOf.Range(RangeJvmConverter.convert(obj.getRange())) },
   ).getValue(obj.queryCase.number)(),
   )
 
@@ -99,7 +99,7 @@ public object ListRequestJvmConverter : ProtobufTypeMapper<ListRequest, QueryOut
 
     public override fun convert(obj: QueryOuterClass.ListRequest.Prefix): ListRequest.Prefix =
         ListRequest.Prefix(
-    	values = obj.valuesList.map { IndexValueJvmConverter.convert(it) },
+    	values = obj.getValuesList().map { IndexValueJvmConverter.convert(it) },
     )
 
     public override fun convert(obj: ListRequest.Prefix): QueryOuterClass.ListRequest.Prefix {
@@ -119,8 +119,8 @@ public object ListRequestJvmConverter : ProtobufTypeMapper<ListRequest, QueryOut
 
     public override fun convert(obj: QueryOuterClass.ListRequest.Range): ListRequest.Range =
         ListRequest.Range(
-    	start = obj.startList.map { IndexValueJvmConverter.convert(it) },
-    	end = obj.endList.map { IndexValueJvmConverter.convert(it) },
+    	start = obj.getStartList().map { IndexValueJvmConverter.convert(it) },
+    	end = obj.getEndList().map { IndexValueJvmConverter.convert(it) },
     )
 
     public override fun convert(obj: ListRequest.Range): QueryOuterClass.ListRequest.Range {
@@ -141,8 +141,8 @@ public object ListResponseJvmConverter :
       QueryOuterClass.ListResponse.parser()
 
   public override fun convert(obj: QueryOuterClass.ListResponse): ListResponse = ListResponse(
-  	results = obj.resultsList.map { AnyJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	results = obj.getResultsList().map { AnyJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: ListResponse): QueryOuterClass.ListResponse {
@@ -162,14 +162,14 @@ public object IndexValueJvmConverter : ProtobufTypeMapper<IndexValue, QueryOuter
 
   public override fun convert(obj: QueryOuterClass.IndexValue): IndexValue = IndexValue(
   	`value` = mapOf(
-  1 to { IndexValue.ValueOneOf.Uint(obj.uint.asKotlinType) },
-  2 to { IndexValue.ValueOneOf.Int(obj.int) },
-  3 to { IndexValue.ValueOneOf.Str(obj.str) },
-  4 to { IndexValue.ValueOneOf.Bytes(obj.bytes.toByteArray()) },
-  5 to { IndexValue.ValueOneOf.Enum(obj.`enum`) },
-  6 to { IndexValue.ValueOneOf.Bool(obj.bool) },
-  7 to { IndexValue.ValueOneOf.Timestamp(TimestampJvmConverter.convert(obj.timestamp)) },
-  8 to { IndexValue.ValueOneOf.Duration(DurationJvmConverter.convert(obj.duration)) },
+  1 to { IndexValue.ValueOneOf.Uint(obj.getUint().asKotlinType) },
+  2 to { IndexValue.ValueOneOf.Int(obj.getInt()) },
+  3 to { IndexValue.ValueOneOf.Str(obj.getStr()) },
+  4 to { IndexValue.ValueOneOf.Bytes(obj.getBytes().toByteArray()) },
+  5 to { IndexValue.ValueOneOf.Enum(obj.getEnum()) },
+  6 to { IndexValue.ValueOneOf.Bool(obj.getBool()) },
+  7 to { IndexValue.ValueOneOf.Timestamp(TimestampJvmConverter.convert(obj.getTimestamp())) },
+  8 to { IndexValue.ValueOneOf.Duration(DurationJvmConverter.convert(obj.getDuration())) },
   ).getValue(obj.valueCase.number)(),
   )
 

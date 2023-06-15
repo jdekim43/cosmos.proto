@@ -1,6 +1,6 @@
 // Transform from tendermint/version/types.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.version
 
@@ -18,15 +18,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = App.KotlinxSerializer::class)
-@SerialName(value = "tendermint.version.App")
+@SerialName(value = App.TYPE_URL)
 public data class App(
   @ProtobufIndex(index = 1)
   public val protocol: ULong,
   @ProtobufIndex(index = 2)
   public val software: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.version.App"
+  }
+
   public object KotlinxSerializer : KSerializer<App> {
     private val delegator: KSerializer<App> = App.serializer()
 
@@ -50,13 +55,17 @@ public data class App(
 }
 
 @Serializable(with = Consensus.KotlinxSerializer::class)
-@SerialName(value = "tendermint.version.Consensus")
+@SerialName(value = Consensus.TYPE_URL)
 public data class Consensus(
   @ProtobufIndex(index = 1)
   public val block: ULong,
   @ProtobufIndex(index = 2)
   public val app: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.version.Consensus"
+  }
+
   public object KotlinxSerializer : KSerializer<Consensus> {
     private val delegator: KSerializer<Consensus> = Consensus.serializer()
 

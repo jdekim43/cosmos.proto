@@ -1,6 +1,6 @@
 // Transform from cosmos/auth/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.auth.v1beta1
 
@@ -17,15 +17,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgUpdateParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.MsgUpdateParams")
+@SerialName(value = MsgUpdateParams.TYPE_URL)
 public data class MsgUpdateParams(
   @ProtobufIndex(index = 1)
   public val authority: String,
   @ProtobufIndex(index = 2)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.MsgUpdateParams"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParams> {
     private val delegator: KSerializer<MsgUpdateParams> = MsgUpdateParams.serializer()
 
@@ -49,8 +54,12 @@ public data class MsgUpdateParams(
 }
 
 @Serializable(with = MsgUpdateParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.MsgUpdateParamsResponse")
-public class MsgUpdateParamsResponse() {
+@SerialName(value = MsgUpdateParamsResponse.TYPE_URL)
+public class MsgUpdateParamsResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.MsgUpdateParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParamsResponse> {
     private val delegator: KSerializer<MsgUpdateParamsResponse> =
         MsgUpdateParamsResponse.serializer()

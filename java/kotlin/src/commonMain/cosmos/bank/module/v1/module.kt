@@ -1,6 +1,6 @@
 // Transform from cosmos/bank/module/v1/module.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.module.v1
 
@@ -18,15 +18,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Module.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.module.v1.Module")
+@SerialName(value = Module.TYPE_URL)
 public data class Module(
   @ProtobufIndex(index = 1)
   public val blockedModuleAccountsOverride: List<String>,
   @ProtobufIndex(index = 2)
   public val authority: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.module.v1.Module"
+  }
+
   public object KotlinxSerializer : KSerializer<Module> {
     private val delegator: KSerializer<Module> = Module.serializer()
 

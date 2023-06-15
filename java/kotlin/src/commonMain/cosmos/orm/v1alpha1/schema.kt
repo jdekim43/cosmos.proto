@@ -1,6 +1,6 @@
 // Transform from cosmos/orm/v1alpha1/schema.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.orm.v1alpha1
 
@@ -21,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable
-@SerialName(value = "cosmos.orm.v1alpha1.StorageType")
+@SerialName(value = "/cosmos.orm.v1alpha1.StorageType")
 public enum class StorageType(
   public val number: Int,
 ) {
@@ -46,15 +47,19 @@ public enum class StorageType(
 }
 
 @Serializable(with = ModuleSchemaDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.v1alpha1.ModuleSchemaDescriptor")
+@SerialName(value = ModuleSchemaDescriptor.TYPE_URL)
 public data class ModuleSchemaDescriptor(
   @ProtobufIndex(index = 1)
   public val schemaFile: List<FileEntry>,
   @ProtobufIndex(index = 2)
   public val prefix: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.v1alpha1.ModuleSchemaDescriptor"
+  }
+
   @Serializable(with = FileEntry.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.orm.v1alpha1.ModuleSchemaDescriptor.FileEntry")
+  @SerialName(value = FileEntry.TYPE_URL)
   public data class FileEntry(
     @ProtobufIndex(index = 1)
     public val id: UInt,
@@ -62,7 +67,11 @@ public data class ModuleSchemaDescriptor(
     public val protoFileName: String,
     @ProtobufIndex(index = 3)
     public val storageType: StorageType,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.orm.v1alpha1.ModuleSchemaDescriptor.FileEntry"
+    }
+
     public object KotlinxSerializer : KSerializer<FileEntry> {
       private val delegator: KSerializer<FileEntry> = FileEntry.serializer()
 

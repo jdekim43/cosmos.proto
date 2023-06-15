@@ -1,5 +1,5 @@
 // Transform from cosmos/base/tendermint/v1beta1/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.tendermint.v1beta1
 
@@ -21,10 +21,10 @@ public object BlockJvmConverter : ProtobufTypeMapper<Block, Types.Block> {
   public override val parser: Parser<Types.Block> = Types.Block.parser()
 
   public override fun convert(obj: Types.Block): Block = Block(
-  	`header` = HeaderJvmConverter.convert(obj.`header`),
-  	`data` = DataJvmConverter.convert(obj.`data`),
-  	evidence = EvidenceListJvmConverter.convert(obj.evidence),
-  	lastCommit = CommitJvmConverter.convert(obj.lastCommit),
+  	`header` = HeaderJvmConverter.convert(obj.getHeader()),
+  	`data` = DataJvmConverter.convert(obj.getData()),
+  	evidence = EvidenceListJvmConverter.convert(obj.getEvidence()),
+  	lastCommit = CommitJvmConverter.convert(obj.getLastCommit()),
   )
 
   public override fun convert(obj: Block): Types.Block {
@@ -43,20 +43,20 @@ public object HeaderJvmConverter : ProtobufTypeMapper<Header, Types.Header> {
   public override val parser: Parser<Types.Header> = Types.Header.parser()
 
   public override fun convert(obj: Types.Header): Header = Header(
-  	version = ConsensusJvmConverter.convert(obj.version),
-  	chainId = obj.chainId,
-  	height = obj.height,
-  	time = TimestampJvmConverter.convert(obj.time),
-  	lastBlockId = BlockIDJvmConverter.convert(obj.lastBlockId),
-  	lastCommitHash = obj.lastCommitHash.toByteArray(),
-  	dataHash = obj.dataHash.toByteArray(),
-  	validatorsHash = obj.validatorsHash.toByteArray(),
-  	nextValidatorsHash = obj.nextValidatorsHash.toByteArray(),
-  	consensusHash = obj.consensusHash.toByteArray(),
-  	appHash = obj.appHash.toByteArray(),
-  	lastResultsHash = obj.lastResultsHash.toByteArray(),
-  	evidenceHash = obj.evidenceHash.toByteArray(),
-  	proposerAddress = obj.proposerAddress,
+  	version = ConsensusJvmConverter.convert(obj.getVersion()),
+  	chainId = obj.getChainId(),
+  	height = obj.getHeight(),
+  	time = TimestampJvmConverter.convert(obj.getTime()),
+  	lastBlockId = BlockIDJvmConverter.convert(obj.getLastBlockId()),
+  	lastCommitHash = obj.getLastCommitHash().toByteArray(),
+  	dataHash = obj.getDataHash().toByteArray(),
+  	validatorsHash = obj.getValidatorsHash().toByteArray(),
+  	nextValidatorsHash = obj.getNextValidatorsHash().toByteArray(),
+  	consensusHash = obj.getConsensusHash().toByteArray(),
+  	appHash = obj.getAppHash().toByteArray(),
+  	lastResultsHash = obj.getLastResultsHash().toByteArray(),
+  	evidenceHash = obj.getEvidenceHash().toByteArray(),
+  	proposerAddress = obj.getProposerAddress(),
   )
 
   public override fun convert(obj: Header): Types.Header {

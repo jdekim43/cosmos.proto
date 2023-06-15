@@ -1,5 +1,5 @@
 // Transform from cosmos/orm/v1alpha1/schema.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.orm.v1alpha1
 
@@ -21,8 +21,8 @@ public object ModuleSchemaDescriptorJvmConverter :
 
   public override fun convert(obj: Schema.ModuleSchemaDescriptor): ModuleSchemaDescriptor =
       ModuleSchemaDescriptor(
-  	schemaFile = obj.schemaFileList.map { FileEntryJvmConverter.convert(it) },
-  	prefix = obj.prefix.toByteArray(),
+  	schemaFile = obj.getSchemaFileList().map { FileEntryJvmConverter.convert(it) },
+  	prefix = obj.getPrefix().toByteArray(),
   )
 
   public override fun convert(obj: ModuleSchemaDescriptor): Schema.ModuleSchemaDescriptor {
@@ -43,9 +43,9 @@ public object ModuleSchemaDescriptorJvmConverter :
 
     public override fun convert(obj: Schema.ModuleSchemaDescriptor.FileEntry):
         ModuleSchemaDescriptor.FileEntry = ModuleSchemaDescriptor.FileEntry(
-    	id = obj.id.asKotlinType,
-    	protoFileName = obj.protoFileName,
-    	storageType = StorageType.forNumber(obj.storageType.number),
+    	id = obj.getId().asKotlinType,
+    	protoFileName = obj.getProtoFileName(),
+    	storageType = StorageType.forNumber(obj.getStorageType().number),
     )
 
     public override fun convert(obj: ModuleSchemaDescriptor.FileEntry):

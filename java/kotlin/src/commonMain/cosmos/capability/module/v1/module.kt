@@ -1,10 +1,11 @@
 // Transform from cosmos/capability/module/v1/module.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.capability.module.v1
 
 import kotlin.Boolean
+import kotlin.String
 import kotlin.Unit
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -17,13 +18,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Module.KotlinxSerializer::class)
-@SerialName(value = "cosmos.capability.module.v1.Module")
+@SerialName(value = Module.TYPE_URL)
 public data class Module(
   @ProtobufIndex(index = 1)
   public val sealKeeper: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.capability.module.v1.Module"
+  }
+
   public object KotlinxSerializer : KSerializer<Module> {
     private val delegator: KSerializer<Module> = Module.serializer()
 

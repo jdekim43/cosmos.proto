@@ -1,5 +1,5 @@
 // Transform from cosmos/base/query/v1beta1/pagination.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.query.v1beta1
 
@@ -17,11 +17,11 @@ public object PageRequestJvmConverter : ProtobufTypeMapper<PageRequest, Paginati
   public override val parser: Parser<Pagination.PageRequest> = Pagination.PageRequest.parser()
 
   public override fun convert(obj: Pagination.PageRequest): PageRequest = PageRequest(
-  	key = obj.key.toByteArray(),
-  	offset = obj.offset.asKotlinType,
-  	limit = obj.limit.asKotlinType,
-  	countTotal = obj.countTotal,
-  	reverse = obj.reverse,
+  	key = obj.getKey().toByteArray(),
+  	offset = obj.getOffset().asKotlinType,
+  	limit = obj.getLimit().asKotlinType,
+  	countTotal = obj.getCountTotal(),
+  	reverse = obj.getReverse(),
   )
 
   public override fun convert(obj: PageRequest): Pagination.PageRequest {
@@ -41,8 +41,8 @@ public object PageResponseJvmConverter : ProtobufTypeMapper<PageResponse, Pagina
   public override val parser: Parser<Pagination.PageResponse> = Pagination.PageResponse.parser()
 
   public override fun convert(obj: Pagination.PageResponse): PageResponse = PageResponse(
-  	nextKey = obj.nextKey.toByteArray(),
-  	total = obj.total.asKotlinType,
+  	nextKey = obj.getNextKey().toByteArray(),
+  	total = obj.getTotal().asKotlinType,
   )
 
   public override fun convert(obj: PageResponse): Pagination.PageResponse {

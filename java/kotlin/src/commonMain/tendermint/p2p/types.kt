@@ -1,6 +1,6 @@
 // Transform from tendermint/p2p/types.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.p2p
 
@@ -20,9 +20,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = NetAddress.KotlinxSerializer::class)
-@SerialName(value = "tendermint.p2p.NetAddress")
+@SerialName(value = NetAddress.TYPE_URL)
 public data class NetAddress(
   @ProtobufIndex(index = 1)
   public val id: String,
@@ -30,7 +31,11 @@ public data class NetAddress(
   public val ip: String,
   @ProtobufIndex(index = 3)
   public val port: UInt,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.p2p.NetAddress"
+  }
+
   public object KotlinxSerializer : KSerializer<NetAddress> {
     private val delegator: KSerializer<NetAddress> = NetAddress.serializer()
 
@@ -54,7 +59,7 @@ public data class NetAddress(
 }
 
 @Serializable(with = ProtocolVersion.KotlinxSerializer::class)
-@SerialName(value = "tendermint.p2p.ProtocolVersion")
+@SerialName(value = ProtocolVersion.TYPE_URL)
 public data class ProtocolVersion(
   @ProtobufIndex(index = 1)
   public val p2P: ULong,
@@ -62,7 +67,11 @@ public data class ProtocolVersion(
   public val block: ULong,
   @ProtobufIndex(index = 3)
   public val app: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.p2p.ProtocolVersion"
+  }
+
   public object KotlinxSerializer : KSerializer<ProtocolVersion> {
     private val delegator: KSerializer<ProtocolVersion> = ProtocolVersion.serializer()
 
@@ -86,7 +95,7 @@ public data class ProtocolVersion(
 }
 
 @Serializable(with = DefaultNodeInfo.KotlinxSerializer::class)
-@SerialName(value = "tendermint.p2p.DefaultNodeInfo")
+@SerialName(value = DefaultNodeInfo.TYPE_URL)
 public data class DefaultNodeInfo(
   @ProtobufIndex(index = 1)
   public val protocolVersion: ProtocolVersion,
@@ -104,7 +113,11 @@ public data class DefaultNodeInfo(
   public val moniker: String,
   @ProtobufIndex(index = 8)
   public val other: DefaultNodeInfoOther,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.p2p.DefaultNodeInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<DefaultNodeInfo> {
     private val delegator: KSerializer<DefaultNodeInfo> = DefaultNodeInfo.serializer()
 
@@ -128,13 +141,17 @@ public data class DefaultNodeInfo(
 }
 
 @Serializable(with = DefaultNodeInfoOther.KotlinxSerializer::class)
-@SerialName(value = "tendermint.p2p.DefaultNodeInfoOther")
+@SerialName(value = DefaultNodeInfoOther.TYPE_URL)
 public data class DefaultNodeInfoOther(
   @ProtobufIndex(index = 1)
   public val txIndex: String,
   @ProtobufIndex(index = 2)
   public val rpcAddress: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.p2p.DefaultNodeInfoOther"
+  }
+
   public object KotlinxSerializer : KSerializer<DefaultNodeInfoOther> {
     private val delegator: KSerializer<DefaultNodeInfoOther> = DefaultNodeInfoOther.serializer()
 

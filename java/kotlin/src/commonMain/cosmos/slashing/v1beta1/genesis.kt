@@ -1,6 +1,6 @@
 // Transform from cosmos/slashing/v1beta1/genesis.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.slashing.v1beta1
 
@@ -20,9 +20,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = GenesisState.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.GenesisState")
+@SerialName(value = GenesisState.TYPE_URL)
 public data class GenesisState(
   @ProtobufIndex(index = 1)
   public val params: Params,
@@ -30,7 +31,11 @@ public data class GenesisState(
   public val signingInfos: List<SigningInfo>,
   @ProtobufIndex(index = 3)
   public val missedBlocks: List<ValidatorMissedBlocks>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.GenesisState"
+  }
+
   public object KotlinxSerializer : KSerializer<GenesisState> {
     private val delegator: KSerializer<GenesisState> = GenesisState.serializer()
 
@@ -54,13 +59,17 @@ public data class GenesisState(
 }
 
 @Serializable(with = SigningInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.SigningInfo")
+@SerialName(value = SigningInfo.TYPE_URL)
 public data class SigningInfo(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val validatorSigningInfo: ValidatorSigningInfo,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.SigningInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<SigningInfo> {
     private val delegator: KSerializer<SigningInfo> = SigningInfo.serializer()
 
@@ -84,13 +93,17 @@ public data class SigningInfo(
 }
 
 @Serializable(with = ValidatorMissedBlocks.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.ValidatorMissedBlocks")
+@SerialName(value = ValidatorMissedBlocks.TYPE_URL)
 public data class ValidatorMissedBlocks(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val missedBlocks: List<MissedBlock>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.ValidatorMissedBlocks"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorMissedBlocks> {
     private val delegator: KSerializer<ValidatorMissedBlocks> = ValidatorMissedBlocks.serializer()
 
@@ -114,13 +127,17 @@ public data class ValidatorMissedBlocks(
 }
 
 @Serializable(with = MissedBlock.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.MissedBlock")
+@SerialName(value = MissedBlock.TYPE_URL)
 public data class MissedBlock(
   @ProtobufIndex(index = 1)
   public val index: Long,
   @ProtobufIndex(index = 2)
   public val missed: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.MissedBlock"
+  }
+
   public object KotlinxSerializer : KSerializer<MissedBlock> {
     private val delegator: KSerializer<MissedBlock> = MissedBlock.serializer()
 

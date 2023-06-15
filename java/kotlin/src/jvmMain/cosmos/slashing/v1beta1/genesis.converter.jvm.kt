@@ -1,5 +1,5 @@
 // Transform from cosmos/slashing/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.slashing.v1beta1
 
@@ -14,9 +14,9 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	params = ParamsJvmConverter.convert(obj.params),
-  	signingInfos = obj.signingInfosList.map { SigningInfoJvmConverter.convert(it) },
-  	missedBlocks = obj.missedBlocksList.map { ValidatorMissedBlocksJvmConverter.convert(it) },
+  	params = ParamsJvmConverter.convert(obj.getParams()),
+  	signingInfos = obj.getSigningInfosList().map { SigningInfoJvmConverter.convert(it) },
+  	missedBlocks = obj.getMissedBlocksList().map { ValidatorMissedBlocksJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: GenesisState): Genesis.GenesisState {
@@ -35,8 +35,8 @@ public object SigningInfoJvmConverter : ProtobufTypeMapper<SigningInfo, Genesis.
   public override val parser: Parser<Genesis.SigningInfo> = Genesis.SigningInfo.parser()
 
   public override fun convert(obj: Genesis.SigningInfo): SigningInfo = SigningInfo(
-  	address = obj.address,
-  	validatorSigningInfo = ValidatorSigningInfoJvmConverter.convert(obj.validatorSigningInfo),
+  	address = obj.getAddress(),
+  	validatorSigningInfo = ValidatorSigningInfoJvmConverter.convert(obj.getValidatorSigningInfo()),
   )
 
   public override fun convert(obj: SigningInfo): Genesis.SigningInfo {
@@ -57,8 +57,8 @@ public object ValidatorMissedBlocksJvmConverter :
 
   public override fun convert(obj: Genesis.ValidatorMissedBlocks): ValidatorMissedBlocks =
       ValidatorMissedBlocks(
-  	address = obj.address,
-  	missedBlocks = obj.missedBlocksList.map { MissedBlockJvmConverter.convert(it) },
+  	address = obj.getAddress(),
+  	missedBlocks = obj.getMissedBlocksList().map { MissedBlockJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ValidatorMissedBlocks): Genesis.ValidatorMissedBlocks {
@@ -75,8 +75,8 @@ public object MissedBlockJvmConverter : ProtobufTypeMapper<MissedBlock, Genesis.
   public override val parser: Parser<Genesis.MissedBlock> = Genesis.MissedBlock.parser()
 
   public override fun convert(obj: Genesis.MissedBlock): MissedBlock = MissedBlock(
-  	index = obj.index,
-  	missed = obj.missed,
+  	index = obj.getIndex(),
+  	missed = obj.getMissed(),
   )
 
   public override fun convert(obj: MissedBlock): Genesis.MissedBlock {

@@ -1,6 +1,6 @@
 // Transform from cosmos/autocli/v1/options.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.autocli.v1
 
@@ -20,15 +20,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = ModuleOptions.KotlinxSerializer::class)
-@SerialName(value = "cosmos.autocli.v1.ModuleOptions")
+@SerialName(value = ModuleOptions.TYPE_URL)
 public data class ModuleOptions(
   @ProtobufIndex(index = 1)
   public val tx: ServiceCommandDescriptor,
   @ProtobufIndex(index = 2)
   public val query: ServiceCommandDescriptor,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.autocli.v1.ModuleOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<ModuleOptions> {
     private val delegator: KSerializer<ModuleOptions> = ModuleOptions.serializer()
 
@@ -52,7 +57,7 @@ public data class ModuleOptions(
 }
 
 @Serializable(with = ServiceCommandDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.autocli.v1.ServiceCommandDescriptor")
+@SerialName(value = ServiceCommandDescriptor.TYPE_URL)
 public data class ServiceCommandDescriptor(
   @ProtobufIndex(index = 1)
   public val service: String,
@@ -60,7 +65,11 @@ public data class ServiceCommandDescriptor(
   public val rpcCommandOptions: List<RpcCommandOptions>,
   @ProtobufIndex(index = 3)
   public val subCommands: Map<String, ServiceCommandDescriptor>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.autocli.v1.ServiceCommandDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<ServiceCommandDescriptor> {
     private val delegator: KSerializer<ServiceCommandDescriptor> =
         ServiceCommandDescriptor.serializer()
@@ -85,7 +94,7 @@ public data class ServiceCommandDescriptor(
 }
 
 @Serializable(with = RpcCommandOptions.KotlinxSerializer::class)
-@SerialName(value = "cosmos.autocli.v1.RpcCommandOptions")
+@SerialName(value = RpcCommandOptions.TYPE_URL)
 public data class RpcCommandOptions(
   @ProtobufIndex(index = 1)
   public val rpcMethod: String,
@@ -111,7 +120,11 @@ public data class RpcCommandOptions(
   public val positionalArgs: List<PositionalArgDescriptor>,
   @ProtobufIndex(index = 12)
   public val skip: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.autocli.v1.RpcCommandOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<RpcCommandOptions> {
     private val delegator: KSerializer<RpcCommandOptions> = RpcCommandOptions.serializer()
 
@@ -135,7 +148,7 @@ public data class RpcCommandOptions(
 }
 
 @Serializable(with = FlagOptions.KotlinxSerializer::class)
-@SerialName(value = "cosmos.autocli.v1.FlagOptions")
+@SerialName(value = FlagOptions.TYPE_URL)
 public data class FlagOptions(
   @ProtobufIndex(index = 1)
   public val name: String,
@@ -153,7 +166,11 @@ public data class FlagOptions(
   public val shorthandDeprecated: String,
   @ProtobufIndex(index = 8)
   public val hidden: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.autocli.v1.FlagOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<FlagOptions> {
     private val delegator: KSerializer<FlagOptions> = FlagOptions.serializer()
 
@@ -177,13 +194,17 @@ public data class FlagOptions(
 }
 
 @Serializable(with = PositionalArgDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.autocli.v1.PositionalArgDescriptor")
+@SerialName(value = PositionalArgDescriptor.TYPE_URL)
 public data class PositionalArgDescriptor(
   @ProtobufIndex(index = 1)
   public val protoField: String,
   @ProtobufIndex(index = 2)
   public val varargs: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.autocli.v1.PositionalArgDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<PositionalArgDescriptor> {
     private val delegator: KSerializer<PositionalArgDescriptor> =
         PositionalArgDescriptor.serializer()

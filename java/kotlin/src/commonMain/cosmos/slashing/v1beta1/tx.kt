@@ -1,6 +1,6 @@
 // Transform from cosmos/slashing/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.slashing.v1beta1
 
@@ -17,13 +17,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgUnjail.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.MsgUnjail")
+@SerialName(value = MsgUnjail.TYPE_URL)
 public data class MsgUnjail(
   @ProtobufIndex(index = 1)
   public val validatorAddr: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.MsgUnjail"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUnjail> {
     private val delegator: KSerializer<MsgUnjail> = MsgUnjail.serializer()
 
@@ -47,8 +52,12 @@ public data class MsgUnjail(
 }
 
 @Serializable(with = MsgUnjailResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.MsgUnjailResponse")
-public class MsgUnjailResponse() {
+@SerialName(value = MsgUnjailResponse.TYPE_URL)
+public class MsgUnjailResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.MsgUnjailResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUnjailResponse> {
     private val delegator: KSerializer<MsgUnjailResponse> = MsgUnjailResponse.serializer()
 
@@ -72,13 +81,17 @@ public class MsgUnjailResponse() {
 }
 
 @Serializable(with = MsgUpdateParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.MsgUpdateParams")
+@SerialName(value = MsgUpdateParams.TYPE_URL)
 public data class MsgUpdateParams(
   @ProtobufIndex(index = 1)
   public val authority: String,
   @ProtobufIndex(index = 2)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.MsgUpdateParams"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParams> {
     private val delegator: KSerializer<MsgUpdateParams> = MsgUpdateParams.serializer()
 
@@ -102,8 +115,12 @@ public data class MsgUpdateParams(
 }
 
 @Serializable(with = MsgUpdateParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.MsgUpdateParamsResponse")
-public class MsgUpdateParamsResponse() {
+@SerialName(value = MsgUpdateParamsResponse.TYPE_URL)
+public class MsgUpdateParamsResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.MsgUpdateParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParamsResponse> {
     private val delegator: KSerializer<MsgUpdateParamsResponse> =
         MsgUpdateParamsResponse.serializer()

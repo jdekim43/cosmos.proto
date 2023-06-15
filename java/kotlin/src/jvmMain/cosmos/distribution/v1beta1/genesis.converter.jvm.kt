@@ -1,5 +1,5 @@
 // Transform from cosmos/distribution/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.distribution.v1beta1
 
@@ -21,8 +21,8 @@ public object DelegatorWithdrawInfoJvmConverter :
 
   public override fun convert(obj: Genesis.DelegatorWithdrawInfo): DelegatorWithdrawInfo =
       DelegatorWithdrawInfo(
-  	delegatorAddress = obj.delegatorAddress,
-  	withdrawAddress = obj.withdrawAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	withdrawAddress = obj.getWithdrawAddress(),
   )
 
   public override fun convert(obj: DelegatorWithdrawInfo): Genesis.DelegatorWithdrawInfo {
@@ -44,8 +44,8 @@ public object ValidatorOutstandingRewardsRecordJvmConverter :
 
   public override fun convert(obj: Genesis.ValidatorOutstandingRewardsRecord):
       ValidatorOutstandingRewardsRecord = ValidatorOutstandingRewardsRecord(
-  	validatorAddress = obj.validatorAddress,
-  	outstandingRewards = obj.outstandingRewardsList.map { DecCoinJvmConverter.convert(it) },
+  	validatorAddress = obj.getValidatorAddress(),
+  	outstandingRewards = obj.getOutstandingRewardsList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ValidatorOutstandingRewardsRecord):
@@ -68,8 +68,8 @@ public object ValidatorAccumulatedCommissionRecordJvmConverter :
 
   public override fun convert(obj: Genesis.ValidatorAccumulatedCommissionRecord):
       ValidatorAccumulatedCommissionRecord = ValidatorAccumulatedCommissionRecord(
-  	validatorAddress = obj.validatorAddress,
-  	accumulated = ValidatorAccumulatedCommissionJvmConverter.convert(obj.accumulated),
+  	validatorAddress = obj.getValidatorAddress(),
+  	accumulated = ValidatorAccumulatedCommissionJvmConverter.convert(obj.getAccumulated()),
   )
 
   public override fun convert(obj: ValidatorAccumulatedCommissionRecord):
@@ -91,9 +91,9 @@ public object ValidatorHistoricalRewardsRecordJvmConverter :
 
   public override fun convert(obj: Genesis.ValidatorHistoricalRewardsRecord):
       ValidatorHistoricalRewardsRecord = ValidatorHistoricalRewardsRecord(
-  	validatorAddress = obj.validatorAddress,
-  	period = obj.period.asKotlinType,
-  	rewards = ValidatorHistoricalRewardsJvmConverter.convert(obj.rewards),
+  	validatorAddress = obj.getValidatorAddress(),
+  	period = obj.getPeriod().asKotlinType,
+  	rewards = ValidatorHistoricalRewardsJvmConverter.convert(obj.getRewards()),
   )
 
   public override fun convert(obj: ValidatorHistoricalRewardsRecord):
@@ -116,8 +116,8 @@ public object ValidatorCurrentRewardsRecordJvmConverter :
 
   public override fun convert(obj: Genesis.ValidatorCurrentRewardsRecord):
       ValidatorCurrentRewardsRecord = ValidatorCurrentRewardsRecord(
-  	validatorAddress = obj.validatorAddress,
-  	rewards = ValidatorCurrentRewardsJvmConverter.convert(obj.rewards),
+  	validatorAddress = obj.getValidatorAddress(),
+  	rewards = ValidatorCurrentRewardsJvmConverter.convert(obj.getRewards()),
   )
 
   public override fun convert(obj: ValidatorCurrentRewardsRecord):
@@ -139,9 +139,9 @@ public object DelegatorStartingInfoRecordJvmConverter :
 
   public override fun convert(obj: Genesis.DelegatorStartingInfoRecord): DelegatorStartingInfoRecord
       = DelegatorStartingInfoRecord(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
-  	startingInfo = DelegatorStartingInfoJvmConverter.convert(obj.startingInfo),
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
+  	startingInfo = DelegatorStartingInfoJvmConverter.convert(obj.getStartingInfo()),
   )
 
   public override fun convert(obj: DelegatorStartingInfoRecord):
@@ -164,10 +164,10 @@ public object ValidatorSlashEventRecordJvmConverter :
 
   public override fun convert(obj: Genesis.ValidatorSlashEventRecord): ValidatorSlashEventRecord =
       ValidatorSlashEventRecord(
-  	validatorAddress = obj.validatorAddress,
-  	height = obj.height.asKotlinType,
-  	period = obj.period.asKotlinType,
-  	validatorSlashEvent = ValidatorSlashEventJvmConverter.convert(obj.validatorSlashEvent),
+  	validatorAddress = obj.getValidatorAddress(),
+  	height = obj.getHeight().asKotlinType,
+  	period = obj.getPeriod().asKotlinType,
+  	validatorSlashEvent = ValidatorSlashEventJvmConverter.convert(obj.getValidatorSlashEvent()),
   )
 
   public override fun convert(obj: ValidatorSlashEventRecord): Genesis.ValidatorSlashEventRecord {
@@ -186,22 +186,22 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	params = ParamsJvmConverter.convert(obj.params),
-  	feePool = FeePoolJvmConverter.convert(obj.feePool),
-  	delegatorWithdrawInfos = obj.delegatorWithdrawInfosList.map {
+  	params = ParamsJvmConverter.convert(obj.getParams()),
+  	feePool = FeePoolJvmConverter.convert(obj.getFeePool()),
+  	delegatorWithdrawInfos = obj.getDelegatorWithdrawInfosList().map {
       DelegatorWithdrawInfoJvmConverter.convert(it) },
-  	previousProposer = obj.previousProposer,
-  	outstandingRewards = obj.outstandingRewardsList.map {
+  	previousProposer = obj.getPreviousProposer(),
+  	outstandingRewards = obj.getOutstandingRewardsList().map {
       ValidatorOutstandingRewardsRecordJvmConverter.convert(it) },
-  	validatorAccumulatedCommissions = obj.validatorAccumulatedCommissionsList.map {
+  	validatorAccumulatedCommissions = obj.getValidatorAccumulatedCommissionsList().map {
       ValidatorAccumulatedCommissionRecordJvmConverter.convert(it) },
-  	validatorHistoricalRewards = obj.validatorHistoricalRewardsList.map {
+  	validatorHistoricalRewards = obj.getValidatorHistoricalRewardsList().map {
       ValidatorHistoricalRewardsRecordJvmConverter.convert(it) },
-  	validatorCurrentRewards = obj.validatorCurrentRewardsList.map {
+  	validatorCurrentRewards = obj.getValidatorCurrentRewardsList().map {
       ValidatorCurrentRewardsRecordJvmConverter.convert(it) },
-  	delegatorStartingInfos = obj.delegatorStartingInfosList.map {
+  	delegatorStartingInfos = obj.getDelegatorStartingInfosList().map {
       DelegatorStartingInfoRecordJvmConverter.convert(it) },
-  	validatorSlashEvents = obj.validatorSlashEventsList.map {
+  	validatorSlashEvents = obj.getValidatorSlashEventsList().map {
       ValidatorSlashEventRecordJvmConverter.convert(it) },
   )
 

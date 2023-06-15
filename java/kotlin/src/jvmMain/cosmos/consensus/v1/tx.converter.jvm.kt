@@ -1,5 +1,5 @@
 // Transform from cosmos/consensus/v1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.consensus.v1
 
@@ -18,10 +18,10 @@ public object MsgUpdateParamsJvmConverter : ProtobufTypeMapper<MsgUpdateParams, 
   public override val parser: Parser<Tx.MsgUpdateParams> = Tx.MsgUpdateParams.parser()
 
   public override fun convert(obj: Tx.MsgUpdateParams): MsgUpdateParams = MsgUpdateParams(
-  	authority = obj.authority,
-  	block = BlockParamsJvmConverter.convert(obj.block),
-  	evidence = EvidenceParamsJvmConverter.convert(obj.evidence),
-  	validator = ValidatorParamsJvmConverter.convert(obj.validator),
+  	authority = obj.getAuthority(),
+  	block = BlockParamsJvmConverter.convert(obj.getBlock()),
+  	evidence = EvidenceParamsJvmConverter.convert(obj.getEvidence()),
+  	validator = ValidatorParamsJvmConverter.convert(obj.getValidator()),
   )
 
   public override fun convert(obj: MsgUpdateParams): Tx.MsgUpdateParams {

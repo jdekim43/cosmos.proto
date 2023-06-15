@@ -1,5 +1,5 @@
 // Transform from cosmos/feegrant/v1beta1/feegrant.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.feegrant.v1beta1
 
@@ -19,8 +19,8 @@ public object BasicAllowanceJvmConverter :
   public override val parser: Parser<Feegrant.BasicAllowance> = Feegrant.BasicAllowance.parser()
 
   public override fun convert(obj: Feegrant.BasicAllowance): BasicAllowance = BasicAllowance(
-  	spendLimit = obj.spendLimitList.map { CoinJvmConverter.convert(it) },
-  	expiration = TimestampJvmConverter.convert(obj.expiration),
+  	spendLimit = obj.getSpendLimitList().map { CoinJvmConverter.convert(it) },
+  	expiration = TimestampJvmConverter.convert(obj.getExpiration()),
   )
 
   public override fun convert(obj: BasicAllowance): Feegrant.BasicAllowance {
@@ -41,11 +41,11 @@ public object PeriodicAllowanceJvmConverter :
 
   public override fun convert(obj: Feegrant.PeriodicAllowance): PeriodicAllowance =
       PeriodicAllowance(
-  	basic = BasicAllowanceJvmConverter.convert(obj.basic),
-  	period = DurationJvmConverter.convert(obj.period),
-  	periodSpendLimit = obj.periodSpendLimitList.map { CoinJvmConverter.convert(it) },
-  	periodCanSpend = obj.periodCanSpendList.map { CoinJvmConverter.convert(it) },
-  	periodReset = TimestampJvmConverter.convert(obj.periodReset),
+  	basic = BasicAllowanceJvmConverter.convert(obj.getBasic()),
+  	period = DurationJvmConverter.convert(obj.getPeriod()),
+  	periodSpendLimit = obj.getPeriodSpendLimitList().map { CoinJvmConverter.convert(it) },
+  	periodCanSpend = obj.getPeriodCanSpendList().map { CoinJvmConverter.convert(it) },
+  	periodReset = TimestampJvmConverter.convert(obj.getPeriodReset()),
   )
 
   public override fun convert(obj: PeriodicAllowance): Feegrant.PeriodicAllowance {
@@ -69,8 +69,8 @@ public object AllowedMsgAllowanceJvmConverter :
 
   public override fun convert(obj: Feegrant.AllowedMsgAllowance): AllowedMsgAllowance =
       AllowedMsgAllowance(
-  	allowance = AnyJvmConverter.convert(obj.allowance),
-  	allowedMessages = obj.allowedMessagesList.map { it },
+  	allowance = AnyJvmConverter.convert(obj.getAllowance()),
+  	allowedMessages = obj.getAllowedMessagesList().map { it },
   )
 
   public override fun convert(obj: AllowedMsgAllowance): Feegrant.AllowedMsgAllowance {
@@ -87,9 +87,9 @@ public object GrantJvmConverter : ProtobufTypeMapper<Grant, Feegrant.Grant> {
   public override val parser: Parser<Feegrant.Grant> = Feegrant.Grant.parser()
 
   public override fun convert(obj: Feegrant.Grant): Grant = Grant(
-  	granter = obj.granter,
-  	grantee = obj.grantee,
-  	allowance = AnyJvmConverter.convert(obj.allowance),
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
+  	allowance = AnyJvmConverter.convert(obj.getAllowance()),
   )
 
   public override fun convert(obj: Grant): Feegrant.Grant {

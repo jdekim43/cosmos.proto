@@ -1,13 +1,17 @@
 // Transform from tendermint/abci/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.abci
 
 import kotlin.coroutines.CoroutineContext
 import kr.jadekim.protobuf.`annotation`.GeneratorVersion
 import kr.jadekim.protobuf.grpc.ClientOption
+import kr.jadekim.protobuf.grpc.GrpcService
 
-public actual object ABCIApplication {
+public actual object ABCIApplication :
+    GrpcService<ABCIApplication.Interface, ABCIApplication.Server, ABCIApplication.Client> {
+  public override fun createClient(option: ClientOption): Client = Client(option)
+
   public actual interface Interface {
     public actual suspend fun echo(request: RequestEcho): ResponseEcho
 

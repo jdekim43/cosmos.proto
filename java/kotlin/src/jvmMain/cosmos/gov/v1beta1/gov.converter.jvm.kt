@@ -1,5 +1,5 @@
 // Transform from cosmos/gov/v1beta1/gov.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.v1beta1
 
@@ -22,8 +22,8 @@ public object WeightedVoteOptionJvmConverter :
   public override val parser: Parser<Gov.WeightedVoteOption> = Gov.WeightedVoteOption.parser()
 
   public override fun convert(obj: Gov.WeightedVoteOption): WeightedVoteOption = WeightedVoteOption(
-  	option = VoteOption.forNumber(obj.option.number),
-  	weight = obj.weight,
+  	option = VoteOption.forNumber(obj.getOption().number),
+  	weight = obj.getWeight(),
   )
 
   public override fun convert(obj: WeightedVoteOption): Gov.WeightedVoteOption {
@@ -40,8 +40,8 @@ public object TextProposalJvmConverter : ProtobufTypeMapper<TextProposal, Gov.Te
   public override val parser: Parser<Gov.TextProposal> = Gov.TextProposal.parser()
 
   public override fun convert(obj: Gov.TextProposal): TextProposal = TextProposal(
-  	title = obj.title,
-  	description = obj.description,
+  	title = obj.getTitle(),
+  	description = obj.getDescription(),
   )
 
   public override fun convert(obj: TextProposal): Gov.TextProposal {
@@ -58,9 +58,9 @@ public object DepositJvmConverter : ProtobufTypeMapper<Deposit, Gov.Deposit> {
   public override val parser: Parser<Gov.Deposit> = Gov.Deposit.parser()
 
   public override fun convert(obj: Gov.Deposit): Deposit = Deposit(
-  	proposalId = obj.proposalId.asKotlinType,
-  	depositor = obj.depositor,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	proposalId = obj.getProposalId().asKotlinType,
+  	depositor = obj.getDepositor(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Deposit): Gov.Deposit {
@@ -78,15 +78,15 @@ public object ProposalJvmConverter : ProtobufTypeMapper<Proposal, Gov.Proposal> 
   public override val parser: Parser<Gov.Proposal> = Gov.Proposal.parser()
 
   public override fun convert(obj: Gov.Proposal): Proposal = Proposal(
-  	proposalId = obj.proposalId.asKotlinType,
-  	content = AnyJvmConverter.convert(obj.content),
-  	status = ProposalStatus.forNumber(obj.status.number),
-  	finalTallyResult = TallyResultJvmConverter.convert(obj.finalTallyResult),
-  	submitTime = TimestampJvmConverter.convert(obj.submitTime),
-  	depositEndTime = TimestampJvmConverter.convert(obj.depositEndTime),
-  	totalDeposit = obj.totalDepositList.map { CoinJvmConverter.convert(it) },
-  	votingStartTime = TimestampJvmConverter.convert(obj.votingStartTime),
-  	votingEndTime = TimestampJvmConverter.convert(obj.votingEndTime),
+  	proposalId = obj.getProposalId().asKotlinType,
+  	content = AnyJvmConverter.convert(obj.getContent()),
+  	status = ProposalStatus.forNumber(obj.getStatus().number),
+  	finalTallyResult = TallyResultJvmConverter.convert(obj.getFinalTallyResult()),
+  	submitTime = TimestampJvmConverter.convert(obj.getSubmitTime()),
+  	depositEndTime = TimestampJvmConverter.convert(obj.getDepositEndTime()),
+  	totalDeposit = obj.getTotalDepositList().map { CoinJvmConverter.convert(it) },
+  	votingStartTime = TimestampJvmConverter.convert(obj.getVotingStartTime()),
+  	votingEndTime = TimestampJvmConverter.convert(obj.getVotingEndTime()),
   )
 
   public override fun convert(obj: Proposal): Gov.Proposal {
@@ -110,10 +110,10 @@ public object TallyResultJvmConverter : ProtobufTypeMapper<TallyResult, Gov.Tall
   public override val parser: Parser<Gov.TallyResult> = Gov.TallyResult.parser()
 
   public override fun convert(obj: Gov.TallyResult): TallyResult = TallyResult(
-  	yes = obj.yes,
-  	abstain = obj.abstain,
-  	no = obj.no,
-  	noWithVeto = obj.noWithVeto,
+  	yes = obj.getYes(),
+  	abstain = obj.getAbstain(),
+  	no = obj.getNo(),
+  	noWithVeto = obj.getNoWithVeto(),
   )
 
   public override fun convert(obj: TallyResult): Gov.TallyResult {
@@ -132,10 +132,10 @@ public object VoteJvmConverter : ProtobufTypeMapper<Vote, Gov.Vote> {
   public override val parser: Parser<Gov.Vote> = Gov.Vote.parser()
 
   public override fun convert(obj: Gov.Vote): Vote = Vote(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
-  	option = VoteOption.forNumber(obj.option.number),
-  	options = obj.optionsList.map { WeightedVoteOptionJvmConverter.convert(it) },
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
+  	option = VoteOption.forNumber(obj.getOption().number),
+  	options = obj.getOptionsList().map { WeightedVoteOptionJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Vote): Gov.Vote {
@@ -154,8 +154,8 @@ public object DepositParamsJvmConverter : ProtobufTypeMapper<DepositParams, Gov.
   public override val parser: Parser<Gov.DepositParams> = Gov.DepositParams.parser()
 
   public override fun convert(obj: Gov.DepositParams): DepositParams = DepositParams(
-  	minDeposit = obj.minDepositList.map { CoinJvmConverter.convert(it) },
-  	maxDepositPeriod = DurationJvmConverter.convert(obj.maxDepositPeriod),
+  	minDeposit = obj.getMinDepositList().map { CoinJvmConverter.convert(it) },
+  	maxDepositPeriod = DurationJvmConverter.convert(obj.getMaxDepositPeriod()),
   )
 
   public override fun convert(obj: DepositParams): Gov.DepositParams {
@@ -172,7 +172,7 @@ public object VotingParamsJvmConverter : ProtobufTypeMapper<VotingParams, Gov.Vo
   public override val parser: Parser<Gov.VotingParams> = Gov.VotingParams.parser()
 
   public override fun convert(obj: Gov.VotingParams): VotingParams = VotingParams(
-  	votingPeriod = DurationJvmConverter.convert(obj.votingPeriod),
+  	votingPeriod = DurationJvmConverter.convert(obj.getVotingPeriod()),
   )
 
   public override fun convert(obj: VotingParams): Gov.VotingParams {
@@ -188,9 +188,9 @@ public object TallyParamsJvmConverter : ProtobufTypeMapper<TallyParams, Gov.Tall
   public override val parser: Parser<Gov.TallyParams> = Gov.TallyParams.parser()
 
   public override fun convert(obj: Gov.TallyParams): TallyParams = TallyParams(
-  	quorum = obj.quorum.toByteArray(),
-  	threshold = obj.threshold.toByteArray(),
-  	vetoThreshold = obj.vetoThreshold.toByteArray(),
+  	quorum = obj.getQuorum().toByteArray(),
+  	threshold = obj.getThreshold().toByteArray(),
+  	vetoThreshold = obj.getVetoThreshold().toByteArray(),
   )
 
   public override fun convert(obj: TallyParams): Gov.TallyParams {

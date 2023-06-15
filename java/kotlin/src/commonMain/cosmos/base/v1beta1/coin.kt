@@ -1,6 +1,6 @@
 // Transform from cosmos/base/v1beta1/coin.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.v1beta1
 
@@ -17,15 +17,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Coin.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.v1beta1.Coin")
+@SerialName(value = Coin.TYPE_URL)
 public data class Coin(
   @ProtobufIndex(index = 1)
   public val denom: String,
   @ProtobufIndex(index = 2)
   public val amount: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.v1beta1.Coin"
+  }
+
   public object KotlinxSerializer : KSerializer<Coin> {
     private val delegator: KSerializer<Coin> = Coin.serializer()
 
@@ -49,13 +54,17 @@ public data class Coin(
 }
 
 @Serializable(with = DecCoin.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.v1beta1.DecCoin")
+@SerialName(value = DecCoin.TYPE_URL)
 public data class DecCoin(
   @ProtobufIndex(index = 1)
   public val denom: String,
   @ProtobufIndex(index = 2)
   public val amount: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.v1beta1.DecCoin"
+  }
+
   public object KotlinxSerializer : KSerializer<DecCoin> {
     private val delegator: KSerializer<DecCoin> = DecCoin.serializer()
 
@@ -79,11 +88,15 @@ public data class DecCoin(
 }
 
 @Serializable(with = IntProto.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.v1beta1.IntProto")
+@SerialName(value = IntProto.TYPE_URL)
 public data class IntProto(
   @ProtobufIndex(index = 1)
   public val int: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.v1beta1.IntProto"
+  }
+
   public object KotlinxSerializer : KSerializer<IntProto> {
     private val delegator: KSerializer<IntProto> = IntProto.serializer()
 
@@ -107,11 +120,15 @@ public data class IntProto(
 }
 
 @Serializable(with = DecProto.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.v1beta1.DecProto")
+@SerialName(value = DecProto.TYPE_URL)
 public data class DecProto(
   @ProtobufIndex(index = 1)
   public val dec: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.v1beta1.DecProto"
+  }
+
   public object KotlinxSerializer : KSerializer<DecProto> {
     private val delegator: KSerializer<DecProto> = DecProto.serializer()
 

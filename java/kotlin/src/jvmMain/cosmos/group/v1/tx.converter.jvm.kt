@@ -1,5 +1,5 @@
 // Transform from cosmos/group/v1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.v1
 
@@ -17,9 +17,9 @@ public object MsgCreateGroupJvmConverter : ProtobufTypeMapper<MsgCreateGroup, Tx
   public override val parser: Parser<Tx.MsgCreateGroup> = Tx.MsgCreateGroup.parser()
 
   public override fun convert(obj: Tx.MsgCreateGroup): MsgCreateGroup = MsgCreateGroup(
-  	admin = obj.admin,
-  	members = obj.membersList.map { MemberRequestJvmConverter.convert(it) },
-  	metadata = obj.metadata,
+  	admin = obj.getAdmin(),
+  	members = obj.getMembersList().map { MemberRequestJvmConverter.convert(it) },
+  	metadata = obj.getMetadata(),
   )
 
   public override fun convert(obj: MsgCreateGroup): Tx.MsgCreateGroup {
@@ -39,7 +39,7 @@ public object MsgCreateGroupResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgCreateGroupResponse): MsgCreateGroupResponse =
       MsgCreateGroupResponse(
-  	groupId = obj.groupId.asKotlinType,
+  	groupId = obj.getGroupId().asKotlinType,
   )
 
   public override fun convert(obj: MsgCreateGroupResponse): Tx.MsgCreateGroupResponse {
@@ -57,9 +57,9 @@ public object MsgUpdateGroupMembersJvmConverter :
 
   public override fun convert(obj: Tx.MsgUpdateGroupMembers): MsgUpdateGroupMembers =
       MsgUpdateGroupMembers(
-  	admin = obj.admin,
-  	groupId = obj.groupId.asKotlinType,
-  	memberUpdates = obj.memberUpdatesList.map { MemberRequestJvmConverter.convert(it) },
+  	admin = obj.getAdmin(),
+  	groupId = obj.getGroupId().asKotlinType,
+  	memberUpdates = obj.getMemberUpdatesList().map { MemberRequestJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgUpdateGroupMembers): Tx.MsgUpdateGroupMembers {
@@ -98,9 +98,9 @@ public object MsgUpdateGroupAdminJvmConverter :
 
   public override fun convert(obj: Tx.MsgUpdateGroupAdmin): MsgUpdateGroupAdmin =
       MsgUpdateGroupAdmin(
-  	admin = obj.admin,
-  	groupId = obj.groupId.asKotlinType,
-  	newAdmin = obj.newAdmin,
+  	admin = obj.getAdmin(),
+  	groupId = obj.getGroupId().asKotlinType,
+  	newAdmin = obj.getNewAdmin(),
   )
 
   public override fun convert(obj: MsgUpdateGroupAdmin): Tx.MsgUpdateGroupAdmin {
@@ -138,9 +138,9 @@ public object MsgUpdateGroupMetadataJvmConverter :
 
   public override fun convert(obj: Tx.MsgUpdateGroupMetadata): MsgUpdateGroupMetadata =
       MsgUpdateGroupMetadata(
-  	admin = obj.admin,
-  	groupId = obj.groupId.asKotlinType,
-  	metadata = obj.metadata,
+  	admin = obj.getAdmin(),
+  	groupId = obj.getGroupId().asKotlinType,
+  	metadata = obj.getMetadata(),
   )
 
   public override fun convert(obj: MsgUpdateGroupMetadata): Tx.MsgUpdateGroupMetadata {
@@ -179,10 +179,10 @@ public object MsgCreateGroupPolicyJvmConverter :
 
   public override fun convert(obj: Tx.MsgCreateGroupPolicy): MsgCreateGroupPolicy =
       MsgCreateGroupPolicy(
-  	admin = obj.admin,
-  	groupId = obj.groupId.asKotlinType,
-  	metadata = obj.metadata,
-  	decisionPolicy = AnyJvmConverter.convert(obj.decisionPolicy),
+  	admin = obj.getAdmin(),
+  	groupId = obj.getGroupId().asKotlinType,
+  	metadata = obj.getMetadata(),
+  	decisionPolicy = AnyJvmConverter.convert(obj.getDecisionPolicy()),
   )
 
   public override fun convert(obj: MsgCreateGroupPolicy): Tx.MsgCreateGroupPolicy {
@@ -205,7 +205,7 @@ public object MsgCreateGroupPolicyResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgCreateGroupPolicyResponse): MsgCreateGroupPolicyResponse =
       MsgCreateGroupPolicyResponse(
-  	address = obj.address,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: MsgCreateGroupPolicyResponse): Tx.MsgCreateGroupPolicyResponse {
@@ -225,9 +225,9 @@ public object MsgUpdateGroupPolicyAdminJvmConverter :
 
   public override fun convert(obj: Tx.MsgUpdateGroupPolicyAdmin): MsgUpdateGroupPolicyAdmin =
       MsgUpdateGroupPolicyAdmin(
-  	admin = obj.admin,
-  	groupPolicyAddress = obj.groupPolicyAddress,
-  	newAdmin = obj.newAdmin,
+  	admin = obj.getAdmin(),
+  	groupPolicyAddress = obj.getGroupPolicyAddress(),
+  	newAdmin = obj.getNewAdmin(),
   )
 
   public override fun convert(obj: MsgUpdateGroupPolicyAdmin): Tx.MsgUpdateGroupPolicyAdmin {
@@ -268,12 +268,12 @@ public object MsgCreateGroupWithPolicyJvmConverter :
 
   public override fun convert(obj: Tx.MsgCreateGroupWithPolicy): MsgCreateGroupWithPolicy =
       MsgCreateGroupWithPolicy(
-  	admin = obj.admin,
-  	members = obj.membersList.map { MemberRequestJvmConverter.convert(it) },
-  	groupMetadata = obj.groupMetadata,
-  	groupPolicyMetadata = obj.groupPolicyMetadata,
-  	groupPolicyAsAdmin = obj.groupPolicyAsAdmin,
-  	decisionPolicy = AnyJvmConverter.convert(obj.decisionPolicy),
+  	admin = obj.getAdmin(),
+  	members = obj.getMembersList().map { MemberRequestJvmConverter.convert(it) },
+  	groupMetadata = obj.getGroupMetadata(),
+  	groupPolicyMetadata = obj.getGroupPolicyMetadata(),
+  	groupPolicyAsAdmin = obj.getGroupPolicyAsAdmin(),
+  	decisionPolicy = AnyJvmConverter.convert(obj.getDecisionPolicy()),
   )
 
   public override fun convert(obj: MsgCreateGroupWithPolicy): Tx.MsgCreateGroupWithPolicy {
@@ -298,8 +298,8 @@ public object MsgCreateGroupWithPolicyResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgCreateGroupWithPolicyResponse):
       MsgCreateGroupWithPolicyResponse = MsgCreateGroupWithPolicyResponse(
-  	groupId = obj.groupId.asKotlinType,
-  	groupPolicyAddress = obj.groupPolicyAddress,
+  	groupId = obj.getGroupId().asKotlinType,
+  	groupPolicyAddress = obj.getGroupPolicyAddress(),
   )
 
   public override fun convert(obj: MsgCreateGroupWithPolicyResponse):
@@ -321,9 +321,9 @@ public object MsgUpdateGroupPolicyDecisionPolicyJvmConverter :
 
   public override fun convert(obj: Tx.MsgUpdateGroupPolicyDecisionPolicy):
       MsgUpdateGroupPolicyDecisionPolicy = MsgUpdateGroupPolicyDecisionPolicy(
-  	admin = obj.admin,
-  	groupPolicyAddress = obj.groupPolicyAddress,
-  	decisionPolicy = AnyJvmConverter.convert(obj.decisionPolicy),
+  	admin = obj.getAdmin(),
+  	groupPolicyAddress = obj.getGroupPolicyAddress(),
+  	decisionPolicy = AnyJvmConverter.convert(obj.getDecisionPolicy()),
   )
 
   public override fun convert(obj: MsgUpdateGroupPolicyDecisionPolicy):
@@ -366,9 +366,9 @@ public object MsgUpdateGroupPolicyMetadataJvmConverter :
 
   public override fun convert(obj: Tx.MsgUpdateGroupPolicyMetadata): MsgUpdateGroupPolicyMetadata =
       MsgUpdateGroupPolicyMetadata(
-  	admin = obj.admin,
-  	groupPolicyAddress = obj.groupPolicyAddress,
-  	metadata = obj.metadata,
+  	admin = obj.getAdmin(),
+  	groupPolicyAddress = obj.getGroupPolicyAddress(),
+  	metadata = obj.getMetadata(),
   )
 
   public override fun convert(obj: MsgUpdateGroupPolicyMetadata): Tx.MsgUpdateGroupPolicyMetadata {
@@ -407,13 +407,13 @@ public object MsgSubmitProposalJvmConverter :
   public override val parser: Parser<Tx.MsgSubmitProposal> = Tx.MsgSubmitProposal.parser()
 
   public override fun convert(obj: Tx.MsgSubmitProposal): MsgSubmitProposal = MsgSubmitProposal(
-  	groupPolicyAddress = obj.groupPolicyAddress,
-  	proposers = obj.proposersList.map { it },
-  	metadata = obj.metadata,
-  	messages = obj.messagesList.map { AnyJvmConverter.convert(it) },
-  	exec = Exec.forNumber(obj.exec.number),
-  	title = obj.title,
-  	summary = obj.summary,
+  	groupPolicyAddress = obj.getGroupPolicyAddress(),
+  	proposers = obj.getProposersList().map { it },
+  	metadata = obj.getMetadata(),
+  	messages = obj.getMessagesList().map { AnyJvmConverter.convert(it) },
+  	exec = Exec.forNumber(obj.getExec().number),
+  	title = obj.getTitle(),
+  	summary = obj.getSummary(),
   )
 
   public override fun convert(obj: MsgSubmitProposal): Tx.MsgSubmitProposal {
@@ -439,7 +439,7 @@ public object MsgSubmitProposalResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgSubmitProposalResponse): MsgSubmitProposalResponse =
       MsgSubmitProposalResponse(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: MsgSubmitProposalResponse): Tx.MsgSubmitProposalResponse {
@@ -457,8 +457,8 @@ public object MsgWithdrawProposalJvmConverter :
 
   public override fun convert(obj: Tx.MsgWithdrawProposal): MsgWithdrawProposal =
       MsgWithdrawProposal(
-  	proposalId = obj.proposalId.asKotlinType,
-  	address = obj.address,
+  	proposalId = obj.getProposalId().asKotlinType,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: MsgWithdrawProposal): Tx.MsgWithdrawProposal {
@@ -493,11 +493,11 @@ public object MsgVoteJvmConverter : ProtobufTypeMapper<MsgVote, Tx.MsgVote> {
   public override val parser: Parser<Tx.MsgVote> = Tx.MsgVote.parser()
 
   public override fun convert(obj: Tx.MsgVote): MsgVote = MsgVote(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
-  	option = VoteOption.forNumber(obj.option.number),
-  	metadata = obj.metadata,
-  	exec = Exec.forNumber(obj.exec.number),
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
+  	option = VoteOption.forNumber(obj.getOption().number),
+  	metadata = obj.getMetadata(),
+  	exec = Exec.forNumber(obj.getExec().number),
   )
 
   public override fun convert(obj: MsgVote): Tx.MsgVote {
@@ -532,8 +532,8 @@ public object MsgExecJvmConverter : ProtobufTypeMapper<MsgExec, Tx.MsgExec> {
   public override val parser: Parser<Tx.MsgExec> = Tx.MsgExec.parser()
 
   public override fun convert(obj: Tx.MsgExec): MsgExec = MsgExec(
-  	proposalId = obj.proposalId.asKotlinType,
-  	executor = obj.executor,
+  	proposalId = obj.getProposalId().asKotlinType,
+  	executor = obj.getExecutor(),
   )
 
   public override fun convert(obj: MsgExec): Tx.MsgExec {
@@ -551,7 +551,7 @@ public object MsgExecResponseJvmConverter : ProtobufTypeMapper<MsgExecResponse, 
   public override val parser: Parser<Tx.MsgExecResponse> = Tx.MsgExecResponse.parser()
 
   public override fun convert(obj: Tx.MsgExecResponse): MsgExecResponse = MsgExecResponse(
-  	result = ProposalExecutorResult.forNumber(obj.result.number),
+  	result = ProposalExecutorResult.forNumber(obj.getResult().number),
   )
 
   public override fun convert(obj: MsgExecResponse): Tx.MsgExecResponse {
@@ -567,8 +567,8 @@ public object MsgLeaveGroupJvmConverter : ProtobufTypeMapper<MsgLeaveGroup, Tx.M
   public override val parser: Parser<Tx.MsgLeaveGroup> = Tx.MsgLeaveGroup.parser()
 
   public override fun convert(obj: Tx.MsgLeaveGroup): MsgLeaveGroup = MsgLeaveGroup(
-  	address = obj.address,
-  	groupId = obj.groupId.asKotlinType,
+  	address = obj.getAddress(),
+  	groupId = obj.getGroupId().asKotlinType,
   )
 
   public override fun convert(obj: MsgLeaveGroup): Tx.MsgLeaveGroup {

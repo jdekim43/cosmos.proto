@@ -1,5 +1,5 @@
 // Transform from cosmos/evidence/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.evidence.v1beta1
 
@@ -22,8 +22,8 @@ public object QueryEvidenceRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryEvidenceRequest): QueryEvidenceRequest =
       QueryEvidenceRequest(
-  	evidenceHash = obj.evidenceHash.toByteArray(),
-  	hash = obj.hash,
+  	evidenceHash = obj.getEvidenceHash().toByteArray(),
+  	hash = obj.getHash(),
   )
 
   public override fun convert(obj: QueryEvidenceRequest): QueryOuterClass.QueryEvidenceRequest {
@@ -44,7 +44,7 @@ public object QueryEvidenceResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryEvidenceResponse): QueryEvidenceResponse =
       QueryEvidenceResponse(
-  	evidence = AnyJvmConverter.convert(obj.evidence),
+  	evidence = AnyJvmConverter.convert(obj.getEvidence()),
   )
 
   public override fun convert(obj: QueryEvidenceResponse): QueryOuterClass.QueryEvidenceResponse {
@@ -64,7 +64,7 @@ public object QueryAllEvidenceRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllEvidenceRequest): QueryAllEvidenceRequest
       = QueryAllEvidenceRequest(
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAllEvidenceRequest):
@@ -85,8 +85,8 @@ public object QueryAllEvidenceResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllEvidenceResponse):
       QueryAllEvidenceResponse = QueryAllEvidenceResponse(
-  	evidence = obj.evidenceList.map { AnyJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	evidence = obj.getEvidenceList().map { AnyJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAllEvidenceResponse):

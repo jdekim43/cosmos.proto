@@ -1,5 +1,5 @@
 // Transform from cosmos/base/v1beta1/coin.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.v1beta1
 
@@ -14,8 +14,8 @@ public object CoinJvmConverter : ProtobufTypeMapper<Coin, CoinOuterClass.Coin> {
   public override val parser: Parser<CoinOuterClass.Coin> = CoinOuterClass.Coin.parser()
 
   public override fun convert(obj: CoinOuterClass.Coin): Coin = Coin(
-  	denom = obj.denom,
-  	amount = obj.amount,
+  	denom = obj.getDenom(),
+  	amount = obj.getAmount(),
   )
 
   public override fun convert(obj: Coin): CoinOuterClass.Coin {
@@ -32,8 +32,8 @@ public object DecCoinJvmConverter : ProtobufTypeMapper<DecCoin, CoinOuterClass.D
   public override val parser: Parser<CoinOuterClass.DecCoin> = CoinOuterClass.DecCoin.parser()
 
   public override fun convert(obj: CoinOuterClass.DecCoin): DecCoin = DecCoin(
-  	denom = obj.denom,
-  	amount = obj.amount,
+  	denom = obj.getDenom(),
+  	amount = obj.getAmount(),
   )
 
   public override fun convert(obj: DecCoin): CoinOuterClass.DecCoin {
@@ -50,7 +50,7 @@ public object IntProtoJvmConverter : ProtobufTypeMapper<IntProto, CoinOuterClass
   public override val parser: Parser<CoinOuterClass.IntProto> = CoinOuterClass.IntProto.parser()
 
   public override fun convert(obj: CoinOuterClass.IntProto): IntProto = IntProto(
-  	int = obj.int,
+  	int = obj.getInt(),
   )
 
   public override fun convert(obj: IntProto): CoinOuterClass.IntProto {
@@ -66,7 +66,7 @@ public object DecProtoJvmConverter : ProtobufTypeMapper<DecProto, CoinOuterClass
   public override val parser: Parser<CoinOuterClass.DecProto> = CoinOuterClass.DecProto.parser()
 
   public override fun convert(obj: CoinOuterClass.DecProto): DecProto = DecProto(
-  	dec = obj.dec,
+  	dec = obj.getDec(),
   )
 
   public override fun convert(obj: DecProto): CoinOuterClass.DecProto {

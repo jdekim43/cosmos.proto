@@ -1,9 +1,10 @@
 // Transform from cosmos/nft/module/v1/module.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.module.v1
 
+import kotlin.String
 import kotlin.Unit
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -15,10 +16,15 @@ import kr.jadekim.protobuf.`annotation`.GeneratorVersion
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Module.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.module.v1.Module")
-public class Module() {
+@SerialName(value = Module.TYPE_URL)
+public class Module() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.module.v1.Module"
+  }
+
   public object KotlinxSerializer : KSerializer<Module> {
     private val delegator: KSerializer<Module> = Module.serializer()
 

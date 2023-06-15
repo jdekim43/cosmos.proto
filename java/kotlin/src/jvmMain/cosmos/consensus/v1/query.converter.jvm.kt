@@ -1,5 +1,5 @@
 // Transform from cosmos/consensus/v1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.consensus.v1
 
@@ -37,7 +37,7 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	params = ConsensusParamsJvmConverter.convert(obj.params),
+  	params = ConsensusParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {

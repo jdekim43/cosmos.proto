@@ -1,6 +1,6 @@
 // Transform from cosmos/nft/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.v1beta1
 
@@ -21,15 +21,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryBalanceRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryBalanceRequest")
+@SerialName(value = QueryBalanceRequest.TYPE_URL)
 public data class QueryBalanceRequest(
   @ProtobufIndex(index = 1)
   public val classId: String,
   @ProtobufIndex(index = 2)
   public val owner: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryBalanceRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryBalanceRequest> {
     private val delegator: KSerializer<QueryBalanceRequest> = QueryBalanceRequest.serializer()
 
@@ -53,11 +58,15 @@ public data class QueryBalanceRequest(
 }
 
 @Serializable(with = QueryBalanceResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryBalanceResponse")
+@SerialName(value = QueryBalanceResponse.TYPE_URL)
 public data class QueryBalanceResponse(
   @ProtobufIndex(index = 1)
   public val amount: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryBalanceResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryBalanceResponse> {
     private val delegator: KSerializer<QueryBalanceResponse> = QueryBalanceResponse.serializer()
 
@@ -81,13 +90,17 @@ public data class QueryBalanceResponse(
 }
 
 @Serializable(with = QueryOwnerRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryOwnerRequest")
+@SerialName(value = QueryOwnerRequest.TYPE_URL)
 public data class QueryOwnerRequest(
   @ProtobufIndex(index = 1)
   public val classId: String,
   @ProtobufIndex(index = 2)
   public val id: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryOwnerRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryOwnerRequest> {
     private val delegator: KSerializer<QueryOwnerRequest> = QueryOwnerRequest.serializer()
 
@@ -111,11 +124,15 @@ public data class QueryOwnerRequest(
 }
 
 @Serializable(with = QueryOwnerResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryOwnerResponse")
+@SerialName(value = QueryOwnerResponse.TYPE_URL)
 public data class QueryOwnerResponse(
   @ProtobufIndex(index = 1)
   public val owner: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryOwnerResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryOwnerResponse> {
     private val delegator: KSerializer<QueryOwnerResponse> = QueryOwnerResponse.serializer()
 
@@ -139,11 +156,15 @@ public data class QueryOwnerResponse(
 }
 
 @Serializable(with = QuerySupplyRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QuerySupplyRequest")
+@SerialName(value = QuerySupplyRequest.TYPE_URL)
 public data class QuerySupplyRequest(
   @ProtobufIndex(index = 1)
   public val classId: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QuerySupplyRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySupplyRequest> {
     private val delegator: KSerializer<QuerySupplyRequest> = QuerySupplyRequest.serializer()
 
@@ -167,11 +188,15 @@ public data class QuerySupplyRequest(
 }
 
 @Serializable(with = QuerySupplyResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QuerySupplyResponse")
+@SerialName(value = QuerySupplyResponse.TYPE_URL)
 public data class QuerySupplyResponse(
   @ProtobufIndex(index = 1)
   public val amount: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QuerySupplyResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySupplyResponse> {
     private val delegator: KSerializer<QuerySupplyResponse> = QuerySupplyResponse.serializer()
 
@@ -195,7 +220,7 @@ public data class QuerySupplyResponse(
 }
 
 @Serializable(with = QueryNFTsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryNFTsRequest")
+@SerialName(value = QueryNFTsRequest.TYPE_URL)
 public data class QueryNFTsRequest(
   @ProtobufIndex(index = 1)
   public val classId: String,
@@ -203,7 +228,11 @@ public data class QueryNFTsRequest(
   public val owner: String,
   @ProtobufIndex(index = 3)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryNFTsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryNFTsRequest> {
     private val delegator: KSerializer<QueryNFTsRequest> = QueryNFTsRequest.serializer()
 
@@ -227,13 +256,17 @@ public data class QueryNFTsRequest(
 }
 
 @Serializable(with = QueryNFTsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryNFTsResponse")
+@SerialName(value = QueryNFTsResponse.TYPE_URL)
 public data class QueryNFTsResponse(
   @ProtobufIndex(index = 1)
   public val nfts: List<NFT>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryNFTsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryNFTsResponse> {
     private val delegator: KSerializer<QueryNFTsResponse> = QueryNFTsResponse.serializer()
 
@@ -257,13 +290,17 @@ public data class QueryNFTsResponse(
 }
 
 @Serializable(with = QueryNFTRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryNFTRequest")
+@SerialName(value = QueryNFTRequest.TYPE_URL)
 public data class QueryNFTRequest(
   @ProtobufIndex(index = 1)
   public val classId: String,
   @ProtobufIndex(index = 2)
   public val id: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryNFTRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryNFTRequest> {
     private val delegator: KSerializer<QueryNFTRequest> = QueryNFTRequest.serializer()
 
@@ -287,11 +324,15 @@ public data class QueryNFTRequest(
 }
 
 @Serializable(with = QueryNFTResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryNFTResponse")
+@SerialName(value = QueryNFTResponse.TYPE_URL)
 public data class QueryNFTResponse(
   @ProtobufIndex(index = 1)
   public val nft: NFT,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryNFTResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryNFTResponse> {
     private val delegator: KSerializer<QueryNFTResponse> = QueryNFTResponse.serializer()
 
@@ -315,11 +356,15 @@ public data class QueryNFTResponse(
 }
 
 @Serializable(with = QueryClassRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryClassRequest")
+@SerialName(value = QueryClassRequest.TYPE_URL)
 public data class QueryClassRequest(
   @ProtobufIndex(index = 1)
   public val classId: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryClassRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryClassRequest> {
     private val delegator: KSerializer<QueryClassRequest> = QueryClassRequest.serializer()
 
@@ -343,11 +388,15 @@ public data class QueryClassRequest(
 }
 
 @Serializable(with = QueryClassResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryClassResponse")
+@SerialName(value = QueryClassResponse.TYPE_URL)
 public data class QueryClassResponse(
   @ProtobufIndex(index = 1)
   public val `class`: Class,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryClassResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryClassResponse> {
     private val delegator: KSerializer<QueryClassResponse> = QueryClassResponse.serializer()
 
@@ -371,11 +420,15 @@ public data class QueryClassResponse(
 }
 
 @Serializable(with = QueryClassesRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryClassesRequest")
+@SerialName(value = QueryClassesRequest.TYPE_URL)
 public data class QueryClassesRequest(
   @ProtobufIndex(index = 1)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryClassesRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryClassesRequest> {
     private val delegator: KSerializer<QueryClassesRequest> = QueryClassesRequest.serializer()
 
@@ -399,13 +452,17 @@ public data class QueryClassesRequest(
 }
 
 @Serializable(with = QueryClassesResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.QueryClassesResponse")
+@SerialName(value = QueryClassesResponse.TYPE_URL)
 public data class QueryClassesResponse(
   @ProtobufIndex(index = 1)
   public val classes: List<Class>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.QueryClassesResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryClassesResponse> {
     private val delegator: KSerializer<QueryClassesResponse> = QueryClassesResponse.serializer()
 

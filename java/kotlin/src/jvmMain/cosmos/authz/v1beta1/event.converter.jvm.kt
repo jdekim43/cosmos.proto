@@ -1,5 +1,5 @@
 // Transform from cosmos/authz/v1beta1/event.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.authz.v1beta1
 
@@ -14,9 +14,9 @@ public object EventGrantJvmConverter : ProtobufTypeMapper<EventGrant, Event.Even
   public override val parser: Parser<Event.EventGrant> = Event.EventGrant.parser()
 
   public override fun convert(obj: Event.EventGrant): EventGrant = EventGrant(
-  	msgTypeUrl = obj.msgTypeUrl,
-  	granter = obj.granter,
-  	grantee = obj.grantee,
+  	msgTypeUrl = obj.getMsgTypeUrl(),
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
   )
 
   public override fun convert(obj: EventGrant): Event.EventGrant {
@@ -34,9 +34,9 @@ public object EventRevokeJvmConverter : ProtobufTypeMapper<EventRevoke, Event.Ev
   public override val parser: Parser<Event.EventRevoke> = Event.EventRevoke.parser()
 
   public override fun convert(obj: Event.EventRevoke): EventRevoke = EventRevoke(
-  	msgTypeUrl = obj.msgTypeUrl,
-  	granter = obj.granter,
-  	grantee = obj.grantee,
+  	msgTypeUrl = obj.getMsgTypeUrl(),
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
   )
 
   public override fun convert(obj: EventRevoke): Event.EventRevoke {

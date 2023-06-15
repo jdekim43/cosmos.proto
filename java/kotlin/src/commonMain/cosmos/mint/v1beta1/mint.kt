@@ -1,6 +1,6 @@
 // Transform from cosmos/mint/v1beta1/mint.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.mint.v1beta1
 
@@ -18,15 +18,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Minter.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.Minter")
+@SerialName(value = Minter.TYPE_URL)
 public data class Minter(
   @ProtobufIndex(index = 1)
   public val inflation: String,
   @ProtobufIndex(index = 2)
   public val annualProvisions: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.Minter"
+  }
+
   public object KotlinxSerializer : KSerializer<Minter> {
     private val delegator: KSerializer<Minter> = Minter.serializer()
 
@@ -50,7 +55,7 @@ public data class Minter(
 }
 
 @Serializable(with = Params.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.Params")
+@SerialName(value = Params.TYPE_URL)
 public data class Params(
   @ProtobufIndex(index = 1)
   public val mintDenom: String,
@@ -64,7 +69,11 @@ public data class Params(
   public val goalBonded: String,
   @ProtobufIndex(index = 6)
   public val blocksPerYear: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.Params"
+  }
+
   public object KotlinxSerializer : KSerializer<Params> {
     private val delegator: KSerializer<Params> = Params.serializer()
 

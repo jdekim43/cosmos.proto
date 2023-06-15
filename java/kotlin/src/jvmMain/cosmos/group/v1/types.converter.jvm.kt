@@ -1,5 +1,5 @@
 // Transform from cosmos/group/v1/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.v1
 
@@ -19,10 +19,10 @@ public object MemberJvmConverter : ProtobufTypeMapper<Member, Types.Member> {
   public override val parser: Parser<Types.Member> = Types.Member.parser()
 
   public override fun convert(obj: Types.Member): Member = Member(
-  	address = obj.address,
-  	weight = obj.weight,
-  	metadata = obj.metadata,
-  	addedAt = TimestampJvmConverter.convert(obj.addedAt),
+  	address = obj.getAddress(),
+  	weight = obj.getWeight(),
+  	metadata = obj.getMetadata(),
+  	addedAt = TimestampJvmConverter.convert(obj.getAddedAt()),
   )
 
   public override fun convert(obj: Member): Types.Member {
@@ -41,9 +41,9 @@ public object MemberRequestJvmConverter : ProtobufTypeMapper<MemberRequest, Type
   public override val parser: Parser<Types.MemberRequest> = Types.MemberRequest.parser()
 
   public override fun convert(obj: Types.MemberRequest): MemberRequest = MemberRequest(
-  	address = obj.address,
-  	weight = obj.weight,
-  	metadata = obj.metadata,
+  	address = obj.getAddress(),
+  	weight = obj.getWeight(),
+  	metadata = obj.getMetadata(),
   )
 
   public override fun convert(obj: MemberRequest): Types.MemberRequest {
@@ -65,8 +65,8 @@ public object ThresholdDecisionPolicyJvmConverter :
 
   public override fun convert(obj: Types.ThresholdDecisionPolicy): ThresholdDecisionPolicy =
       ThresholdDecisionPolicy(
-  	threshold = obj.threshold,
-  	windows = DecisionPolicyWindowsJvmConverter.convert(obj.windows),
+  	threshold = obj.getThreshold(),
+  	windows = DecisionPolicyWindowsJvmConverter.convert(obj.getWindows()),
   )
 
   public override fun convert(obj: ThresholdDecisionPolicy): Types.ThresholdDecisionPolicy {
@@ -87,8 +87,8 @@ public object PercentageDecisionPolicyJvmConverter :
 
   public override fun convert(obj: Types.PercentageDecisionPolicy): PercentageDecisionPolicy =
       PercentageDecisionPolicy(
-  	percentage = obj.percentage,
-  	windows = DecisionPolicyWindowsJvmConverter.convert(obj.windows),
+  	percentage = obj.getPercentage(),
+  	windows = DecisionPolicyWindowsJvmConverter.convert(obj.getWindows()),
   )
 
   public override fun convert(obj: PercentageDecisionPolicy): Types.PercentageDecisionPolicy {
@@ -109,8 +109,8 @@ public object DecisionPolicyWindowsJvmConverter :
 
   public override fun convert(obj: Types.DecisionPolicyWindows): DecisionPolicyWindows =
       DecisionPolicyWindows(
-  	votingPeriod = DurationJvmConverter.convert(obj.votingPeriod),
-  	minExecutionPeriod = DurationJvmConverter.convert(obj.minExecutionPeriod),
+  	votingPeriod = DurationJvmConverter.convert(obj.getVotingPeriod()),
+  	minExecutionPeriod = DurationJvmConverter.convert(obj.getMinExecutionPeriod()),
   )
 
   public override fun convert(obj: DecisionPolicyWindows): Types.DecisionPolicyWindows {
@@ -127,12 +127,12 @@ public object GroupInfoJvmConverter : ProtobufTypeMapper<GroupInfo, Types.GroupI
   public override val parser: Parser<Types.GroupInfo> = Types.GroupInfo.parser()
 
   public override fun convert(obj: Types.GroupInfo): GroupInfo = GroupInfo(
-  	id = obj.id.asKotlinType,
-  	admin = obj.admin,
-  	metadata = obj.metadata,
-  	version = obj.version.asKotlinType,
-  	totalWeight = obj.totalWeight,
-  	createdAt = TimestampJvmConverter.convert(obj.createdAt),
+  	id = obj.getId().asKotlinType,
+  	admin = obj.getAdmin(),
+  	metadata = obj.getMetadata(),
+  	version = obj.getVersion().asKotlinType,
+  	totalWeight = obj.getTotalWeight(),
+  	createdAt = TimestampJvmConverter.convert(obj.getCreatedAt()),
   )
 
   public override fun convert(obj: GroupInfo): Types.GroupInfo {
@@ -153,8 +153,8 @@ public object GroupMemberJvmConverter : ProtobufTypeMapper<GroupMember, Types.Gr
   public override val parser: Parser<Types.GroupMember> = Types.GroupMember.parser()
 
   public override fun convert(obj: Types.GroupMember): GroupMember = GroupMember(
-  	groupId = obj.groupId.asKotlinType,
-  	member = MemberJvmConverter.convert(obj.member),
+  	groupId = obj.getGroupId().asKotlinType,
+  	member = MemberJvmConverter.convert(obj.getMember()),
   )
 
   public override fun convert(obj: GroupMember): Types.GroupMember {
@@ -172,13 +172,13 @@ public object GroupPolicyInfoJvmConverter :
   public override val parser: Parser<Types.GroupPolicyInfo> = Types.GroupPolicyInfo.parser()
 
   public override fun convert(obj: Types.GroupPolicyInfo): GroupPolicyInfo = GroupPolicyInfo(
-  	address = obj.address,
-  	groupId = obj.groupId.asKotlinType,
-  	admin = obj.admin,
-  	metadata = obj.metadata,
-  	version = obj.version.asKotlinType,
-  	decisionPolicy = AnyJvmConverter.convert(obj.decisionPolicy),
-  	createdAt = TimestampJvmConverter.convert(obj.createdAt),
+  	address = obj.getAddress(),
+  	groupId = obj.getGroupId().asKotlinType,
+  	admin = obj.getAdmin(),
+  	metadata = obj.getMetadata(),
+  	version = obj.getVersion().asKotlinType,
+  	decisionPolicy = AnyJvmConverter.convert(obj.getDecisionPolicy()),
+  	createdAt = TimestampJvmConverter.convert(obj.getCreatedAt()),
   )
 
   public override fun convert(obj: GroupPolicyInfo): Types.GroupPolicyInfo {
@@ -200,20 +200,20 @@ public object ProposalJvmConverter : ProtobufTypeMapper<Proposal, Types.Proposal
   public override val parser: Parser<Types.Proposal> = Types.Proposal.parser()
 
   public override fun convert(obj: Types.Proposal): Proposal = Proposal(
-  	id = obj.id.asKotlinType,
-  	groupPolicyAddress = obj.groupPolicyAddress,
-  	metadata = obj.metadata,
-  	proposers = obj.proposersList.map { it },
-  	submitTime = TimestampJvmConverter.convert(obj.submitTime),
-  	groupVersion = obj.groupVersion.asKotlinType,
-  	groupPolicyVersion = obj.groupPolicyVersion.asKotlinType,
-  	status = ProposalStatus.forNumber(obj.status.number),
-  	finalTallyResult = TallyResultJvmConverter.convert(obj.finalTallyResult),
-  	votingPeriodEnd = TimestampJvmConverter.convert(obj.votingPeriodEnd),
-  	executorResult = ProposalExecutorResult.forNumber(obj.executorResult.number),
-  	messages = obj.messagesList.map { AnyJvmConverter.convert(it) },
-  	title = obj.title,
-  	summary = obj.summary,
+  	id = obj.getId().asKotlinType,
+  	groupPolicyAddress = obj.getGroupPolicyAddress(),
+  	metadata = obj.getMetadata(),
+  	proposers = obj.getProposersList().map { it },
+  	submitTime = TimestampJvmConverter.convert(obj.getSubmitTime()),
+  	groupVersion = obj.getGroupVersion().asKotlinType,
+  	groupPolicyVersion = obj.getGroupPolicyVersion().asKotlinType,
+  	status = ProposalStatus.forNumber(obj.getStatus().number),
+  	finalTallyResult = TallyResultJvmConverter.convert(obj.getFinalTallyResult()),
+  	votingPeriodEnd = TimestampJvmConverter.convert(obj.getVotingPeriodEnd()),
+  	executorResult = ProposalExecutorResult.forNumber(obj.getExecutorResult().number),
+  	messages = obj.getMessagesList().map { AnyJvmConverter.convert(it) },
+  	title = obj.getTitle(),
+  	summary = obj.getSummary(),
   )
 
   public override fun convert(obj: Proposal): Types.Proposal {
@@ -242,10 +242,10 @@ public object TallyResultJvmConverter : ProtobufTypeMapper<TallyResult, Types.Ta
   public override val parser: Parser<Types.TallyResult> = Types.TallyResult.parser()
 
   public override fun convert(obj: Types.TallyResult): TallyResult = TallyResult(
-  	yesCount = obj.yesCount,
-  	abstainCount = obj.abstainCount,
-  	noCount = obj.noCount,
-  	noWithVetoCount = obj.noWithVetoCount,
+  	yesCount = obj.getYesCount(),
+  	abstainCount = obj.getAbstainCount(),
+  	noCount = obj.getNoCount(),
+  	noWithVetoCount = obj.getNoWithVetoCount(),
   )
 
   public override fun convert(obj: TallyResult): Types.TallyResult {
@@ -264,11 +264,11 @@ public object VoteJvmConverter : ProtobufTypeMapper<Vote, Types.Vote> {
   public override val parser: Parser<Types.Vote> = Types.Vote.parser()
 
   public override fun convert(obj: Types.Vote): Vote = Vote(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
-  	option = VoteOption.forNumber(obj.option.number),
-  	metadata = obj.metadata,
-  	submitTime = TimestampJvmConverter.convert(obj.submitTime),
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
+  	option = VoteOption.forNumber(obj.getOption().number),
+  	metadata = obj.getMetadata(),
+  	submitTime = TimestampJvmConverter.convert(obj.getSubmitTime()),
   )
 
   public override fun convert(obj: Vote): Types.Vote {

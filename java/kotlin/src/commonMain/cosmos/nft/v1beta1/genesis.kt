@@ -1,6 +1,6 @@
 // Transform from cosmos/nft/v1beta1/genesis.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.v1beta1
 
@@ -18,15 +18,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = GenesisState.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.GenesisState")
+@SerialName(value = GenesisState.TYPE_URL)
 public data class GenesisState(
   @ProtobufIndex(index = 1)
   public val classes: List<Class>,
   @ProtobufIndex(index = 2)
   public val entries: List<Entry>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.GenesisState"
+  }
+
   public object KotlinxSerializer : KSerializer<GenesisState> {
     private val delegator: KSerializer<GenesisState> = GenesisState.serializer()
 
@@ -50,13 +55,17 @@ public data class GenesisState(
 }
 
 @Serializable(with = Entry.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.Entry")
+@SerialName(value = Entry.TYPE_URL)
 public data class Entry(
   @ProtobufIndex(index = 1)
   public val owner: String,
   @ProtobufIndex(index = 2)
   public val nfts: List<NFT>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.Entry"
+  }
+
   public object KotlinxSerializer : KSerializer<Entry> {
     private val delegator: KSerializer<Entry> = Entry.serializer()
 

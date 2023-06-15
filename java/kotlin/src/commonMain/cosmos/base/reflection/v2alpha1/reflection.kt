@@ -1,6 +1,6 @@
 // Transform from cosmos/base/reflection/v2alpha1/reflection.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.reflection.v2alpha1
 
@@ -20,9 +20,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = AppDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.AppDescriptor")
+@SerialName(value = AppDescriptor.TYPE_URL)
 public data class AppDescriptor(
   @ProtobufIndex(index = 1)
   public val authn: AuthnDescriptor,
@@ -36,7 +37,11 @@ public data class AppDescriptor(
   public val queryServices: QueryServicesDescriptor,
   @ProtobufIndex(index = 6)
   public val tx: TxDescriptor,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.AppDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<AppDescriptor> {
     private val delegator: KSerializer<AppDescriptor> = AppDescriptor.serializer()
 
@@ -60,13 +65,17 @@ public data class AppDescriptor(
 }
 
 @Serializable(with = TxDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.TxDescriptor")
+@SerialName(value = TxDescriptor.TYPE_URL)
 public data class TxDescriptor(
   @ProtobufIndex(index = 1)
   public val fullname: String,
   @ProtobufIndex(index = 2)
   public val msgs: List<MsgDescriptor>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.TxDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<TxDescriptor> {
     private val delegator: KSerializer<TxDescriptor> = TxDescriptor.serializer()
 
@@ -90,11 +99,15 @@ public data class TxDescriptor(
 }
 
 @Serializable(with = AuthnDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.AuthnDescriptor")
+@SerialName(value = AuthnDescriptor.TYPE_URL)
 public data class AuthnDescriptor(
   @ProtobufIndex(index = 1)
   public val signModes: List<SigningModeDescriptor>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.AuthnDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<AuthnDescriptor> {
     private val delegator: KSerializer<AuthnDescriptor> = AuthnDescriptor.serializer()
 
@@ -118,7 +131,7 @@ public data class AuthnDescriptor(
 }
 
 @Serializable(with = SigningModeDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.SigningModeDescriptor")
+@SerialName(value = SigningModeDescriptor.TYPE_URL)
 public data class SigningModeDescriptor(
   @ProtobufIndex(index = 1)
   public val name: String,
@@ -126,7 +139,11 @@ public data class SigningModeDescriptor(
   public val number: Int,
   @ProtobufIndex(index = 3)
   public val authnInfoProviderMethodFullname: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.SigningModeDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<SigningModeDescriptor> {
     private val delegator: KSerializer<SigningModeDescriptor> = SigningModeDescriptor.serializer()
 
@@ -150,11 +167,15 @@ public data class SigningModeDescriptor(
 }
 
 @Serializable(with = ChainDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.ChainDescriptor")
+@SerialName(value = ChainDescriptor.TYPE_URL)
 public data class ChainDescriptor(
   @ProtobufIndex(index = 1)
   public val id: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.ChainDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<ChainDescriptor> {
     private val delegator: KSerializer<ChainDescriptor> = ChainDescriptor.serializer()
 
@@ -178,11 +199,15 @@ public data class ChainDescriptor(
 }
 
 @Serializable(with = CodecDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.CodecDescriptor")
+@SerialName(value = CodecDescriptor.TYPE_URL)
 public data class CodecDescriptor(
   @ProtobufIndex(index = 1)
   public val interfaces: List<InterfaceDescriptor>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.CodecDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<CodecDescriptor> {
     private val delegator: KSerializer<CodecDescriptor> = CodecDescriptor.serializer()
 
@@ -206,7 +231,7 @@ public data class CodecDescriptor(
 }
 
 @Serializable(with = InterfaceDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.InterfaceDescriptor")
+@SerialName(value = InterfaceDescriptor.TYPE_URL)
 public data class InterfaceDescriptor(
   @ProtobufIndex(index = 1)
   public val fullname: String,
@@ -214,7 +239,11 @@ public data class InterfaceDescriptor(
   public val interfaceAcceptingMessages: List<InterfaceAcceptingMessageDescriptor>,
   @ProtobufIndex(index = 3)
   public val interfaceImplementers: List<InterfaceImplementerDescriptor>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.InterfaceDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<InterfaceDescriptor> {
     private val delegator: KSerializer<InterfaceDescriptor> = InterfaceDescriptor.serializer()
 
@@ -238,13 +267,18 @@ public data class InterfaceDescriptor(
 }
 
 @Serializable(with = InterfaceImplementerDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.InterfaceImplementerDescriptor")
+@SerialName(value = InterfaceImplementerDescriptor.TYPE_URL)
 public data class InterfaceImplementerDescriptor(
   @ProtobufIndex(index = 1)
   public val fullname: String,
   @ProtobufIndex(index = 2)
   public val typeUrl: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.InterfaceImplementerDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<InterfaceImplementerDescriptor> {
     private val delegator: KSerializer<InterfaceImplementerDescriptor> =
         InterfaceImplementerDescriptor.serializer()
@@ -269,13 +303,18 @@ public data class InterfaceImplementerDescriptor(
 }
 
 @Serializable(with = InterfaceAcceptingMessageDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.InterfaceAcceptingMessageDescriptor")
+@SerialName(value = InterfaceAcceptingMessageDescriptor.TYPE_URL)
 public data class InterfaceAcceptingMessageDescriptor(
   @ProtobufIndex(index = 1)
   public val fullname: String,
   @ProtobufIndex(index = 2)
   public val fieldDescriptorNames: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.InterfaceAcceptingMessageDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<InterfaceAcceptingMessageDescriptor> {
     private val delegator: KSerializer<InterfaceAcceptingMessageDescriptor> =
         InterfaceAcceptingMessageDescriptor.serializer()
@@ -301,11 +340,15 @@ public data class InterfaceAcceptingMessageDescriptor(
 }
 
 @Serializable(with = ConfigurationDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.ConfigurationDescriptor")
+@SerialName(value = ConfigurationDescriptor.TYPE_URL)
 public data class ConfigurationDescriptor(
   @ProtobufIndex(index = 1)
   public val bech32AccountAddressPrefix: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.ConfigurationDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<ConfigurationDescriptor> {
     private val delegator: KSerializer<ConfigurationDescriptor> =
         ConfigurationDescriptor.serializer()
@@ -330,11 +373,15 @@ public data class ConfigurationDescriptor(
 }
 
 @Serializable(with = MsgDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.MsgDescriptor")
+@SerialName(value = MsgDescriptor.TYPE_URL)
 public data class MsgDescriptor(
   @ProtobufIndex(index = 1)
   public val msgTypeUrl: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.MsgDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgDescriptor> {
     private val delegator: KSerializer<MsgDescriptor> = MsgDescriptor.serializer()
 
@@ -358,8 +405,12 @@ public data class MsgDescriptor(
 }
 
 @Serializable(with = GetAuthnDescriptorRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetAuthnDescriptorRequest")
-public class GetAuthnDescriptorRequest() {
+@SerialName(value = GetAuthnDescriptorRequest.TYPE_URL)
+public class GetAuthnDescriptorRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.GetAuthnDescriptorRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetAuthnDescriptorRequest> {
     private val delegator: KSerializer<GetAuthnDescriptorRequest> =
         GetAuthnDescriptorRequest.serializer()
@@ -384,11 +435,16 @@ public class GetAuthnDescriptorRequest() {
 }
 
 @Serializable(with = GetAuthnDescriptorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetAuthnDescriptorResponse")
+@SerialName(value = GetAuthnDescriptorResponse.TYPE_URL)
 public data class GetAuthnDescriptorResponse(
   @ProtobufIndex(index = 1)
   public val authn: AuthnDescriptor,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.GetAuthnDescriptorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetAuthnDescriptorResponse> {
     private val delegator: KSerializer<GetAuthnDescriptorResponse> =
         GetAuthnDescriptorResponse.serializer()
@@ -413,8 +469,12 @@ public data class GetAuthnDescriptorResponse(
 }
 
 @Serializable(with = GetChainDescriptorRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetChainDescriptorRequest")
-public class GetChainDescriptorRequest() {
+@SerialName(value = GetChainDescriptorRequest.TYPE_URL)
+public class GetChainDescriptorRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.GetChainDescriptorRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetChainDescriptorRequest> {
     private val delegator: KSerializer<GetChainDescriptorRequest> =
         GetChainDescriptorRequest.serializer()
@@ -439,11 +499,16 @@ public class GetChainDescriptorRequest() {
 }
 
 @Serializable(with = GetChainDescriptorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetChainDescriptorResponse")
+@SerialName(value = GetChainDescriptorResponse.TYPE_URL)
 public data class GetChainDescriptorResponse(
   @ProtobufIndex(index = 1)
   public val chain: ChainDescriptor,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.GetChainDescriptorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetChainDescriptorResponse> {
     private val delegator: KSerializer<GetChainDescriptorResponse> =
         GetChainDescriptorResponse.serializer()
@@ -468,8 +533,12 @@ public data class GetChainDescriptorResponse(
 }
 
 @Serializable(with = GetCodecDescriptorRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetCodecDescriptorRequest")
-public class GetCodecDescriptorRequest() {
+@SerialName(value = GetCodecDescriptorRequest.TYPE_URL)
+public class GetCodecDescriptorRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.GetCodecDescriptorRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetCodecDescriptorRequest> {
     private val delegator: KSerializer<GetCodecDescriptorRequest> =
         GetCodecDescriptorRequest.serializer()
@@ -494,11 +563,16 @@ public class GetCodecDescriptorRequest() {
 }
 
 @Serializable(with = GetCodecDescriptorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetCodecDescriptorResponse")
+@SerialName(value = GetCodecDescriptorResponse.TYPE_URL)
 public data class GetCodecDescriptorResponse(
   @ProtobufIndex(index = 1)
   public val codec: CodecDescriptor,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.GetCodecDescriptorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetCodecDescriptorResponse> {
     private val delegator: KSerializer<GetCodecDescriptorResponse> =
         GetCodecDescriptorResponse.serializer()
@@ -523,8 +597,13 @@ public data class GetCodecDescriptorResponse(
 }
 
 @Serializable(with = GetConfigurationDescriptorRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetConfigurationDescriptorRequest")
-public class GetConfigurationDescriptorRequest() {
+@SerialName(value = GetConfigurationDescriptorRequest.TYPE_URL)
+public class GetConfigurationDescriptorRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.GetConfigurationDescriptorRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetConfigurationDescriptorRequest> {
     private val delegator: KSerializer<GetConfigurationDescriptorRequest> =
         GetConfigurationDescriptorRequest.serializer()
@@ -550,11 +629,16 @@ public class GetConfigurationDescriptorRequest() {
 }
 
 @Serializable(with = GetConfigurationDescriptorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetConfigurationDescriptorResponse")
+@SerialName(value = GetConfigurationDescriptorResponse.TYPE_URL)
 public data class GetConfigurationDescriptorResponse(
   @ProtobufIndex(index = 1)
   public val config: ConfigurationDescriptor,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.GetConfigurationDescriptorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetConfigurationDescriptorResponse> {
     private val delegator: KSerializer<GetConfigurationDescriptorResponse> =
         GetConfigurationDescriptorResponse.serializer()
@@ -580,8 +664,13 @@ public data class GetConfigurationDescriptorResponse(
 }
 
 @Serializable(with = GetQueryServicesDescriptorRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetQueryServicesDescriptorRequest")
-public class GetQueryServicesDescriptorRequest() {
+@SerialName(value = GetQueryServicesDescriptorRequest.TYPE_URL)
+public class GetQueryServicesDescriptorRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.GetQueryServicesDescriptorRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetQueryServicesDescriptorRequest> {
     private val delegator: KSerializer<GetQueryServicesDescriptorRequest> =
         GetQueryServicesDescriptorRequest.serializer()
@@ -607,11 +696,16 @@ public class GetQueryServicesDescriptorRequest() {
 }
 
 @Serializable(with = GetQueryServicesDescriptorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetQueryServicesDescriptorResponse")
+@SerialName(value = GetQueryServicesDescriptorResponse.TYPE_URL)
 public data class GetQueryServicesDescriptorResponse(
   @ProtobufIndex(index = 1)
   public val queries: QueryServicesDescriptor,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.base.reflection.v2alpha1.GetQueryServicesDescriptorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetQueryServicesDescriptorResponse> {
     private val delegator: KSerializer<GetQueryServicesDescriptorResponse> =
         GetQueryServicesDescriptorResponse.serializer()
@@ -637,8 +731,12 @@ public data class GetQueryServicesDescriptorResponse(
 }
 
 @Serializable(with = GetTxDescriptorRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetTxDescriptorRequest")
-public class GetTxDescriptorRequest() {
+@SerialName(value = GetTxDescriptorRequest.TYPE_URL)
+public class GetTxDescriptorRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.GetTxDescriptorRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetTxDescriptorRequest> {
     private val delegator: KSerializer<GetTxDescriptorRequest> = GetTxDescriptorRequest.serializer()
 
@@ -662,11 +760,15 @@ public class GetTxDescriptorRequest() {
 }
 
 @Serializable(with = GetTxDescriptorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.GetTxDescriptorResponse")
+@SerialName(value = GetTxDescriptorResponse.TYPE_URL)
 public data class GetTxDescriptorResponse(
   @ProtobufIndex(index = 1)
   public val tx: TxDescriptor,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.GetTxDescriptorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetTxDescriptorResponse> {
     private val delegator: KSerializer<GetTxDescriptorResponse> =
         GetTxDescriptorResponse.serializer()
@@ -691,11 +793,15 @@ public data class GetTxDescriptorResponse(
 }
 
 @Serializable(with = QueryServicesDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.QueryServicesDescriptor")
+@SerialName(value = QueryServicesDescriptor.TYPE_URL)
 public data class QueryServicesDescriptor(
   @ProtobufIndex(index = 1)
   public val queryServices: List<QueryServiceDescriptor>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.QueryServicesDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryServicesDescriptor> {
     private val delegator: KSerializer<QueryServicesDescriptor> =
         QueryServicesDescriptor.serializer()
@@ -720,7 +826,7 @@ public data class QueryServicesDescriptor(
 }
 
 @Serializable(with = QueryServiceDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.QueryServiceDescriptor")
+@SerialName(value = QueryServiceDescriptor.TYPE_URL)
 public data class QueryServiceDescriptor(
   @ProtobufIndex(index = 1)
   public val fullname: String,
@@ -728,7 +834,11 @@ public data class QueryServiceDescriptor(
   public val isModule: Boolean,
   @ProtobufIndex(index = 3)
   public val methods: List<QueryMethodDescriptor>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.QueryServiceDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryServiceDescriptor> {
     private val delegator: KSerializer<QueryServiceDescriptor> = QueryServiceDescriptor.serializer()
 
@@ -752,13 +862,17 @@ public data class QueryServiceDescriptor(
 }
 
 @Serializable(with = QueryMethodDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.reflection.v2alpha1.QueryMethodDescriptor")
+@SerialName(value = QueryMethodDescriptor.TYPE_URL)
 public data class QueryMethodDescriptor(
   @ProtobufIndex(index = 1)
   public val name: String,
   @ProtobufIndex(index = 2)
   public val fullQueryPath: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.reflection.v2alpha1.QueryMethodDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryMethodDescriptor> {
     private val delegator: KSerializer<QueryMethodDescriptor> = QueryMethodDescriptor.serializer()
 

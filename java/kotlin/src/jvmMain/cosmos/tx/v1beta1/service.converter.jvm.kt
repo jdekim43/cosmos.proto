@@ -1,5 +1,5 @@
 // Transform from cosmos/tx/v1beta1/service.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.tx.v1beta1
 
@@ -28,11 +28,11 @@ public object GetTxsEventRequestJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.GetTxsEventRequest): GetTxsEventRequest =
       GetTxsEventRequest(
-  	events = obj.eventsList.map { it },
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
-  	orderBy = OrderBy.forNumber(obj.orderBy.number),
-  	page = obj.page.asKotlinType,
-  	limit = obj.limit.asKotlinType,
+  	events = obj.getEventsList().map { it },
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
+  	orderBy = OrderBy.forNumber(obj.getOrderBy().number),
+  	page = obj.getPage().asKotlinType,
+  	limit = obj.getLimit().asKotlinType,
   )
 
   public override fun convert(obj: GetTxsEventRequest): ServiceOuterClass.GetTxsEventRequest {
@@ -56,10 +56,10 @@ public object GetTxsEventResponseJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.GetTxsEventResponse): GetTxsEventResponse =
       GetTxsEventResponse(
-  	txs = obj.txsList.map { TxJvmConverter.convert(it) },
-  	txResponses = obj.txResponsesList.map { TxResponseJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
-  	total = obj.total.asKotlinType,
+  	txs = obj.getTxsList().map { TxJvmConverter.convert(it) },
+  	txResponses = obj.getTxResponsesList().map { TxResponseJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
+  	total = obj.getTotal().asKotlinType,
   )
 
   public override fun convert(obj: GetTxsEventResponse): ServiceOuterClass.GetTxsEventResponse {
@@ -82,8 +82,8 @@ public object BroadcastTxRequestJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.BroadcastTxRequest): BroadcastTxRequest =
       BroadcastTxRequest(
-  	txBytes = obj.txBytes.toByteArray(),
-  	mode = BroadcastMode.forNumber(obj.mode.number),
+  	txBytes = obj.getTxBytes().toByteArray(),
+  	mode = BroadcastMode.forNumber(obj.getMode().number),
   )
 
   public override fun convert(obj: BroadcastTxRequest): ServiceOuterClass.BroadcastTxRequest {
@@ -104,7 +104,7 @@ public object BroadcastTxResponseJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.BroadcastTxResponse): BroadcastTxResponse =
       BroadcastTxResponse(
-  	txResponse = TxResponseJvmConverter.convert(obj.txResponse),
+  	txResponse = TxResponseJvmConverter.convert(obj.getTxResponse()),
   )
 
   public override fun convert(obj: BroadcastTxResponse): ServiceOuterClass.BroadcastTxResponse {
@@ -124,8 +124,8 @@ public object SimulateRequestJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.SimulateRequest): SimulateRequest =
       SimulateRequest(
-  	tx = TxJvmConverter.convert(obj.tx),
-  	txBytes = obj.txBytes.toByteArray(),
+  	tx = TxJvmConverter.convert(obj.getTx()),
+  	txBytes = obj.getTxBytes().toByteArray(),
   )
 
   public override fun convert(obj: SimulateRequest): ServiceOuterClass.SimulateRequest {
@@ -146,8 +146,8 @@ public object SimulateResponseJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.SimulateResponse): SimulateResponse =
       SimulateResponse(
-  	gasInfo = GasInfoJvmConverter.convert(obj.gasInfo),
-  	result = ResultJvmConverter.convert(obj.result),
+  	gasInfo = GasInfoJvmConverter.convert(obj.getGasInfo()),
+  	result = ResultJvmConverter.convert(obj.getResult()),
   )
 
   public override fun convert(obj: SimulateResponse): ServiceOuterClass.SimulateResponse {
@@ -167,7 +167,7 @@ public object GetTxRequestJvmConverter :
       ServiceOuterClass.GetTxRequest.parser()
 
   public override fun convert(obj: ServiceOuterClass.GetTxRequest): GetTxRequest = GetTxRequest(
-  	hash = obj.hash,
+  	hash = obj.getHash(),
   )
 
   public override fun convert(obj: GetTxRequest): ServiceOuterClass.GetTxRequest {
@@ -186,8 +186,8 @@ public object GetTxResponseJvmConverter :
       ServiceOuterClass.GetTxResponse.parser()
 
   public override fun convert(obj: ServiceOuterClass.GetTxResponse): GetTxResponse = GetTxResponse(
-  	tx = TxJvmConverter.convert(obj.tx),
-  	txResponse = TxResponseJvmConverter.convert(obj.txResponse),
+  	tx = TxJvmConverter.convert(obj.getTx()),
+  	txResponse = TxResponseJvmConverter.convert(obj.getTxResponse()),
   )
 
   public override fun convert(obj: GetTxResponse): ServiceOuterClass.GetTxResponse {
@@ -208,8 +208,8 @@ public object GetBlockWithTxsRequestJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.GetBlockWithTxsRequest): GetBlockWithTxsRequest
       = GetBlockWithTxsRequest(
-  	height = obj.height,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	height = obj.getHeight(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: GetBlockWithTxsRequest):
@@ -231,10 +231,10 @@ public object GetBlockWithTxsResponseJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.GetBlockWithTxsResponse):
       GetBlockWithTxsResponse = GetBlockWithTxsResponse(
-  	txs = obj.txsList.map { TxJvmConverter.convert(it) },
-  	blockId = BlockIDJvmConverter.convert(obj.blockId),
-  	block = BlockJvmConverter.convert(obj.block),
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	txs = obj.getTxsList().map { TxJvmConverter.convert(it) },
+  	blockId = BlockIDJvmConverter.convert(obj.getBlockId()),
+  	block = BlockJvmConverter.convert(obj.getBlock()),
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: GetBlockWithTxsResponse):
@@ -258,7 +258,7 @@ public object TxDecodeRequestJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.TxDecodeRequest): TxDecodeRequest =
       TxDecodeRequest(
-  	txBytes = obj.txBytes.toByteArray(),
+  	txBytes = obj.getTxBytes().toByteArray(),
   )
 
   public override fun convert(obj: TxDecodeRequest): ServiceOuterClass.TxDecodeRequest {
@@ -278,7 +278,7 @@ public object TxDecodeResponseJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.TxDecodeResponse): TxDecodeResponse =
       TxDecodeResponse(
-  	tx = TxJvmConverter.convert(obj.tx),
+  	tx = TxJvmConverter.convert(obj.getTx()),
   )
 
   public override fun convert(obj: TxDecodeResponse): ServiceOuterClass.TxDecodeResponse {
@@ -298,7 +298,7 @@ public object TxEncodeRequestJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.TxEncodeRequest): TxEncodeRequest =
       TxEncodeRequest(
-  	tx = TxJvmConverter.convert(obj.tx),
+  	tx = TxJvmConverter.convert(obj.getTx()),
   )
 
   public override fun convert(obj: TxEncodeRequest): ServiceOuterClass.TxEncodeRequest {
@@ -318,7 +318,7 @@ public object TxEncodeResponseJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.TxEncodeResponse): TxEncodeResponse =
       TxEncodeResponse(
-  	txBytes = obj.txBytes.toByteArray(),
+  	txBytes = obj.getTxBytes().toByteArray(),
   )
 
   public override fun convert(obj: TxEncodeResponse): ServiceOuterClass.TxEncodeResponse {
@@ -338,7 +338,7 @@ public object TxEncodeAminoRequestJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.TxEncodeAminoRequest): TxEncodeAminoRequest =
       TxEncodeAminoRequest(
-  	aminoJson = obj.aminoJson,
+  	aminoJson = obj.getAminoJson(),
   )
 
   public override fun convert(obj: TxEncodeAminoRequest): ServiceOuterClass.TxEncodeAminoRequest {
@@ -358,7 +358,7 @@ public object TxEncodeAminoResponseJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.TxEncodeAminoResponse): TxEncodeAminoResponse =
       TxEncodeAminoResponse(
-  	aminoBinary = obj.aminoBinary.toByteArray(),
+  	aminoBinary = obj.getAminoBinary().toByteArray(),
   )
 
   public override fun convert(obj: TxEncodeAminoResponse): ServiceOuterClass.TxEncodeAminoResponse {
@@ -378,7 +378,7 @@ public object TxDecodeAminoRequestJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.TxDecodeAminoRequest): TxDecodeAminoRequest =
       TxDecodeAminoRequest(
-  	aminoBinary = obj.aminoBinary.toByteArray(),
+  	aminoBinary = obj.getAminoBinary().toByteArray(),
   )
 
   public override fun convert(obj: TxDecodeAminoRequest): ServiceOuterClass.TxDecodeAminoRequest {
@@ -398,7 +398,7 @@ public object TxDecodeAminoResponseJvmConverter :
 
   public override fun convert(obj: ServiceOuterClass.TxDecodeAminoResponse): TxDecodeAminoResponse =
       TxDecodeAminoResponse(
-  	aminoJson = obj.aminoJson,
+  	aminoJson = obj.getAminoJson(),
   )
 
   public override fun convert(obj: TxDecodeAminoResponse): ServiceOuterClass.TxDecodeAminoResponse {

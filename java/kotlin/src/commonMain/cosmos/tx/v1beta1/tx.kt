@@ -1,6 +1,6 @@
 // Transform from cosmos/tx/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.tx.v1beta1
 
@@ -25,9 +25,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Tx.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.Tx")
+@SerialName(value = Tx.TYPE_URL)
 public data class Tx(
   @ProtobufIndex(index = 1)
   public val body: TxBody,
@@ -35,7 +36,11 @@ public data class Tx(
   public val authInfo: AuthInfo,
   @ProtobufIndex(index = 3)
   public val signatures: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.Tx"
+  }
+
   public object KotlinxSerializer : KSerializer<Tx> {
     private val delegator: KSerializer<Tx> = Tx.serializer()
 
@@ -59,7 +64,7 @@ public data class Tx(
 }
 
 @Serializable(with = TxRaw.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.TxRaw")
+@SerialName(value = TxRaw.TYPE_URL)
 public data class TxRaw(
   @ProtobufIndex(index = 1)
   public val bodyBytes: ByteArray,
@@ -67,7 +72,11 @@ public data class TxRaw(
   public val authInfoBytes: ByteArray,
   @ProtobufIndex(index = 3)
   public val signatures: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.TxRaw"
+  }
+
   public object KotlinxSerializer : KSerializer<TxRaw> {
     private val delegator: KSerializer<TxRaw> = TxRaw.serializer()
 
@@ -91,7 +100,7 @@ public data class TxRaw(
 }
 
 @Serializable(with = SignDoc.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.SignDoc")
+@SerialName(value = SignDoc.TYPE_URL)
 public data class SignDoc(
   @ProtobufIndex(index = 1)
   public val bodyBytes: ByteArray,
@@ -101,7 +110,11 @@ public data class SignDoc(
   public val chainId: String,
   @ProtobufIndex(index = 4)
   public val accountNumber: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.SignDoc"
+  }
+
   public object KotlinxSerializer : KSerializer<SignDoc> {
     private val delegator: KSerializer<SignDoc> = SignDoc.serializer()
 
@@ -125,7 +138,7 @@ public data class SignDoc(
 }
 
 @Serializable(with = SignDocDirectAux.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.SignDocDirectAux")
+@SerialName(value = SignDocDirectAux.TYPE_URL)
 public data class SignDocDirectAux(
   @ProtobufIndex(index = 1)
   public val bodyBytes: ByteArray,
@@ -139,7 +152,11 @@ public data class SignDocDirectAux(
   public val sequence: ULong,
   @ProtobufIndex(index = 6)
   public val tip: Tip,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.SignDocDirectAux"
+  }
+
   public object KotlinxSerializer : KSerializer<SignDocDirectAux> {
     private val delegator: KSerializer<SignDocDirectAux> = SignDocDirectAux.serializer()
 
@@ -163,7 +180,7 @@ public data class SignDocDirectAux(
 }
 
 @Serializable(with = TxBody.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.TxBody")
+@SerialName(value = TxBody.TYPE_URL)
 public data class TxBody(
   @ProtobufIndex(index = 1)
   public val messages: List<Any>,
@@ -175,7 +192,11 @@ public data class TxBody(
   public val extensionOptions: List<Any>,
   @ProtobufIndex(index = 2_047)
   public val nonCriticalExtensionOptions: List<Any>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.TxBody"
+  }
+
   public object KotlinxSerializer : KSerializer<TxBody> {
     private val delegator: KSerializer<TxBody> = TxBody.serializer()
 
@@ -199,7 +220,7 @@ public data class TxBody(
 }
 
 @Serializable(with = AuthInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.AuthInfo")
+@SerialName(value = AuthInfo.TYPE_URL)
 public data class AuthInfo(
   @ProtobufIndex(index = 1)
   public val signerInfos: List<SignerInfo>,
@@ -207,7 +228,11 @@ public data class AuthInfo(
   public val fee: Fee,
   @ProtobufIndex(index = 3)
   public val tip: Tip,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.AuthInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<AuthInfo> {
     private val delegator: KSerializer<AuthInfo> = AuthInfo.serializer()
 
@@ -231,7 +256,7 @@ public data class AuthInfo(
 }
 
 @Serializable(with = SignerInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.SignerInfo")
+@SerialName(value = SignerInfo.TYPE_URL)
 public data class SignerInfo(
   @ProtobufIndex(index = 1)
   public val publicKey: Any,
@@ -239,7 +264,11 @@ public data class SignerInfo(
   public val modeInfo: ModeInfo,
   @ProtobufIndex(index = 3)
   public val sequence: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.SignerInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<SignerInfo> {
     private val delegator: KSerializer<SignerInfo> = SignerInfo.serializer()
 
@@ -263,10 +292,14 @@ public data class SignerInfo(
 }
 
 @Serializable(with = ModeInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.ModeInfo")
+@SerialName(value = ModeInfo.TYPE_URL)
 public data class ModeInfo(
   public val sum: SumOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.ModeInfo"
+  }
+
   @Serializable
   public sealed interface SumOneOf {
     @JvmInline
@@ -283,11 +316,15 @@ public data class ModeInfo(
   }
 
   @Serializable(with = Single.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.tx.v1beta1.ModeInfo.Single")
+  @SerialName(value = Single.TYPE_URL)
   public data class Single(
     @ProtobufIndex(index = 1)
     public val mode: SignMode,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.tx.v1beta1.ModeInfo.Single"
+    }
+
     public object KotlinxSerializer : KSerializer<Single> {
       private val delegator: KSerializer<Single> = Single.serializer()
 
@@ -311,13 +348,17 @@ public data class ModeInfo(
   }
 
   @Serializable(with = Multi.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.tx.v1beta1.ModeInfo.Multi")
+  @SerialName(value = Multi.TYPE_URL)
   public data class Multi(
     @ProtobufIndex(index = 1)
     public val bitarray: CompactBitArray,
     @ProtobufIndex(index = 2)
     public val modeInfos: List<ModeInfo>,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.tx.v1beta1.ModeInfo.Multi"
+    }
+
     public object KotlinxSerializer : KSerializer<Multi> {
       private val delegator: KSerializer<Multi> = Multi.serializer()
 
@@ -363,7 +404,7 @@ public data class ModeInfo(
 }
 
 @Serializable(with = Fee.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.Fee")
+@SerialName(value = Fee.TYPE_URL)
 public data class Fee(
   @ProtobufIndex(index = 1)
   public val amount: List<Coin>,
@@ -373,7 +414,11 @@ public data class Fee(
   public val payer: String,
   @ProtobufIndex(index = 4)
   public val granter: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.Fee"
+  }
+
   public object KotlinxSerializer : KSerializer<Fee> {
     private val delegator: KSerializer<Fee> = Fee.serializer()
 
@@ -397,13 +442,17 @@ public data class Fee(
 }
 
 @Serializable(with = Tip.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.Tip")
+@SerialName(value = Tip.TYPE_URL)
 public data class Tip(
   @ProtobufIndex(index = 1)
   public val amount: List<Coin>,
   @ProtobufIndex(index = 2)
   public val tipper: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.Tip"
+  }
+
   public object KotlinxSerializer : KSerializer<Tip> {
     private val delegator: KSerializer<Tip> = Tip.serializer()
 
@@ -427,7 +476,7 @@ public data class Tip(
 }
 
 @Serializable(with = AuxSignerData.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.v1beta1.AuxSignerData")
+@SerialName(value = AuxSignerData.TYPE_URL)
 public data class AuxSignerData(
   @ProtobufIndex(index = 1)
   public val address: String,
@@ -437,7 +486,11 @@ public data class AuxSignerData(
   public val mode: SignMode,
   @ProtobufIndex(index = 4)
   public val sig: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.v1beta1.AuxSignerData"
+  }
+
   public object KotlinxSerializer : KSerializer<AuxSignerData> {
     private val delegator: KSerializer<AuxSignerData> = AuxSignerData.serializer()
 

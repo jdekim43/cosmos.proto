@@ -1,5 +1,5 @@
 // Transform from cosmos/gov/v1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.v1
 
@@ -19,12 +19,12 @@ public object MsgSubmitProposalJvmConverter :
   public override val parser: Parser<Tx.MsgSubmitProposal> = Tx.MsgSubmitProposal.parser()
 
   public override fun convert(obj: Tx.MsgSubmitProposal): MsgSubmitProposal = MsgSubmitProposal(
-  	messages = obj.messagesList.map { AnyJvmConverter.convert(it) },
-  	initialDeposit = obj.initialDepositList.map { CoinJvmConverter.convert(it) },
-  	proposer = obj.proposer,
-  	metadata = obj.metadata,
-  	title = obj.title,
-  	summary = obj.summary,
+  	messages = obj.getMessagesList().map { AnyJvmConverter.convert(it) },
+  	initialDeposit = obj.getInitialDepositList().map { CoinJvmConverter.convert(it) },
+  	proposer = obj.getProposer(),
+  	metadata = obj.getMetadata(),
+  	title = obj.getTitle(),
+  	summary = obj.getSummary(),
   )
 
   public override fun convert(obj: MsgSubmitProposal): Tx.MsgSubmitProposal {
@@ -49,7 +49,7 @@ public object MsgSubmitProposalResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgSubmitProposalResponse): MsgSubmitProposalResponse =
       MsgSubmitProposalResponse(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: MsgSubmitProposalResponse): Tx.MsgSubmitProposalResponse {
@@ -67,8 +67,8 @@ public object MsgExecLegacyContentJvmConverter :
 
   public override fun convert(obj: Tx.MsgExecLegacyContent): MsgExecLegacyContent =
       MsgExecLegacyContent(
-  	content = AnyJvmConverter.convert(obj.content),
-  	authority = obj.authority,
+  	content = AnyJvmConverter.convert(obj.getContent()),
+  	authority = obj.getAuthority(),
   )
 
   public override fun convert(obj: MsgExecLegacyContent): Tx.MsgExecLegacyContent {
@@ -103,10 +103,10 @@ public object MsgVoteJvmConverter : ProtobufTypeMapper<MsgVote, Tx.MsgVote> {
   public override val parser: Parser<Tx.MsgVote> = Tx.MsgVote.parser()
 
   public override fun convert(obj: Tx.MsgVote): MsgVote = MsgVote(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
-  	option = VoteOption.forNumber(obj.option.number),
-  	metadata = obj.metadata,
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
+  	option = VoteOption.forNumber(obj.getOption().number),
+  	metadata = obj.getMetadata(),
   )
 
   public override fun convert(obj: MsgVote): Tx.MsgVote {
@@ -141,10 +141,10 @@ public object MsgVoteWeightedJvmConverter : ProtobufTypeMapper<MsgVoteWeighted, 
   public override val parser: Parser<Tx.MsgVoteWeighted> = Tx.MsgVoteWeighted.parser()
 
   public override fun convert(obj: Tx.MsgVoteWeighted): MsgVoteWeighted = MsgVoteWeighted(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
-  	options = obj.optionsList.map { WeightedVoteOptionJvmConverter.convert(it) },
-  	metadata = obj.metadata,
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
+  	options = obj.getOptionsList().map { WeightedVoteOptionJvmConverter.convert(it) },
+  	metadata = obj.getMetadata(),
   )
 
   public override fun convert(obj: MsgVoteWeighted): Tx.MsgVoteWeighted {
@@ -181,9 +181,9 @@ public object MsgDepositJvmConverter : ProtobufTypeMapper<MsgDeposit, Tx.MsgDepo
   public override val parser: Parser<Tx.MsgDeposit> = Tx.MsgDeposit.parser()
 
   public override fun convert(obj: Tx.MsgDeposit): MsgDeposit = MsgDeposit(
-  	proposalId = obj.proposalId.asKotlinType,
-  	depositor = obj.depositor,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	proposalId = obj.getProposalId().asKotlinType,
+  	depositor = obj.getDepositor(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgDeposit): Tx.MsgDeposit {
@@ -217,8 +217,8 @@ public object MsgUpdateParamsJvmConverter : ProtobufTypeMapper<MsgUpdateParams, 
   public override val parser: Parser<Tx.MsgUpdateParams> = Tx.MsgUpdateParams.parser()
 
   public override fun convert(obj: Tx.MsgUpdateParams): MsgUpdateParams = MsgUpdateParams(
-  	authority = obj.authority,
-  	params = ParamsJvmConverter.convert(obj.params),
+  	authority = obj.getAuthority(),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: MsgUpdateParams): Tx.MsgUpdateParams {

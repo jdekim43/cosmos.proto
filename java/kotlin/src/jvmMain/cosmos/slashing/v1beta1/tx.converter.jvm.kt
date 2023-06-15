@@ -1,5 +1,5 @@
 // Transform from cosmos/slashing/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.slashing.v1beta1
 
@@ -14,7 +14,7 @@ public object MsgUnjailJvmConverter : ProtobufTypeMapper<MsgUnjail, Tx.MsgUnjail
   public override val parser: Parser<Tx.MsgUnjail> = Tx.MsgUnjail.parser()
 
   public override fun convert(obj: Tx.MsgUnjail): MsgUnjail = MsgUnjail(
-  	validatorAddr = obj.validatorAddr,
+  	validatorAddr = obj.getValidatorAddr(),
   )
 
   public override fun convert(obj: MsgUnjail): Tx.MsgUnjail {
@@ -46,8 +46,8 @@ public object MsgUpdateParamsJvmConverter : ProtobufTypeMapper<MsgUpdateParams, 
   public override val parser: Parser<Tx.MsgUpdateParams> = Tx.MsgUpdateParams.parser()
 
   public override fun convert(obj: Tx.MsgUpdateParams): MsgUpdateParams = MsgUpdateParams(
-  	authority = obj.authority,
-  	params = ParamsJvmConverter.convert(obj.params),
+  	authority = obj.getAuthority(),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: MsgUpdateParams): Tx.MsgUpdateParams {

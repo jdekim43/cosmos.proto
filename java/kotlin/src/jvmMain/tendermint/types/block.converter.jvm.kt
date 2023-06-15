@@ -1,5 +1,5 @@
 // Transform from tendermint/types/block.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
@@ -14,10 +14,10 @@ public object BlockJvmConverter : ProtobufTypeMapper<Block, BlockOuterClass.Bloc
   public override val parser: Parser<BlockOuterClass.Block> = BlockOuterClass.Block.parser()
 
   public override fun convert(obj: BlockOuterClass.Block): Block = Block(
-  	`header` = HeaderJvmConverter.convert(obj.`header`),
-  	`data` = DataJvmConverter.convert(obj.`data`),
-  	evidence = EvidenceListJvmConverter.convert(obj.evidence),
-  	lastCommit = CommitJvmConverter.convert(obj.lastCommit),
+  	`header` = HeaderJvmConverter.convert(obj.getHeader()),
+  	`data` = DataJvmConverter.convert(obj.getData()),
+  	evidence = EvidenceListJvmConverter.convert(obj.getEvidence()),
+  	lastCommit = CommitJvmConverter.convert(obj.getLastCommit()),
   )
 
   public override fun convert(obj: Block): BlockOuterClass.Block {

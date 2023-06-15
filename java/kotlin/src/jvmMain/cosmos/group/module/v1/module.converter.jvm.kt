@@ -1,5 +1,5 @@
 // Transform from cosmos/group/module/v1/module.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.module.v1
 
@@ -17,8 +17,8 @@ public object ModuleJvmConverter : ProtobufTypeMapper<Module, ModuleOuterClass.M
   public override val parser: Parser<ModuleOuterClass.Module> = ModuleOuterClass.Module.parser()
 
   public override fun convert(obj: ModuleOuterClass.Module): Module = Module(
-  	maxExecutionPeriod = DurationJvmConverter.convert(obj.maxExecutionPeriod),
-  	maxMetadataLen = obj.maxMetadataLen.asKotlinType,
+  	maxExecutionPeriod = DurationJvmConverter.convert(obj.getMaxExecutionPeriod()),
+  	maxMetadataLen = obj.getMaxMetadataLen().asKotlinType,
   )
 
   public override fun convert(obj: Module): ModuleOuterClass.Module {

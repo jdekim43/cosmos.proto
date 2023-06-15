@@ -1,6 +1,6 @@
 // Transform from cosmos/slashing/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.slashing.v1beta1
 
@@ -20,10 +20,15 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryParamsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.QueryParamsRequest")
-public class QueryParamsRequest() {
+@SerialName(value = QueryParamsRequest.TYPE_URL)
+public class QueryParamsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.QueryParamsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsRequest> {
     private val delegator: KSerializer<QueryParamsRequest> = QueryParamsRequest.serializer()
 
@@ -47,11 +52,15 @@ public class QueryParamsRequest() {
 }
 
 @Serializable(with = QueryParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.QueryParamsResponse")
+@SerialName(value = QueryParamsResponse.TYPE_URL)
 public data class QueryParamsResponse(
   @ProtobufIndex(index = 1)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.QueryParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsResponse> {
     private val delegator: KSerializer<QueryParamsResponse> = QueryParamsResponse.serializer()
 
@@ -75,11 +84,15 @@ public data class QueryParamsResponse(
 }
 
 @Serializable(with = QuerySigningInfoRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.QuerySigningInfoRequest")
+@SerialName(value = QuerySigningInfoRequest.TYPE_URL)
 public data class QuerySigningInfoRequest(
   @ProtobufIndex(index = 1)
   public val consAddress: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.QuerySigningInfoRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySigningInfoRequest> {
     private val delegator: KSerializer<QuerySigningInfoRequest> =
         QuerySigningInfoRequest.serializer()
@@ -104,11 +117,15 @@ public data class QuerySigningInfoRequest(
 }
 
 @Serializable(with = QuerySigningInfoResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.QuerySigningInfoResponse")
+@SerialName(value = QuerySigningInfoResponse.TYPE_URL)
 public data class QuerySigningInfoResponse(
   @ProtobufIndex(index = 1)
   public val valSigningInfo: ValidatorSigningInfo,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.QuerySigningInfoResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySigningInfoResponse> {
     private val delegator: KSerializer<QuerySigningInfoResponse> =
         QuerySigningInfoResponse.serializer()
@@ -133,11 +150,15 @@ public data class QuerySigningInfoResponse(
 }
 
 @Serializable(with = QuerySigningInfosRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.QuerySigningInfosRequest")
+@SerialName(value = QuerySigningInfosRequest.TYPE_URL)
 public data class QuerySigningInfosRequest(
   @ProtobufIndex(index = 1)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.QuerySigningInfosRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySigningInfosRequest> {
     private val delegator: KSerializer<QuerySigningInfosRequest> =
         QuerySigningInfosRequest.serializer()
@@ -162,13 +183,17 @@ public data class QuerySigningInfosRequest(
 }
 
 @Serializable(with = QuerySigningInfosResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.slashing.v1beta1.QuerySigningInfosResponse")
+@SerialName(value = QuerySigningInfosResponse.TYPE_URL)
 public data class QuerySigningInfosResponse(
   @ProtobufIndex(index = 1)
   public val info: List<ValidatorSigningInfo>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.slashing.v1beta1.QuerySigningInfosResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySigningInfosResponse> {
     private val delegator: KSerializer<QuerySigningInfosResponse> =
         QuerySigningInfosResponse.serializer()

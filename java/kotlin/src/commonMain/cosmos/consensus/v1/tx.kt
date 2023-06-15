@@ -1,6 +1,6 @@
 // Transform from cosmos/consensus/v1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.consensus.v1
 
@@ -17,12 +17,13 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 import tendermint.types.BlockParams
 import tendermint.types.EvidenceParams
 import tendermint.types.ValidatorParams
 
 @Serializable(with = MsgUpdateParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.consensus.v1.MsgUpdateParams")
+@SerialName(value = MsgUpdateParams.TYPE_URL)
 public data class MsgUpdateParams(
   @ProtobufIndex(index = 1)
   public val authority: String,
@@ -32,7 +33,11 @@ public data class MsgUpdateParams(
   public val evidence: EvidenceParams,
   @ProtobufIndex(index = 4)
   public val validator: ValidatorParams,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.consensus.v1.MsgUpdateParams"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParams> {
     private val delegator: KSerializer<MsgUpdateParams> = MsgUpdateParams.serializer()
 
@@ -56,8 +61,12 @@ public data class MsgUpdateParams(
 }
 
 @Serializable(with = MsgUpdateParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.consensus.v1.MsgUpdateParamsResponse")
-public class MsgUpdateParamsResponse() {
+@SerialName(value = MsgUpdateParamsResponse.TYPE_URL)
+public class MsgUpdateParamsResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.consensus.v1.MsgUpdateParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParamsResponse> {
     private val delegator: KSerializer<MsgUpdateParamsResponse> =
         MsgUpdateParamsResponse.serializer()

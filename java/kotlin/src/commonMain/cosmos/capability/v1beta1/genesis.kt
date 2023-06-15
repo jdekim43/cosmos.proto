@@ -1,9 +1,10 @@
 // Transform from cosmos/capability/v1beta1/genesis.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.capability.v1beta1
 
+import kotlin.String
 import kotlin.ULong
 import kotlin.Unit
 import kotlin.collections.List
@@ -18,15 +19,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = GenesisOwners.KotlinxSerializer::class)
-@SerialName(value = "cosmos.capability.v1beta1.GenesisOwners")
+@SerialName(value = GenesisOwners.TYPE_URL)
 public data class GenesisOwners(
   @ProtobufIndex(index = 1)
   public val index: ULong,
   @ProtobufIndex(index = 2)
   public val indexOwners: CapabilityOwners,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.capability.v1beta1.GenesisOwners"
+  }
+
   public object KotlinxSerializer : KSerializer<GenesisOwners> {
     private val delegator: KSerializer<GenesisOwners> = GenesisOwners.serializer()
 
@@ -50,13 +56,17 @@ public data class GenesisOwners(
 }
 
 @Serializable(with = GenesisState.KotlinxSerializer::class)
-@SerialName(value = "cosmos.capability.v1beta1.GenesisState")
+@SerialName(value = GenesisState.TYPE_URL)
 public data class GenesisState(
   @ProtobufIndex(index = 1)
   public val index: ULong,
   @ProtobufIndex(index = 2)
   public val owners: List<GenesisOwners>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.capability.v1beta1.GenesisState"
+  }
+
   public object KotlinxSerializer : KSerializer<GenesisState> {
     private val delegator: KSerializer<GenesisState> = GenesisState.serializer()
 

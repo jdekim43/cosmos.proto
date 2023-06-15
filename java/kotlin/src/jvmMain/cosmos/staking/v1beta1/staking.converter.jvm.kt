@@ -1,5 +1,5 @@
 // Transform from cosmos/staking/v1beta1/staking.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -23,8 +23,8 @@ public object HistoricalInfoJvmConverter :
   public override val parser: Parser<Staking.HistoricalInfo> = Staking.HistoricalInfo.parser()
 
   public override fun convert(obj: Staking.HistoricalInfo): HistoricalInfo = HistoricalInfo(
-  	`header` = HeaderJvmConverter.convert(obj.`header`),
-  	valset = obj.valsetList.map { ValidatorJvmConverter.convert(it) },
+  	`header` = HeaderJvmConverter.convert(obj.getHeader()),
+  	valset = obj.getValsetList().map { ValidatorJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: HistoricalInfo): Staking.HistoricalInfo {
@@ -42,9 +42,9 @@ public object CommissionRatesJvmConverter :
   public override val parser: Parser<Staking.CommissionRates> = Staking.CommissionRates.parser()
 
   public override fun convert(obj: Staking.CommissionRates): CommissionRates = CommissionRates(
-  	rate = obj.rate,
-  	maxRate = obj.maxRate,
-  	maxChangeRate = obj.maxChangeRate,
+  	rate = obj.getRate(),
+  	maxRate = obj.getMaxRate(),
+  	maxChangeRate = obj.getMaxChangeRate(),
   )
 
   public override fun convert(obj: CommissionRates): Staking.CommissionRates {
@@ -62,8 +62,8 @@ public object CommissionJvmConverter : ProtobufTypeMapper<Commission, Staking.Co
   public override val parser: Parser<Staking.Commission> = Staking.Commission.parser()
 
   public override fun convert(obj: Staking.Commission): Commission = Commission(
-  	commissionRates = CommissionRatesJvmConverter.convert(obj.commissionRates),
-  	updateTime = TimestampJvmConverter.convert(obj.updateTime),
+  	commissionRates = CommissionRatesJvmConverter.convert(obj.getCommissionRates()),
+  	updateTime = TimestampJvmConverter.convert(obj.getUpdateTime()),
   )
 
   public override fun convert(obj: Commission): Staking.Commission {
@@ -80,11 +80,11 @@ public object DescriptionJvmConverter : ProtobufTypeMapper<Description, Staking.
   public override val parser: Parser<Staking.Description> = Staking.Description.parser()
 
   public override fun convert(obj: Staking.Description): Description = Description(
-  	moniker = obj.moniker,
-  	identity = obj.identity,
-  	website = obj.website,
-  	securityContact = obj.securityContact,
-  	details = obj.details,
+  	moniker = obj.getMoniker(),
+  	identity = obj.getIdentity(),
+  	website = obj.getWebsite(),
+  	securityContact = obj.getSecurityContact(),
+  	details = obj.getDetails(),
   )
 
   public override fun convert(obj: Description): Staking.Description {
@@ -104,19 +104,19 @@ public object ValidatorJvmConverter : ProtobufTypeMapper<Validator, Staking.Vali
   public override val parser: Parser<Staking.Validator> = Staking.Validator.parser()
 
   public override fun convert(obj: Staking.Validator): Validator = Validator(
-  	operatorAddress = obj.operatorAddress,
-  	consensusPubkey = AnyJvmConverter.convert(obj.consensusPubkey),
-  	jailed = obj.jailed,
-  	status = BondStatus.forNumber(obj.status.number),
-  	tokens = obj.tokens,
-  	delegatorShares = obj.delegatorShares,
-  	description = DescriptionJvmConverter.convert(obj.description),
-  	unbondingHeight = obj.unbondingHeight,
-  	unbondingTime = TimestampJvmConverter.convert(obj.unbondingTime),
-  	commission = CommissionJvmConverter.convert(obj.commission),
-  	minSelfDelegation = obj.minSelfDelegation,
-  	unbondingOnHoldRefCount = obj.unbondingOnHoldRefCount,
-  	unbondingIds = obj.unbondingIdsList.map { it.asKotlinType },
+  	operatorAddress = obj.getOperatorAddress(),
+  	consensusPubkey = AnyJvmConverter.convert(obj.getConsensusPubkey()),
+  	jailed = obj.getJailed(),
+  	status = BondStatus.forNumber(obj.getStatus().number),
+  	tokens = obj.getTokens(),
+  	delegatorShares = obj.getDelegatorShares(),
+  	description = DescriptionJvmConverter.convert(obj.getDescription()),
+  	unbondingHeight = obj.getUnbondingHeight(),
+  	unbondingTime = TimestampJvmConverter.convert(obj.getUnbondingTime()),
+  	commission = CommissionJvmConverter.convert(obj.getCommission()),
+  	minSelfDelegation = obj.getMinSelfDelegation(),
+  	unbondingOnHoldRefCount = obj.getUnbondingOnHoldRefCount(),
+  	unbondingIds = obj.getUnbondingIdsList().map { it.asKotlinType },
   )
 
   public override fun convert(obj: Validator): Staking.Validator {
@@ -144,7 +144,7 @@ public object ValAddressesJvmConverter : ProtobufTypeMapper<ValAddresses, Stakin
   public override val parser: Parser<Staking.ValAddresses> = Staking.ValAddresses.parser()
 
   public override fun convert(obj: Staking.ValAddresses): ValAddresses = ValAddresses(
-  	addresses = obj.addressesList.map { it },
+  	addresses = obj.getAddressesList().map { it },
   )
 
   public override fun convert(obj: ValAddresses): Staking.ValAddresses {
@@ -160,8 +160,8 @@ public object DVPairJvmConverter : ProtobufTypeMapper<DVPair, Staking.DVPair> {
   public override val parser: Parser<Staking.DVPair> = Staking.DVPair.parser()
 
   public override fun convert(obj: Staking.DVPair): DVPair = DVPair(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
   )
 
   public override fun convert(obj: DVPair): Staking.DVPair {
@@ -178,7 +178,7 @@ public object DVPairsJvmConverter : ProtobufTypeMapper<DVPairs, Staking.DVPairs>
   public override val parser: Parser<Staking.DVPairs> = Staking.DVPairs.parser()
 
   public override fun convert(obj: Staking.DVPairs): DVPairs = DVPairs(
-  	pairs = obj.pairsList.map { DVPairJvmConverter.convert(it) },
+  	pairs = obj.getPairsList().map { DVPairJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: DVPairs): Staking.DVPairs {
@@ -194,9 +194,9 @@ public object DVVTripletJvmConverter : ProtobufTypeMapper<DVVTriplet, Staking.DV
   public override val parser: Parser<Staking.DVVTriplet> = Staking.DVVTriplet.parser()
 
   public override fun convert(obj: Staking.DVVTriplet): DVVTriplet = DVVTriplet(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorSrcAddress = obj.validatorSrcAddress,
-  	validatorDstAddress = obj.validatorDstAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorSrcAddress = obj.getValidatorSrcAddress(),
+  	validatorDstAddress = obj.getValidatorDstAddress(),
   )
 
   public override fun convert(obj: DVVTriplet): Staking.DVVTriplet {
@@ -214,7 +214,7 @@ public object DVVTripletsJvmConverter : ProtobufTypeMapper<DVVTriplets, Staking.
   public override val parser: Parser<Staking.DVVTriplets> = Staking.DVVTriplets.parser()
 
   public override fun convert(obj: Staking.DVVTriplets): DVVTriplets = DVVTriplets(
-  	triplets = obj.tripletsList.map { DVVTripletJvmConverter.convert(it) },
+  	triplets = obj.getTripletsList().map { DVVTripletJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: DVVTriplets): Staking.DVVTriplets {
@@ -230,9 +230,9 @@ public object DelegationJvmConverter : ProtobufTypeMapper<Delegation, Staking.De
   public override val parser: Parser<Staking.Delegation> = Staking.Delegation.parser()
 
   public override fun convert(obj: Staking.Delegation): Delegation = Delegation(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
-  	shares = obj.shares,
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
+  	shares = obj.getShares(),
   )
 
   public override fun convert(obj: Delegation): Staking.Delegation {
@@ -254,9 +254,9 @@ public object UnbondingDelegationJvmConverter :
 
   public override fun convert(obj: Staking.UnbondingDelegation): UnbondingDelegation =
       UnbondingDelegation(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
-  	entries = obj.entriesList.map { UnbondingDelegationEntryJvmConverter.convert(it) },
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
+  	entries = obj.getEntriesList().map { UnbondingDelegationEntryJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: UnbondingDelegation): Staking.UnbondingDelegation {
@@ -278,12 +278,12 @@ public object UnbondingDelegationEntryJvmConverter :
 
   public override fun convert(obj: Staking.UnbondingDelegationEntry): UnbondingDelegationEntry =
       UnbondingDelegationEntry(
-  	creationHeight = obj.creationHeight,
-  	completionTime = TimestampJvmConverter.convert(obj.completionTime),
-  	initialBalance = obj.initialBalance,
-  	balance = obj.balance,
-  	unbondingId = obj.unbondingId.asKotlinType,
-  	unbondingOnHoldRefCount = obj.unbondingOnHoldRefCount,
+  	creationHeight = obj.getCreationHeight(),
+  	completionTime = TimestampJvmConverter.convert(obj.getCompletionTime()),
+  	initialBalance = obj.getInitialBalance(),
+  	balance = obj.getBalance(),
+  	unbondingId = obj.getUnbondingId().asKotlinType,
+  	unbondingOnHoldRefCount = obj.getUnbondingOnHoldRefCount(),
   )
 
   public override fun convert(obj: UnbondingDelegationEntry): Staking.UnbondingDelegationEntry {
@@ -306,12 +306,12 @@ public object RedelegationEntryJvmConverter :
 
   public override fun convert(obj: Staking.RedelegationEntry): RedelegationEntry =
       RedelegationEntry(
-  	creationHeight = obj.creationHeight,
-  	completionTime = TimestampJvmConverter.convert(obj.completionTime),
-  	initialBalance = obj.initialBalance,
-  	sharesDst = obj.sharesDst,
-  	unbondingId = obj.unbondingId.asKotlinType,
-  	unbondingOnHoldRefCount = obj.unbondingOnHoldRefCount,
+  	creationHeight = obj.getCreationHeight(),
+  	completionTime = TimestampJvmConverter.convert(obj.getCompletionTime()),
+  	initialBalance = obj.getInitialBalance(),
+  	sharesDst = obj.getSharesDst(),
+  	unbondingId = obj.getUnbondingId().asKotlinType,
+  	unbondingOnHoldRefCount = obj.getUnbondingOnHoldRefCount(),
   )
 
   public override fun convert(obj: RedelegationEntry): Staking.RedelegationEntry {
@@ -332,10 +332,10 @@ public object RedelegationJvmConverter : ProtobufTypeMapper<Redelegation, Stakin
   public override val parser: Parser<Staking.Redelegation> = Staking.Redelegation.parser()
 
   public override fun convert(obj: Staking.Redelegation): Redelegation = Redelegation(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorSrcAddress = obj.validatorSrcAddress,
-  	validatorDstAddress = obj.validatorDstAddress,
-  	entries = obj.entriesList.map { RedelegationEntryJvmConverter.convert(it) },
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorSrcAddress = obj.getValidatorSrcAddress(),
+  	validatorDstAddress = obj.getValidatorDstAddress(),
+  	entries = obj.getEntriesList().map { RedelegationEntryJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Redelegation): Staking.Redelegation {
@@ -354,12 +354,12 @@ public object ParamsJvmConverter : ProtobufTypeMapper<Params, Staking.Params> {
   public override val parser: Parser<Staking.Params> = Staking.Params.parser()
 
   public override fun convert(obj: Staking.Params): Params = Params(
-  	unbondingTime = DurationJvmConverter.convert(obj.unbondingTime),
-  	maxValidators = obj.maxValidators.asKotlinType,
-  	maxEntries = obj.maxEntries.asKotlinType,
-  	historicalEntries = obj.historicalEntries.asKotlinType,
-  	bondDenom = obj.bondDenom,
-  	minCommissionRate = obj.minCommissionRate,
+  	unbondingTime = DurationJvmConverter.convert(obj.getUnbondingTime()),
+  	maxValidators = obj.getMaxValidators().asKotlinType,
+  	maxEntries = obj.getMaxEntries().asKotlinType,
+  	historicalEntries = obj.getHistoricalEntries().asKotlinType,
+  	bondDenom = obj.getBondDenom(),
+  	minCommissionRate = obj.getMinCommissionRate(),
   )
 
   public override fun convert(obj: Params): Staking.Params {
@@ -384,8 +384,8 @@ public object DelegationResponseJvmConverter :
 
   public override fun convert(obj: Staking.DelegationResponse): DelegationResponse =
       DelegationResponse(
-  	delegation = DelegationJvmConverter.convert(obj.delegation),
-  	balance = CoinJvmConverter.convert(obj.balance),
+  	delegation = DelegationJvmConverter.convert(obj.getDelegation()),
+  	balance = CoinJvmConverter.convert(obj.getBalance()),
   )
 
   public override fun convert(obj: DelegationResponse): Staking.DelegationResponse {
@@ -406,8 +406,8 @@ public object RedelegationEntryResponseJvmConverter :
 
   public override fun convert(obj: Staking.RedelegationEntryResponse): RedelegationEntryResponse =
       RedelegationEntryResponse(
-  	redelegationEntry = RedelegationEntryJvmConverter.convert(obj.redelegationEntry),
-  	balance = obj.balance,
+  	redelegationEntry = RedelegationEntryJvmConverter.convert(obj.getRedelegationEntry()),
+  	balance = obj.getBalance(),
   )
 
   public override fun convert(obj: RedelegationEntryResponse): Staking.RedelegationEntryResponse {
@@ -428,8 +428,8 @@ public object RedelegationResponseJvmConverter :
 
   public override fun convert(obj: Staking.RedelegationResponse): RedelegationResponse =
       RedelegationResponse(
-  	redelegation = RedelegationJvmConverter.convert(obj.redelegation),
-  	entries = obj.entriesList.map { RedelegationEntryResponseJvmConverter.convert(it) },
+  	redelegation = RedelegationJvmConverter.convert(obj.getRedelegation()),
+  	entries = obj.getEntriesList().map { RedelegationEntryResponseJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: RedelegationResponse): Staking.RedelegationResponse {
@@ -446,8 +446,8 @@ public object PoolJvmConverter : ProtobufTypeMapper<Pool, Staking.Pool> {
   public override val parser: Parser<Staking.Pool> = Staking.Pool.parser()
 
   public override fun convert(obj: Staking.Pool): Pool = Pool(
-  	notBondedTokens = obj.notBondedTokens,
-  	bondedTokens = obj.bondedTokens,
+  	notBondedTokens = obj.getNotBondedTokens(),
+  	bondedTokens = obj.getBondedTokens(),
   )
 
   public override fun convert(obj: Pool): Staking.Pool {
@@ -465,7 +465,7 @@ public object ValidatorUpdatesJvmConverter :
   public override val parser: Parser<Staking.ValidatorUpdates> = Staking.ValidatorUpdates.parser()
 
   public override fun convert(obj: Staking.ValidatorUpdates): ValidatorUpdates = ValidatorUpdates(
-  	updates = obj.updatesList.map { ValidatorUpdateJvmConverter.convert(it) },
+  	updates = obj.getUpdatesList().map { ValidatorUpdateJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ValidatorUpdates): Staking.ValidatorUpdates {

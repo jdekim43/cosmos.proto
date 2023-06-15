@@ -1,5 +1,5 @@
 // Transform from tendermint/crypto/keys.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.crypto
 
@@ -16,8 +16,8 @@ public object PublicKeyJvmConverter : ProtobufTypeMapper<PublicKey, Keys.PublicK
 
   public override fun convert(obj: Keys.PublicKey): PublicKey = PublicKey(
   	sum = mapOf(
-  1 to { PublicKey.SumOneOf.Ed25519(obj.ed25519.toByteArray()) },
-  2 to { PublicKey.SumOneOf.Secp256K1(obj.secp256K1.toByteArray()) },
+  1 to { PublicKey.SumOneOf.Ed25519(obj.getEd25519().toByteArray()) },
+  2 to { PublicKey.SumOneOf.Secp256K1(obj.getSecp256K1().toByteArray()) },
   ).getValue(obj.sumCase.number)(),
   )
 

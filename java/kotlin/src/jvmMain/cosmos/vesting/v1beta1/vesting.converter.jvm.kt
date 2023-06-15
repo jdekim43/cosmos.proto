@@ -1,5 +1,5 @@
 // Transform from cosmos/vesting/v1beta1/vesting.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.vesting.v1beta1
 
@@ -20,11 +20,11 @@ public object BaseVestingAccountJvmConverter :
 
   public override fun convert(obj: Vesting.BaseVestingAccount): BaseVestingAccount =
       BaseVestingAccount(
-  	baseAccount = BaseAccountJvmConverter.convert(obj.baseAccount),
-  	originalVesting = obj.originalVestingList.map { CoinJvmConverter.convert(it) },
-  	delegatedFree = obj.delegatedFreeList.map { CoinJvmConverter.convert(it) },
-  	delegatedVesting = obj.delegatedVestingList.map { CoinJvmConverter.convert(it) },
-  	endTime = obj.endTime,
+  	baseAccount = BaseAccountJvmConverter.convert(obj.getBaseAccount()),
+  	originalVesting = obj.getOriginalVestingList().map { CoinJvmConverter.convert(it) },
+  	delegatedFree = obj.getDelegatedFreeList().map { CoinJvmConverter.convert(it) },
+  	delegatedVesting = obj.getDelegatedVestingList().map { CoinJvmConverter.convert(it) },
+  	endTime = obj.getEndTime(),
   )
 
   public override fun convert(obj: BaseVestingAccount): Vesting.BaseVestingAccount {
@@ -48,8 +48,8 @@ public object ContinuousVestingAccountJvmConverter :
 
   public override fun convert(obj: Vesting.ContinuousVestingAccount): ContinuousVestingAccount =
       ContinuousVestingAccount(
-  	baseVestingAccount = BaseVestingAccountJvmConverter.convert(obj.baseVestingAccount),
-  	startTime = obj.startTime,
+  	baseVestingAccount = BaseVestingAccountJvmConverter.convert(obj.getBaseVestingAccount()),
+  	startTime = obj.getStartTime(),
   )
 
   public override fun convert(obj: ContinuousVestingAccount): Vesting.ContinuousVestingAccount {
@@ -70,7 +70,7 @@ public object DelayedVestingAccountJvmConverter :
 
   public override fun convert(obj: Vesting.DelayedVestingAccount): DelayedVestingAccount =
       DelayedVestingAccount(
-  	baseVestingAccount = BaseVestingAccountJvmConverter.convert(obj.baseVestingAccount),
+  	baseVestingAccount = BaseVestingAccountJvmConverter.convert(obj.getBaseVestingAccount()),
   )
 
   public override fun convert(obj: DelayedVestingAccount): Vesting.DelayedVestingAccount {
@@ -86,8 +86,8 @@ public object PeriodJvmConverter : ProtobufTypeMapper<Period, Vesting.Period> {
   public override val parser: Parser<Vesting.Period> = Vesting.Period.parser()
 
   public override fun convert(obj: Vesting.Period): Period = Period(
-  	length = obj.length,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	length = obj.getLength(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Period): Vesting.Period {
@@ -108,9 +108,9 @@ public object PeriodicVestingAccountJvmConverter :
 
   public override fun convert(obj: Vesting.PeriodicVestingAccount): PeriodicVestingAccount =
       PeriodicVestingAccount(
-  	baseVestingAccount = BaseVestingAccountJvmConverter.convert(obj.baseVestingAccount),
-  	startTime = obj.startTime,
-  	vestingPeriods = obj.vestingPeriodsList.map { PeriodJvmConverter.convert(it) },
+  	baseVestingAccount = BaseVestingAccountJvmConverter.convert(obj.getBaseVestingAccount()),
+  	startTime = obj.getStartTime(),
+  	vestingPeriods = obj.getVestingPeriodsList().map { PeriodJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: PeriodicVestingAccount): Vesting.PeriodicVestingAccount {
@@ -132,7 +132,7 @@ public object PermanentLockedAccountJvmConverter :
 
   public override fun convert(obj: Vesting.PermanentLockedAccount): PermanentLockedAccount =
       PermanentLockedAccount(
-  	baseVestingAccount = BaseVestingAccountJvmConverter.convert(obj.baseVestingAccount),
+  	baseVestingAccount = BaseVestingAccountJvmConverter.convert(obj.getBaseVestingAccount()),
   )
 
   public override fun convert(obj: PermanentLockedAccount): Vesting.PermanentLockedAccount {

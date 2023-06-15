@@ -1,5 +1,5 @@
 // Transform from cosmos/base/kv/v1beta1/kv.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.kv.v1beta1
 

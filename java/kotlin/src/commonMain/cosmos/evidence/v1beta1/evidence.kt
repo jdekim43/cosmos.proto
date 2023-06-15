@@ -1,6 +1,6 @@
 // Transform from cosmos/evidence/v1beta1/evidence.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.evidence.v1beta1
 
@@ -19,9 +19,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Equivocation.KotlinxSerializer::class)
-@SerialName(value = "cosmos.evidence.v1beta1.Equivocation")
+@SerialName(value = Equivocation.TYPE_URL)
 public data class Equivocation(
   @ProtobufIndex(index = 1)
   public val height: Long,
@@ -31,7 +32,11 @@ public data class Equivocation(
   public val power: Long,
   @ProtobufIndex(index = 4)
   public val consensusAddress: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.evidence.v1beta1.Equivocation"
+  }
+
   public object KotlinxSerializer : KSerializer<Equivocation> {
     private val delegator: KSerializer<Equivocation> = Equivocation.serializer()
 

@@ -1,5 +1,5 @@
 // Transform from cosmos/crisis/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crisis.v1beta1
 
@@ -16,9 +16,9 @@ public object MsgVerifyInvariantJvmConverter :
   public override val parser: Parser<Tx.MsgVerifyInvariant> = Tx.MsgVerifyInvariant.parser()
 
   public override fun convert(obj: Tx.MsgVerifyInvariant): MsgVerifyInvariant = MsgVerifyInvariant(
-  	sender = obj.sender,
-  	invariantModuleName = obj.invariantModuleName,
-  	invariantRoute = obj.invariantRoute,
+  	sender = obj.getSender(),
+  	invariantModuleName = obj.getInvariantModuleName(),
+  	invariantRoute = obj.getInvariantRoute(),
   )
 
   public override fun convert(obj: MsgVerifyInvariant): Tx.MsgVerifyInvariant {
@@ -55,8 +55,8 @@ public object MsgUpdateParamsJvmConverter : ProtobufTypeMapper<MsgUpdateParams, 
   public override val parser: Parser<Tx.MsgUpdateParams> = Tx.MsgUpdateParams.parser()
 
   public override fun convert(obj: Tx.MsgUpdateParams): MsgUpdateParams = MsgUpdateParams(
-  	authority = obj.authority,
-  	constantFee = CoinJvmConverter.convert(obj.constantFee),
+  	authority = obj.getAuthority(),
+  	constantFee = CoinJvmConverter.convert(obj.getConstantFee()),
   )
 
   public override fun convert(obj: MsgUpdateParams): Tx.MsgUpdateParams {

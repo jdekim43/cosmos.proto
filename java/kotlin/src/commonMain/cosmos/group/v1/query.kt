@@ -1,6 +1,6 @@
 // Transform from cosmos/group/v1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.v1
 
@@ -21,13 +21,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryGroupInfoRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupInfoRequest")
+@SerialName(value = QueryGroupInfoRequest.TYPE_URL)
 public data class QueryGroupInfoRequest(
   @ProtobufIndex(index = 1)
   public val groupId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupInfoRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupInfoRequest> {
     private val delegator: KSerializer<QueryGroupInfoRequest> = QueryGroupInfoRequest.serializer()
 
@@ -51,11 +56,15 @@ public data class QueryGroupInfoRequest(
 }
 
 @Serializable(with = QueryGroupInfoResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupInfoResponse")
+@SerialName(value = QueryGroupInfoResponse.TYPE_URL)
 public data class QueryGroupInfoResponse(
   @ProtobufIndex(index = 1)
   public val info: GroupInfo,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupInfoResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupInfoResponse> {
     private val delegator: KSerializer<QueryGroupInfoResponse> = QueryGroupInfoResponse.serializer()
 
@@ -79,11 +88,15 @@ public data class QueryGroupInfoResponse(
 }
 
 @Serializable(with = QueryGroupPolicyInfoRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupPolicyInfoRequest")
+@SerialName(value = QueryGroupPolicyInfoRequest.TYPE_URL)
 public data class QueryGroupPolicyInfoRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupPolicyInfoRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupPolicyInfoRequest> {
     private val delegator: KSerializer<QueryGroupPolicyInfoRequest> =
         QueryGroupPolicyInfoRequest.serializer()
@@ -108,11 +121,15 @@ public data class QueryGroupPolicyInfoRequest(
 }
 
 @Serializable(with = QueryGroupPolicyInfoResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupPolicyInfoResponse")
+@SerialName(value = QueryGroupPolicyInfoResponse.TYPE_URL)
 public data class QueryGroupPolicyInfoResponse(
   @ProtobufIndex(index = 1)
   public val info: GroupPolicyInfo,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupPolicyInfoResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupPolicyInfoResponse> {
     private val delegator: KSerializer<QueryGroupPolicyInfoResponse> =
         QueryGroupPolicyInfoResponse.serializer()
@@ -137,13 +154,17 @@ public data class QueryGroupPolicyInfoResponse(
 }
 
 @Serializable(with = QueryGroupMembersRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupMembersRequest")
+@SerialName(value = QueryGroupMembersRequest.TYPE_URL)
 public data class QueryGroupMembersRequest(
   @ProtobufIndex(index = 1)
   public val groupId: ULong,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupMembersRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupMembersRequest> {
     private val delegator: KSerializer<QueryGroupMembersRequest> =
         QueryGroupMembersRequest.serializer()
@@ -168,13 +189,17 @@ public data class QueryGroupMembersRequest(
 }
 
 @Serializable(with = QueryGroupMembersResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupMembersResponse")
+@SerialName(value = QueryGroupMembersResponse.TYPE_URL)
 public data class QueryGroupMembersResponse(
   @ProtobufIndex(index = 1)
   public val members: List<GroupMember>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupMembersResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupMembersResponse> {
     private val delegator: KSerializer<QueryGroupMembersResponse> =
         QueryGroupMembersResponse.serializer()
@@ -199,13 +224,17 @@ public data class QueryGroupMembersResponse(
 }
 
 @Serializable(with = QueryGroupsByAdminRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupsByAdminRequest")
+@SerialName(value = QueryGroupsByAdminRequest.TYPE_URL)
 public data class QueryGroupsByAdminRequest(
   @ProtobufIndex(index = 1)
   public val admin: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupsByAdminRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupsByAdminRequest> {
     private val delegator: KSerializer<QueryGroupsByAdminRequest> =
         QueryGroupsByAdminRequest.serializer()
@@ -230,13 +259,17 @@ public data class QueryGroupsByAdminRequest(
 }
 
 @Serializable(with = QueryGroupsByAdminResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupsByAdminResponse")
+@SerialName(value = QueryGroupsByAdminResponse.TYPE_URL)
 public data class QueryGroupsByAdminResponse(
   @ProtobufIndex(index = 1)
   public val groups: List<GroupInfo>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupsByAdminResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupsByAdminResponse> {
     private val delegator: KSerializer<QueryGroupsByAdminResponse> =
         QueryGroupsByAdminResponse.serializer()
@@ -261,13 +294,17 @@ public data class QueryGroupsByAdminResponse(
 }
 
 @Serializable(with = QueryGroupPoliciesByGroupRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupPoliciesByGroupRequest")
+@SerialName(value = QueryGroupPoliciesByGroupRequest.TYPE_URL)
 public data class QueryGroupPoliciesByGroupRequest(
   @ProtobufIndex(index = 1)
   public val groupId: ULong,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupPoliciesByGroupRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupPoliciesByGroupRequest> {
     private val delegator: KSerializer<QueryGroupPoliciesByGroupRequest> =
         QueryGroupPoliciesByGroupRequest.serializer()
@@ -293,13 +330,17 @@ public data class QueryGroupPoliciesByGroupRequest(
 }
 
 @Serializable(with = QueryGroupPoliciesByGroupResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupPoliciesByGroupResponse")
+@SerialName(value = QueryGroupPoliciesByGroupResponse.TYPE_URL)
 public data class QueryGroupPoliciesByGroupResponse(
   @ProtobufIndex(index = 1)
   public val groupPolicies: List<GroupPolicyInfo>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupPoliciesByGroupResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupPoliciesByGroupResponse> {
     private val delegator: KSerializer<QueryGroupPoliciesByGroupResponse> =
         QueryGroupPoliciesByGroupResponse.serializer()
@@ -325,13 +366,17 @@ public data class QueryGroupPoliciesByGroupResponse(
 }
 
 @Serializable(with = QueryGroupPoliciesByAdminRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupPoliciesByAdminRequest")
+@SerialName(value = QueryGroupPoliciesByAdminRequest.TYPE_URL)
 public data class QueryGroupPoliciesByAdminRequest(
   @ProtobufIndex(index = 1)
   public val admin: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupPoliciesByAdminRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupPoliciesByAdminRequest> {
     private val delegator: KSerializer<QueryGroupPoliciesByAdminRequest> =
         QueryGroupPoliciesByAdminRequest.serializer()
@@ -357,13 +402,17 @@ public data class QueryGroupPoliciesByAdminRequest(
 }
 
 @Serializable(with = QueryGroupPoliciesByAdminResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupPoliciesByAdminResponse")
+@SerialName(value = QueryGroupPoliciesByAdminResponse.TYPE_URL)
 public data class QueryGroupPoliciesByAdminResponse(
   @ProtobufIndex(index = 1)
   public val groupPolicies: List<GroupPolicyInfo>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupPoliciesByAdminResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupPoliciesByAdminResponse> {
     private val delegator: KSerializer<QueryGroupPoliciesByAdminResponse> =
         QueryGroupPoliciesByAdminResponse.serializer()
@@ -389,11 +438,15 @@ public data class QueryGroupPoliciesByAdminResponse(
 }
 
 @Serializable(with = QueryProposalRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryProposalRequest")
+@SerialName(value = QueryProposalRequest.TYPE_URL)
 public data class QueryProposalRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryProposalRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryProposalRequest> {
     private val delegator: KSerializer<QueryProposalRequest> = QueryProposalRequest.serializer()
 
@@ -417,11 +470,15 @@ public data class QueryProposalRequest(
 }
 
 @Serializable(with = QueryProposalResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryProposalResponse")
+@SerialName(value = QueryProposalResponse.TYPE_URL)
 public data class QueryProposalResponse(
   @ProtobufIndex(index = 1)
   public val proposal: Proposal,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryProposalResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryProposalResponse> {
     private val delegator: KSerializer<QueryProposalResponse> = QueryProposalResponse.serializer()
 
@@ -445,13 +502,17 @@ public data class QueryProposalResponse(
 }
 
 @Serializable(with = QueryProposalsByGroupPolicyRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryProposalsByGroupPolicyRequest")
+@SerialName(value = QueryProposalsByGroupPolicyRequest.TYPE_URL)
 public data class QueryProposalsByGroupPolicyRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryProposalsByGroupPolicyRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryProposalsByGroupPolicyRequest> {
     private val delegator: KSerializer<QueryProposalsByGroupPolicyRequest> =
         QueryProposalsByGroupPolicyRequest.serializer()
@@ -477,13 +538,17 @@ public data class QueryProposalsByGroupPolicyRequest(
 }
 
 @Serializable(with = QueryProposalsByGroupPolicyResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryProposalsByGroupPolicyResponse")
+@SerialName(value = QueryProposalsByGroupPolicyResponse.TYPE_URL)
 public data class QueryProposalsByGroupPolicyResponse(
   @ProtobufIndex(index = 1)
   public val proposals: List<Proposal>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryProposalsByGroupPolicyResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryProposalsByGroupPolicyResponse> {
     private val delegator: KSerializer<QueryProposalsByGroupPolicyResponse> =
         QueryProposalsByGroupPolicyResponse.serializer()
@@ -509,13 +574,17 @@ public data class QueryProposalsByGroupPolicyResponse(
 }
 
 @Serializable(with = QueryVoteByProposalVoterRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryVoteByProposalVoterRequest")
+@SerialName(value = QueryVoteByProposalVoterRequest.TYPE_URL)
 public data class QueryVoteByProposalVoterRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
   @ProtobufIndex(index = 2)
   public val voter: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryVoteByProposalVoterRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVoteByProposalVoterRequest> {
     private val delegator: KSerializer<QueryVoteByProposalVoterRequest> =
         QueryVoteByProposalVoterRequest.serializer()
@@ -541,11 +610,15 @@ public data class QueryVoteByProposalVoterRequest(
 }
 
 @Serializable(with = QueryVoteByProposalVoterResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryVoteByProposalVoterResponse")
+@SerialName(value = QueryVoteByProposalVoterResponse.TYPE_URL)
 public data class QueryVoteByProposalVoterResponse(
   @ProtobufIndex(index = 1)
   public val vote: Vote,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryVoteByProposalVoterResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVoteByProposalVoterResponse> {
     private val delegator: KSerializer<QueryVoteByProposalVoterResponse> =
         QueryVoteByProposalVoterResponse.serializer()
@@ -571,13 +644,17 @@ public data class QueryVoteByProposalVoterResponse(
 }
 
 @Serializable(with = QueryVotesByProposalRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryVotesByProposalRequest")
+@SerialName(value = QueryVotesByProposalRequest.TYPE_URL)
 public data class QueryVotesByProposalRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryVotesByProposalRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVotesByProposalRequest> {
     private val delegator: KSerializer<QueryVotesByProposalRequest> =
         QueryVotesByProposalRequest.serializer()
@@ -602,13 +679,17 @@ public data class QueryVotesByProposalRequest(
 }
 
 @Serializable(with = QueryVotesByProposalResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryVotesByProposalResponse")
+@SerialName(value = QueryVotesByProposalResponse.TYPE_URL)
 public data class QueryVotesByProposalResponse(
   @ProtobufIndex(index = 1)
   public val votes: List<Vote>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryVotesByProposalResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVotesByProposalResponse> {
     private val delegator: KSerializer<QueryVotesByProposalResponse> =
         QueryVotesByProposalResponse.serializer()
@@ -633,13 +714,17 @@ public data class QueryVotesByProposalResponse(
 }
 
 @Serializable(with = QueryVotesByVoterRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryVotesByVoterRequest")
+@SerialName(value = QueryVotesByVoterRequest.TYPE_URL)
 public data class QueryVotesByVoterRequest(
   @ProtobufIndex(index = 1)
   public val voter: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryVotesByVoterRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVotesByVoterRequest> {
     private val delegator: KSerializer<QueryVotesByVoterRequest> =
         QueryVotesByVoterRequest.serializer()
@@ -664,13 +749,17 @@ public data class QueryVotesByVoterRequest(
 }
 
 @Serializable(with = QueryVotesByVoterResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryVotesByVoterResponse")
+@SerialName(value = QueryVotesByVoterResponse.TYPE_URL)
 public data class QueryVotesByVoterResponse(
   @ProtobufIndex(index = 1)
   public val votes: List<Vote>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryVotesByVoterResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryVotesByVoterResponse> {
     private val delegator: KSerializer<QueryVotesByVoterResponse> =
         QueryVotesByVoterResponse.serializer()
@@ -695,13 +784,17 @@ public data class QueryVotesByVoterResponse(
 }
 
 @Serializable(with = QueryGroupsByMemberRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupsByMemberRequest")
+@SerialName(value = QueryGroupsByMemberRequest.TYPE_URL)
 public data class QueryGroupsByMemberRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupsByMemberRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupsByMemberRequest> {
     private val delegator: KSerializer<QueryGroupsByMemberRequest> =
         QueryGroupsByMemberRequest.serializer()
@@ -726,13 +819,17 @@ public data class QueryGroupsByMemberRequest(
 }
 
 @Serializable(with = QueryGroupsByMemberResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupsByMemberResponse")
+@SerialName(value = QueryGroupsByMemberResponse.TYPE_URL)
 public data class QueryGroupsByMemberResponse(
   @ProtobufIndex(index = 1)
   public val groups: List<GroupInfo>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupsByMemberResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupsByMemberResponse> {
     private val delegator: KSerializer<QueryGroupsByMemberResponse> =
         QueryGroupsByMemberResponse.serializer()
@@ -757,11 +854,15 @@ public data class QueryGroupsByMemberResponse(
 }
 
 @Serializable(with = QueryTallyResultRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryTallyResultRequest")
+@SerialName(value = QueryTallyResultRequest.TYPE_URL)
 public data class QueryTallyResultRequest(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryTallyResultRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryTallyResultRequest> {
     private val delegator: KSerializer<QueryTallyResultRequest> =
         QueryTallyResultRequest.serializer()
@@ -786,11 +887,15 @@ public data class QueryTallyResultRequest(
 }
 
 @Serializable(with = QueryTallyResultResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryTallyResultResponse")
+@SerialName(value = QueryTallyResultResponse.TYPE_URL)
 public data class QueryTallyResultResponse(
   @ProtobufIndex(index = 1)
   public val tally: TallyResult,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryTallyResultResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryTallyResultResponse> {
     private val delegator: KSerializer<QueryTallyResultResponse> =
         QueryTallyResultResponse.serializer()
@@ -815,11 +920,15 @@ public data class QueryTallyResultResponse(
 }
 
 @Serializable(with = QueryGroupsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupsRequest")
+@SerialName(value = QueryGroupsRequest.TYPE_URL)
 public data class QueryGroupsRequest(
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupsRequest> {
     private val delegator: KSerializer<QueryGroupsRequest> = QueryGroupsRequest.serializer()
 
@@ -843,13 +952,17 @@ public data class QueryGroupsRequest(
 }
 
 @Serializable(with = QueryGroupsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.QueryGroupsResponse")
+@SerialName(value = QueryGroupsResponse.TYPE_URL)
 public data class QueryGroupsResponse(
   @ProtobufIndex(index = 1)
   public val groups: List<GroupInfo>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.QueryGroupsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGroupsResponse> {
     private val delegator: KSerializer<QueryGroupsResponse> = QueryGroupsResponse.serializer()
 

@@ -1,10 +1,11 @@
 // Transform from tendermint/crypto/keys.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.crypto
 
 import kotlin.ByteArray
+import kotlin.String
 import kotlin.Unit
 import kotlin.jvm.JvmInline
 import kotlinx.serialization.KSerializer
@@ -18,12 +19,17 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = PublicKey.KotlinxSerializer::class)
-@SerialName(value = "tendermint.crypto.PublicKey")
+@SerialName(value = PublicKey.TYPE_URL)
 public data class PublicKey(
   public val sum: SumOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.crypto.PublicKey"
+  }
+
   @Serializable
   public sealed interface SumOneOf {
     @JvmInline

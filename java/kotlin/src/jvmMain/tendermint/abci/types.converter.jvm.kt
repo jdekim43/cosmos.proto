@@ -1,5 +1,5 @@
 // Transform from tendermint/abci/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.abci
 
@@ -23,33 +23,34 @@ public object RequestJvmConverter : ProtobufTypeMapper<Request, Types.Request> {
 
   public override fun convert(obj: Types.Request): Request = Request(
   	`value` = mapOf(
-  1 to { Request.ValueOneOf.Echo(RequestEchoJvmConverter.convert(obj.echo)) },
-  2 to { Request.ValueOneOf.Flush(RequestFlushJvmConverter.convert(obj.flush)) },
-  3 to { Request.ValueOneOf.Info(RequestInfoJvmConverter.convert(obj.info)) },
-  5 to { Request.ValueOneOf.InitChain(RequestInitChainJvmConverter.convert(obj.initChain)) },
-  6 to { Request.ValueOneOf.Query(RequestQueryJvmConverter.convert(obj.query)) },
-  7 to { Request.ValueOneOf.BeginBlock(RequestBeginBlockJvmConverter.convert(obj.beginBlock)) },
-  8 to { Request.ValueOneOf.CheckTx(RequestCheckTxJvmConverter.convert(obj.checkTx)) },
-  9 to { Request.ValueOneOf.DeliverTx(RequestDeliverTxJvmConverter.convert(obj.deliverTx)) },
-  10 to { Request.ValueOneOf.EndBlock(RequestEndBlockJvmConverter.convert(obj.endBlock)) },
-  11 to { Request.ValueOneOf.Commit(RequestCommitJvmConverter.convert(obj.commit)) },
+  1 to { Request.ValueOneOf.Echo(RequestEchoJvmConverter.convert(obj.getEcho())) },
+  2 to { Request.ValueOneOf.Flush(RequestFlushJvmConverter.convert(obj.getFlush())) },
+  3 to { Request.ValueOneOf.Info(RequestInfoJvmConverter.convert(obj.getInfo())) },
+  5 to { Request.ValueOneOf.InitChain(RequestInitChainJvmConverter.convert(obj.getInitChain())) },
+  6 to { Request.ValueOneOf.Query(RequestQueryJvmConverter.convert(obj.getQuery())) },
+  7 to { Request.ValueOneOf.BeginBlock(RequestBeginBlockJvmConverter.convert(obj.getBeginBlock()))
+      },
+  8 to { Request.ValueOneOf.CheckTx(RequestCheckTxJvmConverter.convert(obj.getCheckTx())) },
+  9 to { Request.ValueOneOf.DeliverTx(RequestDeliverTxJvmConverter.convert(obj.getDeliverTx())) },
+  10 to { Request.ValueOneOf.EndBlock(RequestEndBlockJvmConverter.convert(obj.getEndBlock())) },
+  11 to { Request.ValueOneOf.Commit(RequestCommitJvmConverter.convert(obj.getCommit())) },
   12 to {
-      Request.ValueOneOf.ListSnapshots(RequestListSnapshotsJvmConverter.convert(obj.listSnapshots))
+      Request.ValueOneOf.ListSnapshots(RequestListSnapshotsJvmConverter.convert(obj.getListSnapshots()))
       },
   13 to {
-      Request.ValueOneOf.OfferSnapshot(RequestOfferSnapshotJvmConverter.convert(obj.offerSnapshot))
+      Request.ValueOneOf.OfferSnapshot(RequestOfferSnapshotJvmConverter.convert(obj.getOfferSnapshot()))
       },
   14 to {
-      Request.ValueOneOf.LoadSnapshotChunk(RequestLoadSnapshotChunkJvmConverter.convert(obj.loadSnapshotChunk))
+      Request.ValueOneOf.LoadSnapshotChunk(RequestLoadSnapshotChunkJvmConverter.convert(obj.getLoadSnapshotChunk()))
       },
   15 to {
-      Request.ValueOneOf.ApplySnapshotChunk(RequestApplySnapshotChunkJvmConverter.convert(obj.applySnapshotChunk))
+      Request.ValueOneOf.ApplySnapshotChunk(RequestApplySnapshotChunkJvmConverter.convert(obj.getApplySnapshotChunk()))
       },
   16 to {
-      Request.ValueOneOf.PrepareProposal(RequestPrepareProposalJvmConverter.convert(obj.prepareProposal))
+      Request.ValueOneOf.PrepareProposal(RequestPrepareProposalJvmConverter.convert(obj.getPrepareProposal()))
       },
   17 to {
-      Request.ValueOneOf.ProcessProposal(RequestProcessProposalJvmConverter.convert(obj.processProposal))
+      Request.ValueOneOf.ProcessProposal(RequestProcessProposalJvmConverter.convert(obj.getProcessProposal()))
       },
   ).getValue(obj.valueCase.number)(),
   )
@@ -100,7 +101,7 @@ public object RequestEchoJvmConverter : ProtobufTypeMapper<RequestEcho, Types.Re
   public override val parser: Parser<Types.RequestEcho> = Types.RequestEcho.parser()
 
   public override fun convert(obj: Types.RequestEcho): RequestEcho = RequestEcho(
-  	message = obj.message,
+  	message = obj.getMessage(),
   )
 
   public override fun convert(obj: RequestEcho): Types.RequestEcho {
@@ -130,10 +131,10 @@ public object RequestInfoJvmConverter : ProtobufTypeMapper<RequestInfo, Types.Re
   public override val parser: Parser<Types.RequestInfo> = Types.RequestInfo.parser()
 
   public override fun convert(obj: Types.RequestInfo): RequestInfo = RequestInfo(
-  	version = obj.version,
-  	blockVersion = obj.blockVersion.asKotlinType,
-  	p2PVersion = obj.p2PVersion.asKotlinType,
-  	abciVersion = obj.abciVersion,
+  	version = obj.getVersion(),
+  	blockVersion = obj.getBlockVersion().asKotlinType,
+  	p2PVersion = obj.getP2PVersion().asKotlinType,
+  	abciVersion = obj.getAbciVersion(),
   )
 
   public override fun convert(obj: RequestInfo): Types.RequestInfo {
@@ -153,12 +154,12 @@ public object RequestInitChainJvmConverter :
   public override val parser: Parser<Types.RequestInitChain> = Types.RequestInitChain.parser()
 
   public override fun convert(obj: Types.RequestInitChain): RequestInitChain = RequestInitChain(
-  	time = TimestampJvmConverter.convert(obj.time),
-  	chainId = obj.chainId,
-  	consensusParams = ConsensusParamsJvmConverter.convert(obj.consensusParams),
-  	validators = obj.validatorsList.map { ValidatorUpdateJvmConverter.convert(it) },
-  	appStateBytes = obj.appStateBytes.toByteArray(),
-  	initialHeight = obj.initialHeight,
+  	time = TimestampJvmConverter.convert(obj.getTime()),
+  	chainId = obj.getChainId(),
+  	consensusParams = ConsensusParamsJvmConverter.convert(obj.getConsensusParams()),
+  	validators = obj.getValidatorsList().map { ValidatorUpdateJvmConverter.convert(it) },
+  	appStateBytes = obj.getAppStateBytes().toByteArray(),
+  	initialHeight = obj.getInitialHeight(),
   )
 
   public override fun convert(obj: RequestInitChain): Types.RequestInitChain {
@@ -179,10 +180,10 @@ public object RequestQueryJvmConverter : ProtobufTypeMapper<RequestQuery, Types.
   public override val parser: Parser<Types.RequestQuery> = Types.RequestQuery.parser()
 
   public override fun convert(obj: Types.RequestQuery): RequestQuery = RequestQuery(
-  	`data` = obj.`data`.toByteArray(),
-  	path = obj.path,
-  	height = obj.height,
-  	prove = obj.prove,
+  	`data` = obj.getData().toByteArray(),
+  	path = obj.getPath(),
+  	height = obj.getHeight(),
+  	prove = obj.getProve(),
   )
 
   public override fun convert(obj: RequestQuery): Types.RequestQuery {
@@ -202,10 +203,11 @@ public object RequestBeginBlockJvmConverter :
   public override val parser: Parser<Types.RequestBeginBlock> = Types.RequestBeginBlock.parser()
 
   public override fun convert(obj: Types.RequestBeginBlock): RequestBeginBlock = RequestBeginBlock(
-  	hash = obj.hash.toByteArray(),
-  	`header` = HeaderJvmConverter.convert(obj.`header`),
-  	lastCommitInfo = CommitInfoJvmConverter.convert(obj.lastCommitInfo),
-  	byzantineValidators = obj.byzantineValidatorsList.map { MisbehaviorJvmConverter.convert(it) },
+  	hash = obj.getHash().toByteArray(),
+  	`header` = HeaderJvmConverter.convert(obj.getHeader()),
+  	lastCommitInfo = CommitInfoJvmConverter.convert(obj.getLastCommitInfo()),
+  	byzantineValidators = obj.getByzantineValidatorsList().map { MisbehaviorJvmConverter.convert(it)
+      },
   )
 
   public override fun convert(obj: RequestBeginBlock): Types.RequestBeginBlock {
@@ -226,8 +228,8 @@ public object RequestCheckTxJvmConverter : ProtobufTypeMapper<RequestCheckTx, Ty
   public override val parser: Parser<Types.RequestCheckTx> = Types.RequestCheckTx.parser()
 
   public override fun convert(obj: Types.RequestCheckTx): RequestCheckTx = RequestCheckTx(
-  	tx = obj.tx.toByteArray(),
-  	type = CheckTxType.forNumber(obj.type.number),
+  	tx = obj.getTx().toByteArray(),
+  	type = CheckTxType.forNumber(obj.getType().number),
   )
 
   public override fun convert(obj: RequestCheckTx): Types.RequestCheckTx {
@@ -245,7 +247,7 @@ public object RequestDeliverTxJvmConverter :
   public override val parser: Parser<Types.RequestDeliverTx> = Types.RequestDeliverTx.parser()
 
   public override fun convert(obj: Types.RequestDeliverTx): RequestDeliverTx = RequestDeliverTx(
-  	tx = obj.tx.toByteArray(),
+  	tx = obj.getTx().toByteArray(),
   )
 
   public override fun convert(obj: RequestDeliverTx): Types.RequestDeliverTx {
@@ -262,7 +264,7 @@ public object RequestEndBlockJvmConverter :
   public override val parser: Parser<Types.RequestEndBlock> = Types.RequestEndBlock.parser()
 
   public override fun convert(obj: Types.RequestEndBlock): RequestEndBlock = RequestEndBlock(
-  	height = obj.height,
+  	height = obj.getHeight(),
   )
 
   public override fun convert(obj: RequestEndBlock): Types.RequestEndBlock {
@@ -314,8 +316,8 @@ public object RequestOfferSnapshotJvmConverter :
 
   public override fun convert(obj: Types.RequestOfferSnapshot): RequestOfferSnapshot =
       RequestOfferSnapshot(
-  	snapshot = SnapshotJvmConverter.convert(obj.snapshot),
-  	appHash = obj.appHash.toByteArray(),
+  	snapshot = SnapshotJvmConverter.convert(obj.getSnapshot()),
+  	appHash = obj.getAppHash().toByteArray(),
   )
 
   public override fun convert(obj: RequestOfferSnapshot): Types.RequestOfferSnapshot {
@@ -336,9 +338,9 @@ public object RequestLoadSnapshotChunkJvmConverter :
 
   public override fun convert(obj: Types.RequestLoadSnapshotChunk): RequestLoadSnapshotChunk =
       RequestLoadSnapshotChunk(
-  	height = obj.height.asKotlinType,
-  	format = obj.format.asKotlinType,
-  	chunk = obj.chunk.asKotlinType,
+  	height = obj.getHeight().asKotlinType,
+  	format = obj.getFormat().asKotlinType,
+  	chunk = obj.getChunk().asKotlinType,
   )
 
   public override fun convert(obj: RequestLoadSnapshotChunk): Types.RequestLoadSnapshotChunk {
@@ -360,9 +362,9 @@ public object RequestApplySnapshotChunkJvmConverter :
 
   public override fun convert(obj: Types.RequestApplySnapshotChunk): RequestApplySnapshotChunk =
       RequestApplySnapshotChunk(
-  	index = obj.index.asKotlinType,
-  	chunk = obj.chunk.toByteArray(),
-  	sender = obj.sender,
+  	index = obj.getIndex().asKotlinType,
+  	chunk = obj.getChunk().toByteArray(),
+  	sender = obj.getSender(),
   )
 
   public override fun convert(obj: RequestApplySnapshotChunk): Types.RequestApplySnapshotChunk {
@@ -384,14 +386,14 @@ public object RequestPrepareProposalJvmConverter :
 
   public override fun convert(obj: Types.RequestPrepareProposal): RequestPrepareProposal =
       RequestPrepareProposal(
-  	maxTxBytes = obj.maxTxBytes,
-  	txs = obj.txsList.map { it.toByteArray() },
-  	localLastCommit = ExtendedCommitInfoJvmConverter.convert(obj.localLastCommit),
-  	misbehavior = obj.misbehaviorList.map { MisbehaviorJvmConverter.convert(it) },
-  	height = obj.height,
-  	time = TimestampJvmConverter.convert(obj.time),
-  	nextValidatorsHash = obj.nextValidatorsHash.toByteArray(),
-  	proposerAddress = obj.proposerAddress.toByteArray(),
+  	maxTxBytes = obj.getMaxTxBytes(),
+  	txs = obj.getTxsList().map { it.toByteArray() },
+  	localLastCommit = ExtendedCommitInfoJvmConverter.convert(obj.getLocalLastCommit()),
+  	misbehavior = obj.getMisbehaviorList().map { MisbehaviorJvmConverter.convert(it) },
+  	height = obj.getHeight(),
+  	time = TimestampJvmConverter.convert(obj.getTime()),
+  	nextValidatorsHash = obj.getNextValidatorsHash().toByteArray(),
+  	proposerAddress = obj.getProposerAddress().toByteArray(),
   )
 
   public override fun convert(obj: RequestPrepareProposal): Types.RequestPrepareProposal {
@@ -418,14 +420,14 @@ public object RequestProcessProposalJvmConverter :
 
   public override fun convert(obj: Types.RequestProcessProposal): RequestProcessProposal =
       RequestProcessProposal(
-  	txs = obj.txsList.map { it.toByteArray() },
-  	proposedLastCommit = CommitInfoJvmConverter.convert(obj.proposedLastCommit),
-  	misbehavior = obj.misbehaviorList.map { MisbehaviorJvmConverter.convert(it) },
-  	hash = obj.hash.toByteArray(),
-  	height = obj.height,
-  	time = TimestampJvmConverter.convert(obj.time),
-  	nextValidatorsHash = obj.nextValidatorsHash.toByteArray(),
-  	proposerAddress = obj.proposerAddress.toByteArray(),
+  	txs = obj.getTxsList().map { it.toByteArray() },
+  	proposedLastCommit = CommitInfoJvmConverter.convert(obj.getProposedLastCommit()),
+  	misbehavior = obj.getMisbehaviorList().map { MisbehaviorJvmConverter.convert(it) },
+  	hash = obj.getHash().toByteArray(),
+  	height = obj.getHeight(),
+  	time = TimestampJvmConverter.convert(obj.getTime()),
+  	nextValidatorsHash = obj.getNextValidatorsHash().toByteArray(),
+  	proposerAddress = obj.getProposerAddress().toByteArray(),
   )
 
   public override fun convert(obj: RequestProcessProposal): Types.RequestProcessProposal {
@@ -449,34 +451,36 @@ public object ResponseJvmConverter : ProtobufTypeMapper<Response, Types.Response
 
   public override fun convert(obj: Types.Response): Response = Response(
   	`value` = mapOf(
-  1 to { Response.ValueOneOf.Exception(ResponseExceptionJvmConverter.convert(obj.exception)) },
-  2 to { Response.ValueOneOf.Echo(ResponseEchoJvmConverter.convert(obj.echo)) },
-  3 to { Response.ValueOneOf.Flush(ResponseFlushJvmConverter.convert(obj.flush)) },
-  4 to { Response.ValueOneOf.Info(ResponseInfoJvmConverter.convert(obj.info)) },
-  6 to { Response.ValueOneOf.InitChain(ResponseInitChainJvmConverter.convert(obj.initChain)) },
-  7 to { Response.ValueOneOf.Query(ResponseQueryJvmConverter.convert(obj.query)) },
-  8 to { Response.ValueOneOf.BeginBlock(ResponseBeginBlockJvmConverter.convert(obj.beginBlock)) },
-  9 to { Response.ValueOneOf.CheckTx(ResponseCheckTxJvmConverter.convert(obj.checkTx)) },
-  10 to { Response.ValueOneOf.DeliverTx(ResponseDeliverTxJvmConverter.convert(obj.deliverTx)) },
-  11 to { Response.ValueOneOf.EndBlock(ResponseEndBlockJvmConverter.convert(obj.endBlock)) },
-  12 to { Response.ValueOneOf.Commit(ResponseCommitJvmConverter.convert(obj.commit)) },
+  1 to { Response.ValueOneOf.Exception(ResponseExceptionJvmConverter.convert(obj.getException())) },
+  2 to { Response.ValueOneOf.Echo(ResponseEchoJvmConverter.convert(obj.getEcho())) },
+  3 to { Response.ValueOneOf.Flush(ResponseFlushJvmConverter.convert(obj.getFlush())) },
+  4 to { Response.ValueOneOf.Info(ResponseInfoJvmConverter.convert(obj.getInfo())) },
+  6 to { Response.ValueOneOf.InitChain(ResponseInitChainJvmConverter.convert(obj.getInitChain())) },
+  7 to { Response.ValueOneOf.Query(ResponseQueryJvmConverter.convert(obj.getQuery())) },
+  8 to { Response.ValueOneOf.BeginBlock(ResponseBeginBlockJvmConverter.convert(obj.getBeginBlock()))
+      },
+  9 to { Response.ValueOneOf.CheckTx(ResponseCheckTxJvmConverter.convert(obj.getCheckTx())) },
+  10 to { Response.ValueOneOf.DeliverTx(ResponseDeliverTxJvmConverter.convert(obj.getDeliverTx()))
+      },
+  11 to { Response.ValueOneOf.EndBlock(ResponseEndBlockJvmConverter.convert(obj.getEndBlock())) },
+  12 to { Response.ValueOneOf.Commit(ResponseCommitJvmConverter.convert(obj.getCommit())) },
   13 to {
-      Response.ValueOneOf.ListSnapshots(ResponseListSnapshotsJvmConverter.convert(obj.listSnapshots))
+      Response.ValueOneOf.ListSnapshots(ResponseListSnapshotsJvmConverter.convert(obj.getListSnapshots()))
       },
   14 to {
-      Response.ValueOneOf.OfferSnapshot(ResponseOfferSnapshotJvmConverter.convert(obj.offerSnapshot))
+      Response.ValueOneOf.OfferSnapshot(ResponseOfferSnapshotJvmConverter.convert(obj.getOfferSnapshot()))
       },
   15 to {
-      Response.ValueOneOf.LoadSnapshotChunk(ResponseLoadSnapshotChunkJvmConverter.convert(obj.loadSnapshotChunk))
+      Response.ValueOneOf.LoadSnapshotChunk(ResponseLoadSnapshotChunkJvmConverter.convert(obj.getLoadSnapshotChunk()))
       },
   16 to {
-      Response.ValueOneOf.ApplySnapshotChunk(ResponseApplySnapshotChunkJvmConverter.convert(obj.applySnapshotChunk))
+      Response.ValueOneOf.ApplySnapshotChunk(ResponseApplySnapshotChunkJvmConverter.convert(obj.getApplySnapshotChunk()))
       },
   17 to {
-      Response.ValueOneOf.PrepareProposal(ResponsePrepareProposalJvmConverter.convert(obj.prepareProposal))
+      Response.ValueOneOf.PrepareProposal(ResponsePrepareProposalJvmConverter.convert(obj.getPrepareProposal()))
       },
   18 to {
-      Response.ValueOneOf.ProcessProposal(ResponseProcessProposalJvmConverter.convert(obj.processProposal))
+      Response.ValueOneOf.ProcessProposal(ResponseProcessProposalJvmConverter.convert(obj.getProcessProposal()))
       },
   ).getValue(obj.valueCase.number)(),
   )
@@ -530,7 +534,7 @@ public object ResponseExceptionJvmConverter :
   public override val parser: Parser<Types.ResponseException> = Types.ResponseException.parser()
 
   public override fun convert(obj: Types.ResponseException): ResponseException = ResponseException(
-  	error = obj.error,
+  	error = obj.getError(),
   )
 
   public override fun convert(obj: ResponseException): Types.ResponseException {
@@ -546,7 +550,7 @@ public object ResponseEchoJvmConverter : ProtobufTypeMapper<ResponseEcho, Types.
   public override val parser: Parser<Types.ResponseEcho> = Types.ResponseEcho.parser()
 
   public override fun convert(obj: Types.ResponseEcho): ResponseEcho = ResponseEcho(
-  	message = obj.message,
+  	message = obj.getMessage(),
   )
 
   public override fun convert(obj: ResponseEcho): Types.ResponseEcho {
@@ -576,11 +580,11 @@ public object ResponseInfoJvmConverter : ProtobufTypeMapper<ResponseInfo, Types.
   public override val parser: Parser<Types.ResponseInfo> = Types.ResponseInfo.parser()
 
   public override fun convert(obj: Types.ResponseInfo): ResponseInfo = ResponseInfo(
-  	`data` = obj.`data`,
-  	version = obj.version,
-  	appVersion = obj.appVersion.asKotlinType,
-  	lastBlockHeight = obj.lastBlockHeight,
-  	lastBlockAppHash = obj.lastBlockAppHash.toByteArray(),
+  	`data` = obj.getData(),
+  	version = obj.getVersion(),
+  	appVersion = obj.getAppVersion().asKotlinType,
+  	lastBlockHeight = obj.getLastBlockHeight(),
+  	lastBlockAppHash = obj.getLastBlockAppHash().toByteArray(),
   )
 
   public override fun convert(obj: ResponseInfo): Types.ResponseInfo {
@@ -601,9 +605,9 @@ public object ResponseInitChainJvmConverter :
   public override val parser: Parser<Types.ResponseInitChain> = Types.ResponseInitChain.parser()
 
   public override fun convert(obj: Types.ResponseInitChain): ResponseInitChain = ResponseInitChain(
-  	consensusParams = ConsensusParamsJvmConverter.convert(obj.consensusParams),
-  	validators = obj.validatorsList.map { ValidatorUpdateJvmConverter.convert(it) },
-  	appHash = obj.appHash.toByteArray(),
+  	consensusParams = ConsensusParamsJvmConverter.convert(obj.getConsensusParams()),
+  	validators = obj.getValidatorsList().map { ValidatorUpdateJvmConverter.convert(it) },
+  	appHash = obj.getAppHash().toByteArray(),
   )
 
   public override fun convert(obj: ResponseInitChain): Types.ResponseInitChain {
@@ -621,15 +625,15 @@ public object ResponseQueryJvmConverter : ProtobufTypeMapper<ResponseQuery, Type
   public override val parser: Parser<Types.ResponseQuery> = Types.ResponseQuery.parser()
 
   public override fun convert(obj: Types.ResponseQuery): ResponseQuery = ResponseQuery(
-  	code = obj.code.asKotlinType,
-  	log = obj.log,
-  	info = obj.info,
-  	index = obj.index,
-  	key = obj.key.toByteArray(),
-  	`value` = obj.`value`.toByteArray(),
-  	proofOps = ProofOpsJvmConverter.convert(obj.proofOps),
-  	height = obj.height,
-  	codespace = obj.codespace,
+  	code = obj.getCode().asKotlinType,
+  	log = obj.getLog(),
+  	info = obj.getInfo(),
+  	index = obj.getIndex(),
+  	key = obj.getKey().toByteArray(),
+  	`value` = obj.getValue().toByteArray(),
+  	proofOps = ProofOpsJvmConverter.convert(obj.getProofOps()),
+  	height = obj.getHeight(),
+  	codespace = obj.getCodespace(),
   )
 
   public override fun convert(obj: ResponseQuery): Types.ResponseQuery {
@@ -655,7 +659,7 @@ public object ResponseBeginBlockJvmConverter :
 
   public override fun convert(obj: Types.ResponseBeginBlock): ResponseBeginBlock =
       ResponseBeginBlock(
-  	events = obj.eventsList.map { EventJvmConverter.convert(it) },
+  	events = obj.getEventsList().map { EventJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ResponseBeginBlock): Types.ResponseBeginBlock {
@@ -672,17 +676,17 @@ public object ResponseCheckTxJvmConverter :
   public override val parser: Parser<Types.ResponseCheckTx> = Types.ResponseCheckTx.parser()
 
   public override fun convert(obj: Types.ResponseCheckTx): ResponseCheckTx = ResponseCheckTx(
-  	code = obj.code.asKotlinType,
-  	`data` = obj.`data`.toByteArray(),
-  	log = obj.log,
-  	info = obj.info,
-  	gasWanted = obj.gasWanted,
-  	gasUsed = obj.gasUsed,
-  	events = obj.eventsList.map { EventJvmConverter.convert(it) },
-  	codespace = obj.codespace,
-  	sender = obj.sender,
-  	priority = obj.priority,
-  	mempoolError = obj.mempoolError,
+  	code = obj.getCode().asKotlinType,
+  	`data` = obj.getData().toByteArray(),
+  	log = obj.getLog(),
+  	info = obj.getInfo(),
+  	gasWanted = obj.getGasWanted(),
+  	gasUsed = obj.getGasUsed(),
+  	events = obj.getEventsList().map { EventJvmConverter.convert(it) },
+  	codespace = obj.getCodespace(),
+  	sender = obj.getSender(),
+  	priority = obj.getPriority(),
+  	mempoolError = obj.getMempoolError(),
   )
 
   public override fun convert(obj: ResponseCheckTx): Types.ResponseCheckTx {
@@ -709,14 +713,14 @@ public object ResponseDeliverTxJvmConverter :
   public override val parser: Parser<Types.ResponseDeliverTx> = Types.ResponseDeliverTx.parser()
 
   public override fun convert(obj: Types.ResponseDeliverTx): ResponseDeliverTx = ResponseDeliverTx(
-  	code = obj.code.asKotlinType,
-  	`data` = obj.`data`.toByteArray(),
-  	log = obj.log,
-  	info = obj.info,
-  	gasWanted = obj.gasWanted,
-  	gasUsed = obj.gasUsed,
-  	events = obj.eventsList.map { EventJvmConverter.convert(it) },
-  	codespace = obj.codespace,
+  	code = obj.getCode().asKotlinType,
+  	`data` = obj.getData().toByteArray(),
+  	log = obj.getLog(),
+  	info = obj.getInfo(),
+  	gasWanted = obj.getGasWanted(),
+  	gasUsed = obj.getGasUsed(),
+  	events = obj.getEventsList().map { EventJvmConverter.convert(it) },
+  	codespace = obj.getCodespace(),
   )
 
   public override fun convert(obj: ResponseDeliverTx): Types.ResponseDeliverTx {
@@ -740,9 +744,9 @@ public object ResponseEndBlockJvmConverter :
   public override val parser: Parser<Types.ResponseEndBlock> = Types.ResponseEndBlock.parser()
 
   public override fun convert(obj: Types.ResponseEndBlock): ResponseEndBlock = ResponseEndBlock(
-  	validatorUpdates = obj.validatorUpdatesList.map { ValidatorUpdateJvmConverter.convert(it) },
-  	consensusParamUpdates = ConsensusParamsJvmConverter.convert(obj.consensusParamUpdates),
-  	events = obj.eventsList.map { EventJvmConverter.convert(it) },
+  	validatorUpdates = obj.getValidatorUpdatesList().map { ValidatorUpdateJvmConverter.convert(it) },
+  	consensusParamUpdates = ConsensusParamsJvmConverter.convert(obj.getConsensusParamUpdates()),
+  	events = obj.getEventsList().map { EventJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ResponseEndBlock): Types.ResponseEndBlock {
@@ -762,8 +766,8 @@ public object ResponseCommitJvmConverter : ProtobufTypeMapper<ResponseCommit, Ty
   public override val parser: Parser<Types.ResponseCommit> = Types.ResponseCommit.parser()
 
   public override fun convert(obj: Types.ResponseCommit): ResponseCommit = ResponseCommit(
-  	`data` = obj.`data`.toByteArray(),
-  	retainHeight = obj.retainHeight,
+  	`data` = obj.getData().toByteArray(),
+  	retainHeight = obj.getRetainHeight(),
   )
 
   public override fun convert(obj: ResponseCommit): Types.ResponseCommit {
@@ -784,7 +788,7 @@ public object ResponseListSnapshotsJvmConverter :
 
   public override fun convert(obj: Types.ResponseListSnapshots): ResponseListSnapshots =
       ResponseListSnapshots(
-  	snapshots = obj.snapshotsList.map { SnapshotJvmConverter.convert(it) },
+  	snapshots = obj.getSnapshotsList().map { SnapshotJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ResponseListSnapshots): Types.ResponseListSnapshots {
@@ -804,7 +808,7 @@ public object ResponseOfferSnapshotJvmConverter :
 
   public override fun convert(obj: Types.ResponseOfferSnapshot): ResponseOfferSnapshot =
       ResponseOfferSnapshot(
-  	result = ResponseOfferSnapshot.Result.forNumber(obj.result.number),
+  	result = ResponseOfferSnapshot.Result.forNumber(obj.getResult().number),
   )
 
   public override fun convert(obj: ResponseOfferSnapshot): Types.ResponseOfferSnapshot {
@@ -824,7 +828,7 @@ public object ResponseLoadSnapshotChunkJvmConverter :
 
   public override fun convert(obj: Types.ResponseLoadSnapshotChunk): ResponseLoadSnapshotChunk =
       ResponseLoadSnapshotChunk(
-  	chunk = obj.chunk.toByteArray(),
+  	chunk = obj.getChunk().toByteArray(),
   )
 
   public override fun convert(obj: ResponseLoadSnapshotChunk): Types.ResponseLoadSnapshotChunk {
@@ -844,9 +848,9 @@ public object ResponseApplySnapshotChunkJvmConverter :
 
   public override fun convert(obj: Types.ResponseApplySnapshotChunk): ResponseApplySnapshotChunk =
       ResponseApplySnapshotChunk(
-  	result = ResponseApplySnapshotChunk.Result.forNumber(obj.result.number),
-  	refetchChunks = obj.refetchChunksList.map { it.asKotlinType },
-  	rejectSenders = obj.rejectSendersList.map { it },
+  	result = ResponseApplySnapshotChunk.Result.forNumber(obj.getResult().number),
+  	refetchChunks = obj.getRefetchChunksList().map { it.asKotlinType },
+  	rejectSenders = obj.getRejectSendersList().map { it },
   )
 
   public override fun convert(obj: ResponseApplySnapshotChunk): Types.ResponseApplySnapshotChunk {
@@ -868,7 +872,7 @@ public object ResponsePrepareProposalJvmConverter :
 
   public override fun convert(obj: Types.ResponsePrepareProposal): ResponsePrepareProposal =
       ResponsePrepareProposal(
-  	txs = obj.txsList.map { it.toByteArray() },
+  	txs = obj.getTxsList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: ResponsePrepareProposal): Types.ResponsePrepareProposal {
@@ -888,7 +892,7 @@ public object ResponseProcessProposalJvmConverter :
 
   public override fun convert(obj: Types.ResponseProcessProposal): ResponseProcessProposal =
       ResponseProcessProposal(
-  	status = ResponseProcessProposal.ProposalStatus.forNumber(obj.status.number),
+  	status = ResponseProcessProposal.ProposalStatus.forNumber(obj.getStatus().number),
   )
 
   public override fun convert(obj: ResponseProcessProposal): Types.ResponseProcessProposal {
@@ -904,8 +908,8 @@ public object CommitInfoJvmConverter : ProtobufTypeMapper<CommitInfo, Types.Comm
   public override val parser: Parser<Types.CommitInfo> = Types.CommitInfo.parser()
 
   public override fun convert(obj: Types.CommitInfo): CommitInfo = CommitInfo(
-  	round = obj.round,
-  	votes = obj.votesList.map { VoteInfoJvmConverter.convert(it) },
+  	round = obj.getRound(),
+  	votes = obj.getVotesList().map { VoteInfoJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: CommitInfo): Types.CommitInfo {
@@ -924,8 +928,8 @@ public object ExtendedCommitInfoJvmConverter :
 
   public override fun convert(obj: Types.ExtendedCommitInfo): ExtendedCommitInfo =
       ExtendedCommitInfo(
-  	round = obj.round,
-  	votes = obj.votesList.map { ExtendedVoteInfoJvmConverter.convert(it) },
+  	round = obj.getRound(),
+  	votes = obj.getVotesList().map { ExtendedVoteInfoJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ExtendedCommitInfo): Types.ExtendedCommitInfo {
@@ -942,8 +946,8 @@ public object EventJvmConverter : ProtobufTypeMapper<Event, Types.Event> {
   public override val parser: Parser<Types.Event> = Types.Event.parser()
 
   public override fun convert(obj: Types.Event): Event = Event(
-  	type = obj.type,
-  	attributes = obj.attributesList.map { EventAttributeJvmConverter.convert(it) },
+  	type = obj.getType(),
+  	attributes = obj.getAttributesList().map { EventAttributeJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Event): Types.Event {
@@ -961,9 +965,9 @@ public object EventAttributeJvmConverter : ProtobufTypeMapper<EventAttribute, Ty
   public override val parser: Parser<Types.EventAttribute> = Types.EventAttribute.parser()
 
   public override fun convert(obj: Types.EventAttribute): EventAttribute = EventAttribute(
-  	key = obj.key,
-  	`value` = obj.`value`,
-  	index = obj.index,
+  	key = obj.getKey(),
+  	`value` = obj.getValue(),
+  	index = obj.getIndex(),
   )
 
   public override fun convert(obj: EventAttribute): Types.EventAttribute {
@@ -981,10 +985,10 @@ public object TxResultJvmConverter : ProtobufTypeMapper<TxResult, Types.TxResult
   public override val parser: Parser<Types.TxResult> = Types.TxResult.parser()
 
   public override fun convert(obj: Types.TxResult): TxResult = TxResult(
-  	height = obj.height,
-  	index = obj.index.asKotlinType,
-  	tx = obj.tx.toByteArray(),
-  	result = ResponseDeliverTxJvmConverter.convert(obj.result),
+  	height = obj.getHeight(),
+  	index = obj.getIndex().asKotlinType,
+  	tx = obj.getTx().toByteArray(),
+  	result = ResponseDeliverTxJvmConverter.convert(obj.getResult()),
   )
 
   public override fun convert(obj: TxResult): Types.TxResult {
@@ -1003,8 +1007,8 @@ public object ValidatorJvmConverter : ProtobufTypeMapper<Validator, Types.Valida
   public override val parser: Parser<Types.Validator> = Types.Validator.parser()
 
   public override fun convert(obj: Types.Validator): Validator = Validator(
-  	address = obj.address.toByteArray(),
-  	power = obj.power,
+  	address = obj.getAddress().toByteArray(),
+  	power = obj.getPower(),
   )
 
   public override fun convert(obj: Validator): Types.Validator {
@@ -1022,8 +1026,8 @@ public object ValidatorUpdateJvmConverter :
   public override val parser: Parser<Types.ValidatorUpdate> = Types.ValidatorUpdate.parser()
 
   public override fun convert(obj: Types.ValidatorUpdate): ValidatorUpdate = ValidatorUpdate(
-  	pubKey = PublicKeyJvmConverter.convert(obj.pubKey),
-  	power = obj.power,
+  	pubKey = PublicKeyJvmConverter.convert(obj.getPubKey()),
+  	power = obj.getPower(),
   )
 
   public override fun convert(obj: ValidatorUpdate): Types.ValidatorUpdate {
@@ -1040,8 +1044,8 @@ public object VoteInfoJvmConverter : ProtobufTypeMapper<VoteInfo, Types.VoteInfo
   public override val parser: Parser<Types.VoteInfo> = Types.VoteInfo.parser()
 
   public override fun convert(obj: Types.VoteInfo): VoteInfo = VoteInfo(
-  	validator = ValidatorJvmConverter.convert(obj.validator),
-  	signedLastBlock = obj.signedLastBlock,
+  	validator = ValidatorJvmConverter.convert(obj.getValidator()),
+  	signedLastBlock = obj.getSignedLastBlock(),
   )
 
   public override fun convert(obj: VoteInfo): Types.VoteInfo {
@@ -1059,9 +1063,9 @@ public object ExtendedVoteInfoJvmConverter :
   public override val parser: Parser<Types.ExtendedVoteInfo> = Types.ExtendedVoteInfo.parser()
 
   public override fun convert(obj: Types.ExtendedVoteInfo): ExtendedVoteInfo = ExtendedVoteInfo(
-  	validator = ValidatorJvmConverter.convert(obj.validator),
-  	signedLastBlock = obj.signedLastBlock,
-  	voteExtension = obj.voteExtension.toByteArray(),
+  	validator = ValidatorJvmConverter.convert(obj.getValidator()),
+  	signedLastBlock = obj.getSignedLastBlock(),
+  	voteExtension = obj.getVoteExtension().toByteArray(),
   )
 
   public override fun convert(obj: ExtendedVoteInfo): Types.ExtendedVoteInfo {
@@ -1079,11 +1083,11 @@ public object MisbehaviorJvmConverter : ProtobufTypeMapper<Misbehavior, Types.Mi
   public override val parser: Parser<Types.Misbehavior> = Types.Misbehavior.parser()
 
   public override fun convert(obj: Types.Misbehavior): Misbehavior = Misbehavior(
-  	type = MisbehaviorType.forNumber(obj.type.number),
-  	validator = ValidatorJvmConverter.convert(obj.validator),
-  	height = obj.height,
-  	time = TimestampJvmConverter.convert(obj.time),
-  	totalVotingPower = obj.totalVotingPower,
+  	type = MisbehaviorType.forNumber(obj.getType().number),
+  	validator = ValidatorJvmConverter.convert(obj.getValidator()),
+  	height = obj.getHeight(),
+  	time = TimestampJvmConverter.convert(obj.getTime()),
+  	totalVotingPower = obj.getTotalVotingPower(),
   )
 
   public override fun convert(obj: Misbehavior): Types.Misbehavior {
@@ -1103,11 +1107,11 @@ public object SnapshotJvmConverter : ProtobufTypeMapper<Snapshot, Types.Snapshot
   public override val parser: Parser<Types.Snapshot> = Types.Snapshot.parser()
 
   public override fun convert(obj: Types.Snapshot): Snapshot = Snapshot(
-  	height = obj.height.asKotlinType,
-  	format = obj.format.asKotlinType,
-  	chunks = obj.chunks.asKotlinType,
-  	hash = obj.hash.toByteArray(),
-  	metadata = obj.metadata.toByteArray(),
+  	height = obj.getHeight().asKotlinType,
+  	format = obj.getFormat().asKotlinType,
+  	chunks = obj.getChunks().asKotlinType,
+  	hash = obj.getHash().toByteArray(),
+  	metadata = obj.getMetadata().toByteArray(),
   )
 
   public override fun convert(obj: Snapshot): Types.Snapshot {

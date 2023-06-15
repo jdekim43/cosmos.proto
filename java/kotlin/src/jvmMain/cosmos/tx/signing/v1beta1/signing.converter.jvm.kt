@@ -1,5 +1,5 @@
 // Transform from cosmos/tx/signing/v1beta1/signing.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.tx.signing.v1beta1
 
@@ -23,7 +23,7 @@ public object SignatureDescriptorsJvmConverter :
 
   public override fun convert(obj: Signing.SignatureDescriptors): SignatureDescriptors =
       SignatureDescriptors(
-  	signatures = obj.signaturesList.map { SignatureDescriptorJvmConverter.convert(it) },
+  	signatures = obj.getSignaturesList().map { SignatureDescriptorJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: SignatureDescriptors): Signing.SignatureDescriptors {
@@ -43,9 +43,9 @@ public object SignatureDescriptorJvmConverter :
 
   public override fun convert(obj: Signing.SignatureDescriptor): SignatureDescriptor =
       SignatureDescriptor(
-  	publicKey = AnyJvmConverter.convert(obj.publicKey),
-  	`data` = DataJvmConverter.convert(obj.`data`),
-  	sequence = obj.sequence.asKotlinType,
+  	publicKey = AnyJvmConverter.convert(obj.getPublicKey()),
+  	`data` = DataJvmConverter.convert(obj.getData()),
+  	sequence = obj.getSequence().asKotlinType,
   )
 
   public override fun convert(obj: SignatureDescriptor): Signing.SignatureDescriptor {
@@ -67,8 +67,8 @@ public object SignatureDescriptorJvmConverter :
     public override fun convert(obj: Signing.SignatureDescriptor.Data): SignatureDescriptor.Data =
         SignatureDescriptor.Data(
     	sum = mapOf(
-    1 to { SignatureDescriptor.Data.SumOneOf.Single(SingleJvmConverter.convert(obj.single)) },
-    2 to { SignatureDescriptor.Data.SumOneOf.Multi(MultiJvmConverter.convert(obj.multi)) },
+    1 to { SignatureDescriptor.Data.SumOneOf.Single(SingleJvmConverter.convert(obj.getSingle())) },
+    2 to { SignatureDescriptor.Data.SumOneOf.Multi(MultiJvmConverter.convert(obj.getMulti())) },
     ).getValue(obj.sumCase.number)(),
     )
 
@@ -94,8 +94,8 @@ public object SignatureDescriptorJvmConverter :
 
       public override fun convert(obj: Signing.SignatureDescriptor.Data.Single):
           SignatureDescriptor.Data.Single = SignatureDescriptor.Data.Single(
-      	mode = SignMode.forNumber(obj.mode.number),
-      	signature = obj.signature.toByteArray(),
+      	mode = SignMode.forNumber(obj.getMode().number),
+      	signature = obj.getSignature().toByteArray(),
       )
 
       public override fun convert(obj: SignatureDescriptor.Data.Single):
@@ -117,8 +117,8 @@ public object SignatureDescriptorJvmConverter :
 
       public override fun convert(obj: Signing.SignatureDescriptor.Data.Multi):
           SignatureDescriptor.Data.Multi = SignatureDescriptor.Data.Multi(
-      	bitarray = CompactBitArrayJvmConverter.convert(obj.bitarray),
-      	signatures = obj.signaturesList.map { DataJvmConverter.convert(it) },
+      	bitarray = CompactBitArrayJvmConverter.convert(obj.getBitarray()),
+      	signatures = obj.getSignaturesList().map { DataJvmConverter.convert(it) },
       )
 
       public override fun convert(obj: SignatureDescriptor.Data.Multi):

@@ -1,5 +1,5 @@
 // Transform from cosmos/gov/v1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.v1
 
@@ -22,7 +22,7 @@ public object QueryProposalRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryProposalRequest): QueryProposalRequest =
       QueryProposalRequest(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: QueryProposalRequest): QueryOuterClass.QueryProposalRequest {
@@ -42,7 +42,7 @@ public object QueryProposalResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryProposalResponse): QueryProposalResponse =
       QueryProposalResponse(
-  	proposal = ProposalJvmConverter.convert(obj.proposal),
+  	proposal = ProposalJvmConverter.convert(obj.getProposal()),
   )
 
   public override fun convert(obj: QueryProposalResponse): QueryOuterClass.QueryProposalResponse {
@@ -62,10 +62,10 @@ public object QueryProposalsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryProposalsRequest): QueryProposalsRequest =
       QueryProposalsRequest(
-  	proposalStatus = ProposalStatus.forNumber(obj.proposalStatus.number),
-  	voter = obj.voter,
-  	depositor = obj.depositor,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	proposalStatus = ProposalStatus.forNumber(obj.getProposalStatus().number),
+  	voter = obj.getVoter(),
+  	depositor = obj.getDepositor(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryProposalsRequest): QueryOuterClass.QueryProposalsRequest {
@@ -88,8 +88,8 @@ public object QueryProposalsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryProposalsResponse): QueryProposalsResponse =
       QueryProposalsResponse(
-  	proposals = obj.proposalsList.map { ProposalJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	proposals = obj.getProposalsList().map { ProposalJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryProposalsResponse): QueryOuterClass.QueryProposalsResponse {
@@ -110,8 +110,8 @@ public object QueryVoteRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVoteRequest): QueryVoteRequest =
       QueryVoteRequest(
-  	proposalId = obj.proposalId.asKotlinType,
-  	voter = obj.voter,
+  	proposalId = obj.getProposalId().asKotlinType,
+  	voter = obj.getVoter(),
   )
 
   public override fun convert(obj: QueryVoteRequest): QueryOuterClass.QueryVoteRequest {
@@ -132,7 +132,7 @@ public object QueryVoteResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVoteResponse): QueryVoteResponse =
       QueryVoteResponse(
-  	vote = VoteJvmConverter.convert(obj.vote),
+  	vote = VoteJvmConverter.convert(obj.getVote()),
   )
 
   public override fun convert(obj: QueryVoteResponse): QueryOuterClass.QueryVoteResponse {
@@ -152,8 +152,8 @@ public object QueryVotesRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVotesRequest): QueryVotesRequest =
       QueryVotesRequest(
-  	proposalId = obj.proposalId.asKotlinType,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	proposalId = obj.getProposalId().asKotlinType,
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryVotesRequest): QueryOuterClass.QueryVotesRequest {
@@ -174,8 +174,8 @@ public object QueryVotesResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryVotesResponse): QueryVotesResponse =
       QueryVotesResponse(
-  	votes = obj.votesList.map { VoteJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	votes = obj.getVotesList().map { VoteJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryVotesResponse): QueryOuterClass.QueryVotesResponse {
@@ -196,7 +196,7 @@ public object QueryParamsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsRequest): QueryParamsRequest =
       QueryParamsRequest(
-  	paramsType = obj.paramsType,
+  	paramsType = obj.getParamsType(),
   )
 
   public override fun convert(obj: QueryParamsRequest): QueryOuterClass.QueryParamsRequest {
@@ -216,10 +216,10 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	votingParams = VotingParamsJvmConverter.convert(obj.votingParams),
-  	depositParams = DepositParamsJvmConverter.convert(obj.depositParams),
-  	tallyParams = TallyParamsJvmConverter.convert(obj.tallyParams),
-  	params = ParamsJvmConverter.convert(obj.params),
+  	votingParams = VotingParamsJvmConverter.convert(obj.getVotingParams()),
+  	depositParams = DepositParamsJvmConverter.convert(obj.getDepositParams()),
+  	tallyParams = TallyParamsJvmConverter.convert(obj.getTallyParams()),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {
@@ -242,8 +242,8 @@ public object QueryDepositRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDepositRequest): QueryDepositRequest =
       QueryDepositRequest(
-  	proposalId = obj.proposalId.asKotlinType,
-  	depositor = obj.depositor,
+  	proposalId = obj.getProposalId().asKotlinType,
+  	depositor = obj.getDepositor(),
   )
 
   public override fun convert(obj: QueryDepositRequest): QueryOuterClass.QueryDepositRequest {
@@ -264,7 +264,7 @@ public object QueryDepositResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDepositResponse): QueryDepositResponse =
       QueryDepositResponse(
-  	deposit = DepositJvmConverter.convert(obj.deposit),
+  	deposit = DepositJvmConverter.convert(obj.getDeposit()),
   )
 
   public override fun convert(obj: QueryDepositResponse): QueryOuterClass.QueryDepositResponse {
@@ -284,8 +284,8 @@ public object QueryDepositsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDepositsRequest): QueryDepositsRequest =
       QueryDepositsRequest(
-  	proposalId = obj.proposalId.asKotlinType,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	proposalId = obj.getProposalId().asKotlinType,
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDepositsRequest): QueryOuterClass.QueryDepositsRequest {
@@ -306,8 +306,8 @@ public object QueryDepositsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDepositsResponse): QueryDepositsResponse =
       QueryDepositsResponse(
-  	deposits = obj.depositsList.map { DepositJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	deposits = obj.getDepositsList().map { DepositJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDepositsResponse): QueryOuterClass.QueryDepositsResponse {
@@ -328,7 +328,7 @@ public object QueryTallyResultRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryTallyResultRequest): QueryTallyResultRequest
       = QueryTallyResultRequest(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: QueryTallyResultRequest):
@@ -349,7 +349,7 @@ public object QueryTallyResultResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryTallyResultResponse):
       QueryTallyResultResponse = QueryTallyResultResponse(
-  	tally = TallyResultJvmConverter.convert(obj.tally),
+  	tally = TallyResultJvmConverter.convert(obj.getTally()),
   )
 
   public override fun convert(obj: QueryTallyResultResponse):

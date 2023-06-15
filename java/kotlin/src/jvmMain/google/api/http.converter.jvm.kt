@@ -1,5 +1,5 @@
 // Transform from google/api/http.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package google.api
 
@@ -14,8 +14,8 @@ public object HttpJvmConverter : ProtobufTypeMapper<Http, com.google.api.Http> {
   public override val parser: Parser<com.google.api.Http> = com.google.api.Http.parser()
 
   public override fun convert(obj: com.google.api.Http): Http = Http(
-  	rules = obj.rulesList.map { HttpRuleJvmConverter.convert(it) },
-  	fullyDecodeReservedExpansion = obj.fullyDecodeReservedExpansion,
+  	rules = obj.getRulesList().map { HttpRuleJvmConverter.convert(it) },
+  	fullyDecodeReservedExpansion = obj.getFullyDecodeReservedExpansion(),
   )
 
   public override fun convert(obj: Http): com.google.api.Http {
@@ -32,17 +32,17 @@ public object HttpRuleJvmConverter : ProtobufTypeMapper<HttpRule, com.google.api
   public override val parser: Parser<com.google.api.HttpRule> = com.google.api.HttpRule.parser()
 
   public override fun convert(obj: com.google.api.HttpRule): HttpRule = HttpRule(
-  	selector = obj.selector,
-  	body = obj.body,
-  	responseBody = obj.responseBody,
-  	additionalBindings = obj.additionalBindingsList.map { HttpRuleJvmConverter.convert(it) },
+  	selector = obj.getSelector(),
+  	body = obj.getBody(),
+  	responseBody = obj.getResponseBody(),
+  	additionalBindings = obj.getAdditionalBindingsList().map { HttpRuleJvmConverter.convert(it) },
   	pattern = mapOf(
-  2 to { HttpRule.PatternOneOf.Get(obj.`get`) },
-  3 to { HttpRule.PatternOneOf.Put(obj.put) },
-  4 to { HttpRule.PatternOneOf.Post(obj.post) },
-  5 to { HttpRule.PatternOneOf.Delete(obj.delete) },
-  6 to { HttpRule.PatternOneOf.Patch(obj.patch) },
-  8 to { HttpRule.PatternOneOf.Custom(CustomHttpPatternJvmConverter.convert(obj.custom)) },
+  2 to { HttpRule.PatternOneOf.Get(obj.getGet()) },
+  3 to { HttpRule.PatternOneOf.Put(obj.getPut()) },
+  4 to { HttpRule.PatternOneOf.Post(obj.getPost()) },
+  5 to { HttpRule.PatternOneOf.Delete(obj.getDelete()) },
+  6 to { HttpRule.PatternOneOf.Patch(obj.getPatch()) },
+  8 to { HttpRule.PatternOneOf.Custom(CustomHttpPatternJvmConverter.convert(obj.getCustom())) },
   ).getValue(obj.patternCase.number)(),
   )
 
@@ -76,8 +76,8 @@ public object CustomHttpPatternJvmConverter :
 
   public override fun convert(obj: com.google.api.CustomHttpPattern): CustomHttpPattern =
       CustomHttpPattern(
-  	kind = obj.kind,
-  	path = obj.path,
+  	kind = obj.getKind(),
+  	path = obj.getPath(),
   )
 
   public override fun convert(obj: CustomHttpPattern): com.google.api.CustomHttpPattern {

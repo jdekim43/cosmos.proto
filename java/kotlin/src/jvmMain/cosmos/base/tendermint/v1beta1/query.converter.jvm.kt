@@ -1,5 +1,5 @@
 // Transform from cosmos/base/tendermint/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.tendermint.v1beta1
 
@@ -26,8 +26,8 @@ public object GetValidatorSetByHeightRequestJvmConverter :
 
   public override fun convert(obj: Query.GetValidatorSetByHeightRequest):
       GetValidatorSetByHeightRequest = GetValidatorSetByHeightRequest(
-  	height = obj.height,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	height = obj.getHeight(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: GetValidatorSetByHeightRequest):
@@ -49,9 +49,9 @@ public object GetValidatorSetByHeightResponseJvmConverter :
 
   public override fun convert(obj: Query.GetValidatorSetByHeightResponse):
       GetValidatorSetByHeightResponse = GetValidatorSetByHeightResponse(
-  	blockHeight = obj.blockHeight,
-  	validators = obj.validatorsList.map { ValidatorJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	blockHeight = obj.getBlockHeight(),
+  	validators = obj.getValidatorsList().map { ValidatorJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: GetValidatorSetByHeightResponse):
@@ -74,7 +74,7 @@ public object GetLatestValidatorSetRequestJvmConverter :
 
   public override fun convert(obj: Query.GetLatestValidatorSetRequest): GetLatestValidatorSetRequest
       = GetLatestValidatorSetRequest(
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: GetLatestValidatorSetRequest):
@@ -95,9 +95,9 @@ public object GetLatestValidatorSetResponseJvmConverter :
 
   public override fun convert(obj: Query.GetLatestValidatorSetResponse):
       GetLatestValidatorSetResponse = GetLatestValidatorSetResponse(
-  	blockHeight = obj.blockHeight,
-  	validators = obj.validatorsList.map { ValidatorJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	blockHeight = obj.getBlockHeight(),
+  	validators = obj.getValidatorsList().map { ValidatorJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: GetLatestValidatorSetResponse):
@@ -116,10 +116,10 @@ public object ValidatorJvmConverter : ProtobufTypeMapper<Validator, Query.Valida
   public override val parser: Parser<Query.Validator> = Query.Validator.parser()
 
   public override fun convert(obj: Query.Validator): Validator = Validator(
-  	address = obj.address,
-  	pubKey = AnyJvmConverter.convert(obj.pubKey),
-  	votingPower = obj.votingPower,
-  	proposerPriority = obj.proposerPriority,
+  	address = obj.getAddress(),
+  	pubKey = AnyJvmConverter.convert(obj.getPubKey()),
+  	votingPower = obj.getVotingPower(),
+  	proposerPriority = obj.getProposerPriority(),
   )
 
   public override fun convert(obj: Validator): Query.Validator {
@@ -142,7 +142,7 @@ public object GetBlockByHeightRequestJvmConverter :
 
   public override fun convert(obj: Query.GetBlockByHeightRequest): GetBlockByHeightRequest =
       GetBlockByHeightRequest(
-  	height = obj.height,
+  	height = obj.getHeight(),
   )
 
   public override fun convert(obj: GetBlockByHeightRequest): Query.GetBlockByHeightRequest {
@@ -162,9 +162,9 @@ public object GetBlockByHeightResponseJvmConverter :
 
   public override fun convert(obj: Query.GetBlockByHeightResponse): GetBlockByHeightResponse =
       GetBlockByHeightResponse(
-  	blockId = BlockIDJvmConverter.convert(obj.blockId),
-  	block = tendermint.types.BlockJvmConverter.convert(obj.block),
-  	sdkBlock = BlockJvmConverter.convert(obj.sdkBlock),
+  	blockId = BlockIDJvmConverter.convert(obj.getBlockId()),
+  	block = tendermint.types.BlockJvmConverter.convert(obj.getBlock()),
+  	sdkBlock = BlockJvmConverter.convert(obj.getSdkBlock()),
   )
 
   public override fun convert(obj: GetBlockByHeightResponse): Query.GetBlockByHeightResponse {
@@ -204,9 +204,9 @@ public object GetLatestBlockResponseJvmConverter :
 
   public override fun convert(obj: Query.GetLatestBlockResponse): GetLatestBlockResponse =
       GetLatestBlockResponse(
-  	blockId = BlockIDJvmConverter.convert(obj.blockId),
-  	block = tendermint.types.BlockJvmConverter.convert(obj.block),
-  	sdkBlock = BlockJvmConverter.convert(obj.sdkBlock),
+  	blockId = BlockIDJvmConverter.convert(obj.getBlockId()),
+  	block = tendermint.types.BlockJvmConverter.convert(obj.getBlock()),
+  	sdkBlock = BlockJvmConverter.convert(obj.getSdkBlock()),
   )
 
   public override fun convert(obj: GetLatestBlockResponse): Query.GetLatestBlockResponse {
@@ -241,7 +241,7 @@ public object GetSyncingResponseJvmConverter :
 
   public override fun convert(obj: Query.GetSyncingResponse): GetSyncingResponse =
       GetSyncingResponse(
-  	syncing = obj.syncing,
+  	syncing = obj.getSyncing(),
   )
 
   public override fun convert(obj: GetSyncingResponse): Query.GetSyncingResponse {
@@ -275,8 +275,8 @@ public object GetNodeInfoResponseJvmConverter :
 
   public override fun convert(obj: Query.GetNodeInfoResponse): GetNodeInfoResponse =
       GetNodeInfoResponse(
-  	defaultNodeInfo = DefaultNodeInfoJvmConverter.convert(obj.defaultNodeInfo),
-  	applicationVersion = VersionInfoJvmConverter.convert(obj.applicationVersion),
+  	defaultNodeInfo = DefaultNodeInfoJvmConverter.convert(obj.getDefaultNodeInfo()),
+  	applicationVersion = VersionInfoJvmConverter.convert(obj.getApplicationVersion()),
   )
 
   public override fun convert(obj: GetNodeInfoResponse): Query.GetNodeInfoResponse {
@@ -293,14 +293,14 @@ public object VersionInfoJvmConverter : ProtobufTypeMapper<VersionInfo, Query.Ve
   public override val parser: Parser<Query.VersionInfo> = Query.VersionInfo.parser()
 
   public override fun convert(obj: Query.VersionInfo): VersionInfo = VersionInfo(
-  	name = obj.name,
-  	appName = obj.appName,
-  	version = obj.version,
-  	gitCommit = obj.gitCommit,
-  	buildTags = obj.buildTags,
-  	goVersion = obj.goVersion,
-  	buildDeps = obj.buildDepsList.map { ModuleJvmConverter.convert(it) },
-  	cosmosSdkVersion = obj.cosmosSdkVersion,
+  	name = obj.getName(),
+  	appName = obj.getAppName(),
+  	version = obj.getVersion(),
+  	gitCommit = obj.getGitCommit(),
+  	buildTags = obj.getBuildTags(),
+  	goVersion = obj.getGoVersion(),
+  	buildDeps = obj.getBuildDepsList().map { ModuleJvmConverter.convert(it) },
+  	cosmosSdkVersion = obj.getCosmosSdkVersion(),
   )
 
   public override fun convert(obj: VersionInfo): Query.VersionInfo {
@@ -323,9 +323,9 @@ public object ModuleJvmConverter : ProtobufTypeMapper<Module, Query.Module> {
   public override val parser: Parser<Query.Module> = Query.Module.parser()
 
   public override fun convert(obj: Query.Module): Module = Module(
-  	path = obj.path,
-  	version = obj.version,
-  	sum = obj.sum,
+  	path = obj.getPath(),
+  	version = obj.getVersion(),
+  	sum = obj.getSum(),
   )
 
   public override fun convert(obj: Module): Query.Module {
@@ -344,10 +344,10 @@ public object ABCIQueryRequestJvmConverter :
   public override val parser: Parser<Query.ABCIQueryRequest> = Query.ABCIQueryRequest.parser()
 
   public override fun convert(obj: Query.ABCIQueryRequest): ABCIQueryRequest = ABCIQueryRequest(
-  	`data` = obj.`data`.toByteArray(),
-  	path = obj.path,
-  	height = obj.height,
-  	prove = obj.prove,
+  	`data` = obj.getData().toByteArray(),
+  	path = obj.getPath(),
+  	height = obj.getHeight(),
+  	prove = obj.getProve(),
   )
 
   public override fun convert(obj: ABCIQueryRequest): Query.ABCIQueryRequest {
@@ -367,15 +367,15 @@ public object ABCIQueryResponseJvmConverter :
   public override val parser: Parser<Query.ABCIQueryResponse> = Query.ABCIQueryResponse.parser()
 
   public override fun convert(obj: Query.ABCIQueryResponse): ABCIQueryResponse = ABCIQueryResponse(
-  	code = obj.code.asKotlinType,
-  	log = obj.log,
-  	info = obj.info,
-  	index = obj.index,
-  	key = obj.key.toByteArray(),
-  	`value` = obj.`value`.toByteArray(),
-  	proofOps = ProofOpsJvmConverter.convert(obj.proofOps),
-  	height = obj.height,
-  	codespace = obj.codespace,
+  	code = obj.getCode().asKotlinType,
+  	log = obj.getLog(),
+  	info = obj.getInfo(),
+  	index = obj.getIndex(),
+  	key = obj.getKey().toByteArray(),
+  	`value` = obj.getValue().toByteArray(),
+  	proofOps = ProofOpsJvmConverter.convert(obj.getProofOps()),
+  	height = obj.getHeight(),
+  	codespace = obj.getCodespace(),
   )
 
   public override fun convert(obj: ABCIQueryResponse): Query.ABCIQueryResponse {
@@ -399,9 +399,9 @@ public object ProofOpJvmConverter : ProtobufTypeMapper<ProofOp, Query.ProofOp> {
   public override val parser: Parser<Query.ProofOp> = Query.ProofOp.parser()
 
   public override fun convert(obj: Query.ProofOp): ProofOp = ProofOp(
-  	type = obj.type,
-  	key = obj.key.toByteArray(),
-  	`data` = obj.`data`.toByteArray(),
+  	type = obj.getType(),
+  	key = obj.getKey().toByteArray(),
+  	`data` = obj.getData().toByteArray(),
   )
 
   public override fun convert(obj: ProofOp): Query.ProofOp {
@@ -419,7 +419,7 @@ public object ProofOpsJvmConverter : ProtobufTypeMapper<ProofOps, Query.ProofOps
   public override val parser: Parser<Query.ProofOps> = Query.ProofOps.parser()
 
   public override fun convert(obj: Query.ProofOps): ProofOps = ProofOps(
-  	ops = obj.opsList.map { ProofOpJvmConverter.convert(it) },
+  	ops = obj.getOpsList().map { ProofOpJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ProofOps): Query.ProofOps {

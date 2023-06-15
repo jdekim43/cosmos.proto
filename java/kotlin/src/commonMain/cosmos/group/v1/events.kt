@@ -1,6 +1,6 @@
 // Transform from cosmos/group/v1/events.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.v1
 
@@ -18,13 +18,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = EventCreateGroup.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventCreateGroup")
+@SerialName(value = EventCreateGroup.TYPE_URL)
 public data class EventCreateGroup(
   @ProtobufIndex(index = 1)
   public val groupId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventCreateGroup"
+  }
+
   public object KotlinxSerializer : KSerializer<EventCreateGroup> {
     private val delegator: KSerializer<EventCreateGroup> = EventCreateGroup.serializer()
 
@@ -48,11 +53,15 @@ public data class EventCreateGroup(
 }
 
 @Serializable(with = EventUpdateGroup.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventUpdateGroup")
+@SerialName(value = EventUpdateGroup.TYPE_URL)
 public data class EventUpdateGroup(
   @ProtobufIndex(index = 1)
   public val groupId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventUpdateGroup"
+  }
+
   public object KotlinxSerializer : KSerializer<EventUpdateGroup> {
     private val delegator: KSerializer<EventUpdateGroup> = EventUpdateGroup.serializer()
 
@@ -76,11 +85,15 @@ public data class EventUpdateGroup(
 }
 
 @Serializable(with = EventCreateGroupPolicy.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventCreateGroupPolicy")
+@SerialName(value = EventCreateGroupPolicy.TYPE_URL)
 public data class EventCreateGroupPolicy(
   @ProtobufIndex(index = 1)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventCreateGroupPolicy"
+  }
+
   public object KotlinxSerializer : KSerializer<EventCreateGroupPolicy> {
     private val delegator: KSerializer<EventCreateGroupPolicy> = EventCreateGroupPolicy.serializer()
 
@@ -104,11 +117,15 @@ public data class EventCreateGroupPolicy(
 }
 
 @Serializable(with = EventUpdateGroupPolicy.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventUpdateGroupPolicy")
+@SerialName(value = EventUpdateGroupPolicy.TYPE_URL)
 public data class EventUpdateGroupPolicy(
   @ProtobufIndex(index = 1)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventUpdateGroupPolicy"
+  }
+
   public object KotlinxSerializer : KSerializer<EventUpdateGroupPolicy> {
     private val delegator: KSerializer<EventUpdateGroupPolicy> = EventUpdateGroupPolicy.serializer()
 
@@ -132,11 +149,15 @@ public data class EventUpdateGroupPolicy(
 }
 
 @Serializable(with = EventSubmitProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventSubmitProposal")
+@SerialName(value = EventSubmitProposal.TYPE_URL)
 public data class EventSubmitProposal(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventSubmitProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<EventSubmitProposal> {
     private val delegator: KSerializer<EventSubmitProposal> = EventSubmitProposal.serializer()
 
@@ -160,11 +181,15 @@ public data class EventSubmitProposal(
 }
 
 @Serializable(with = EventWithdrawProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventWithdrawProposal")
+@SerialName(value = EventWithdrawProposal.TYPE_URL)
 public data class EventWithdrawProposal(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventWithdrawProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<EventWithdrawProposal> {
     private val delegator: KSerializer<EventWithdrawProposal> = EventWithdrawProposal.serializer()
 
@@ -188,11 +213,15 @@ public data class EventWithdrawProposal(
 }
 
 @Serializable(with = EventVote.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventVote")
+@SerialName(value = EventVote.TYPE_URL)
 public data class EventVote(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventVote"
+  }
+
   public object KotlinxSerializer : KSerializer<EventVote> {
     private val delegator: KSerializer<EventVote> = EventVote.serializer()
 
@@ -216,7 +245,7 @@ public data class EventVote(
 }
 
 @Serializable(with = EventExec.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventExec")
+@SerialName(value = EventExec.TYPE_URL)
 public data class EventExec(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
@@ -224,7 +253,11 @@ public data class EventExec(
   public val result: ProposalExecutorResult,
   @ProtobufIndex(index = 3)
   public val logs: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventExec"
+  }
+
   public object KotlinxSerializer : KSerializer<EventExec> {
     private val delegator: KSerializer<EventExec> = EventExec.serializer()
 
@@ -248,13 +281,17 @@ public data class EventExec(
 }
 
 @Serializable(with = EventLeaveGroup.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.EventLeaveGroup")
+@SerialName(value = EventLeaveGroup.TYPE_URL)
 public data class EventLeaveGroup(
   @ProtobufIndex(index = 1)
   public val groupId: ULong,
   @ProtobufIndex(index = 2)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.EventLeaveGroup"
+  }
+
   public object KotlinxSerializer : KSerializer<EventLeaveGroup> {
     private val delegator: KSerializer<EventLeaveGroup> = EventLeaveGroup.serializer()
 

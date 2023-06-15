@@ -1,5 +1,5 @@
 // Transform from cosmos/reflection/v1/reflection.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.reflection.v1
 
@@ -37,7 +37,7 @@ public object FileDescriptorsResponseJvmConverter :
 
   public override fun convert(obj: Reflection.FileDescriptorsResponse): FileDescriptorsResponse =
       FileDescriptorsResponse(
-  	files = obj.filesList.map { FileDescriptorProtoJvmConverter.convert(it) },
+  	files = obj.getFilesList().map { FileDescriptorProtoJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: FileDescriptorsResponse): Reflection.FileDescriptorsResponse {

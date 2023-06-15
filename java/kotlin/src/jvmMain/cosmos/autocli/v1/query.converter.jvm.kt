@@ -1,5 +1,5 @@
 // Transform from cosmos/autocli/v1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.autocli.v1
 
@@ -36,8 +36,8 @@ public object AppOptionsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.AppOptionsResponse): AppOptionsResponse =
       AppOptionsResponse(
-  	moduleOptions = obj.moduleOptionsMap.map { it.key to ModuleOptionsJvmConverter.convert(it.value)
-      }.toMap(),
+  	moduleOptions = obj.getModuleOptionsMap().map { it.key to
+      ModuleOptionsJvmConverter.convert(it.value) }.toMap(),
   )
 
   public override fun convert(obj: AppOptionsResponse): QueryOuterClass.AppOptionsResponse {

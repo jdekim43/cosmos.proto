@@ -1,6 +1,6 @@
 // Transform from cosmos/auth/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.auth.v1beta1
 
@@ -27,13 +27,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryAccountsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryAccountsRequest")
+@SerialName(value = QueryAccountsRequest.TYPE_URL)
 public data class QueryAccountsRequest(
   @ProtobufIndex(index = 1)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryAccountsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAccountsRequest> {
     private val delegator: KSerializer<QueryAccountsRequest> = QueryAccountsRequest.serializer()
 
@@ -57,13 +62,17 @@ public data class QueryAccountsRequest(
 }
 
 @Serializable(with = QueryAccountsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryAccountsResponse")
+@SerialName(value = QueryAccountsResponse.TYPE_URL)
 public data class QueryAccountsResponse(
   @ProtobufIndex(index = 1)
   public val accounts: List<Any>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryAccountsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAccountsResponse> {
     private val delegator: KSerializer<QueryAccountsResponse> = QueryAccountsResponse.serializer()
 
@@ -87,11 +96,15 @@ public data class QueryAccountsResponse(
 }
 
 @Serializable(with = QueryAccountRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryAccountRequest")
+@SerialName(value = QueryAccountRequest.TYPE_URL)
 public data class QueryAccountRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryAccountRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAccountRequest> {
     private val delegator: KSerializer<QueryAccountRequest> = QueryAccountRequest.serializer()
 
@@ -115,11 +128,15 @@ public data class QueryAccountRequest(
 }
 
 @Serializable(with = QueryAccountResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryAccountResponse")
+@SerialName(value = QueryAccountResponse.TYPE_URL)
 public data class QueryAccountResponse(
   @ProtobufIndex(index = 1)
   public val account: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryAccountResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAccountResponse> {
     private val delegator: KSerializer<QueryAccountResponse> = QueryAccountResponse.serializer()
 
@@ -143,8 +160,12 @@ public data class QueryAccountResponse(
 }
 
 @Serializable(with = QueryParamsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryParamsRequest")
-public class QueryParamsRequest() {
+@SerialName(value = QueryParamsRequest.TYPE_URL)
+public class QueryParamsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryParamsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsRequest> {
     private val delegator: KSerializer<QueryParamsRequest> = QueryParamsRequest.serializer()
 
@@ -168,11 +189,15 @@ public class QueryParamsRequest() {
 }
 
 @Serializable(with = QueryParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryParamsResponse")
+@SerialName(value = QueryParamsResponse.TYPE_URL)
 public data class QueryParamsResponse(
   @ProtobufIndex(index = 1)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsResponse> {
     private val delegator: KSerializer<QueryParamsResponse> = QueryParamsResponse.serializer()
 
@@ -196,8 +221,12 @@ public data class QueryParamsResponse(
 }
 
 @Serializable(with = QueryModuleAccountsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryModuleAccountsRequest")
-public class QueryModuleAccountsRequest() {
+@SerialName(value = QueryModuleAccountsRequest.TYPE_URL)
+public class QueryModuleAccountsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryModuleAccountsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryModuleAccountsRequest> {
     private val delegator: KSerializer<QueryModuleAccountsRequest> =
         QueryModuleAccountsRequest.serializer()
@@ -222,11 +251,15 @@ public class QueryModuleAccountsRequest() {
 }
 
 @Serializable(with = QueryModuleAccountsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryModuleAccountsResponse")
+@SerialName(value = QueryModuleAccountsResponse.TYPE_URL)
 public data class QueryModuleAccountsResponse(
   @ProtobufIndex(index = 1)
   public val accounts: List<Any>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryModuleAccountsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryModuleAccountsResponse> {
     private val delegator: KSerializer<QueryModuleAccountsResponse> =
         QueryModuleAccountsResponse.serializer()
@@ -251,11 +284,15 @@ public data class QueryModuleAccountsResponse(
 }
 
 @Serializable(with = QueryModuleAccountByNameRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryModuleAccountByNameRequest")
+@SerialName(value = QueryModuleAccountByNameRequest.TYPE_URL)
 public data class QueryModuleAccountByNameRequest(
   @ProtobufIndex(index = 1)
   public val name: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryModuleAccountByNameRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryModuleAccountByNameRequest> {
     private val delegator: KSerializer<QueryModuleAccountByNameRequest> =
         QueryModuleAccountByNameRequest.serializer()
@@ -281,11 +318,15 @@ public data class QueryModuleAccountByNameRequest(
 }
 
 @Serializable(with = QueryModuleAccountByNameResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryModuleAccountByNameResponse")
+@SerialName(value = QueryModuleAccountByNameResponse.TYPE_URL)
 public data class QueryModuleAccountByNameResponse(
   @ProtobufIndex(index = 1)
   public val account: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryModuleAccountByNameResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryModuleAccountByNameResponse> {
     private val delegator: KSerializer<QueryModuleAccountByNameResponse> =
         QueryModuleAccountByNameResponse.serializer()
@@ -311,8 +352,12 @@ public data class QueryModuleAccountByNameResponse(
 }
 
 @Serializable(with = Bech32PrefixRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.Bech32PrefixRequest")
-public class Bech32PrefixRequest() {
+@SerialName(value = Bech32PrefixRequest.TYPE_URL)
+public class Bech32PrefixRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.Bech32PrefixRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<Bech32PrefixRequest> {
     private val delegator: KSerializer<Bech32PrefixRequest> = Bech32PrefixRequest.serializer()
 
@@ -336,11 +381,15 @@ public class Bech32PrefixRequest() {
 }
 
 @Serializable(with = Bech32PrefixResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.Bech32PrefixResponse")
+@SerialName(value = Bech32PrefixResponse.TYPE_URL)
 public data class Bech32PrefixResponse(
   @ProtobufIndex(index = 1)
   public val bech32Prefix: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.Bech32PrefixResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<Bech32PrefixResponse> {
     private val delegator: KSerializer<Bech32PrefixResponse> = Bech32PrefixResponse.serializer()
 
@@ -364,11 +413,15 @@ public data class Bech32PrefixResponse(
 }
 
 @Serializable(with = AddressBytesToStringRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.AddressBytesToStringRequest")
+@SerialName(value = AddressBytesToStringRequest.TYPE_URL)
 public data class AddressBytesToStringRequest(
   @ProtobufIndex(index = 1)
   public val addressBytes: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.AddressBytesToStringRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<AddressBytesToStringRequest> {
     private val delegator: KSerializer<AddressBytesToStringRequest> =
         AddressBytesToStringRequest.serializer()
@@ -393,11 +446,15 @@ public data class AddressBytesToStringRequest(
 }
 
 @Serializable(with = AddressBytesToStringResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.AddressBytesToStringResponse")
+@SerialName(value = AddressBytesToStringResponse.TYPE_URL)
 public data class AddressBytesToStringResponse(
   @ProtobufIndex(index = 1)
   public val addressString: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.AddressBytesToStringResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<AddressBytesToStringResponse> {
     private val delegator: KSerializer<AddressBytesToStringResponse> =
         AddressBytesToStringResponse.serializer()
@@ -422,11 +479,15 @@ public data class AddressBytesToStringResponse(
 }
 
 @Serializable(with = AddressStringToBytesRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.AddressStringToBytesRequest")
+@SerialName(value = AddressStringToBytesRequest.TYPE_URL)
 public data class AddressStringToBytesRequest(
   @ProtobufIndex(index = 1)
   public val addressString: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.AddressStringToBytesRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<AddressStringToBytesRequest> {
     private val delegator: KSerializer<AddressStringToBytesRequest> =
         AddressStringToBytesRequest.serializer()
@@ -451,11 +512,15 @@ public data class AddressStringToBytesRequest(
 }
 
 @Serializable(with = AddressStringToBytesResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.AddressStringToBytesResponse")
+@SerialName(value = AddressStringToBytesResponse.TYPE_URL)
 public data class AddressStringToBytesResponse(
   @ProtobufIndex(index = 1)
   public val addressBytes: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.AddressStringToBytesResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<AddressStringToBytesResponse> {
     private val delegator: KSerializer<AddressStringToBytesResponse> =
         AddressStringToBytesResponse.serializer()
@@ -480,7 +545,7 @@ public data class AddressStringToBytesResponse(
 }
 
 @Serializable(with = QueryAccountAddressByIDRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryAccountAddressByIDRequest")
+@SerialName(value = QueryAccountAddressByIDRequest.TYPE_URL)
 public data class QueryAccountAddressByIDRequest(
   @Deprecated(
     message = "",
@@ -491,7 +556,11 @@ public data class QueryAccountAddressByIDRequest(
   public val id: Long,
   @ProtobufIndex(index = 2)
   public val accountId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryAccountAddressByIDRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAccountAddressByIDRequest> {
     private val delegator: KSerializer<QueryAccountAddressByIDRequest> =
         QueryAccountAddressByIDRequest.serializer()
@@ -516,11 +585,15 @@ public data class QueryAccountAddressByIDRequest(
 }
 
 @Serializable(with = QueryAccountAddressByIDResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryAccountAddressByIDResponse")
+@SerialName(value = QueryAccountAddressByIDResponse.TYPE_URL)
 public data class QueryAccountAddressByIDResponse(
   @ProtobufIndex(index = 1)
   public val accountAddress: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryAccountAddressByIDResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAccountAddressByIDResponse> {
     private val delegator: KSerializer<QueryAccountAddressByIDResponse> =
         QueryAccountAddressByIDResponse.serializer()
@@ -546,11 +619,15 @@ public data class QueryAccountAddressByIDResponse(
 }
 
 @Serializable(with = QueryAccountInfoRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryAccountInfoRequest")
+@SerialName(value = QueryAccountInfoRequest.TYPE_URL)
 public data class QueryAccountInfoRequest(
   @ProtobufIndex(index = 1)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryAccountInfoRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAccountInfoRequest> {
     private val delegator: KSerializer<QueryAccountInfoRequest> =
         QueryAccountInfoRequest.serializer()
@@ -575,11 +652,15 @@ public data class QueryAccountInfoRequest(
 }
 
 @Serializable(with = QueryAccountInfoResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.QueryAccountInfoResponse")
+@SerialName(value = QueryAccountInfoResponse.TYPE_URL)
 public data class QueryAccountInfoResponse(
   @ProtobufIndex(index = 1)
   public val info: BaseAccount,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.QueryAccountInfoResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAccountInfoResponse> {
     private val delegator: KSerializer<QueryAccountInfoResponse> =
         QueryAccountInfoResponse.serializer()

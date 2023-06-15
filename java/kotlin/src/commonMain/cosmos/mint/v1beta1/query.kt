@@ -1,10 +1,11 @@
 // Transform from cosmos/mint/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.mint.v1beta1
 
 import kotlin.ByteArray
+import kotlin.String
 import kotlin.Unit
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -17,10 +18,15 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryParamsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.QueryParamsRequest")
-public class QueryParamsRequest() {
+@SerialName(value = QueryParamsRequest.TYPE_URL)
+public class QueryParamsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.QueryParamsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsRequest> {
     private val delegator: KSerializer<QueryParamsRequest> = QueryParamsRequest.serializer()
 
@@ -44,11 +50,15 @@ public class QueryParamsRequest() {
 }
 
 @Serializable(with = QueryParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.QueryParamsResponse")
+@SerialName(value = QueryParamsResponse.TYPE_URL)
 public data class QueryParamsResponse(
   @ProtobufIndex(index = 1)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.QueryParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsResponse> {
     private val delegator: KSerializer<QueryParamsResponse> = QueryParamsResponse.serializer()
 
@@ -72,8 +82,12 @@ public data class QueryParamsResponse(
 }
 
 @Serializable(with = QueryInflationRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.QueryInflationRequest")
-public class QueryInflationRequest() {
+@SerialName(value = QueryInflationRequest.TYPE_URL)
+public class QueryInflationRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.QueryInflationRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryInflationRequest> {
     private val delegator: KSerializer<QueryInflationRequest> = QueryInflationRequest.serializer()
 
@@ -97,11 +111,15 @@ public class QueryInflationRequest() {
 }
 
 @Serializable(with = QueryInflationResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.QueryInflationResponse")
+@SerialName(value = QueryInflationResponse.TYPE_URL)
 public data class QueryInflationResponse(
   @ProtobufIndex(index = 1)
   public val inflation: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.QueryInflationResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryInflationResponse> {
     private val delegator: KSerializer<QueryInflationResponse> = QueryInflationResponse.serializer()
 
@@ -125,8 +143,12 @@ public data class QueryInflationResponse(
 }
 
 @Serializable(with = QueryAnnualProvisionsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.QueryAnnualProvisionsRequest")
-public class QueryAnnualProvisionsRequest() {
+@SerialName(value = QueryAnnualProvisionsRequest.TYPE_URL)
+public class QueryAnnualProvisionsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAnnualProvisionsRequest> {
     private val delegator: KSerializer<QueryAnnualProvisionsRequest> =
         QueryAnnualProvisionsRequest.serializer()
@@ -151,11 +173,15 @@ public class QueryAnnualProvisionsRequest() {
 }
 
 @Serializable(with = QueryAnnualProvisionsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.mint.v1beta1.QueryAnnualProvisionsResponse")
+@SerialName(value = QueryAnnualProvisionsResponse.TYPE_URL)
 public data class QueryAnnualProvisionsResponse(
   @ProtobufIndex(index = 1)
   public val annualProvisions: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAnnualProvisionsResponse> {
     private val delegator: KSerializer<QueryAnnualProvisionsResponse> =
         QueryAnnualProvisionsResponse.serializer()

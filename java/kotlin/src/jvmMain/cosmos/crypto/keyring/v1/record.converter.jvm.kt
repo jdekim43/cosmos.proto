@@ -1,5 +1,5 @@
 // Transform from cosmos/crypto/keyring/v1/record.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.keyring.v1
 
@@ -16,13 +16,13 @@ public object RecordJvmConverter : ProtobufTypeMapper<Record, RecordOuterClass.R
   public override val parser: Parser<RecordOuterClass.Record> = RecordOuterClass.Record.parser()
 
   public override fun convert(obj: RecordOuterClass.Record): Record = Record(
-  	name = obj.name,
-  	pubKey = AnyJvmConverter.convert(obj.pubKey),
+  	name = obj.getName(),
+  	pubKey = AnyJvmConverter.convert(obj.getPubKey()),
   	item = mapOf(
-  3 to { Record.ItemOneOf.Local(LocalJvmConverter.convert(obj.local)) },
-  4 to { Record.ItemOneOf.Ledger(LedgerJvmConverter.convert(obj.ledger)) },
-  5 to { Record.ItemOneOf.Multi(MultiJvmConverter.convert(obj.multi)) },
-  6 to { Record.ItemOneOf.Offline(OfflineJvmConverter.convert(obj.offline)) },
+  3 to { Record.ItemOneOf.Local(LocalJvmConverter.convert(obj.getLocal())) },
+  4 to { Record.ItemOneOf.Ledger(LedgerJvmConverter.convert(obj.getLedger())) },
+  5 to { Record.ItemOneOf.Multi(MultiJvmConverter.convert(obj.getMulti())) },
+  6 to { Record.ItemOneOf.Offline(OfflineJvmConverter.convert(obj.getOffline())) },
   ).getValue(obj.itemCase.number)(),
   )
 
@@ -48,7 +48,7 @@ public object RecordJvmConverter : ProtobufTypeMapper<Record, RecordOuterClass.R
         RecordOuterClass.Record.Local.parser()
 
     public override fun convert(obj: RecordOuterClass.Record.Local): Record.Local = Record.Local(
-    	privKey = AnyJvmConverter.convert(obj.privKey),
+    	privKey = AnyJvmConverter.convert(obj.getPrivKey()),
     )
 
     public override fun convert(obj: Record.Local): RecordOuterClass.Record.Local {
@@ -67,7 +67,7 @@ public object RecordJvmConverter : ProtobufTypeMapper<Record, RecordOuterClass.R
         RecordOuterClass.Record.Ledger.parser()
 
     public override fun convert(obj: RecordOuterClass.Record.Ledger): Record.Ledger = Record.Ledger(
-    	path = BIP44ParamsJvmConverter.convert(obj.path),
+    	path = BIP44ParamsJvmConverter.convert(obj.getPath()),
     )
 
     public override fun convert(obj: Record.Ledger): RecordOuterClass.Record.Ledger {

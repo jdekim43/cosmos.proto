@@ -53,8 +53,11 @@ kotlin {
                 val kotlinProtobufVersion: String by project
                 val kotlinxSerializationVersion: String by project
 
-                api("kr.jadekim:kotlin-protobuf:$kotlinProtobufVersion")
+                api("kr.jadekim:kotlin-protobuf:$kotlinProtobufVersion") {
+                    exclude("kr.jadekim", "kotlin-protobuf-prebuilt")
+                }
                 api("kr.jadekim:kotlin-protobuf-kotlinx:$kotlinProtobufVersion")
+                api("kr.jadekim:kotlin-protobuf-prebuilt-kotlinx:$kotlinProtobufVersion")
 
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinxSerializationVersion")
             }

@@ -19,11 +19,13 @@ kotlin {
 //            kotlin.srcDir(File(buildDir, "generated/source/proto/main/kotlin-converter-multiplatform-jvm"))
 
             dependencies {
+                val grpcVersion: String by project
                 val grpcKotlinVersion: String by project
 
                 implementation(project(":"))
                 implementation(project(":cosmos-grpc-java"))
 
+                api("io.grpc:grpc-protobuf:$grpcVersion")
                 api("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
             }
         }

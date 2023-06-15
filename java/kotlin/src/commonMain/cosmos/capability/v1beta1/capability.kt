@@ -1,6 +1,6 @@
 // Transform from cosmos/capability/v1beta1/capability.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.capability.v1beta1
 
@@ -19,13 +19,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Capability.KotlinxSerializer::class)
-@SerialName(value = "cosmos.capability.v1beta1.Capability")
+@SerialName(value = Capability.TYPE_URL)
 public data class Capability(
   @ProtobufIndex(index = 1)
   public val index: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.capability.v1beta1.Capability"
+  }
+
   public object KotlinxSerializer : KSerializer<Capability> {
     private val delegator: KSerializer<Capability> = Capability.serializer()
 
@@ -49,13 +54,17 @@ public data class Capability(
 }
 
 @Serializable(with = Owner.KotlinxSerializer::class)
-@SerialName(value = "cosmos.capability.v1beta1.Owner")
+@SerialName(value = Owner.TYPE_URL)
 public data class Owner(
   @ProtobufIndex(index = 1)
   public val module: String,
   @ProtobufIndex(index = 2)
   public val name: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.capability.v1beta1.Owner"
+  }
+
   public object KotlinxSerializer : KSerializer<Owner> {
     private val delegator: KSerializer<Owner> = Owner.serializer()
 
@@ -79,11 +88,15 @@ public data class Owner(
 }
 
 @Serializable(with = CapabilityOwners.KotlinxSerializer::class)
-@SerialName(value = "cosmos.capability.v1beta1.CapabilityOwners")
+@SerialName(value = CapabilityOwners.TYPE_URL)
 public data class CapabilityOwners(
   @ProtobufIndex(index = 1)
   public val owners: List<Owner>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.capability.v1beta1.CapabilityOwners"
+  }
+
   public object KotlinxSerializer : KSerializer<CapabilityOwners> {
     private val delegator: KSerializer<CapabilityOwners> = CapabilityOwners.serializer()
 

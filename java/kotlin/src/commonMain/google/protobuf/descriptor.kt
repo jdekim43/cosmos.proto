@@ -1,6 +1,6 @@
 // Transform from google/protobuf/descriptor.proto
 @file:ProtobufSyntax(syntax = "PROTO2")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package google.protobuf
 
@@ -27,13 +27,18 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = FileDescriptorSet.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.FileDescriptorSet")
+@SerialName(value = FileDescriptorSet.TYPE_URL)
 public data class FileDescriptorSet(
   @ProtobufIndex(index = 1)
   public val `file`: List<FileDescriptorProto>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.FileDescriptorSet"
+  }
+
   public object KotlinxSerializer : KSerializer<FileDescriptorSet> {
     private val delegator: KSerializer<FileDescriptorSet> = FileDescriptorSet.serializer()
 
@@ -57,7 +62,7 @@ public data class FileDescriptorSet(
 }
 
 @Serializable(with = FileDescriptorProto.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.FileDescriptorProto")
+@SerialName(value = FileDescriptorProto.TYPE_URL)
 public data class FileDescriptorProto(
   @ProtobufIndex(index = 1)
   public val name: String? = null,
@@ -83,7 +88,11 @@ public data class FileDescriptorProto(
   public val sourceCodeInfo: SourceCodeInfo? = null,
   @ProtobufIndex(index = 12)
   public val syntax: String? = null,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.FileDescriptorProto"
+  }
+
   public object KotlinxSerializer : KSerializer<FileDescriptorProto> {
     private val delegator: KSerializer<FileDescriptorProto> = FileDescriptorProto.serializer()
 
@@ -107,7 +116,7 @@ public data class FileDescriptorProto(
 }
 
 @Serializable(with = DescriptorProto.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.DescriptorProto")
+@SerialName(value = DescriptorProto.TYPE_URL)
 public data class DescriptorProto(
   @ProtobufIndex(index = 1)
   public val name: String? = null,
@@ -129,9 +138,13 @@ public data class DescriptorProto(
   public val reservedRange: List<ReservedRange>,
   @ProtobufIndex(index = 10)
   public val reservedName: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.DescriptorProto"
+  }
+
   @Serializable(with = ExtensionRange.KotlinxSerializer::class)
-  @SerialName(value = "google.protobuf.DescriptorProto.ExtensionRange")
+  @SerialName(value = ExtensionRange.TYPE_URL)
   public data class ExtensionRange(
     @ProtobufIndex(index = 1)
     public val start: Int? = null,
@@ -139,7 +152,11 @@ public data class DescriptorProto(
     public val end: Int? = null,
     @ProtobufIndex(index = 3)
     public val options: ExtensionRangeOptions? = null,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/google.protobuf.DescriptorProto.ExtensionRange"
+    }
+
     public object KotlinxSerializer : KSerializer<ExtensionRange> {
       private val delegator: KSerializer<ExtensionRange> = ExtensionRange.serializer()
 
@@ -163,13 +180,17 @@ public data class DescriptorProto(
   }
 
   @Serializable(with = ReservedRange.KotlinxSerializer::class)
-  @SerialName(value = "google.protobuf.DescriptorProto.ReservedRange")
+  @SerialName(value = ReservedRange.TYPE_URL)
   public data class ReservedRange(
     @ProtobufIndex(index = 1)
     public val start: Int? = null,
     @ProtobufIndex(index = 2)
     public val end: Int? = null,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/google.protobuf.DescriptorProto.ReservedRange"
+    }
+
     public object KotlinxSerializer : KSerializer<ReservedRange> {
       private val delegator: KSerializer<ReservedRange> = ReservedRange.serializer()
 
@@ -215,11 +236,15 @@ public data class DescriptorProto(
 }
 
 @Serializable(with = ExtensionRangeOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.ExtensionRangeOptions")
+@SerialName(value = ExtensionRangeOptions.TYPE_URL)
 public data class ExtensionRangeOptions(
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.ExtensionRangeOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<ExtensionRangeOptions> {
     private val delegator: KSerializer<ExtensionRangeOptions> = ExtensionRangeOptions.serializer()
 
@@ -243,7 +268,7 @@ public data class ExtensionRangeOptions(
 }
 
 @Serializable(with = FieldDescriptorProto.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.FieldDescriptorProto")
+@SerialName(value = FieldDescriptorProto.TYPE_URL)
 public data class FieldDescriptorProto(
   @ProtobufIndex(index = 1)
   public val name: String? = null,
@@ -267,9 +292,13 @@ public data class FieldDescriptorProto(
   public val options: FieldOptions? = null,
   @ProtobufIndex(index = 17)
   public val proto3Optional: Boolean? = null,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.FieldDescriptorProto"
+  }
+
   @Serializable
-  @SerialName(value = "google.protobuf.FieldDescriptorProto.Type")
+  @SerialName(value = "/google.protobuf.FieldDescriptorProto.Type")
   public enum class Type(
     public val number: Int,
   ) {
@@ -318,7 +347,7 @@ public data class FieldDescriptorProto(
   }
 
   @Serializable
-  @SerialName(value = "google.protobuf.FieldDescriptorProto.Label")
+  @SerialName(value = "/google.protobuf.FieldDescriptorProto.Label")
   public enum class Label(
     public val number: Int,
   ) {
@@ -359,13 +388,17 @@ public data class FieldDescriptorProto(
 }
 
 @Serializable(with = OneofDescriptorProto.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.OneofDescriptorProto")
+@SerialName(value = OneofDescriptorProto.TYPE_URL)
 public data class OneofDescriptorProto(
   @ProtobufIndex(index = 1)
   public val name: String? = null,
   @ProtobufIndex(index = 2)
   public val options: OneofOptions? = null,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.OneofDescriptorProto"
+  }
+
   public object KotlinxSerializer : KSerializer<OneofDescriptorProto> {
     private val delegator: KSerializer<OneofDescriptorProto> = OneofDescriptorProto.serializer()
 
@@ -389,7 +422,7 @@ public data class OneofDescriptorProto(
 }
 
 @Serializable(with = EnumDescriptorProto.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.EnumDescriptorProto")
+@SerialName(value = EnumDescriptorProto.TYPE_URL)
 public data class EnumDescriptorProto(
   @ProtobufIndex(index = 1)
   public val name: String? = null,
@@ -401,15 +434,23 @@ public data class EnumDescriptorProto(
   public val reservedRange: List<EnumReservedRange>,
   @ProtobufIndex(index = 5)
   public val reservedName: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.EnumDescriptorProto"
+  }
+
   @Serializable(with = EnumReservedRange.KotlinxSerializer::class)
-  @SerialName(value = "google.protobuf.EnumDescriptorProto.EnumReservedRange")
+  @SerialName(value = EnumReservedRange.TYPE_URL)
   public data class EnumReservedRange(
     @ProtobufIndex(index = 1)
     public val start: Int? = null,
     @ProtobufIndex(index = 2)
     public val end: Int? = null,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/google.protobuf.EnumDescriptorProto.EnumReservedRange"
+    }
+
     public object KotlinxSerializer : KSerializer<EnumReservedRange> {
       private val delegator: KSerializer<EnumReservedRange> = EnumReservedRange.serializer()
 
@@ -455,7 +496,7 @@ public data class EnumDescriptorProto(
 }
 
 @Serializable(with = EnumValueDescriptorProto.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.EnumValueDescriptorProto")
+@SerialName(value = EnumValueDescriptorProto.TYPE_URL)
 public data class EnumValueDescriptorProto(
   @ProtobufIndex(index = 1)
   public val name: String? = null,
@@ -463,7 +504,11 @@ public data class EnumValueDescriptorProto(
   public val number: Int? = null,
   @ProtobufIndex(index = 3)
   public val options: EnumValueOptions? = null,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.EnumValueDescriptorProto"
+  }
+
   public object KotlinxSerializer : KSerializer<EnumValueDescriptorProto> {
     private val delegator: KSerializer<EnumValueDescriptorProto> =
         EnumValueDescriptorProto.serializer()
@@ -488,7 +533,7 @@ public data class EnumValueDescriptorProto(
 }
 
 @Serializable(with = ServiceDescriptorProto.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.ServiceDescriptorProto")
+@SerialName(value = ServiceDescriptorProto.TYPE_URL)
 public data class ServiceDescriptorProto(
   @ProtobufIndex(index = 1)
   public val name: String? = null,
@@ -496,7 +541,11 @@ public data class ServiceDescriptorProto(
   public val method: List<MethodDescriptorProto>,
   @ProtobufIndex(index = 3)
   public val options: ServiceOptions? = null,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.ServiceDescriptorProto"
+  }
+
   public object KotlinxSerializer : KSerializer<ServiceDescriptorProto> {
     private val delegator: KSerializer<ServiceDescriptorProto> = ServiceDescriptorProto.serializer()
 
@@ -520,7 +569,7 @@ public data class ServiceDescriptorProto(
 }
 
 @Serializable(with = MethodDescriptorProto.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.MethodDescriptorProto")
+@SerialName(value = MethodDescriptorProto.TYPE_URL)
 public data class MethodDescriptorProto(
   @ProtobufIndex(index = 1)
   public val name: String? = null,
@@ -534,7 +583,11 @@ public data class MethodDescriptorProto(
   public val clientStreaming: Boolean? = null,
   @ProtobufIndex(index = 6)
   public val serverStreaming: Boolean? = null,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.MethodDescriptorProto"
+  }
+
   public object KotlinxSerializer : KSerializer<MethodDescriptorProto> {
     private val delegator: KSerializer<MethodDescriptorProto> = MethodDescriptorProto.serializer()
 
@@ -558,7 +611,7 @@ public data class MethodDescriptorProto(
 }
 
 @Serializable(with = FileOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.FileOptions")
+@SerialName(value = FileOptions.TYPE_URL)
 public data class FileOptions(
   @ProtobufIndex(index = 1)
   public val javaPackage: String? = null,
@@ -607,9 +660,13 @@ public data class FileOptions(
   public val rubyPackage: String? = null,
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.FileOptions"
+  }
+
   @Serializable
-  @SerialName(value = "google.protobuf.FileOptions.OptimizeMode")
+  @SerialName(value = "/google.protobuf.FileOptions.OptimizeMode")
   public enum class OptimizeMode(
     public val number: Int,
   ) {
@@ -650,7 +707,7 @@ public data class FileOptions(
 }
 
 @Serializable(with = MessageOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.MessageOptions")
+@SerialName(value = MessageOptions.TYPE_URL)
 public data class MessageOptions(
   @ProtobufIndex(index = 1)
   public val messageSetWireFormat: Boolean? = null,
@@ -662,7 +719,11 @@ public data class MessageOptions(
   public val mapEntry: Boolean? = null,
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.MessageOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<MessageOptions> {
     private val delegator: KSerializer<MessageOptions> = MessageOptions.serializer()
 
@@ -686,7 +747,7 @@ public data class MessageOptions(
 }
 
 @Serializable(with = FieldOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.FieldOptions")
+@SerialName(value = FieldOptions.TYPE_URL)
 public data class FieldOptions(
   @ProtobufIndex(index = 1)
   public val ctype: CType? = null,
@@ -704,9 +765,13 @@ public data class FieldOptions(
   public val weak: Boolean? = null,
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.FieldOptions"
+  }
+
   @Serializable
-  @SerialName(value = "google.protobuf.FieldOptions.CType")
+  @SerialName(value = "/google.protobuf.FieldOptions.CType")
   public enum class CType(
     public val number: Int,
   ) {
@@ -725,7 +790,7 @@ public data class FieldOptions(
   }
 
   @Serializable
-  @SerialName(value = "google.protobuf.FieldOptions.JSType")
+  @SerialName(value = "/google.protobuf.FieldOptions.JSType")
   public enum class JSType(
     public val number: Int,
   ) {
@@ -766,11 +831,15 @@ public data class FieldOptions(
 }
 
 @Serializable(with = OneofOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.OneofOptions")
+@SerialName(value = OneofOptions.TYPE_URL)
 public data class OneofOptions(
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.OneofOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<OneofOptions> {
     private val delegator: KSerializer<OneofOptions> = OneofOptions.serializer()
 
@@ -794,7 +863,7 @@ public data class OneofOptions(
 }
 
 @Serializable(with = EnumOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.EnumOptions")
+@SerialName(value = EnumOptions.TYPE_URL)
 public data class EnumOptions(
   @ProtobufIndex(index = 2)
   public val allowAlias: Boolean? = null,
@@ -802,7 +871,11 @@ public data class EnumOptions(
   public val deprecated: Boolean? = null,
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.EnumOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<EnumOptions> {
     private val delegator: KSerializer<EnumOptions> = EnumOptions.serializer()
 
@@ -826,13 +899,17 @@ public data class EnumOptions(
 }
 
 @Serializable(with = EnumValueOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.EnumValueOptions")
+@SerialName(value = EnumValueOptions.TYPE_URL)
 public data class EnumValueOptions(
   @ProtobufIndex(index = 1)
   public val deprecated: Boolean? = null,
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.EnumValueOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<EnumValueOptions> {
     private val delegator: KSerializer<EnumValueOptions> = EnumValueOptions.serializer()
 
@@ -856,13 +933,17 @@ public data class EnumValueOptions(
 }
 
 @Serializable(with = ServiceOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.ServiceOptions")
+@SerialName(value = ServiceOptions.TYPE_URL)
 public data class ServiceOptions(
   @ProtobufIndex(index = 33)
   public val deprecated: Boolean? = null,
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.ServiceOptions"
+  }
+
   public object KotlinxSerializer : KSerializer<ServiceOptions> {
     private val delegator: KSerializer<ServiceOptions> = ServiceOptions.serializer()
 
@@ -886,7 +967,7 @@ public data class ServiceOptions(
 }
 
 @Serializable(with = MethodOptions.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.MethodOptions")
+@SerialName(value = MethodOptions.TYPE_URL)
 public data class MethodOptions(
   @ProtobufIndex(index = 33)
   public val deprecated: Boolean? = null,
@@ -894,9 +975,13 @@ public data class MethodOptions(
   public val idempotencyLevel: IdempotencyLevel? = null,
   @ProtobufIndex(index = 999)
   public val uninterpretedOption: List<UninterpretedOption>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.MethodOptions"
+  }
+
   @Serializable
-  @SerialName(value = "google.protobuf.MethodOptions.IdempotencyLevel")
+  @SerialName(value = "/google.protobuf.MethodOptions.IdempotencyLevel")
   public enum class IdempotencyLevel(
     public val number: Int,
   ) {
@@ -937,7 +1022,7 @@ public data class MethodOptions(
 }
 
 @Serializable(with = UninterpretedOption.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.UninterpretedOption")
+@SerialName(value = UninterpretedOption.TYPE_URL)
 public data class UninterpretedOption(
   @ProtobufIndex(index = 2)
   public val name: List<NamePart>,
@@ -953,15 +1038,23 @@ public data class UninterpretedOption(
   public val stringValue: ByteArray? = null,
   @ProtobufIndex(index = 8)
   public val aggregateValue: String? = null,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.UninterpretedOption"
+  }
+
   @Serializable(with = NamePart.KotlinxSerializer::class)
-  @SerialName(value = "google.protobuf.UninterpretedOption.NamePart")
+  @SerialName(value = NamePart.TYPE_URL)
   public data class NamePart(
     @ProtobufIndex(index = 1)
     public val namePart: String,
     @ProtobufIndex(index = 2)
     public val isExtension: Boolean,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/google.protobuf.UninterpretedOption.NamePart"
+    }
+
     public object KotlinxSerializer : KSerializer<NamePart> {
       private val delegator: KSerializer<NamePart> = NamePart.serializer()
 
@@ -1007,13 +1100,17 @@ public data class UninterpretedOption(
 }
 
 @Serializable(with = SourceCodeInfo.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.SourceCodeInfo")
+@SerialName(value = SourceCodeInfo.TYPE_URL)
 public data class SourceCodeInfo(
   @ProtobufIndex(index = 1)
   public val location: List<Location>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.SourceCodeInfo"
+  }
+
   @Serializable(with = Location.KotlinxSerializer::class)
-  @SerialName(value = "google.protobuf.SourceCodeInfo.Location")
+  @SerialName(value = Location.TYPE_URL)
   public data class Location(
     @ProtobufIndex(index = 1)
     public val path: List<Int>,
@@ -1025,7 +1122,11 @@ public data class SourceCodeInfo(
     public val trailingComments: String? = null,
     @ProtobufIndex(index = 6)
     public val leadingDetachedComments: List<String>,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/google.protobuf.SourceCodeInfo.Location"
+    }
+
     public object KotlinxSerializer : KSerializer<Location> {
       private val delegator: KSerializer<Location> = Location.serializer()
 
@@ -1071,13 +1172,17 @@ public data class SourceCodeInfo(
 }
 
 @Serializable(with = GeneratedCodeInfo.KotlinxSerializer::class)
-@SerialName(value = "google.protobuf.GeneratedCodeInfo")
+@SerialName(value = GeneratedCodeInfo.TYPE_URL)
 public data class GeneratedCodeInfo(
   @ProtobufIndex(index = 1)
   public val `annotation`: List<Annotation>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/google.protobuf.GeneratedCodeInfo"
+  }
+
   @Serializable(with = Annotation.KotlinxSerializer::class)
-  @SerialName(value = "google.protobuf.GeneratedCodeInfo.Annotation")
+  @SerialName(value = Annotation.TYPE_URL)
   public data class Annotation(
     @ProtobufIndex(index = 1)
     public val path: List<Int>,
@@ -1087,7 +1192,11 @@ public data class GeneratedCodeInfo(
     public val begin: Int? = null,
     @ProtobufIndex(index = 4)
     public val end: Int? = null,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/google.protobuf.GeneratedCodeInfo.Annotation"
+    }
+
     public object KotlinxSerializer : KSerializer<Annotation> {
       private val delegator: KSerializer<Annotation> = Annotation.serializer()
 

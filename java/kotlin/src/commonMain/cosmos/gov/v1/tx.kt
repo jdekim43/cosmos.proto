@@ -1,6 +1,6 @@
 // Transform from cosmos/gov/v1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.v1
 
@@ -21,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgSubmitProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgSubmitProposal")
+@SerialName(value = MsgSubmitProposal.TYPE_URL)
 public data class MsgSubmitProposal(
   @ProtobufIndex(index = 1)
   public val messages: List<Any>,
@@ -37,7 +38,11 @@ public data class MsgSubmitProposal(
   public val title: String,
   @ProtobufIndex(index = 6)
   public val summary: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgSubmitProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSubmitProposal> {
     private val delegator: KSerializer<MsgSubmitProposal> = MsgSubmitProposal.serializer()
 
@@ -61,11 +66,15 @@ public data class MsgSubmitProposal(
 }
 
 @Serializable(with = MsgSubmitProposalResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgSubmitProposalResponse")
+@SerialName(value = MsgSubmitProposalResponse.TYPE_URL)
 public data class MsgSubmitProposalResponse(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgSubmitProposalResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSubmitProposalResponse> {
     private val delegator: KSerializer<MsgSubmitProposalResponse> =
         MsgSubmitProposalResponse.serializer()
@@ -90,13 +99,17 @@ public data class MsgSubmitProposalResponse(
 }
 
 @Serializable(with = MsgExecLegacyContent.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgExecLegacyContent")
+@SerialName(value = MsgExecLegacyContent.TYPE_URL)
 public data class MsgExecLegacyContent(
   @ProtobufIndex(index = 1)
   public val content: Any,
   @ProtobufIndex(index = 2)
   public val authority: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgExecLegacyContent"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgExecLegacyContent> {
     private val delegator: KSerializer<MsgExecLegacyContent> = MsgExecLegacyContent.serializer()
 
@@ -120,8 +133,12 @@ public data class MsgExecLegacyContent(
 }
 
 @Serializable(with = MsgExecLegacyContentResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgExecLegacyContentResponse")
-public class MsgExecLegacyContentResponse() {
+@SerialName(value = MsgExecLegacyContentResponse.TYPE_URL)
+public class MsgExecLegacyContentResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgExecLegacyContentResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgExecLegacyContentResponse> {
     private val delegator: KSerializer<MsgExecLegacyContentResponse> =
         MsgExecLegacyContentResponse.serializer()
@@ -146,7 +163,7 @@ public class MsgExecLegacyContentResponse() {
 }
 
 @Serializable(with = MsgVote.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgVote")
+@SerialName(value = MsgVote.TYPE_URL)
 public data class MsgVote(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
@@ -156,7 +173,11 @@ public data class MsgVote(
   public val option: VoteOption,
   @ProtobufIndex(index = 4)
   public val metadata: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgVote"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgVote> {
     private val delegator: KSerializer<MsgVote> = MsgVote.serializer()
 
@@ -180,8 +201,12 @@ public data class MsgVote(
 }
 
 @Serializable(with = MsgVoteResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgVoteResponse")
-public class MsgVoteResponse() {
+@SerialName(value = MsgVoteResponse.TYPE_URL)
+public class MsgVoteResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgVoteResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgVoteResponse> {
     private val delegator: KSerializer<MsgVoteResponse> = MsgVoteResponse.serializer()
 
@@ -205,7 +230,7 @@ public class MsgVoteResponse() {
 }
 
 @Serializable(with = MsgVoteWeighted.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgVoteWeighted")
+@SerialName(value = MsgVoteWeighted.TYPE_URL)
 public data class MsgVoteWeighted(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
@@ -215,7 +240,11 @@ public data class MsgVoteWeighted(
   public val options: List<WeightedVoteOption>,
   @ProtobufIndex(index = 4)
   public val metadata: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgVoteWeighted"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgVoteWeighted> {
     private val delegator: KSerializer<MsgVoteWeighted> = MsgVoteWeighted.serializer()
 
@@ -239,8 +268,12 @@ public data class MsgVoteWeighted(
 }
 
 @Serializable(with = MsgVoteWeightedResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgVoteWeightedResponse")
-public class MsgVoteWeightedResponse() {
+@SerialName(value = MsgVoteWeightedResponse.TYPE_URL)
+public class MsgVoteWeightedResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgVoteWeightedResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgVoteWeightedResponse> {
     private val delegator: KSerializer<MsgVoteWeightedResponse> =
         MsgVoteWeightedResponse.serializer()
@@ -265,7 +298,7 @@ public class MsgVoteWeightedResponse() {
 }
 
 @Serializable(with = MsgDeposit.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgDeposit")
+@SerialName(value = MsgDeposit.TYPE_URL)
 public data class MsgDeposit(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
@@ -273,7 +306,11 @@ public data class MsgDeposit(
   public val depositor: String,
   @ProtobufIndex(index = 3)
   public val amount: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgDeposit"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgDeposit> {
     private val delegator: KSerializer<MsgDeposit> = MsgDeposit.serializer()
 
@@ -297,8 +334,12 @@ public data class MsgDeposit(
 }
 
 @Serializable(with = MsgDepositResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgDepositResponse")
-public class MsgDepositResponse() {
+@SerialName(value = MsgDepositResponse.TYPE_URL)
+public class MsgDepositResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgDepositResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgDepositResponse> {
     private val delegator: KSerializer<MsgDepositResponse> = MsgDepositResponse.serializer()
 
@@ -322,13 +363,17 @@ public class MsgDepositResponse() {
 }
 
 @Serializable(with = MsgUpdateParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgUpdateParams")
+@SerialName(value = MsgUpdateParams.TYPE_URL)
 public data class MsgUpdateParams(
   @ProtobufIndex(index = 1)
   public val authority: String,
   @ProtobufIndex(index = 2)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgUpdateParams"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParams> {
     private val delegator: KSerializer<MsgUpdateParams> = MsgUpdateParams.serializer()
 
@@ -352,8 +397,12 @@ public data class MsgUpdateParams(
 }
 
 @Serializable(with = MsgUpdateParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.MsgUpdateParamsResponse")
-public class MsgUpdateParamsResponse() {
+@SerialName(value = MsgUpdateParamsResponse.TYPE_URL)
+public class MsgUpdateParamsResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.MsgUpdateParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateParamsResponse> {
     private val delegator: KSerializer<MsgUpdateParamsResponse> =
         MsgUpdateParamsResponse.serializer()

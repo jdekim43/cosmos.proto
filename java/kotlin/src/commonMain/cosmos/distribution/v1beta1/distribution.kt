@@ -1,6 +1,6 @@
 // Transform from cosmos/distribution/v1beta1/distribution.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.distribution.v1beta1
 
@@ -26,9 +26,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Params.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.Params")
+@SerialName(value = Params.TYPE_URL)
 public data class Params(
   @ProtobufIndex(index = 1)
   public val communityTax: String,
@@ -48,7 +49,11 @@ public data class Params(
   public val bonusProposerReward: String,
   @ProtobufIndex(index = 4)
   public val withdrawAddrEnabled: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.Params"
+  }
+
   public object KotlinxSerializer : KSerializer<Params> {
     private val delegator: KSerializer<Params> = Params.serializer()
 
@@ -72,13 +77,17 @@ public data class Params(
 }
 
 @Serializable(with = ValidatorHistoricalRewards.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorHistoricalRewards")
+@SerialName(value = ValidatorHistoricalRewards.TYPE_URL)
 public data class ValidatorHistoricalRewards(
   @ProtobufIndex(index = 1)
   public val cumulativeRewardRatio: List<DecCoin>,
   @ProtobufIndex(index = 2)
   public val referenceCount: UInt,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.ValidatorHistoricalRewards"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorHistoricalRewards> {
     private val delegator: KSerializer<ValidatorHistoricalRewards> =
         ValidatorHistoricalRewards.serializer()
@@ -103,13 +112,17 @@ public data class ValidatorHistoricalRewards(
 }
 
 @Serializable(with = ValidatorCurrentRewards.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorCurrentRewards")
+@SerialName(value = ValidatorCurrentRewards.TYPE_URL)
 public data class ValidatorCurrentRewards(
   @ProtobufIndex(index = 1)
   public val rewards: List<DecCoin>,
   @ProtobufIndex(index = 2)
   public val period: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.ValidatorCurrentRewards"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorCurrentRewards> {
     private val delegator: KSerializer<ValidatorCurrentRewards> =
         ValidatorCurrentRewards.serializer()
@@ -134,11 +147,16 @@ public data class ValidatorCurrentRewards(
 }
 
 @Serializable(with = ValidatorAccumulatedCommission.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorAccumulatedCommission")
+@SerialName(value = ValidatorAccumulatedCommission.TYPE_URL)
 public data class ValidatorAccumulatedCommission(
   @ProtobufIndex(index = 1)
   public val commission: List<DecCoin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.distribution.v1beta1.ValidatorAccumulatedCommission"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorAccumulatedCommission> {
     private val delegator: KSerializer<ValidatorAccumulatedCommission> =
         ValidatorAccumulatedCommission.serializer()
@@ -163,11 +181,15 @@ public data class ValidatorAccumulatedCommission(
 }
 
 @Serializable(with = ValidatorOutstandingRewards.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorOutstandingRewards")
+@SerialName(value = ValidatorOutstandingRewards.TYPE_URL)
 public data class ValidatorOutstandingRewards(
   @ProtobufIndex(index = 1)
   public val rewards: List<DecCoin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.ValidatorOutstandingRewards"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorOutstandingRewards> {
     private val delegator: KSerializer<ValidatorOutstandingRewards> =
         ValidatorOutstandingRewards.serializer()
@@ -192,13 +214,17 @@ public data class ValidatorOutstandingRewards(
 }
 
 @Serializable(with = ValidatorSlashEvent.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorSlashEvent")
+@SerialName(value = ValidatorSlashEvent.TYPE_URL)
 public data class ValidatorSlashEvent(
   @ProtobufIndex(index = 1)
   public val validatorPeriod: ULong,
   @ProtobufIndex(index = 2)
   public val fraction: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.ValidatorSlashEvent"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorSlashEvent> {
     private val delegator: KSerializer<ValidatorSlashEvent> = ValidatorSlashEvent.serializer()
 
@@ -222,11 +248,15 @@ public data class ValidatorSlashEvent(
 }
 
 @Serializable(with = ValidatorSlashEvents.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.ValidatorSlashEvents")
+@SerialName(value = ValidatorSlashEvents.TYPE_URL)
 public data class ValidatorSlashEvents(
   @ProtobufIndex(index = 1)
   public val validatorSlashEvents: List<ValidatorSlashEvent>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.ValidatorSlashEvents"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorSlashEvents> {
     private val delegator: KSerializer<ValidatorSlashEvents> = ValidatorSlashEvents.serializer()
 
@@ -250,11 +280,15 @@ public data class ValidatorSlashEvents(
 }
 
 @Serializable(with = FeePool.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.FeePool")
+@SerialName(value = FeePool.TYPE_URL)
 public data class FeePool(
   @ProtobufIndex(index = 1)
   public val communityPool: List<DecCoin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.FeePool"
+  }
+
   public object KotlinxSerializer : KSerializer<FeePool> {
     private val delegator: KSerializer<FeePool> = FeePool.serializer()
 
@@ -278,7 +312,7 @@ public data class FeePool(
 }
 
 @Serializable(with = CommunityPoolSpendProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.CommunityPoolSpendProposal")
+@SerialName(value = CommunityPoolSpendProposal.TYPE_URL)
 public data class CommunityPoolSpendProposal(
   @ProtobufIndex(index = 1)
   public val title: String,
@@ -288,7 +322,11 @@ public data class CommunityPoolSpendProposal(
   public val recipient: String,
   @ProtobufIndex(index = 4)
   public val amount: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<CommunityPoolSpendProposal> {
     private val delegator: KSerializer<CommunityPoolSpendProposal> =
         CommunityPoolSpendProposal.serializer()
@@ -313,7 +351,7 @@ public data class CommunityPoolSpendProposal(
 }
 
 @Serializable(with = DelegatorStartingInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.DelegatorStartingInfo")
+@SerialName(value = DelegatorStartingInfo.TYPE_URL)
 public data class DelegatorStartingInfo(
   @ProtobufIndex(index = 1)
   public val previousPeriod: ULong,
@@ -321,7 +359,11 @@ public data class DelegatorStartingInfo(
   public val stake: String,
   @ProtobufIndex(index = 3)
   public val height: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.DelegatorStartingInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<DelegatorStartingInfo> {
     private val delegator: KSerializer<DelegatorStartingInfo> = DelegatorStartingInfo.serializer()
 
@@ -345,13 +387,17 @@ public data class DelegatorStartingInfo(
 }
 
 @Serializable(with = DelegationDelegatorReward.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.DelegationDelegatorReward")
+@SerialName(value = DelegationDelegatorReward.TYPE_URL)
 public data class DelegationDelegatorReward(
   @ProtobufIndex(index = 1)
   public val validatorAddress: String,
   @ProtobufIndex(index = 2)
   public val reward: List<DecCoin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.distribution.v1beta1.DelegationDelegatorReward"
+  }
+
   public object KotlinxSerializer : KSerializer<DelegationDelegatorReward> {
     private val delegator: KSerializer<DelegationDelegatorReward> =
         DelegationDelegatorReward.serializer()
@@ -376,7 +422,7 @@ public data class DelegationDelegatorReward(
 }
 
 @Serializable(with = CommunityPoolSpendProposalWithDeposit.KotlinxSerializer::class)
-@SerialName(value = "cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit")
+@SerialName(value = CommunityPoolSpendProposalWithDeposit.TYPE_URL)
 public data class CommunityPoolSpendProposalWithDeposit(
   @ProtobufIndex(index = 1)
   public val title: String,
@@ -388,7 +434,12 @@ public data class CommunityPoolSpendProposalWithDeposit(
   public val amount: String,
   @ProtobufIndex(index = 5)
   public val deposit: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit"
+  }
+
   public object KotlinxSerializer : KSerializer<CommunityPoolSpendProposalWithDeposit> {
     private val delegator: KSerializer<CommunityPoolSpendProposalWithDeposit> =
         CommunityPoolSpendProposalWithDeposit.serializer()

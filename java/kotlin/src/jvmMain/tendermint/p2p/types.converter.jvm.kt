@@ -1,5 +1,5 @@
 // Transform from tendermint/p2p/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.p2p
 
@@ -17,9 +17,9 @@ public object NetAddressJvmConverter : ProtobufTypeMapper<NetAddress, Types.NetA
   public override val parser: Parser<Types.NetAddress> = Types.NetAddress.parser()
 
   public override fun convert(obj: Types.NetAddress): NetAddress = NetAddress(
-  	id = obj.id,
-  	ip = obj.ip,
-  	port = obj.port.asKotlinType,
+  	id = obj.getId(),
+  	ip = obj.getIp(),
+  	port = obj.getPort().asKotlinType,
   )
 
   public override fun convert(obj: NetAddress): Types.NetAddress {
@@ -38,9 +38,9 @@ public object ProtocolVersionJvmConverter :
   public override val parser: Parser<Types.ProtocolVersion> = Types.ProtocolVersion.parser()
 
   public override fun convert(obj: Types.ProtocolVersion): ProtocolVersion = ProtocolVersion(
-  	p2P = obj.p2P.asKotlinType,
-  	block = obj.block.asKotlinType,
-  	app = obj.app.asKotlinType,
+  	p2P = obj.getP2P().asKotlinType,
+  	block = obj.getBlock().asKotlinType,
+  	app = obj.getApp().asKotlinType,
   )
 
   public override fun convert(obj: ProtocolVersion): Types.ProtocolVersion {
@@ -59,14 +59,14 @@ public object DefaultNodeInfoJvmConverter :
   public override val parser: Parser<Types.DefaultNodeInfo> = Types.DefaultNodeInfo.parser()
 
   public override fun convert(obj: Types.DefaultNodeInfo): DefaultNodeInfo = DefaultNodeInfo(
-  	protocolVersion = ProtocolVersionJvmConverter.convert(obj.protocolVersion),
-  	defaultNodeId = obj.defaultNodeId,
-  	listenAddr = obj.listenAddr,
-  	network = obj.network,
-  	version = obj.version,
-  	channels = obj.channels.toByteArray(),
-  	moniker = obj.moniker,
-  	other = DefaultNodeInfoOtherJvmConverter.convert(obj.other),
+  	protocolVersion = ProtocolVersionJvmConverter.convert(obj.getProtocolVersion()),
+  	defaultNodeId = obj.getDefaultNodeId(),
+  	listenAddr = obj.getListenAddr(),
+  	network = obj.getNetwork(),
+  	version = obj.getVersion(),
+  	channels = obj.getChannels().toByteArray(),
+  	moniker = obj.getMoniker(),
+  	other = DefaultNodeInfoOtherJvmConverter.convert(obj.getOther()),
   )
 
   public override fun convert(obj: DefaultNodeInfo): Types.DefaultNodeInfo {
@@ -93,8 +93,8 @@ public object DefaultNodeInfoOtherJvmConverter :
 
   public override fun convert(obj: Types.DefaultNodeInfoOther): DefaultNodeInfoOther =
       DefaultNodeInfoOther(
-  	txIndex = obj.txIndex,
-  	rpcAddress = obj.rpcAddress,
+  	txIndex = obj.getTxIndex(),
+  	rpcAddress = obj.getRpcAddress(),
   )
 
   public override fun convert(obj: DefaultNodeInfoOther): Types.DefaultNodeInfoOther {

@@ -1,5 +1,5 @@
 // Transform from cosmos/mint/v1beta1/mint.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.mint.v1beta1
 
@@ -16,8 +16,8 @@ public object MinterJvmConverter : ProtobufTypeMapper<Minter, Mint.Minter> {
   public override val parser: Parser<Mint.Minter> = Mint.Minter.parser()
 
   public override fun convert(obj: Mint.Minter): Minter = Minter(
-  	inflation = obj.inflation,
-  	annualProvisions = obj.annualProvisions,
+  	inflation = obj.getInflation(),
+  	annualProvisions = obj.getAnnualProvisions(),
   )
 
   public override fun convert(obj: Minter): Mint.Minter {
@@ -34,12 +34,12 @@ public object ParamsJvmConverter : ProtobufTypeMapper<Params, Mint.Params> {
   public override val parser: Parser<Mint.Params> = Mint.Params.parser()
 
   public override fun convert(obj: Mint.Params): Params = Params(
-  	mintDenom = obj.mintDenom,
-  	inflationRateChange = obj.inflationRateChange,
-  	inflationMax = obj.inflationMax,
-  	inflationMin = obj.inflationMin,
-  	goalBonded = obj.goalBonded,
-  	blocksPerYear = obj.blocksPerYear.asKotlinType,
+  	mintDenom = obj.getMintDenom(),
+  	inflationRateChange = obj.getInflationRateChange(),
+  	inflationMax = obj.getInflationMax(),
+  	inflationMin = obj.getInflationMin(),
+  	goalBonded = obj.getGoalBonded(),
+  	blocksPerYear = obj.getBlocksPerYear().asKotlinType,
   )
 
   public override fun convert(obj: Params): Mint.Params {

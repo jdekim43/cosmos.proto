@@ -1,5 +1,5 @@
 // Transform from cosmos/slashing/v1beta1/slashing.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.slashing.v1beta1
 
@@ -21,12 +21,12 @@ public object ValidatorSigningInfoJvmConverter :
 
   public override fun convert(obj: Slashing.ValidatorSigningInfo): ValidatorSigningInfo =
       ValidatorSigningInfo(
-  	address = obj.address,
-  	startHeight = obj.startHeight,
-  	indexOffset = obj.indexOffset,
-  	jailedUntil = TimestampJvmConverter.convert(obj.jailedUntil),
-  	tombstoned = obj.tombstoned,
-  	missedBlocksCounter = obj.missedBlocksCounter,
+  	address = obj.getAddress(),
+  	startHeight = obj.getStartHeight(),
+  	indexOffset = obj.getIndexOffset(),
+  	jailedUntil = TimestampJvmConverter.convert(obj.getJailedUntil()),
+  	tombstoned = obj.getTombstoned(),
+  	missedBlocksCounter = obj.getMissedBlocksCounter(),
   )
 
   public override fun convert(obj: ValidatorSigningInfo): Slashing.ValidatorSigningInfo {
@@ -47,11 +47,11 @@ public object ParamsJvmConverter : ProtobufTypeMapper<Params, Slashing.Params> {
   public override val parser: Parser<Slashing.Params> = Slashing.Params.parser()
 
   public override fun convert(obj: Slashing.Params): Params = Params(
-  	signedBlocksWindow = obj.signedBlocksWindow,
-  	minSignedPerWindow = obj.minSignedPerWindow.toByteArray(),
-  	downtimeJailDuration = DurationJvmConverter.convert(obj.downtimeJailDuration),
-  	slashFractionDoubleSign = obj.slashFractionDoubleSign.toByteArray(),
-  	slashFractionDowntime = obj.slashFractionDowntime.toByteArray(),
+  	signedBlocksWindow = obj.getSignedBlocksWindow(),
+  	minSignedPerWindow = obj.getMinSignedPerWindow().toByteArray(),
+  	downtimeJailDuration = DurationJvmConverter.convert(obj.getDowntimeJailDuration()),
+  	slashFractionDoubleSign = obj.getSlashFractionDoubleSign().toByteArray(),
+  	slashFractionDowntime = obj.getSlashFractionDowntime().toByteArray(),
   )
 
   public override fun convert(obj: Params): Slashing.Params {

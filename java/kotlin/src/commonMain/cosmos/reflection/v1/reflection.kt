@@ -1,10 +1,11 @@
 // Transform from cosmos/reflection/v1/reflection.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.reflection.v1
 
 import google.protobuf.FileDescriptorProto
+import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 import kotlinx.serialization.KSerializer
@@ -18,10 +19,15 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = FileDescriptorsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.reflection.v1.FileDescriptorsRequest")
-public class FileDescriptorsRequest() {
+@SerialName(value = FileDescriptorsRequest.TYPE_URL)
+public class FileDescriptorsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.reflection.v1.FileDescriptorsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<FileDescriptorsRequest> {
     private val delegator: KSerializer<FileDescriptorsRequest> = FileDescriptorsRequest.serializer()
 
@@ -45,11 +51,15 @@ public class FileDescriptorsRequest() {
 }
 
 @Serializable(with = FileDescriptorsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.reflection.v1.FileDescriptorsResponse")
+@SerialName(value = FileDescriptorsResponse.TYPE_URL)
 public data class FileDescriptorsResponse(
   @ProtobufIndex(index = 1)
   public val files: List<FileDescriptorProto>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.reflection.v1.FileDescriptorsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<FileDescriptorsResponse> {
     private val delegator: KSerializer<FileDescriptorsResponse> =
         FileDescriptorsResponse.serializer()

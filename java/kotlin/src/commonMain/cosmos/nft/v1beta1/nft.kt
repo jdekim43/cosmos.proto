@@ -1,6 +1,6 @@
 // Transform from cosmos/nft/v1beta1/nft.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.v1beta1
 
@@ -18,9 +18,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Class.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.Class")
+@SerialName(value = Class.TYPE_URL)
 public data class Class(
   @ProtobufIndex(index = 1)
   public val id: String,
@@ -36,7 +37,11 @@ public data class Class(
   public val uriHash: String,
   @ProtobufIndex(index = 7)
   public val `data`: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.Class"
+  }
+
   public object KotlinxSerializer : KSerializer<Class> {
     private val delegator: KSerializer<Class> = Class.serializer()
 
@@ -60,7 +65,7 @@ public data class Class(
 }
 
 @Serializable(with = NFT.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.NFT")
+@SerialName(value = NFT.TYPE_URL)
 public data class NFT(
   @ProtobufIndex(index = 1)
   public val classId: String,
@@ -72,7 +77,11 @@ public data class NFT(
   public val uriHash: String,
   @ProtobufIndex(index = 10)
   public val `data`: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.NFT"
+  }
+
   public object KotlinxSerializer : KSerializer<NFT> {
     private val delegator: KSerializer<NFT> = NFT.serializer()
 

@@ -1,5 +1,5 @@
 // Transform from cosmos/tx/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.tx.v1beta1
 
@@ -22,9 +22,9 @@ public object TxJvmConverter : ProtobufTypeMapper<Tx, TxOuterClass.Tx> {
   public override val parser: Parser<TxOuterClass.Tx> = TxOuterClass.Tx.parser()
 
   public override fun convert(obj: TxOuterClass.Tx): Tx = Tx(
-  	body = TxBodyJvmConverter.convert(obj.body),
-  	authInfo = AuthInfoJvmConverter.convert(obj.authInfo),
-  	signatures = obj.signaturesList.map { it.toByteArray() },
+  	body = TxBodyJvmConverter.convert(obj.getBody()),
+  	authInfo = AuthInfoJvmConverter.convert(obj.getAuthInfo()),
+  	signatures = obj.getSignaturesList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: Tx): TxOuterClass.Tx {
@@ -42,9 +42,9 @@ public object TxRawJvmConverter : ProtobufTypeMapper<TxRaw, TxOuterClass.TxRaw> 
   public override val parser: Parser<TxOuterClass.TxRaw> = TxOuterClass.TxRaw.parser()
 
   public override fun convert(obj: TxOuterClass.TxRaw): TxRaw = TxRaw(
-  	bodyBytes = obj.bodyBytes.toByteArray(),
-  	authInfoBytes = obj.authInfoBytes.toByteArray(),
-  	signatures = obj.signaturesList.map { it.toByteArray() },
+  	bodyBytes = obj.getBodyBytes().toByteArray(),
+  	authInfoBytes = obj.getAuthInfoBytes().toByteArray(),
+  	signatures = obj.getSignaturesList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: TxRaw): TxOuterClass.TxRaw {
@@ -62,10 +62,10 @@ public object SignDocJvmConverter : ProtobufTypeMapper<SignDoc, TxOuterClass.Sig
   public override val parser: Parser<TxOuterClass.SignDoc> = TxOuterClass.SignDoc.parser()
 
   public override fun convert(obj: TxOuterClass.SignDoc): SignDoc = SignDoc(
-  	bodyBytes = obj.bodyBytes.toByteArray(),
-  	authInfoBytes = obj.authInfoBytes.toByteArray(),
-  	chainId = obj.chainId,
-  	accountNumber = obj.accountNumber.asKotlinType,
+  	bodyBytes = obj.getBodyBytes().toByteArray(),
+  	authInfoBytes = obj.getAuthInfoBytes().toByteArray(),
+  	chainId = obj.getChainId(),
+  	accountNumber = obj.getAccountNumber().asKotlinType,
   )
 
   public override fun convert(obj: SignDoc): TxOuterClass.SignDoc {
@@ -88,12 +88,12 @@ public object SignDocDirectAuxJvmConverter :
 
   public override fun convert(obj: TxOuterClass.SignDocDirectAux): SignDocDirectAux =
       SignDocDirectAux(
-  	bodyBytes = obj.bodyBytes.toByteArray(),
-  	publicKey = AnyJvmConverter.convert(obj.publicKey),
-  	chainId = obj.chainId,
-  	accountNumber = obj.accountNumber.asKotlinType,
-  	sequence = obj.sequence.asKotlinType,
-  	tip = TipJvmConverter.convert(obj.tip),
+  	bodyBytes = obj.getBodyBytes().toByteArray(),
+  	publicKey = AnyJvmConverter.convert(obj.getPublicKey()),
+  	chainId = obj.getChainId(),
+  	accountNumber = obj.getAccountNumber().asKotlinType,
+  	sequence = obj.getSequence().asKotlinType,
+  	tip = TipJvmConverter.convert(obj.getTip()),
   )
 
   public override fun convert(obj: SignDocDirectAux): TxOuterClass.SignDocDirectAux {
@@ -114,11 +114,11 @@ public object TxBodyJvmConverter : ProtobufTypeMapper<TxBody, TxOuterClass.TxBod
   public override val parser: Parser<TxOuterClass.TxBody> = TxOuterClass.TxBody.parser()
 
   public override fun convert(obj: TxOuterClass.TxBody): TxBody = TxBody(
-  	messages = obj.messagesList.map { AnyJvmConverter.convert(it) },
-  	memo = obj.memo,
-  	timeoutHeight = obj.timeoutHeight.asKotlinType,
-  	extensionOptions = obj.extensionOptionsList.map { AnyJvmConverter.convert(it) },
-  	nonCriticalExtensionOptions = obj.nonCriticalExtensionOptionsList.map {
+  	messages = obj.getMessagesList().map { AnyJvmConverter.convert(it) },
+  	memo = obj.getMemo(),
+  	timeoutHeight = obj.getTimeoutHeight().asKotlinType,
+  	extensionOptions = obj.getExtensionOptionsList().map { AnyJvmConverter.convert(it) },
+  	nonCriticalExtensionOptions = obj.getNonCriticalExtensionOptionsList().map {
       AnyJvmConverter.convert(it) },
   )
 
@@ -140,9 +140,9 @@ public object AuthInfoJvmConverter : ProtobufTypeMapper<AuthInfo, TxOuterClass.A
   public override val parser: Parser<TxOuterClass.AuthInfo> = TxOuterClass.AuthInfo.parser()
 
   public override fun convert(obj: TxOuterClass.AuthInfo): AuthInfo = AuthInfo(
-  	signerInfos = obj.signerInfosList.map { SignerInfoJvmConverter.convert(it) },
-  	fee = FeeJvmConverter.convert(obj.fee),
-  	tip = TipJvmConverter.convert(obj.tip),
+  	signerInfos = obj.getSignerInfosList().map { SignerInfoJvmConverter.convert(it) },
+  	fee = FeeJvmConverter.convert(obj.getFee()),
+  	tip = TipJvmConverter.convert(obj.getTip()),
   )
 
   public override fun convert(obj: AuthInfo): TxOuterClass.AuthInfo {
@@ -160,9 +160,9 @@ public object SignerInfoJvmConverter : ProtobufTypeMapper<SignerInfo, TxOuterCla
   public override val parser: Parser<TxOuterClass.SignerInfo> = TxOuterClass.SignerInfo.parser()
 
   public override fun convert(obj: TxOuterClass.SignerInfo): SignerInfo = SignerInfo(
-  	publicKey = AnyJvmConverter.convert(obj.publicKey),
-  	modeInfo = ModeInfoJvmConverter.convert(obj.modeInfo),
-  	sequence = obj.sequence.asKotlinType,
+  	publicKey = AnyJvmConverter.convert(obj.getPublicKey()),
+  	modeInfo = ModeInfoJvmConverter.convert(obj.getModeInfo()),
+  	sequence = obj.getSequence().asKotlinType,
   )
 
   public override fun convert(obj: SignerInfo): TxOuterClass.SignerInfo {
@@ -181,8 +181,8 @@ public object ModeInfoJvmConverter : ProtobufTypeMapper<ModeInfo, TxOuterClass.M
 
   public override fun convert(obj: TxOuterClass.ModeInfo): ModeInfo = ModeInfo(
   	sum = mapOf(
-  1 to { ModeInfo.SumOneOf.Single(SingleJvmConverter.convert(obj.single)) },
-  2 to { ModeInfo.SumOneOf.Multi(MultiJvmConverter.convert(obj.multi)) },
+  1 to { ModeInfo.SumOneOf.Single(SingleJvmConverter.convert(obj.getSingle())) },
+  2 to { ModeInfo.SumOneOf.Multi(MultiJvmConverter.convert(obj.getMulti())) },
   ).getValue(obj.sumCase.number)(),
   )
 
@@ -205,7 +205,7 @@ public object ModeInfoJvmConverter : ProtobufTypeMapper<ModeInfo, TxOuterClass.M
 
     public override fun convert(obj: TxOuterClass.ModeInfo.Single): ModeInfo.Single =
         ModeInfo.Single(
-    	mode = SignMode.forNumber(obj.mode.number),
+    	mode = SignMode.forNumber(obj.getMode().number),
     )
 
     public override fun convert(obj: ModeInfo.Single): TxOuterClass.ModeInfo.Single {
@@ -224,8 +224,8 @@ public object ModeInfoJvmConverter : ProtobufTypeMapper<ModeInfo, TxOuterClass.M
         TxOuterClass.ModeInfo.Multi.parser()
 
     public override fun convert(obj: TxOuterClass.ModeInfo.Multi): ModeInfo.Multi = ModeInfo.Multi(
-    	bitarray = CompactBitArrayJvmConverter.convert(obj.bitarray),
-    	modeInfos = obj.modeInfosList.map { ModeInfoJvmConverter.convert(it) },
+    	bitarray = CompactBitArrayJvmConverter.convert(obj.getBitarray()),
+    	modeInfos = obj.getModeInfosList().map { ModeInfoJvmConverter.convert(it) },
     )
 
     public override fun convert(obj: ModeInfo.Multi): TxOuterClass.ModeInfo.Multi {
@@ -243,10 +243,10 @@ public object FeeJvmConverter : ProtobufTypeMapper<Fee, TxOuterClass.Fee> {
   public override val parser: Parser<TxOuterClass.Fee> = TxOuterClass.Fee.parser()
 
   public override fun convert(obj: TxOuterClass.Fee): Fee = Fee(
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
-  	gasLimit = obj.gasLimit.asKotlinType,
-  	payer = obj.payer,
-  	granter = obj.granter,
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
+  	gasLimit = obj.getGasLimit().asKotlinType,
+  	payer = obj.getPayer(),
+  	granter = obj.getGranter(),
   )
 
   public override fun convert(obj: Fee): TxOuterClass.Fee {
@@ -265,8 +265,8 @@ public object TipJvmConverter : ProtobufTypeMapper<Tip, TxOuterClass.Tip> {
   public override val parser: Parser<TxOuterClass.Tip> = TxOuterClass.Tip.parser()
 
   public override fun convert(obj: TxOuterClass.Tip): Tip = Tip(
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
-  	tipper = obj.tipper,
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
+  	tipper = obj.getTipper(),
   )
 
   public override fun convert(obj: Tip): TxOuterClass.Tip {
@@ -286,10 +286,10 @@ public object AuxSignerDataJvmConverter :
       TxOuterClass.AuxSignerData.parser()
 
   public override fun convert(obj: TxOuterClass.AuxSignerData): AuxSignerData = AuxSignerData(
-  	address = obj.address,
-  	signDoc = SignDocDirectAuxJvmConverter.convert(obj.signDoc),
-  	mode = SignMode.forNumber(obj.mode.number),
-  	sig = obj.sig.toByteArray(),
+  	address = obj.getAddress(),
+  	signDoc = SignDocDirectAuxJvmConverter.convert(obj.getSignDoc()),
+  	mode = SignMode.forNumber(obj.getMode().number),
+  	sig = obj.getSig().toByteArray(),
   )
 
   public override fun convert(obj: AuxSignerData): TxOuterClass.AuxSignerData {

@@ -1,5 +1,5 @@
 // Transform from cosmos/nft/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.v1beta1
 
@@ -14,8 +14,8 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	classes = obj.classesList.map { ClassJvmConverter.convert(it) },
-  	entries = obj.entriesList.map { EntryJvmConverter.convert(it) },
+  	classes = obj.getClassesList().map { ClassJvmConverter.convert(it) },
+  	entries = obj.getEntriesList().map { EntryJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: GenesisState): Genesis.GenesisState {
@@ -32,8 +32,8 @@ public object EntryJvmConverter : ProtobufTypeMapper<Entry, Genesis.Entry> {
   public override val parser: Parser<Genesis.Entry> = Genesis.Entry.parser()
 
   public override fun convert(obj: Genesis.Entry): Entry = Entry(
-  	owner = obj.owner,
-  	nfts = obj.nftsList.map { NFTJvmConverter.convert(it) },
+  	owner = obj.getOwner(),
+  	nfts = obj.getNftsList().map { NFTJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Entry): Genesis.Entry {

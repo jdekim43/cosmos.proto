@@ -1,6 +1,6 @@
 // Transform from cosmos/orm/query/v1alpha1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.orm.query.v1alpha1
 
@@ -26,9 +26,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = GetRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.query.v1alpha1.GetRequest")
+@SerialName(value = GetRequest.TYPE_URL)
 public data class GetRequest(
   @ProtobufIndex(index = 1)
   public val messageName: String,
@@ -36,7 +37,11 @@ public data class GetRequest(
   public val index: String,
   @ProtobufIndex(index = 3)
   public val values: List<IndexValue>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.query.v1alpha1.GetRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<GetRequest> {
     private val delegator: KSerializer<GetRequest> = GetRequest.serializer()
 
@@ -60,11 +65,15 @@ public data class GetRequest(
 }
 
 @Serializable(with = GetResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.query.v1alpha1.GetResponse")
+@SerialName(value = GetResponse.TYPE_URL)
 public data class GetResponse(
   @ProtobufIndex(index = 1)
   public val result: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.query.v1alpha1.GetResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<GetResponse> {
     private val delegator: KSerializer<GetResponse> = GetResponse.serializer()
 
@@ -88,7 +97,7 @@ public data class GetResponse(
 }
 
 @Serializable(with = ListRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.query.v1alpha1.ListRequest")
+@SerialName(value = ListRequest.TYPE_URL)
 public data class ListRequest(
   @ProtobufIndex(index = 1)
   public val messageName: String,
@@ -97,7 +106,11 @@ public data class ListRequest(
   @ProtobufIndex(index = 5)
   public val pagination: PageRequest,
   public val query: QueryOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.query.v1alpha1.ListRequest"
+  }
+
   @Serializable
   public sealed interface QueryOneOf {
     @JvmInline
@@ -114,11 +127,15 @@ public data class ListRequest(
   }
 
   @Serializable(with = Prefix.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.orm.query.v1alpha1.ListRequest.Prefix")
+  @SerialName(value = Prefix.TYPE_URL)
   public data class Prefix(
     @ProtobufIndex(index = 1)
     public val values: List<IndexValue>,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.orm.query.v1alpha1.ListRequest.Prefix"
+    }
+
     public object KotlinxSerializer : KSerializer<Prefix> {
       private val delegator: KSerializer<Prefix> = Prefix.serializer()
 
@@ -142,13 +159,17 @@ public data class ListRequest(
   }
 
   @Serializable(with = Range.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.orm.query.v1alpha1.ListRequest.Range")
+  @SerialName(value = Range.TYPE_URL)
   public data class Range(
     @ProtobufIndex(index = 1)
     public val start: List<IndexValue>,
     @ProtobufIndex(index = 2)
     public val end: List<IndexValue>,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.orm.query.v1alpha1.ListRequest.Range"
+    }
+
     public object KotlinxSerializer : KSerializer<Range> {
       private val delegator: KSerializer<Range> = Range.serializer()
 
@@ -194,13 +215,17 @@ public data class ListRequest(
 }
 
 @Serializable(with = ListResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.query.v1alpha1.ListResponse")
+@SerialName(value = ListResponse.TYPE_URL)
 public data class ListResponse(
   @ProtobufIndex(index = 1)
   public val results: List<Any>,
   @ProtobufIndex(index = 5)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.query.v1alpha1.ListResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<ListResponse> {
     private val delegator: KSerializer<ListResponse> = ListResponse.serializer()
 
@@ -224,10 +249,14 @@ public data class ListResponse(
 }
 
 @Serializable(with = IndexValue.KotlinxSerializer::class)
-@SerialName(value = "cosmos.orm.query.v1alpha1.IndexValue")
+@SerialName(value = IndexValue.TYPE_URL)
 public data class IndexValue(
   public val `value`: ValueOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.orm.query.v1alpha1.IndexValue"
+  }
+
   @Serializable
   public sealed interface ValueOneOf {
     @JvmInline

@@ -1,5 +1,5 @@
 // Transform from cosmos/distribution/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.distribution.v1beta1
 
@@ -41,7 +41,7 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	params = ParamsJvmConverter.convert(obj.params),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {
@@ -62,7 +62,7 @@ public object QueryValidatorDistributionInfoRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorDistributionInfoRequest):
       QueryValidatorDistributionInfoRequest = QueryValidatorDistributionInfoRequest(
-  	validatorAddress = obj.validatorAddress,
+  	validatorAddress = obj.getValidatorAddress(),
   )
 
   public override fun convert(obj: QueryValidatorDistributionInfoRequest):
@@ -84,9 +84,9 @@ public object QueryValidatorDistributionInfoResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorDistributionInfoResponse):
       QueryValidatorDistributionInfoResponse = QueryValidatorDistributionInfoResponse(
-  	operatorAddress = obj.operatorAddress,
-  	selfBondRewards = obj.selfBondRewardsList.map { DecCoinJvmConverter.convert(it) },
-  	commission = obj.commissionList.map { DecCoinJvmConverter.convert(it) },
+  	operatorAddress = obj.getOperatorAddress(),
+  	selfBondRewards = obj.getSelfBondRewardsList().map { DecCoinJvmConverter.convert(it) },
+  	commission = obj.getCommissionList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: QueryValidatorDistributionInfoResponse):
@@ -110,7 +110,7 @@ public object QueryValidatorOutstandingRewardsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorOutstandingRewardsRequest):
       QueryValidatorOutstandingRewardsRequest = QueryValidatorOutstandingRewardsRequest(
-  	validatorAddress = obj.validatorAddress,
+  	validatorAddress = obj.getValidatorAddress(),
   )
 
   public override fun convert(obj: QueryValidatorOutstandingRewardsRequest):
@@ -132,7 +132,7 @@ public object QueryValidatorOutstandingRewardsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorOutstandingRewardsResponse):
       QueryValidatorOutstandingRewardsResponse = QueryValidatorOutstandingRewardsResponse(
-  	rewards = ValidatorOutstandingRewardsJvmConverter.convert(obj.rewards),
+  	rewards = ValidatorOutstandingRewardsJvmConverter.convert(obj.getRewards()),
   )
 
   public override fun convert(obj: QueryValidatorOutstandingRewardsResponse):
@@ -154,7 +154,7 @@ public object QueryValidatorCommissionRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorCommissionRequest):
       QueryValidatorCommissionRequest = QueryValidatorCommissionRequest(
-  	validatorAddress = obj.validatorAddress,
+  	validatorAddress = obj.getValidatorAddress(),
   )
 
   public override fun convert(obj: QueryValidatorCommissionRequest):
@@ -176,7 +176,7 @@ public object QueryValidatorCommissionResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorCommissionResponse):
       QueryValidatorCommissionResponse = QueryValidatorCommissionResponse(
-  	commission = ValidatorAccumulatedCommissionJvmConverter.convert(obj.commission),
+  	commission = ValidatorAccumulatedCommissionJvmConverter.convert(obj.getCommission()),
   )
 
   public override fun convert(obj: QueryValidatorCommissionResponse):
@@ -197,10 +197,10 @@ public object QueryValidatorSlashesRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorSlashesRequest):
       QueryValidatorSlashesRequest = QueryValidatorSlashesRequest(
-  	validatorAddress = obj.validatorAddress,
-  	startingHeight = obj.startingHeight.asKotlinType,
-  	endingHeight = obj.endingHeight.asKotlinType,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	validatorAddress = obj.getValidatorAddress(),
+  	startingHeight = obj.getStartingHeight().asKotlinType,
+  	endingHeight = obj.getEndingHeight().asKotlinType,
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryValidatorSlashesRequest):
@@ -225,8 +225,8 @@ public object QueryValidatorSlashesResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorSlashesResponse):
       QueryValidatorSlashesResponse = QueryValidatorSlashesResponse(
-  	slashes = obj.slashesList.map { ValidatorSlashEventJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	slashes = obj.getSlashesList().map { ValidatorSlashEventJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryValidatorSlashesResponse):
@@ -249,8 +249,8 @@ public object QueryDelegationRewardsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegationRewardsRequest):
       QueryDelegationRewardsRequest = QueryDelegationRewardsRequest(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
   )
 
   public override fun convert(obj: QueryDelegationRewardsRequest):
@@ -273,7 +273,7 @@ public object QueryDelegationRewardsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegationRewardsResponse):
       QueryDelegationRewardsResponse = QueryDelegationRewardsResponse(
-  	rewards = obj.rewardsList.map { DecCoinJvmConverter.convert(it) },
+  	rewards = obj.getRewardsList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: QueryDelegationRewardsResponse):
@@ -295,7 +295,7 @@ public object QueryDelegationTotalRewardsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegationTotalRewardsRequest):
       QueryDelegationTotalRewardsRequest = QueryDelegationTotalRewardsRequest(
-  	delegatorAddress = obj.delegatorAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
   )
 
   public override fun convert(obj: QueryDelegationTotalRewardsRequest):
@@ -317,8 +317,8 @@ public object QueryDelegationTotalRewardsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegationTotalRewardsResponse):
       QueryDelegationTotalRewardsResponse = QueryDelegationTotalRewardsResponse(
-  	rewards = obj.rewardsList.map { DelegationDelegatorRewardJvmConverter.convert(it) },
-  	total = obj.totalList.map { DecCoinJvmConverter.convert(it) },
+  	rewards = obj.getRewardsList().map { DelegationDelegatorRewardJvmConverter.convert(it) },
+  	total = obj.getTotalList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: QueryDelegationTotalRewardsResponse):
@@ -341,7 +341,7 @@ public object QueryDelegatorValidatorsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorValidatorsRequest):
       QueryDelegatorValidatorsRequest = QueryDelegatorValidatorsRequest(
-  	delegatorAddress = obj.delegatorAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
   )
 
   public override fun convert(obj: QueryDelegatorValidatorsRequest):
@@ -363,7 +363,7 @@ public object QueryDelegatorValidatorsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorValidatorsResponse):
       QueryDelegatorValidatorsResponse = QueryDelegatorValidatorsResponse(
-  	validators = obj.validatorsList.map { it },
+  	validators = obj.getValidatorsList().map { it },
   )
 
   public override fun convert(obj: QueryDelegatorValidatorsResponse):
@@ -385,7 +385,7 @@ public object QueryDelegatorWithdrawAddressRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorWithdrawAddressRequest):
       QueryDelegatorWithdrawAddressRequest = QueryDelegatorWithdrawAddressRequest(
-  	delegatorAddress = obj.delegatorAddress,
+  	delegatorAddress = obj.getDelegatorAddress(),
   )
 
   public override fun convert(obj: QueryDelegatorWithdrawAddressRequest):
@@ -407,7 +407,7 @@ public object QueryDelegatorWithdrawAddressResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorWithdrawAddressResponse):
       QueryDelegatorWithdrawAddressResponse = QueryDelegatorWithdrawAddressResponse(
-  	withdrawAddress = obj.withdrawAddress,
+  	withdrawAddress = obj.getWithdrawAddress(),
   )
 
   public override fun convert(obj: QueryDelegatorWithdrawAddressResponse):
@@ -447,7 +447,7 @@ public object QueryCommunityPoolResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryCommunityPoolResponse):
       QueryCommunityPoolResponse = QueryCommunityPoolResponse(
-  	pool = obj.poolList.map { DecCoinJvmConverter.convert(it) },
+  	pool = obj.getPoolList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: QueryCommunityPoolResponse):

@@ -1,5 +1,5 @@
 // Transform from cosmos/base/store/v1beta1/listening.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.store.v1beta1
 
@@ -22,10 +22,10 @@ public object StoreKVPairJvmConverter : ProtobufTypeMapper<StoreKVPair, Listenin
   public override val parser: Parser<Listening.StoreKVPair> = Listening.StoreKVPair.parser()
 
   public override fun convert(obj: Listening.StoreKVPair): StoreKVPair = StoreKVPair(
-  	storeKey = obj.storeKey,
-  	delete = obj.delete,
-  	key = obj.key.toByteArray(),
-  	`value` = obj.`value`.toByteArray(),
+  	storeKey = obj.getStoreKey(),
+  	delete = obj.getDelete(),
+  	key = obj.getKey().toByteArray(),
+  	`value` = obj.getValue().toByteArray(),
   )
 
   public override fun convert(obj: StoreKVPair): Listening.StoreKVPair {
@@ -45,12 +45,12 @@ public object BlockMetadataJvmConverter : ProtobufTypeMapper<BlockMetadata, List
   public override val parser: Parser<Listening.BlockMetadata> = Listening.BlockMetadata.parser()
 
   public override fun convert(obj: Listening.BlockMetadata): BlockMetadata = BlockMetadata(
-  	requestBeginBlock = RequestBeginBlockJvmConverter.convert(obj.requestBeginBlock),
-  	responseBeginBlock = ResponseBeginBlockJvmConverter.convert(obj.responseBeginBlock),
-  	deliverTxs = obj.deliverTxsList.map { DeliverTxJvmConverter.convert(it) },
-  	requestEndBlock = RequestEndBlockJvmConverter.convert(obj.requestEndBlock),
-  	responseEndBlock = ResponseEndBlockJvmConverter.convert(obj.responseEndBlock),
-  	responseCommit = ResponseCommitJvmConverter.convert(obj.responseCommit),
+  	requestBeginBlock = RequestBeginBlockJvmConverter.convert(obj.getRequestBeginBlock()),
+  	responseBeginBlock = ResponseBeginBlockJvmConverter.convert(obj.getResponseBeginBlock()),
+  	deliverTxs = obj.getDeliverTxsList().map { DeliverTxJvmConverter.convert(it) },
+  	requestEndBlock = RequestEndBlockJvmConverter.convert(obj.getRequestEndBlock()),
+  	responseEndBlock = ResponseEndBlockJvmConverter.convert(obj.getResponseEndBlock()),
+  	responseCommit = ResponseCommitJvmConverter.convert(obj.getResponseCommit()),
   )
 
   public override fun convert(obj: BlockMetadata): Listening.BlockMetadata {
@@ -74,8 +74,8 @@ public object BlockMetadataJvmConverter : ProtobufTypeMapper<BlockMetadata, List
 
     public override fun convert(obj: Listening.BlockMetadata.DeliverTx): BlockMetadata.DeliverTx =
         BlockMetadata.DeliverTx(
-    	request = RequestDeliverTxJvmConverter.convert(obj.request),
-    	response = ResponseDeliverTxJvmConverter.convert(obj.response),
+    	request = RequestDeliverTxJvmConverter.convert(obj.getRequest()),
+    	response = ResponseDeliverTxJvmConverter.convert(obj.getResponse()),
     )
 
     public override fun convert(obj: BlockMetadata.DeliverTx): Listening.BlockMetadata.DeliverTx {

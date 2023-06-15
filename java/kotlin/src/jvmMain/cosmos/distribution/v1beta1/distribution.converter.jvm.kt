@@ -1,5 +1,5 @@
 // Transform from cosmos/distribution/v1beta1/distribution.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.distribution.v1beta1
 
@@ -18,10 +18,10 @@ public object ParamsJvmConverter : ProtobufTypeMapper<Params, Distribution.Param
   public override val parser: Parser<Distribution.Params> = Distribution.Params.parser()
 
   public override fun convert(obj: Distribution.Params): Params = Params(
-  	communityTax = obj.communityTax,
-  	baseProposerReward = obj.baseProposerReward,
-  	bonusProposerReward = obj.bonusProposerReward,
-  	withdrawAddrEnabled = obj.withdrawAddrEnabled,
+  	communityTax = obj.getCommunityTax(),
+  	baseProposerReward = obj.getBaseProposerReward(),
+  	bonusProposerReward = obj.getBonusProposerReward(),
+  	withdrawAddrEnabled = obj.getWithdrawAddrEnabled(),
   )
 
   public override fun convert(obj: Params): Distribution.Params {
@@ -44,8 +44,9 @@ public object ValidatorHistoricalRewardsJvmConverter :
 
   public override fun convert(obj: Distribution.ValidatorHistoricalRewards):
       ValidatorHistoricalRewards = ValidatorHistoricalRewards(
-  	cumulativeRewardRatio = obj.cumulativeRewardRatioList.map { DecCoinJvmConverter.convert(it) },
-  	referenceCount = obj.referenceCount.asKotlinType,
+  	cumulativeRewardRatio = obj.getCumulativeRewardRatioList().map { DecCoinJvmConverter.convert(it)
+      },
+  	referenceCount = obj.getReferenceCount().asKotlinType,
   )
 
   public override fun convert(obj: ValidatorHistoricalRewards):
@@ -68,8 +69,8 @@ public object ValidatorCurrentRewardsJvmConverter :
 
   public override fun convert(obj: Distribution.ValidatorCurrentRewards): ValidatorCurrentRewards =
       ValidatorCurrentRewards(
-  	rewards = obj.rewardsList.map { DecCoinJvmConverter.convert(it) },
-  	period = obj.period.asKotlinType,
+  	rewards = obj.getRewardsList().map { DecCoinJvmConverter.convert(it) },
+  	period = obj.getPeriod().asKotlinType,
   )
 
   public override fun convert(obj: ValidatorCurrentRewards): Distribution.ValidatorCurrentRewards {
@@ -91,7 +92,7 @@ public object ValidatorAccumulatedCommissionJvmConverter :
 
   public override fun convert(obj: Distribution.ValidatorAccumulatedCommission):
       ValidatorAccumulatedCommission = ValidatorAccumulatedCommission(
-  	commission = obj.commissionList.map { DecCoinJvmConverter.convert(it) },
+  	commission = obj.getCommissionList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ValidatorAccumulatedCommission):
@@ -112,7 +113,7 @@ public object ValidatorOutstandingRewardsJvmConverter :
 
   public override fun convert(obj: Distribution.ValidatorOutstandingRewards):
       ValidatorOutstandingRewards = ValidatorOutstandingRewards(
-  	rewards = obj.rewardsList.map { DecCoinJvmConverter.convert(it) },
+  	rewards = obj.getRewardsList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ValidatorOutstandingRewards):
@@ -133,8 +134,8 @@ public object ValidatorSlashEventJvmConverter :
 
   public override fun convert(obj: Distribution.ValidatorSlashEvent): ValidatorSlashEvent =
       ValidatorSlashEvent(
-  	validatorPeriod = obj.validatorPeriod.asKotlinType,
-  	fraction = obj.fraction,
+  	validatorPeriod = obj.getValidatorPeriod().asKotlinType,
+  	fraction = obj.getFraction(),
   )
 
   public override fun convert(obj: ValidatorSlashEvent): Distribution.ValidatorSlashEvent {
@@ -155,7 +156,7 @@ public object ValidatorSlashEventsJvmConverter :
 
   public override fun convert(obj: Distribution.ValidatorSlashEvents): ValidatorSlashEvents =
       ValidatorSlashEvents(
-  	validatorSlashEvents = obj.validatorSlashEventsList.map {
+  	validatorSlashEvents = obj.getValidatorSlashEventsList().map {
       ValidatorSlashEventJvmConverter.convert(it) },
   )
 
@@ -173,7 +174,7 @@ public object FeePoolJvmConverter : ProtobufTypeMapper<FeePool, Distribution.Fee
   public override val parser: Parser<Distribution.FeePool> = Distribution.FeePool.parser()
 
   public override fun convert(obj: Distribution.FeePool): FeePool = FeePool(
-  	communityPool = obj.communityPoolList.map { DecCoinJvmConverter.convert(it) },
+  	communityPool = obj.getCommunityPoolList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: FeePool): Distribution.FeePool {
@@ -193,10 +194,10 @@ public object CommunityPoolSpendProposalJvmConverter :
 
   public override fun convert(obj: Distribution.CommunityPoolSpendProposal):
       CommunityPoolSpendProposal = CommunityPoolSpendProposal(
-  	title = obj.title,
-  	description = obj.description,
-  	recipient = obj.recipient,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	title = obj.getTitle(),
+  	description = obj.getDescription(),
+  	recipient = obj.getRecipient(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: CommunityPoolSpendProposal):
@@ -220,9 +221,9 @@ public object DelegatorStartingInfoJvmConverter :
 
   public override fun convert(obj: Distribution.DelegatorStartingInfo): DelegatorStartingInfo =
       DelegatorStartingInfo(
-  	previousPeriod = obj.previousPeriod.asKotlinType,
-  	stake = obj.stake,
-  	height = obj.height.asKotlinType,
+  	previousPeriod = obj.getPreviousPeriod().asKotlinType,
+  	stake = obj.getStake(),
+  	height = obj.getHeight().asKotlinType,
   )
 
   public override fun convert(obj: DelegatorStartingInfo): Distribution.DelegatorStartingInfo {
@@ -244,8 +245,8 @@ public object DelegationDelegatorRewardJvmConverter :
 
   public override fun convert(obj: Distribution.DelegationDelegatorReward):
       DelegationDelegatorReward = DelegationDelegatorReward(
-  	validatorAddress = obj.validatorAddress,
-  	reward = obj.rewardList.map { DecCoinJvmConverter.convert(it) },
+  	validatorAddress = obj.getValidatorAddress(),
+  	reward = obj.getRewardList().map { DecCoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: DelegationDelegatorReward):
@@ -268,11 +269,11 @@ public object CommunityPoolSpendProposalWithDepositJvmConverter :
 
   public override fun convert(obj: Distribution.CommunityPoolSpendProposalWithDeposit):
       CommunityPoolSpendProposalWithDeposit = CommunityPoolSpendProposalWithDeposit(
-  	title = obj.title,
-  	description = obj.description,
-  	recipient = obj.recipient,
-  	amount = obj.amount,
-  	deposit = obj.deposit,
+  	title = obj.getTitle(),
+  	description = obj.getDescription(),
+  	recipient = obj.getRecipient(),
+  	amount = obj.getAmount(),
+  	deposit = obj.getDeposit(),
   )
 
   public override fun convert(obj: CommunityPoolSpendProposalWithDeposit):

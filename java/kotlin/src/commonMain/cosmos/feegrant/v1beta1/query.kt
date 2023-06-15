@@ -1,6 +1,6 @@
 // Transform from cosmos/feegrant/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.feegrant.v1beta1
 
@@ -20,15 +20,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryAllowanceRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.QueryAllowanceRequest")
+@SerialName(value = QueryAllowanceRequest.TYPE_URL)
 public data class QueryAllowanceRequest(
   @ProtobufIndex(index = 1)
   public val granter: String,
   @ProtobufIndex(index = 2)
   public val grantee: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.QueryAllowanceRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllowanceRequest> {
     private val delegator: KSerializer<QueryAllowanceRequest> = QueryAllowanceRequest.serializer()
 
@@ -52,11 +57,15 @@ public data class QueryAllowanceRequest(
 }
 
 @Serializable(with = QueryAllowanceResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.QueryAllowanceResponse")
+@SerialName(value = QueryAllowanceResponse.TYPE_URL)
 public data class QueryAllowanceResponse(
   @ProtobufIndex(index = 1)
   public val allowance: Grant,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.QueryAllowanceResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllowanceResponse> {
     private val delegator: KSerializer<QueryAllowanceResponse> = QueryAllowanceResponse.serializer()
 
@@ -80,13 +89,17 @@ public data class QueryAllowanceResponse(
 }
 
 @Serializable(with = QueryAllowancesRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.QueryAllowancesRequest")
+@SerialName(value = QueryAllowancesRequest.TYPE_URL)
 public data class QueryAllowancesRequest(
   @ProtobufIndex(index = 1)
   public val grantee: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.QueryAllowancesRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllowancesRequest> {
     private val delegator: KSerializer<QueryAllowancesRequest> = QueryAllowancesRequest.serializer()
 
@@ -110,13 +123,17 @@ public data class QueryAllowancesRequest(
 }
 
 @Serializable(with = QueryAllowancesResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.QueryAllowancesResponse")
+@SerialName(value = QueryAllowancesResponse.TYPE_URL)
 public data class QueryAllowancesResponse(
   @ProtobufIndex(index = 1)
   public val allowances: List<Grant>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.QueryAllowancesResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllowancesResponse> {
     private val delegator: KSerializer<QueryAllowancesResponse> =
         QueryAllowancesResponse.serializer()
@@ -141,13 +158,17 @@ public data class QueryAllowancesResponse(
 }
 
 @Serializable(with = QueryAllowancesByGranterRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.QueryAllowancesByGranterRequest")
+@SerialName(value = QueryAllowancesByGranterRequest.TYPE_URL)
 public data class QueryAllowancesByGranterRequest(
   @ProtobufIndex(index = 1)
   public val granter: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllowancesByGranterRequest> {
     private val delegator: KSerializer<QueryAllowancesByGranterRequest> =
         QueryAllowancesByGranterRequest.serializer()
@@ -173,13 +194,17 @@ public data class QueryAllowancesByGranterRequest(
 }
 
 @Serializable(with = QueryAllowancesByGranterResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.QueryAllowancesByGranterResponse")
+@SerialName(value = QueryAllowancesByGranterResponse.TYPE_URL)
 public data class QueryAllowancesByGranterResponse(
   @ProtobufIndex(index = 1)
   public val allowances: List<Grant>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllowancesByGranterResponse> {
     private val delegator: KSerializer<QueryAllowancesByGranterResponse> =
         QueryAllowancesByGranterResponse.serializer()

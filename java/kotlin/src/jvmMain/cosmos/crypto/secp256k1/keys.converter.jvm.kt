@@ -1,5 +1,5 @@
 // Transform from cosmos/crypto/secp256k1/keys.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.secp256k1
 
@@ -15,7 +15,7 @@ public object PubKeyJvmConverter : ProtobufTypeMapper<PubKey, Keys.PubKey> {
   public override val parser: Parser<Keys.PubKey> = Keys.PubKey.parser()
 
   public override fun convert(obj: Keys.PubKey): PubKey = PubKey(
-  	key = obj.key.toByteArray(),
+  	key = obj.getKey().toByteArray(),
   )
 
   public override fun convert(obj: PubKey): Keys.PubKey {
@@ -31,7 +31,7 @@ public object PrivKeyJvmConverter : ProtobufTypeMapper<PrivKey, Keys.PrivKey> {
   public override val parser: Parser<Keys.PrivKey> = Keys.PrivKey.parser()
 
   public override fun convert(obj: Keys.PrivKey): PrivKey = PrivKey(
-  	key = obj.key.toByteArray(),
+  	key = obj.getKey().toByteArray(),
   )
 
   public override fun convert(obj: PrivKey): Keys.PrivKey {

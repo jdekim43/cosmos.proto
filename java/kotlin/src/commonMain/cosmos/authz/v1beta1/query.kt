@@ -1,6 +1,6 @@
 // Transform from cosmos/authz/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.authz.v1beta1
 
@@ -20,9 +20,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryGrantsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.QueryGrantsRequest")
+@SerialName(value = QueryGrantsRequest.TYPE_URL)
 public data class QueryGrantsRequest(
   @ProtobufIndex(index = 1)
   public val granter: String,
@@ -32,7 +33,11 @@ public data class QueryGrantsRequest(
   public val msgTypeUrl: String,
   @ProtobufIndex(index = 4)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.QueryGrantsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGrantsRequest> {
     private val delegator: KSerializer<QueryGrantsRequest> = QueryGrantsRequest.serializer()
 
@@ -56,13 +61,17 @@ public data class QueryGrantsRequest(
 }
 
 @Serializable(with = QueryGrantsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.QueryGrantsResponse")
+@SerialName(value = QueryGrantsResponse.TYPE_URL)
 public data class QueryGrantsResponse(
   @ProtobufIndex(index = 1)
   public val grants: List<Grant>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.QueryGrantsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGrantsResponse> {
     private val delegator: KSerializer<QueryGrantsResponse> = QueryGrantsResponse.serializer()
 
@@ -86,13 +95,17 @@ public data class QueryGrantsResponse(
 }
 
 @Serializable(with = QueryGranterGrantsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.QueryGranterGrantsRequest")
+@SerialName(value = QueryGranterGrantsRequest.TYPE_URL)
 public data class QueryGranterGrantsRequest(
   @ProtobufIndex(index = 1)
   public val granter: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.QueryGranterGrantsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGranterGrantsRequest> {
     private val delegator: KSerializer<QueryGranterGrantsRequest> =
         QueryGranterGrantsRequest.serializer()
@@ -117,13 +130,17 @@ public data class QueryGranterGrantsRequest(
 }
 
 @Serializable(with = QueryGranterGrantsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.QueryGranterGrantsResponse")
+@SerialName(value = QueryGranterGrantsResponse.TYPE_URL)
 public data class QueryGranterGrantsResponse(
   @ProtobufIndex(index = 1)
   public val grants: List<GrantAuthorization>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.QueryGranterGrantsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGranterGrantsResponse> {
     private val delegator: KSerializer<QueryGranterGrantsResponse> =
         QueryGranterGrantsResponse.serializer()
@@ -148,13 +165,17 @@ public data class QueryGranterGrantsResponse(
 }
 
 @Serializable(with = QueryGranteeGrantsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.QueryGranteeGrantsRequest")
+@SerialName(value = QueryGranteeGrantsRequest.TYPE_URL)
 public data class QueryGranteeGrantsRequest(
   @ProtobufIndex(index = 1)
   public val grantee: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.QueryGranteeGrantsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGranteeGrantsRequest> {
     private val delegator: KSerializer<QueryGranteeGrantsRequest> =
         QueryGranteeGrantsRequest.serializer()
@@ -179,13 +200,17 @@ public data class QueryGranteeGrantsRequest(
 }
 
 @Serializable(with = QueryGranteeGrantsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.QueryGranteeGrantsResponse")
+@SerialName(value = QueryGranteeGrantsResponse.TYPE_URL)
 public data class QueryGranteeGrantsResponse(
   @ProtobufIndex(index = 1)
   public val grants: List<GrantAuthorization>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.QueryGranteeGrantsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryGranteeGrantsResponse> {
     private val delegator: KSerializer<QueryGranteeGrantsResponse> =
         QueryGranteeGrantsResponse.serializer()

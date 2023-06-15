@@ -1,6 +1,6 @@
 // Transform from cosmos/staking/v1beta1/staking.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -27,11 +27,12 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 import tendermint.abci.ValidatorUpdate
 import tendermint.types.Header
 
 @Serializable
-@SerialName(value = "cosmos.staking.v1beta1.BondStatus")
+@SerialName(value = "/cosmos.staking.v1beta1.BondStatus")
 public enum class BondStatus(
   public val number: Int,
 ) {
@@ -52,7 +53,7 @@ public enum class BondStatus(
 }
 
 @Serializable
-@SerialName(value = "cosmos.staking.v1beta1.Infraction")
+@SerialName(value = "/cosmos.staking.v1beta1.Infraction")
 public enum class Infraction(
   public val number: Int,
 ) {
@@ -71,13 +72,17 @@ public enum class Infraction(
 }
 
 @Serializable(with = HistoricalInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.HistoricalInfo")
+@SerialName(value = HistoricalInfo.TYPE_URL)
 public data class HistoricalInfo(
   @ProtobufIndex(index = 1)
   public val `header`: Header,
   @ProtobufIndex(index = 2)
   public val valset: List<Validator>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.HistoricalInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<HistoricalInfo> {
     private val delegator: KSerializer<HistoricalInfo> = HistoricalInfo.serializer()
 
@@ -101,7 +106,7 @@ public data class HistoricalInfo(
 }
 
 @Serializable(with = CommissionRates.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.CommissionRates")
+@SerialName(value = CommissionRates.TYPE_URL)
 public data class CommissionRates(
   @ProtobufIndex(index = 1)
   public val rate: String,
@@ -109,7 +114,11 @@ public data class CommissionRates(
   public val maxRate: String,
   @ProtobufIndex(index = 3)
   public val maxChangeRate: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.CommissionRates"
+  }
+
   public object KotlinxSerializer : KSerializer<CommissionRates> {
     private val delegator: KSerializer<CommissionRates> = CommissionRates.serializer()
 
@@ -133,13 +142,17 @@ public data class CommissionRates(
 }
 
 @Serializable(with = Commission.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.Commission")
+@SerialName(value = Commission.TYPE_URL)
 public data class Commission(
   @ProtobufIndex(index = 1)
   public val commissionRates: CommissionRates,
   @ProtobufIndex(index = 2)
   public val updateTime: Timestamp,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.Commission"
+  }
+
   public object KotlinxSerializer : KSerializer<Commission> {
     private val delegator: KSerializer<Commission> = Commission.serializer()
 
@@ -163,7 +176,7 @@ public data class Commission(
 }
 
 @Serializable(with = Description.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.Description")
+@SerialName(value = Description.TYPE_URL)
 public data class Description(
   @ProtobufIndex(index = 1)
   public val moniker: String,
@@ -175,7 +188,11 @@ public data class Description(
   public val securityContact: String,
   @ProtobufIndex(index = 5)
   public val details: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.Description"
+  }
+
   public object KotlinxSerializer : KSerializer<Description> {
     private val delegator: KSerializer<Description> = Description.serializer()
 
@@ -199,7 +216,7 @@ public data class Description(
 }
 
 @Serializable(with = Validator.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.Validator")
+@SerialName(value = Validator.TYPE_URL)
 public data class Validator(
   @ProtobufIndex(index = 1)
   public val operatorAddress: String,
@@ -227,7 +244,11 @@ public data class Validator(
   public val unbondingOnHoldRefCount: Long,
   @ProtobufIndex(index = 13)
   public val unbondingIds: List<ULong>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.Validator"
+  }
+
   public object KotlinxSerializer : KSerializer<Validator> {
     private val delegator: KSerializer<Validator> = Validator.serializer()
 
@@ -251,11 +272,15 @@ public data class Validator(
 }
 
 @Serializable(with = ValAddresses.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.ValAddresses")
+@SerialName(value = ValAddresses.TYPE_URL)
 public data class ValAddresses(
   @ProtobufIndex(index = 1)
   public val addresses: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.ValAddresses"
+  }
+
   public object KotlinxSerializer : KSerializer<ValAddresses> {
     private val delegator: KSerializer<ValAddresses> = ValAddresses.serializer()
 
@@ -279,13 +304,17 @@ public data class ValAddresses(
 }
 
 @Serializable(with = DVPair.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.DVPair")
+@SerialName(value = DVPair.TYPE_URL)
 public data class DVPair(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
   @ProtobufIndex(index = 2)
   public val validatorAddress: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.DVPair"
+  }
+
   public object KotlinxSerializer : KSerializer<DVPair> {
     private val delegator: KSerializer<DVPair> = DVPair.serializer()
 
@@ -309,11 +338,15 @@ public data class DVPair(
 }
 
 @Serializable(with = DVPairs.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.DVPairs")
+@SerialName(value = DVPairs.TYPE_URL)
 public data class DVPairs(
   @ProtobufIndex(index = 1)
   public val pairs: List<DVPair>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.DVPairs"
+  }
+
   public object KotlinxSerializer : KSerializer<DVPairs> {
     private val delegator: KSerializer<DVPairs> = DVPairs.serializer()
 
@@ -337,7 +370,7 @@ public data class DVPairs(
 }
 
 @Serializable(with = DVVTriplet.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.DVVTriplet")
+@SerialName(value = DVVTriplet.TYPE_URL)
 public data class DVVTriplet(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -345,7 +378,11 @@ public data class DVVTriplet(
   public val validatorSrcAddress: String,
   @ProtobufIndex(index = 3)
   public val validatorDstAddress: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.DVVTriplet"
+  }
+
   public object KotlinxSerializer : KSerializer<DVVTriplet> {
     private val delegator: KSerializer<DVVTriplet> = DVVTriplet.serializer()
 
@@ -369,11 +406,15 @@ public data class DVVTriplet(
 }
 
 @Serializable(with = DVVTriplets.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.DVVTriplets")
+@SerialName(value = DVVTriplets.TYPE_URL)
 public data class DVVTriplets(
   @ProtobufIndex(index = 1)
   public val triplets: List<DVVTriplet>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.DVVTriplets"
+  }
+
   public object KotlinxSerializer : KSerializer<DVVTriplets> {
     private val delegator: KSerializer<DVVTriplets> = DVVTriplets.serializer()
 
@@ -397,7 +438,7 @@ public data class DVVTriplets(
 }
 
 @Serializable(with = Delegation.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.Delegation")
+@SerialName(value = Delegation.TYPE_URL)
 public data class Delegation(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -405,7 +446,11 @@ public data class Delegation(
   public val validatorAddress: String,
   @ProtobufIndex(index = 3)
   public val shares: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.Delegation"
+  }
+
   public object KotlinxSerializer : KSerializer<Delegation> {
     private val delegator: KSerializer<Delegation> = Delegation.serializer()
 
@@ -429,7 +474,7 @@ public data class Delegation(
 }
 
 @Serializable(with = UnbondingDelegation.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.UnbondingDelegation")
+@SerialName(value = UnbondingDelegation.TYPE_URL)
 public data class UnbondingDelegation(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -437,7 +482,11 @@ public data class UnbondingDelegation(
   public val validatorAddress: String,
   @ProtobufIndex(index = 3)
   public val entries: List<UnbondingDelegationEntry>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.UnbondingDelegation"
+  }
+
   public object KotlinxSerializer : KSerializer<UnbondingDelegation> {
     private val delegator: KSerializer<UnbondingDelegation> = UnbondingDelegation.serializer()
 
@@ -461,7 +510,7 @@ public data class UnbondingDelegation(
 }
 
 @Serializable(with = UnbondingDelegationEntry.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.UnbondingDelegationEntry")
+@SerialName(value = UnbondingDelegationEntry.TYPE_URL)
 public data class UnbondingDelegationEntry(
   @ProtobufIndex(index = 1)
   public val creationHeight: Long,
@@ -475,7 +524,11 @@ public data class UnbondingDelegationEntry(
   public val unbondingId: ULong,
   @ProtobufIndex(index = 6)
   public val unbondingOnHoldRefCount: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.UnbondingDelegationEntry"
+  }
+
   public object KotlinxSerializer : KSerializer<UnbondingDelegationEntry> {
     private val delegator: KSerializer<UnbondingDelegationEntry> =
         UnbondingDelegationEntry.serializer()
@@ -500,7 +553,7 @@ public data class UnbondingDelegationEntry(
 }
 
 @Serializable(with = RedelegationEntry.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.RedelegationEntry")
+@SerialName(value = RedelegationEntry.TYPE_URL)
 public data class RedelegationEntry(
   @ProtobufIndex(index = 1)
   public val creationHeight: Long,
@@ -514,7 +567,11 @@ public data class RedelegationEntry(
   public val unbondingId: ULong,
   @ProtobufIndex(index = 6)
   public val unbondingOnHoldRefCount: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.RedelegationEntry"
+  }
+
   public object KotlinxSerializer : KSerializer<RedelegationEntry> {
     private val delegator: KSerializer<RedelegationEntry> = RedelegationEntry.serializer()
 
@@ -538,7 +595,7 @@ public data class RedelegationEntry(
 }
 
 @Serializable(with = Redelegation.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.Redelegation")
+@SerialName(value = Redelegation.TYPE_URL)
 public data class Redelegation(
   @ProtobufIndex(index = 1)
   public val delegatorAddress: String,
@@ -548,7 +605,11 @@ public data class Redelegation(
   public val validatorDstAddress: String,
   @ProtobufIndex(index = 4)
   public val entries: List<RedelegationEntry>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.Redelegation"
+  }
+
   public object KotlinxSerializer : KSerializer<Redelegation> {
     private val delegator: KSerializer<Redelegation> = Redelegation.serializer()
 
@@ -572,7 +633,7 @@ public data class Redelegation(
 }
 
 @Serializable(with = Params.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.Params")
+@SerialName(value = Params.TYPE_URL)
 public data class Params(
   @ProtobufIndex(index = 1)
   public val unbondingTime: Duration,
@@ -586,7 +647,11 @@ public data class Params(
   public val bondDenom: String,
   @ProtobufIndex(index = 6)
   public val minCommissionRate: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.Params"
+  }
+
   public object KotlinxSerializer : KSerializer<Params> {
     private val delegator: KSerializer<Params> = Params.serializer()
 
@@ -610,13 +675,17 @@ public data class Params(
 }
 
 @Serializable(with = DelegationResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.DelegationResponse")
+@SerialName(value = DelegationResponse.TYPE_URL)
 public data class DelegationResponse(
   @ProtobufIndex(index = 1)
   public val delegation: Delegation,
   @ProtobufIndex(index = 2)
   public val balance: Coin,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.DelegationResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<DelegationResponse> {
     private val delegator: KSerializer<DelegationResponse> = DelegationResponse.serializer()
 
@@ -640,13 +709,17 @@ public data class DelegationResponse(
 }
 
 @Serializable(with = RedelegationEntryResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.RedelegationEntryResponse")
+@SerialName(value = RedelegationEntryResponse.TYPE_URL)
 public data class RedelegationEntryResponse(
   @ProtobufIndex(index = 1)
   public val redelegationEntry: RedelegationEntry,
   @ProtobufIndex(index = 4)
   public val balance: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.RedelegationEntryResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<RedelegationEntryResponse> {
     private val delegator: KSerializer<RedelegationEntryResponse> =
         RedelegationEntryResponse.serializer()
@@ -671,13 +744,17 @@ public data class RedelegationEntryResponse(
 }
 
 @Serializable(with = RedelegationResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.RedelegationResponse")
+@SerialName(value = RedelegationResponse.TYPE_URL)
 public data class RedelegationResponse(
   @ProtobufIndex(index = 1)
   public val redelegation: Redelegation,
   @ProtobufIndex(index = 2)
   public val entries: List<RedelegationEntryResponse>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.RedelegationResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<RedelegationResponse> {
     private val delegator: KSerializer<RedelegationResponse> = RedelegationResponse.serializer()
 
@@ -701,13 +778,17 @@ public data class RedelegationResponse(
 }
 
 @Serializable(with = Pool.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.Pool")
+@SerialName(value = Pool.TYPE_URL)
 public data class Pool(
   @ProtobufIndex(index = 1)
   public val notBondedTokens: String,
   @ProtobufIndex(index = 2)
   public val bondedTokens: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.Pool"
+  }
+
   public object KotlinxSerializer : KSerializer<Pool> {
     private val delegator: KSerializer<Pool> = Pool.serializer()
 
@@ -731,11 +812,15 @@ public data class Pool(
 }
 
 @Serializable(with = ValidatorUpdates.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.ValidatorUpdates")
+@SerialName(value = ValidatorUpdates.TYPE_URL)
 public data class ValidatorUpdates(
   @ProtobufIndex(index = 1)
   public val updates: List<ValidatorUpdate>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.ValidatorUpdates"
+  }
+
   public object KotlinxSerializer : KSerializer<ValidatorUpdates> {
     private val delegator: KSerializer<ValidatorUpdates> = ValidatorUpdates.serializer()
 

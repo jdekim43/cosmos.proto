@@ -1,5 +1,5 @@
 // Transform from cosmos/mint/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.mint.v1beta1
 
@@ -14,8 +14,8 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	minter = MinterJvmConverter.convert(obj.minter),
-  	params = ParamsJvmConverter.convert(obj.params),
+  	minter = MinterJvmConverter.convert(obj.getMinter()),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: GenesisState): Genesis.GenesisState {

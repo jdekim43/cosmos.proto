@@ -1,6 +1,6 @@
 // Transform from cosmos/crypto/keyring/v1/record.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.keyring.v1
 
@@ -20,16 +20,21 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Record.KotlinxSerializer::class)
-@SerialName(value = "cosmos.crypto.keyring.v1.Record")
+@SerialName(value = Record.TYPE_URL)
 public data class Record(
   @ProtobufIndex(index = 1)
   public val name: String,
   @ProtobufIndex(index = 2)
   public val pubKey: Any,
   public val item: ItemOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.crypto.keyring.v1.Record"
+  }
+
   @Serializable
   public sealed interface ItemOneOf {
     @JvmInline
@@ -58,11 +63,15 @@ public data class Record(
   }
 
   @Serializable(with = Local.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.crypto.keyring.v1.Record.Local")
+  @SerialName(value = Local.TYPE_URL)
   public data class Local(
     @ProtobufIndex(index = 1)
     public val privKey: Any,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.crypto.keyring.v1.Record.Local"
+    }
+
     public object KotlinxSerializer : KSerializer<Local> {
       private val delegator: KSerializer<Local> = Local.serializer()
 
@@ -86,11 +95,15 @@ public data class Record(
   }
 
   @Serializable(with = Ledger.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.crypto.keyring.v1.Record.Ledger")
+  @SerialName(value = Ledger.TYPE_URL)
   public data class Ledger(
     @ProtobufIndex(index = 1)
     public val path: BIP44Params,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.crypto.keyring.v1.Record.Ledger"
+    }
+
     public object KotlinxSerializer : KSerializer<Ledger> {
       private val delegator: KSerializer<Ledger> = Ledger.serializer()
 
@@ -114,8 +127,12 @@ public data class Record(
   }
 
   @Serializable(with = Multi.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.crypto.keyring.v1.Record.Multi")
-  public class Multi() {
+  @SerialName(value = Multi.TYPE_URL)
+  public class Multi() : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.crypto.keyring.v1.Record.Multi"
+    }
+
     public object KotlinxSerializer : KSerializer<Multi> {
       private val delegator: KSerializer<Multi> = Multi.serializer()
 
@@ -139,8 +156,12 @@ public data class Record(
   }
 
   @Serializable(with = Offline.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.crypto.keyring.v1.Record.Offline")
-  public class Offline() {
+  @SerialName(value = Offline.TYPE_URL)
+  public class Offline() : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.crypto.keyring.v1.Record.Offline"
+    }
+
     public object KotlinxSerializer : KSerializer<Offline> {
       private val delegator: KSerializer<Offline> = Offline.serializer()
 

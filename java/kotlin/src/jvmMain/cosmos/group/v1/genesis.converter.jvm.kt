@@ -1,5 +1,5 @@
 // Transform from cosmos/group/v1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.v1
 
@@ -16,14 +16,14 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	groupSeq = obj.groupSeq.asKotlinType,
-  	groups = obj.groupsList.map { GroupInfoJvmConverter.convert(it) },
-  	groupMembers = obj.groupMembersList.map { GroupMemberJvmConverter.convert(it) },
-  	groupPolicySeq = obj.groupPolicySeq.asKotlinType,
-  	groupPolicies = obj.groupPoliciesList.map { GroupPolicyInfoJvmConverter.convert(it) },
-  	proposalSeq = obj.proposalSeq.asKotlinType,
-  	proposals = obj.proposalsList.map { ProposalJvmConverter.convert(it) },
-  	votes = obj.votesList.map { VoteJvmConverter.convert(it) },
+  	groupSeq = obj.getGroupSeq().asKotlinType,
+  	groups = obj.getGroupsList().map { GroupInfoJvmConverter.convert(it) },
+  	groupMembers = obj.getGroupMembersList().map { GroupMemberJvmConverter.convert(it) },
+  	groupPolicySeq = obj.getGroupPolicySeq().asKotlinType,
+  	groupPolicies = obj.getGroupPoliciesList().map { GroupPolicyInfoJvmConverter.convert(it) },
+  	proposalSeq = obj.getProposalSeq().asKotlinType,
+  	proposals = obj.getProposalsList().map { ProposalJvmConverter.convert(it) },
+  	votes = obj.getVotesList().map { VoteJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: GenesisState): Genesis.GenesisState {

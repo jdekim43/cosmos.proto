@@ -1,6 +1,6 @@
 // Transform from cosmos/auth/module/v1/module.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.auth.module.v1
 
@@ -18,9 +18,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Module.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.module.v1.Module")
+@SerialName(value = Module.TYPE_URL)
 public data class Module(
   @ProtobufIndex(index = 1)
   public val bech32Prefix: String,
@@ -28,7 +29,11 @@ public data class Module(
   public val moduleAccountPermissions: List<ModuleAccountPermission>,
   @ProtobufIndex(index = 3)
   public val authority: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.module.v1.Module"
+  }
+
   public object KotlinxSerializer : KSerializer<Module> {
     private val delegator: KSerializer<Module> = Module.serializer()
 
@@ -52,13 +57,17 @@ public data class Module(
 }
 
 @Serializable(with = ModuleAccountPermission.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.module.v1.ModuleAccountPermission")
+@SerialName(value = ModuleAccountPermission.TYPE_URL)
 public data class ModuleAccountPermission(
   @ProtobufIndex(index = 1)
   public val account: String,
   @ProtobufIndex(index = 2)
   public val permissions: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.module.v1.ModuleAccountPermission"
+  }
+
   public object KotlinxSerializer : KSerializer<ModuleAccountPermission> {
     private val delegator: KSerializer<ModuleAccountPermission> =
         ModuleAccountPermission.serializer()

@@ -1,5 +1,5 @@
 // Transform from cosmos/upgrade/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.upgrade.v1beta1
 
@@ -38,7 +38,7 @@ public object QueryCurrentPlanResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryCurrentPlanResponse):
       QueryCurrentPlanResponse = QueryCurrentPlanResponse(
-  	plan = PlanJvmConverter.convert(obj.plan),
+  	plan = PlanJvmConverter.convert(obj.getPlan()),
   )
 
   public override fun convert(obj: QueryCurrentPlanResponse):
@@ -59,7 +59,7 @@ public object QueryAppliedPlanRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAppliedPlanRequest): QueryAppliedPlanRequest
       = QueryAppliedPlanRequest(
-  	name = obj.name,
+  	name = obj.getName(),
   )
 
   public override fun convert(obj: QueryAppliedPlanRequest):
@@ -80,7 +80,7 @@ public object QueryAppliedPlanResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAppliedPlanResponse):
       QueryAppliedPlanResponse = QueryAppliedPlanResponse(
-  	height = obj.height,
+  	height = obj.getHeight(),
   )
 
   public override fun convert(obj: QueryAppliedPlanResponse):
@@ -102,7 +102,7 @@ public object QueryUpgradedConsensusStateRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryUpgradedConsensusStateRequest):
       QueryUpgradedConsensusStateRequest = QueryUpgradedConsensusStateRequest(
-  	lastHeight = obj.lastHeight,
+  	lastHeight = obj.getLastHeight(),
   )
 
   public override fun convert(obj: QueryUpgradedConsensusStateRequest):
@@ -124,7 +124,7 @@ public object QueryUpgradedConsensusStateResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryUpgradedConsensusStateResponse):
       QueryUpgradedConsensusStateResponse = QueryUpgradedConsensusStateResponse(
-  	upgradedConsensusState = obj.upgradedConsensusState.toByteArray(),
+  	upgradedConsensusState = obj.getUpgradedConsensusState().toByteArray(),
   )
 
   public override fun convert(obj: QueryUpgradedConsensusStateResponse):
@@ -145,7 +145,7 @@ public object QueryModuleVersionsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryModuleVersionsRequest):
       QueryModuleVersionsRequest = QueryModuleVersionsRequest(
-  	moduleName = obj.moduleName,
+  	moduleName = obj.getModuleName(),
   )
 
   public override fun convert(obj: QueryModuleVersionsRequest):
@@ -166,7 +166,7 @@ public object QueryModuleVersionsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryModuleVersionsResponse):
       QueryModuleVersionsResponse = QueryModuleVersionsResponse(
-  	moduleVersions = obj.moduleVersionsList.map { ModuleVersionJvmConverter.convert(it) },
+  	moduleVersions = obj.getModuleVersionsList().map { ModuleVersionJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: QueryModuleVersionsResponse):
@@ -205,7 +205,7 @@ public object QueryAuthorityResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAuthorityResponse): QueryAuthorityResponse =
       QueryAuthorityResponse(
-  	address = obj.address,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: QueryAuthorityResponse): QueryOuterClass.QueryAuthorityResponse {

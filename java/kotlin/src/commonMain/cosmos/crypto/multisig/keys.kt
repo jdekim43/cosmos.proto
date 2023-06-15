@@ -1,10 +1,11 @@
 // Transform from cosmos/crypto/multisig/keys.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.multisig
 
 import google.protobuf.Any
+import kotlin.String
 import kotlin.UInt
 import kotlin.Unit
 import kotlin.collections.List
@@ -19,15 +20,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = LegacyAminoPubKey.KotlinxSerializer::class)
-@SerialName(value = "cosmos.crypto.multisig.LegacyAminoPubKey")
+@SerialName(value = LegacyAminoPubKey.TYPE_URL)
 public data class LegacyAminoPubKey(
   @ProtobufIndex(index = 1)
   public val threshold: UInt,
   @ProtobufIndex(index = 2)
   public val publicKeys: List<Any>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.crypto.multisig.LegacyAminoPubKey"
+  }
+
   public object KotlinxSerializer : KSerializer<LegacyAminoPubKey> {
     private val delegator: KSerializer<LegacyAminoPubKey> = LegacyAminoPubKey.serializer()
 

@@ -1,5 +1,5 @@
 // Transform from cosmos/base/store/v1beta1/commit_info.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.store.v1beta1
 
@@ -19,9 +19,9 @@ public object CommitInfoJvmConverter :
       CommitInfoOuterClass.CommitInfo.parser()
 
   public override fun convert(obj: CommitInfoOuterClass.CommitInfo): CommitInfo = CommitInfo(
-  	version = obj.version,
-  	storeInfos = obj.storeInfosList.map { StoreInfoJvmConverter.convert(it) },
-  	timestamp = TimestampJvmConverter.convert(obj.timestamp),
+  	version = obj.getVersion(),
+  	storeInfos = obj.getStoreInfosList().map { StoreInfoJvmConverter.convert(it) },
+  	timestamp = TimestampJvmConverter.convert(obj.getTimestamp()),
   )
 
   public override fun convert(obj: CommitInfo): CommitInfoOuterClass.CommitInfo {
@@ -42,8 +42,8 @@ public object StoreInfoJvmConverter : ProtobufTypeMapper<StoreInfo, CommitInfoOu
       CommitInfoOuterClass.StoreInfo.parser()
 
   public override fun convert(obj: CommitInfoOuterClass.StoreInfo): StoreInfo = StoreInfo(
-  	name = obj.name,
-  	commitId = CommitIDJvmConverter.convert(obj.commitId),
+  	name = obj.getName(),
+  	commitId = CommitIDJvmConverter.convert(obj.getCommitId()),
   )
 
   public override fun convert(obj: StoreInfo): CommitInfoOuterClass.StoreInfo {
@@ -62,8 +62,8 @@ public object CommitIDJvmConverter : ProtobufTypeMapper<CommitID, CommitInfoOute
       CommitInfoOuterClass.CommitID.parser()
 
   public override fun convert(obj: CommitInfoOuterClass.CommitID): CommitID = CommitID(
-  	version = obj.version,
-  	hash = obj.hash.toByteArray(),
+  	version = obj.getVersion(),
+  	hash = obj.getHash().toByteArray(),
   )
 
   public override fun convert(obj: CommitID): CommitInfoOuterClass.CommitID {

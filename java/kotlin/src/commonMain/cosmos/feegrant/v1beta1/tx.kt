@@ -1,6 +1,6 @@
 // Transform from cosmos/feegrant/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.feegrant.v1beta1
 
@@ -18,9 +18,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgGrantAllowance.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.MsgGrantAllowance")
+@SerialName(value = MsgGrantAllowance.TYPE_URL)
 public data class MsgGrantAllowance(
   @ProtobufIndex(index = 1)
   public val granter: String,
@@ -28,7 +29,11 @@ public data class MsgGrantAllowance(
   public val grantee: String,
   @ProtobufIndex(index = 3)
   public val allowance: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.MsgGrantAllowance"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgGrantAllowance> {
     private val delegator: KSerializer<MsgGrantAllowance> = MsgGrantAllowance.serializer()
 
@@ -52,8 +57,12 @@ public data class MsgGrantAllowance(
 }
 
 @Serializable(with = MsgGrantAllowanceResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.MsgGrantAllowanceResponse")
-public class MsgGrantAllowanceResponse() {
+@SerialName(value = MsgGrantAllowanceResponse.TYPE_URL)
+public class MsgGrantAllowanceResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.MsgGrantAllowanceResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgGrantAllowanceResponse> {
     private val delegator: KSerializer<MsgGrantAllowanceResponse> =
         MsgGrantAllowanceResponse.serializer()
@@ -78,13 +87,17 @@ public class MsgGrantAllowanceResponse() {
 }
 
 @Serializable(with = MsgRevokeAllowance.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.MsgRevokeAllowance")
+@SerialName(value = MsgRevokeAllowance.TYPE_URL)
 public data class MsgRevokeAllowance(
   @ProtobufIndex(index = 1)
   public val granter: String,
   @ProtobufIndex(index = 2)
   public val grantee: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.MsgRevokeAllowance"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgRevokeAllowance> {
     private val delegator: KSerializer<MsgRevokeAllowance> = MsgRevokeAllowance.serializer()
 
@@ -108,8 +121,12 @@ public data class MsgRevokeAllowance(
 }
 
 @Serializable(with = MsgRevokeAllowanceResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.feegrant.v1beta1.MsgRevokeAllowanceResponse")
-public class MsgRevokeAllowanceResponse() {
+@SerialName(value = MsgRevokeAllowanceResponse.TYPE_URL)
+public class MsgRevokeAllowanceResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.feegrant.v1beta1.MsgRevokeAllowanceResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgRevokeAllowanceResponse> {
     private val delegator: KSerializer<MsgRevokeAllowanceResponse> =
         MsgRevokeAllowanceResponse.serializer()

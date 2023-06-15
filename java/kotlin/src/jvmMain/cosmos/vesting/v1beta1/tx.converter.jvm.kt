@@ -1,5 +1,5 @@
 // Transform from cosmos/vesting/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.vesting.v1beta1
 
@@ -19,11 +19,11 @@ public object MsgCreateVestingAccountJvmConverter :
 
   public override fun convert(obj: Tx.MsgCreateVestingAccount): MsgCreateVestingAccount =
       MsgCreateVestingAccount(
-  	fromAddress = obj.fromAddress,
-  	toAddress = obj.toAddress,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
-  	endTime = obj.endTime,
-  	delayed = obj.delayed,
+  	fromAddress = obj.getFromAddress(),
+  	toAddress = obj.getToAddress(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
+  	endTime = obj.getEndTime(),
+  	delayed = obj.getDelayed(),
   )
 
   public override fun convert(obj: MsgCreateVestingAccount): Tx.MsgCreateVestingAccount {
@@ -66,9 +66,9 @@ public object MsgCreatePermanentLockedAccountJvmConverter :
 
   public override fun convert(obj: Tx.MsgCreatePermanentLockedAccount):
       MsgCreatePermanentLockedAccount = MsgCreatePermanentLockedAccount(
-  	fromAddress = obj.fromAddress,
-  	toAddress = obj.toAddress,
-  	amount = obj.amountList.map { CoinJvmConverter.convert(it) },
+  	fromAddress = obj.getFromAddress(),
+  	toAddress = obj.getToAddress(),
+  	amount = obj.getAmountList().map { CoinJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgCreatePermanentLockedAccount):
@@ -111,10 +111,10 @@ public object MsgCreatePeriodicVestingAccountJvmConverter :
 
   public override fun convert(obj: Tx.MsgCreatePeriodicVestingAccount):
       MsgCreatePeriodicVestingAccount = MsgCreatePeriodicVestingAccount(
-  	fromAddress = obj.fromAddress,
-  	toAddress = obj.toAddress,
-  	startTime = obj.startTime,
-  	vestingPeriods = obj.vestingPeriodsList.map { PeriodJvmConverter.convert(it) },
+  	fromAddress = obj.getFromAddress(),
+  	toAddress = obj.getToAddress(),
+  	startTime = obj.getStartTime(),
+  	vestingPeriods = obj.getVestingPeriodsList().map { PeriodJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: MsgCreatePeriodicVestingAccount):

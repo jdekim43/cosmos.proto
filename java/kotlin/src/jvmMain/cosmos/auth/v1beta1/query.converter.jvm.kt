@@ -1,5 +1,5 @@
 // Transform from cosmos/auth/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.auth.v1beta1
 
@@ -24,7 +24,7 @@ public object QueryAccountsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAccountsRequest): QueryAccountsRequest =
       QueryAccountsRequest(
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAccountsRequest): QueryOuterClass.QueryAccountsRequest {
@@ -44,8 +44,8 @@ public object QueryAccountsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAccountsResponse): QueryAccountsResponse =
       QueryAccountsResponse(
-  	accounts = obj.accountsList.map { AnyJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	accounts = obj.getAccountsList().map { AnyJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAccountsResponse): QueryOuterClass.QueryAccountsResponse {
@@ -66,7 +66,7 @@ public object QueryAccountRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAccountRequest): QueryAccountRequest =
       QueryAccountRequest(
-  	address = obj.address,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: QueryAccountRequest): QueryOuterClass.QueryAccountRequest {
@@ -86,7 +86,7 @@ public object QueryAccountResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAccountResponse): QueryAccountResponse =
       QueryAccountResponse(
-  	account = AnyJvmConverter.convert(obj.account),
+  	account = AnyJvmConverter.convert(obj.getAccount()),
   )
 
   public override fun convert(obj: QueryAccountResponse): QueryOuterClass.QueryAccountResponse {
@@ -124,7 +124,7 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	params = ParamsJvmConverter.convert(obj.params),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {
@@ -163,7 +163,7 @@ public object QueryModuleAccountsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryModuleAccountsResponse):
       QueryModuleAccountsResponse = QueryModuleAccountsResponse(
-  	accounts = obj.accountsList.map { AnyJvmConverter.convert(it) },
+  	accounts = obj.getAccountsList().map { AnyJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: QueryModuleAccountsResponse):
@@ -185,7 +185,7 @@ public object QueryModuleAccountByNameRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryModuleAccountByNameRequest):
       QueryModuleAccountByNameRequest = QueryModuleAccountByNameRequest(
-  	name = obj.name,
+  	name = obj.getName(),
   )
 
   public override fun convert(obj: QueryModuleAccountByNameRequest):
@@ -207,7 +207,7 @@ public object QueryModuleAccountByNameResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryModuleAccountByNameResponse):
       QueryModuleAccountByNameResponse = QueryModuleAccountByNameResponse(
-  	account = AnyJvmConverter.convert(obj.account),
+  	account = AnyJvmConverter.convert(obj.getAccount()),
   )
 
   public override fun convert(obj: QueryModuleAccountByNameResponse):
@@ -246,7 +246,7 @@ public object Bech32PrefixResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.Bech32PrefixResponse): Bech32PrefixResponse =
       Bech32PrefixResponse(
-  	bech32Prefix = obj.bech32Prefix,
+  	bech32Prefix = obj.getBech32Prefix(),
   )
 
   public override fun convert(obj: Bech32PrefixResponse): QueryOuterClass.Bech32PrefixResponse {
@@ -266,7 +266,7 @@ public object AddressBytesToStringRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.AddressBytesToStringRequest):
       AddressBytesToStringRequest = AddressBytesToStringRequest(
-  	addressBytes = obj.addressBytes.toByteArray(),
+  	addressBytes = obj.getAddressBytes().toByteArray(),
   )
 
   public override fun convert(obj: AddressBytesToStringRequest):
@@ -287,7 +287,7 @@ public object AddressBytesToStringResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.AddressBytesToStringResponse):
       AddressBytesToStringResponse = AddressBytesToStringResponse(
-  	addressString = obj.addressString,
+  	addressString = obj.getAddressString(),
   )
 
   public override fun convert(obj: AddressBytesToStringResponse):
@@ -308,7 +308,7 @@ public object AddressStringToBytesRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.AddressStringToBytesRequest):
       AddressStringToBytesRequest = AddressStringToBytesRequest(
-  	addressString = obj.addressString,
+  	addressString = obj.getAddressString(),
   )
 
   public override fun convert(obj: AddressStringToBytesRequest):
@@ -329,7 +329,7 @@ public object AddressStringToBytesResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.AddressStringToBytesResponse):
       AddressStringToBytesResponse = AddressStringToBytesResponse(
-  	addressBytes = obj.addressBytes.toByteArray(),
+  	addressBytes = obj.getAddressBytes().toByteArray(),
   )
 
   public override fun convert(obj: AddressStringToBytesResponse):
@@ -351,8 +351,8 @@ public object QueryAccountAddressByIDRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAccountAddressByIDRequest):
       QueryAccountAddressByIDRequest = QueryAccountAddressByIDRequest(
-  	id = obj.id,
-  	accountId = obj.accountId.asKotlinType,
+  	id = obj.getId(),
+  	accountId = obj.getAccountId().asKotlinType,
   )
 
   public override fun convert(obj: QueryAccountAddressByIDRequest):
@@ -375,7 +375,7 @@ public object QueryAccountAddressByIDResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAccountAddressByIDResponse):
       QueryAccountAddressByIDResponse = QueryAccountAddressByIDResponse(
-  	accountAddress = obj.accountAddress,
+  	accountAddress = obj.getAccountAddress(),
   )
 
   public override fun convert(obj: QueryAccountAddressByIDResponse):
@@ -396,7 +396,7 @@ public object QueryAccountInfoRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAccountInfoRequest): QueryAccountInfoRequest
       = QueryAccountInfoRequest(
-  	address = obj.address,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: QueryAccountInfoRequest):
@@ -417,7 +417,7 @@ public object QueryAccountInfoResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAccountInfoResponse):
       QueryAccountInfoResponse = QueryAccountInfoResponse(
-  	info = BaseAccountJvmConverter.convert(obj.info),
+  	info = BaseAccountJvmConverter.convert(obj.getInfo()),
   )
 
   public override fun convert(obj: QueryAccountInfoResponse):

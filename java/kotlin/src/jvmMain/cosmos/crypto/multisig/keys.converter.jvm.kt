@@ -1,5 +1,5 @@
 // Transform from cosmos/crypto/multisig/keys.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.crypto.multisig
 
@@ -18,8 +18,8 @@ public object LegacyAminoPubKeyJvmConverter :
   public override val parser: Parser<Keys.LegacyAminoPubKey> = Keys.LegacyAminoPubKey.parser()
 
   public override fun convert(obj: Keys.LegacyAminoPubKey): LegacyAminoPubKey = LegacyAminoPubKey(
-  	threshold = obj.threshold.asKotlinType,
-  	publicKeys = obj.publicKeysList.map { AnyJvmConverter.convert(it) },
+  	threshold = obj.getThreshold().asKotlinType,
+  	publicKeys = obj.getPublicKeysList().map { AnyJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: LegacyAminoPubKey): Keys.LegacyAminoPubKey {

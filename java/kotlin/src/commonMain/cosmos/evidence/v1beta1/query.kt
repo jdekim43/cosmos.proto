@@ -1,6 +1,6 @@
 // Transform from cosmos/evidence/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.evidence.v1beta1
 
@@ -25,9 +25,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryEvidenceRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.evidence.v1beta1.QueryEvidenceRequest")
+@SerialName(value = QueryEvidenceRequest.TYPE_URL)
 public data class QueryEvidenceRequest(
   @Deprecated(
     message = "",
@@ -38,7 +39,11 @@ public data class QueryEvidenceRequest(
   public val evidenceHash: ByteArray,
   @ProtobufIndex(index = 2)
   public val hash: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.evidence.v1beta1.QueryEvidenceRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryEvidenceRequest> {
     private val delegator: KSerializer<QueryEvidenceRequest> = QueryEvidenceRequest.serializer()
 
@@ -62,11 +67,15 @@ public data class QueryEvidenceRequest(
 }
 
 @Serializable(with = QueryEvidenceResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.evidence.v1beta1.QueryEvidenceResponse")
+@SerialName(value = QueryEvidenceResponse.TYPE_URL)
 public data class QueryEvidenceResponse(
   @ProtobufIndex(index = 1)
   public val evidence: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.evidence.v1beta1.QueryEvidenceResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryEvidenceResponse> {
     private val delegator: KSerializer<QueryEvidenceResponse> = QueryEvidenceResponse.serializer()
 
@@ -90,11 +99,15 @@ public data class QueryEvidenceResponse(
 }
 
 @Serializable(with = QueryAllEvidenceRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.evidence.v1beta1.QueryAllEvidenceRequest")
+@SerialName(value = QueryAllEvidenceRequest.TYPE_URL)
 public data class QueryAllEvidenceRequest(
   @ProtobufIndex(index = 1)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.evidence.v1beta1.QueryAllEvidenceRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllEvidenceRequest> {
     private val delegator: KSerializer<QueryAllEvidenceRequest> =
         QueryAllEvidenceRequest.serializer()
@@ -119,13 +132,17 @@ public data class QueryAllEvidenceRequest(
 }
 
 @Serializable(with = QueryAllEvidenceResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.evidence.v1beta1.QueryAllEvidenceResponse")
+@SerialName(value = QueryAllEvidenceResponse.TYPE_URL)
 public data class QueryAllEvidenceResponse(
   @ProtobufIndex(index = 1)
   public val evidence: List<Any>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.evidence.v1beta1.QueryAllEvidenceResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryAllEvidenceResponse> {
     private val delegator: KSerializer<QueryAllEvidenceResponse> =
         QueryAllEvidenceResponse.serializer()

@@ -1,6 +1,6 @@
 // Transform from cosmos/authz/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.authz.v1beta1
 
@@ -20,9 +20,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgGrant.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.MsgGrant")
+@SerialName(value = MsgGrant.TYPE_URL)
 public data class MsgGrant(
   @ProtobufIndex(index = 1)
   public val granter: String,
@@ -30,7 +31,11 @@ public data class MsgGrant(
   public val grantee: String,
   @ProtobufIndex(index = 3)
   public val grant: Grant,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.MsgGrant"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgGrant> {
     private val delegator: KSerializer<MsgGrant> = MsgGrant.serializer()
 
@@ -54,11 +59,15 @@ public data class MsgGrant(
 }
 
 @Serializable(with = MsgExecResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.MsgExecResponse")
+@SerialName(value = MsgExecResponse.TYPE_URL)
 public data class MsgExecResponse(
   @ProtobufIndex(index = 1)
   public val results: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.MsgExecResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgExecResponse> {
     private val delegator: KSerializer<MsgExecResponse> = MsgExecResponse.serializer()
 
@@ -82,13 +91,17 @@ public data class MsgExecResponse(
 }
 
 @Serializable(with = MsgExec.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.MsgExec")
+@SerialName(value = MsgExec.TYPE_URL)
 public data class MsgExec(
   @ProtobufIndex(index = 1)
   public val grantee: String,
   @ProtobufIndex(index = 2)
   public val msgs: List<Any>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.MsgExec"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgExec> {
     private val delegator: KSerializer<MsgExec> = MsgExec.serializer()
 
@@ -112,8 +125,12 @@ public data class MsgExec(
 }
 
 @Serializable(with = MsgGrantResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.MsgGrantResponse")
-public class MsgGrantResponse() {
+@SerialName(value = MsgGrantResponse.TYPE_URL)
+public class MsgGrantResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.MsgGrantResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgGrantResponse> {
     private val delegator: KSerializer<MsgGrantResponse> = MsgGrantResponse.serializer()
 
@@ -137,7 +154,7 @@ public class MsgGrantResponse() {
 }
 
 @Serializable(with = MsgRevoke.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.MsgRevoke")
+@SerialName(value = MsgRevoke.TYPE_URL)
 public data class MsgRevoke(
   @ProtobufIndex(index = 1)
   public val granter: String,
@@ -145,7 +162,11 @@ public data class MsgRevoke(
   public val grantee: String,
   @ProtobufIndex(index = 3)
   public val msgTypeUrl: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.MsgRevoke"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgRevoke> {
     private val delegator: KSerializer<MsgRevoke> = MsgRevoke.serializer()
 
@@ -169,8 +190,12 @@ public data class MsgRevoke(
 }
 
 @Serializable(with = MsgRevokeResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.authz.v1beta1.MsgRevokeResponse")
-public class MsgRevokeResponse() {
+@SerialName(value = MsgRevokeResponse.TYPE_URL)
+public class MsgRevokeResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.authz.v1beta1.MsgRevokeResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgRevokeResponse> {
     private val delegator: KSerializer<MsgRevokeResponse> = MsgRevokeResponse.serializer()
 

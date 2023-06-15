@@ -1,5 +1,5 @@
 // Transform from cosmos/staking/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -18,13 +18,13 @@ public object MsgCreateValidatorJvmConverter :
   public override val parser: Parser<Tx.MsgCreateValidator> = Tx.MsgCreateValidator.parser()
 
   public override fun convert(obj: Tx.MsgCreateValidator): MsgCreateValidator = MsgCreateValidator(
-  	description = DescriptionJvmConverter.convert(obj.description),
-  	commission = CommissionRatesJvmConverter.convert(obj.commission),
-  	minSelfDelegation = obj.minSelfDelegation,
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
-  	pubkey = AnyJvmConverter.convert(obj.pubkey),
-  	`value` = CoinJvmConverter.convert(obj.`value`),
+  	description = DescriptionJvmConverter.convert(obj.getDescription()),
+  	commission = CommissionRatesJvmConverter.convert(obj.getCommission()),
+  	minSelfDelegation = obj.getMinSelfDelegation(),
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
+  	pubkey = AnyJvmConverter.convert(obj.getPubkey()),
+  	`value` = CoinJvmConverter.convert(obj.getValue()),
   )
 
   public override fun convert(obj: MsgCreateValidator): Tx.MsgCreateValidator {
@@ -65,10 +65,10 @@ public object MsgEditValidatorJvmConverter :
   public override val parser: Parser<Tx.MsgEditValidator> = Tx.MsgEditValidator.parser()
 
   public override fun convert(obj: Tx.MsgEditValidator): MsgEditValidator = MsgEditValidator(
-  	description = DescriptionJvmConverter.convert(obj.description),
-  	validatorAddress = obj.validatorAddress,
-  	commissionRate = obj.commissionRate,
-  	minSelfDelegation = obj.minSelfDelegation,
+  	description = DescriptionJvmConverter.convert(obj.getDescription()),
+  	validatorAddress = obj.getValidatorAddress(),
+  	commissionRate = obj.getCommissionRate(),
+  	minSelfDelegation = obj.getMinSelfDelegation(),
   )
 
   public override fun convert(obj: MsgEditValidator): Tx.MsgEditValidator {
@@ -105,9 +105,9 @@ public object MsgDelegateJvmConverter : ProtobufTypeMapper<MsgDelegate, Tx.MsgDe
   public override val parser: Parser<Tx.MsgDelegate> = Tx.MsgDelegate.parser()
 
   public override fun convert(obj: Tx.MsgDelegate): MsgDelegate = MsgDelegate(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
-  	amount = CoinJvmConverter.convert(obj.amount),
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
+  	amount = CoinJvmConverter.convert(obj.getAmount()),
   )
 
   public override fun convert(obj: MsgDelegate): Tx.MsgDelegate {
@@ -142,10 +142,10 @@ public object MsgBeginRedelegateJvmConverter :
   public override val parser: Parser<Tx.MsgBeginRedelegate> = Tx.MsgBeginRedelegate.parser()
 
   public override fun convert(obj: Tx.MsgBeginRedelegate): MsgBeginRedelegate = MsgBeginRedelegate(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorSrcAddress = obj.validatorSrcAddress,
-  	validatorDstAddress = obj.validatorDstAddress,
-  	amount = CoinJvmConverter.convert(obj.amount),
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorSrcAddress = obj.getValidatorSrcAddress(),
+  	validatorDstAddress = obj.getValidatorDstAddress(),
+  	amount = CoinJvmConverter.convert(obj.getAmount()),
   )
 
   public override fun convert(obj: MsgBeginRedelegate): Tx.MsgBeginRedelegate {
@@ -168,7 +168,7 @@ public object MsgBeginRedelegateResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgBeginRedelegateResponse): MsgBeginRedelegateResponse =
       MsgBeginRedelegateResponse(
-  	completionTime = TimestampJvmConverter.convert(obj.completionTime),
+  	completionTime = TimestampJvmConverter.convert(obj.getCompletionTime()),
   )
 
   public override fun convert(obj: MsgBeginRedelegateResponse): Tx.MsgBeginRedelegateResponse {
@@ -184,9 +184,9 @@ public object MsgUndelegateJvmConverter : ProtobufTypeMapper<MsgUndelegate, Tx.M
   public override val parser: Parser<Tx.MsgUndelegate> = Tx.MsgUndelegate.parser()
 
   public override fun convert(obj: Tx.MsgUndelegate): MsgUndelegate = MsgUndelegate(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
-  	amount = CoinJvmConverter.convert(obj.amount),
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
+  	amount = CoinJvmConverter.convert(obj.getAmount()),
   )
 
   public override fun convert(obj: MsgUndelegate): Tx.MsgUndelegate {
@@ -206,7 +206,7 @@ public object MsgUndelegateResponseJvmConverter :
 
   public override fun convert(obj: Tx.MsgUndelegateResponse): MsgUndelegateResponse =
       MsgUndelegateResponse(
-  	completionTime = TimestampJvmConverter.convert(obj.completionTime),
+  	completionTime = TimestampJvmConverter.convert(obj.getCompletionTime()),
   )
 
   public override fun convert(obj: MsgUndelegateResponse): Tx.MsgUndelegateResponse {
@@ -226,10 +226,10 @@ public object MsgCancelUnbondingDelegationJvmConverter :
 
   public override fun convert(obj: Tx.MsgCancelUnbondingDelegation): MsgCancelUnbondingDelegation =
       MsgCancelUnbondingDelegation(
-  	delegatorAddress = obj.delegatorAddress,
-  	validatorAddress = obj.validatorAddress,
-  	amount = CoinJvmConverter.convert(obj.amount),
-  	creationHeight = obj.creationHeight,
+  	delegatorAddress = obj.getDelegatorAddress(),
+  	validatorAddress = obj.getValidatorAddress(),
+  	amount = CoinJvmConverter.convert(obj.getAmount()),
+  	creationHeight = obj.getCreationHeight(),
   )
 
   public override fun convert(obj: MsgCancelUnbondingDelegation): Tx.MsgCancelUnbondingDelegation {
@@ -269,8 +269,8 @@ public object MsgUpdateParamsJvmConverter : ProtobufTypeMapper<MsgUpdateParams, 
   public override val parser: Parser<Tx.MsgUpdateParams> = Tx.MsgUpdateParams.parser()
 
   public override fun convert(obj: Tx.MsgUpdateParams): MsgUpdateParams = MsgUpdateParams(
-  	authority = obj.authority,
-  	params = ParamsJvmConverter.convert(obj.params),
+  	authority = obj.getAuthority(),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: MsgUpdateParams): Tx.MsgUpdateParams {

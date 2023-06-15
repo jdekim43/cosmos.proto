@@ -1,6 +1,6 @@
 // Transform from cosmos/bank/v1beta1/genesis.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -19,9 +19,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = GenesisState.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.GenesisState")
+@SerialName(value = GenesisState.TYPE_URL)
 public data class GenesisState(
   @ProtobufIndex(index = 1)
   public val params: Params,
@@ -33,7 +34,11 @@ public data class GenesisState(
   public val denomMetadata: List<Metadata>,
   @ProtobufIndex(index = 5)
   public val sendEnabled: List<SendEnabled>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.GenesisState"
+  }
+
   public object KotlinxSerializer : KSerializer<GenesisState> {
     private val delegator: KSerializer<GenesisState> = GenesisState.serializer()
 
@@ -57,13 +62,17 @@ public data class GenesisState(
 }
 
 @Serializable(with = Balance.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.Balance")
+@SerialName(value = Balance.TYPE_URL)
 public data class Balance(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val coins: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.Balance"
+  }
+
   public object KotlinxSerializer : KSerializer<Balance> {
     private val delegator: KSerializer<Balance> = Balance.serializer()
 

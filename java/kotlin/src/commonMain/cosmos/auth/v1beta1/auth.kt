@@ -1,6 +1,6 @@
 // Transform from cosmos/auth/v1beta1/auth.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.auth.v1beta1
 
@@ -21,9 +21,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = BaseAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.BaseAccount")
+@SerialName(value = BaseAccount.TYPE_URL)
 public data class BaseAccount(
   @ProtobufIndex(index = 1)
   public val address: String,
@@ -33,7 +34,11 @@ public data class BaseAccount(
   public val accountNumber: ULong,
   @ProtobufIndex(index = 4)
   public val sequence: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.BaseAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<BaseAccount> {
     private val delegator: KSerializer<BaseAccount> = BaseAccount.serializer()
 
@@ -57,7 +62,7 @@ public data class BaseAccount(
 }
 
 @Serializable(with = ModuleAccount.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.ModuleAccount")
+@SerialName(value = ModuleAccount.TYPE_URL)
 public data class ModuleAccount(
   @ProtobufIndex(index = 1)
   public val baseAccount: BaseAccount,
@@ -65,7 +70,11 @@ public data class ModuleAccount(
   public val name: String,
   @ProtobufIndex(index = 3)
   public val permissions: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.ModuleAccount"
+  }
+
   public object KotlinxSerializer : KSerializer<ModuleAccount> {
     private val delegator: KSerializer<ModuleAccount> = ModuleAccount.serializer()
 
@@ -89,13 +98,17 @@ public data class ModuleAccount(
 }
 
 @Serializable(with = ModuleCredential.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.ModuleCredential")
+@SerialName(value = ModuleCredential.TYPE_URL)
 public data class ModuleCredential(
   @ProtobufIndex(index = 1)
   public val moduleName: String,
   @ProtobufIndex(index = 2)
   public val derivationKeys: List<ByteArray>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.ModuleCredential"
+  }
+
   public object KotlinxSerializer : KSerializer<ModuleCredential> {
     private val delegator: KSerializer<ModuleCredential> = ModuleCredential.serializer()
 
@@ -119,7 +132,7 @@ public data class ModuleCredential(
 }
 
 @Serializable(with = Params.KotlinxSerializer::class)
-@SerialName(value = "cosmos.auth.v1beta1.Params")
+@SerialName(value = Params.TYPE_URL)
 public data class Params(
   @ProtobufIndex(index = 1)
   public val maxMemoCharacters: ULong,
@@ -131,7 +144,11 @@ public data class Params(
   public val sigVerifyCostEd25519: ULong,
   @ProtobufIndex(index = 5)
   public val sigVerifyCostSecp256K1: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.auth.v1beta1.Params"
+  }
+
   public object KotlinxSerializer : KSerializer<Params> {
     private val delegator: KSerializer<Params> = Params.serializer()
 

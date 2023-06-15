@@ -1,6 +1,6 @@
 // Transform from cosmos/group/v1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.v1
 
@@ -22,9 +22,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable
-@SerialName(value = "cosmos.group.v1.Exec")
+@SerialName(value = "/cosmos.group.v1.Exec")
 public enum class Exec(
   public val number: Int,
 ) {
@@ -41,7 +42,7 @@ public enum class Exec(
 }
 
 @Serializable(with = MsgCreateGroup.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgCreateGroup")
+@SerialName(value = MsgCreateGroup.TYPE_URL)
 public data class MsgCreateGroup(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -49,7 +50,11 @@ public data class MsgCreateGroup(
   public val members: List<MemberRequest>,
   @ProtobufIndex(index = 3)
   public val metadata: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgCreateGroup"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateGroup> {
     private val delegator: KSerializer<MsgCreateGroup> = MsgCreateGroup.serializer()
 
@@ -73,11 +78,15 @@ public data class MsgCreateGroup(
 }
 
 @Serializable(with = MsgCreateGroupResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgCreateGroupResponse")
+@SerialName(value = MsgCreateGroupResponse.TYPE_URL)
 public data class MsgCreateGroupResponse(
   @ProtobufIndex(index = 1)
   public val groupId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgCreateGroupResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateGroupResponse> {
     private val delegator: KSerializer<MsgCreateGroupResponse> = MsgCreateGroupResponse.serializer()
 
@@ -101,7 +110,7 @@ public data class MsgCreateGroupResponse(
 }
 
 @Serializable(with = MsgUpdateGroupMembers.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupMembers")
+@SerialName(value = MsgUpdateGroupMembers.TYPE_URL)
 public data class MsgUpdateGroupMembers(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -109,7 +118,11 @@ public data class MsgUpdateGroupMembers(
   public val groupId: ULong,
   @ProtobufIndex(index = 3)
   public val memberUpdates: List<MemberRequest>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupMembers"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupMembers> {
     private val delegator: KSerializer<MsgUpdateGroupMembers> = MsgUpdateGroupMembers.serializer()
 
@@ -133,8 +146,12 @@ public data class MsgUpdateGroupMembers(
 }
 
 @Serializable(with = MsgUpdateGroupMembersResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupMembersResponse")
-public class MsgUpdateGroupMembersResponse() {
+@SerialName(value = MsgUpdateGroupMembersResponse.TYPE_URL)
+public class MsgUpdateGroupMembersResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupMembersResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupMembersResponse> {
     private val delegator: KSerializer<MsgUpdateGroupMembersResponse> =
         MsgUpdateGroupMembersResponse.serializer()
@@ -159,7 +176,7 @@ public class MsgUpdateGroupMembersResponse() {
 }
 
 @Serializable(with = MsgUpdateGroupAdmin.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupAdmin")
+@SerialName(value = MsgUpdateGroupAdmin.TYPE_URL)
 public data class MsgUpdateGroupAdmin(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -167,7 +184,11 @@ public data class MsgUpdateGroupAdmin(
   public val groupId: ULong,
   @ProtobufIndex(index = 3)
   public val newAdmin: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupAdmin"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupAdmin> {
     private val delegator: KSerializer<MsgUpdateGroupAdmin> = MsgUpdateGroupAdmin.serializer()
 
@@ -191,8 +212,12 @@ public data class MsgUpdateGroupAdmin(
 }
 
 @Serializable(with = MsgUpdateGroupAdminResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupAdminResponse")
-public class MsgUpdateGroupAdminResponse() {
+@SerialName(value = MsgUpdateGroupAdminResponse.TYPE_URL)
+public class MsgUpdateGroupAdminResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupAdminResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupAdminResponse> {
     private val delegator: KSerializer<MsgUpdateGroupAdminResponse> =
         MsgUpdateGroupAdminResponse.serializer()
@@ -217,7 +242,7 @@ public class MsgUpdateGroupAdminResponse() {
 }
 
 @Serializable(with = MsgUpdateGroupMetadata.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupMetadata")
+@SerialName(value = MsgUpdateGroupMetadata.TYPE_URL)
 public data class MsgUpdateGroupMetadata(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -225,7 +250,11 @@ public data class MsgUpdateGroupMetadata(
   public val groupId: ULong,
   @ProtobufIndex(index = 3)
   public val metadata: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupMetadata"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupMetadata> {
     private val delegator: KSerializer<MsgUpdateGroupMetadata> = MsgUpdateGroupMetadata.serializer()
 
@@ -249,8 +278,12 @@ public data class MsgUpdateGroupMetadata(
 }
 
 @Serializable(with = MsgUpdateGroupMetadataResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupMetadataResponse")
-public class MsgUpdateGroupMetadataResponse() {
+@SerialName(value = MsgUpdateGroupMetadataResponse.TYPE_URL)
+public class MsgUpdateGroupMetadataResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupMetadataResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupMetadataResponse> {
     private val delegator: KSerializer<MsgUpdateGroupMetadataResponse> =
         MsgUpdateGroupMetadataResponse.serializer()
@@ -275,7 +308,7 @@ public class MsgUpdateGroupMetadataResponse() {
 }
 
 @Serializable(with = MsgCreateGroupPolicy.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgCreateGroupPolicy")
+@SerialName(value = MsgCreateGroupPolicy.TYPE_URL)
 public data class MsgCreateGroupPolicy(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -285,7 +318,11 @@ public data class MsgCreateGroupPolicy(
   public val metadata: String,
   @ProtobufIndex(index = 4)
   public val decisionPolicy: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgCreateGroupPolicy"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateGroupPolicy> {
     private val delegator: KSerializer<MsgCreateGroupPolicy> = MsgCreateGroupPolicy.serializer()
 
@@ -309,11 +346,15 @@ public data class MsgCreateGroupPolicy(
 }
 
 @Serializable(with = MsgCreateGroupPolicyResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgCreateGroupPolicyResponse")
+@SerialName(value = MsgCreateGroupPolicyResponse.TYPE_URL)
 public data class MsgCreateGroupPolicyResponse(
   @ProtobufIndex(index = 1)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgCreateGroupPolicyResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateGroupPolicyResponse> {
     private val delegator: KSerializer<MsgCreateGroupPolicyResponse> =
         MsgCreateGroupPolicyResponse.serializer()
@@ -338,7 +379,7 @@ public data class MsgCreateGroupPolicyResponse(
 }
 
 @Serializable(with = MsgUpdateGroupPolicyAdmin.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupPolicyAdmin")
+@SerialName(value = MsgUpdateGroupPolicyAdmin.TYPE_URL)
 public data class MsgUpdateGroupPolicyAdmin(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -346,7 +387,11 @@ public data class MsgUpdateGroupPolicyAdmin(
   public val groupPolicyAddress: String,
   @ProtobufIndex(index = 3)
   public val newAdmin: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupPolicyAdmin> {
     private val delegator: KSerializer<MsgUpdateGroupPolicyAdmin> =
         MsgUpdateGroupPolicyAdmin.serializer()
@@ -371,8 +416,12 @@ public data class MsgUpdateGroupPolicyAdmin(
 }
 
 @Serializable(with = MsgUpdateGroupPolicyAdminResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse")
-public class MsgUpdateGroupPolicyAdminResponse() {
+@SerialName(value = MsgUpdateGroupPolicyAdminResponse.TYPE_URL)
+public class MsgUpdateGroupPolicyAdminResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupPolicyAdminResponse> {
     private val delegator: KSerializer<MsgUpdateGroupPolicyAdminResponse> =
         MsgUpdateGroupPolicyAdminResponse.serializer()
@@ -398,7 +447,7 @@ public class MsgUpdateGroupPolicyAdminResponse() {
 }
 
 @Serializable(with = MsgCreateGroupWithPolicy.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgCreateGroupWithPolicy")
+@SerialName(value = MsgCreateGroupWithPolicy.TYPE_URL)
 public data class MsgCreateGroupWithPolicy(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -412,7 +461,11 @@ public data class MsgCreateGroupWithPolicy(
   public val groupPolicyAsAdmin: Boolean,
   @ProtobufIndex(index = 6)
   public val decisionPolicy: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgCreateGroupWithPolicy"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateGroupWithPolicy> {
     private val delegator: KSerializer<MsgCreateGroupWithPolicy> =
         MsgCreateGroupWithPolicy.serializer()
@@ -437,13 +490,17 @@ public data class MsgCreateGroupWithPolicy(
 }
 
 @Serializable(with = MsgCreateGroupWithPolicyResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgCreateGroupWithPolicyResponse")
+@SerialName(value = MsgCreateGroupWithPolicyResponse.TYPE_URL)
 public data class MsgCreateGroupWithPolicyResponse(
   @ProtobufIndex(index = 1)
   public val groupId: ULong,
   @ProtobufIndex(index = 2)
   public val groupPolicyAddress: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgCreateGroupWithPolicyResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgCreateGroupWithPolicyResponse> {
     private val delegator: KSerializer<MsgCreateGroupWithPolicyResponse> =
         MsgCreateGroupWithPolicyResponse.serializer()
@@ -469,7 +526,7 @@ public data class MsgCreateGroupWithPolicyResponse(
 }
 
 @Serializable(with = MsgUpdateGroupPolicyDecisionPolicy.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy")
+@SerialName(value = MsgUpdateGroupPolicyDecisionPolicy.TYPE_URL)
 public data class MsgUpdateGroupPolicyDecisionPolicy(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -477,7 +534,11 @@ public data class MsgUpdateGroupPolicyDecisionPolicy(
   public val groupPolicyAddress: String,
   @ProtobufIndex(index = 3)
   public val decisionPolicy: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupPolicyDecisionPolicy> {
     private val delegator: KSerializer<MsgUpdateGroupPolicyDecisionPolicy> =
         MsgUpdateGroupPolicyDecisionPolicy.serializer()
@@ -503,8 +564,13 @@ public data class MsgUpdateGroupPolicyDecisionPolicy(
 }
 
 @Serializable(with = MsgUpdateGroupPolicyDecisionPolicyResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse")
-public class MsgUpdateGroupPolicyDecisionPolicyResponse() {
+@SerialName(value = MsgUpdateGroupPolicyDecisionPolicyResponse.TYPE_URL)
+public class MsgUpdateGroupPolicyDecisionPolicyResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupPolicyDecisionPolicyResponse> {
     private val delegator: KSerializer<MsgUpdateGroupPolicyDecisionPolicyResponse> =
         MsgUpdateGroupPolicyDecisionPolicyResponse.serializer()
@@ -530,7 +596,7 @@ public class MsgUpdateGroupPolicyDecisionPolicyResponse() {
 }
 
 @Serializable(with = MsgUpdateGroupPolicyMetadata.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupPolicyMetadata")
+@SerialName(value = MsgUpdateGroupPolicyMetadata.TYPE_URL)
 public data class MsgUpdateGroupPolicyMetadata(
   @ProtobufIndex(index = 1)
   public val admin: String,
@@ -538,7 +604,11 @@ public data class MsgUpdateGroupPolicyMetadata(
   public val groupPolicyAddress: String,
   @ProtobufIndex(index = 3)
   public val metadata: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupPolicyMetadata> {
     private val delegator: KSerializer<MsgUpdateGroupPolicyMetadata> =
         MsgUpdateGroupPolicyMetadata.serializer()
@@ -563,8 +633,12 @@ public data class MsgUpdateGroupPolicyMetadata(
 }
 
 @Serializable(with = MsgUpdateGroupPolicyMetadataResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse")
-public class MsgUpdateGroupPolicyMetadataResponse() {
+@SerialName(value = MsgUpdateGroupPolicyMetadataResponse.TYPE_URL)
+public class MsgUpdateGroupPolicyMetadataResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgUpdateGroupPolicyMetadataResponse> {
     private val delegator: KSerializer<MsgUpdateGroupPolicyMetadataResponse> =
         MsgUpdateGroupPolicyMetadataResponse.serializer()
@@ -590,7 +664,7 @@ public class MsgUpdateGroupPolicyMetadataResponse() {
 }
 
 @Serializable(with = MsgSubmitProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgSubmitProposal")
+@SerialName(value = MsgSubmitProposal.TYPE_URL)
 public data class MsgSubmitProposal(
   @ProtobufIndex(index = 1)
   public val groupPolicyAddress: String,
@@ -606,7 +680,11 @@ public data class MsgSubmitProposal(
   public val title: String,
   @ProtobufIndex(index = 7)
   public val summary: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgSubmitProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSubmitProposal> {
     private val delegator: KSerializer<MsgSubmitProposal> = MsgSubmitProposal.serializer()
 
@@ -630,11 +708,15 @@ public data class MsgSubmitProposal(
 }
 
 @Serializable(with = MsgSubmitProposalResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgSubmitProposalResponse")
+@SerialName(value = MsgSubmitProposalResponse.TYPE_URL)
 public data class MsgSubmitProposalResponse(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgSubmitProposalResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSubmitProposalResponse> {
     private val delegator: KSerializer<MsgSubmitProposalResponse> =
         MsgSubmitProposalResponse.serializer()
@@ -659,13 +741,17 @@ public data class MsgSubmitProposalResponse(
 }
 
 @Serializable(with = MsgWithdrawProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgWithdrawProposal")
+@SerialName(value = MsgWithdrawProposal.TYPE_URL)
 public data class MsgWithdrawProposal(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
   @ProtobufIndex(index = 2)
   public val address: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgWithdrawProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgWithdrawProposal> {
     private val delegator: KSerializer<MsgWithdrawProposal> = MsgWithdrawProposal.serializer()
 
@@ -689,8 +775,12 @@ public data class MsgWithdrawProposal(
 }
 
 @Serializable(with = MsgWithdrawProposalResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgWithdrawProposalResponse")
-public class MsgWithdrawProposalResponse() {
+@SerialName(value = MsgWithdrawProposalResponse.TYPE_URL)
+public class MsgWithdrawProposalResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgWithdrawProposalResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgWithdrawProposalResponse> {
     private val delegator: KSerializer<MsgWithdrawProposalResponse> =
         MsgWithdrawProposalResponse.serializer()
@@ -715,7 +805,7 @@ public class MsgWithdrawProposalResponse() {
 }
 
 @Serializable(with = MsgVote.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgVote")
+@SerialName(value = MsgVote.TYPE_URL)
 public data class MsgVote(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
@@ -727,7 +817,11 @@ public data class MsgVote(
   public val metadata: String,
   @ProtobufIndex(index = 5)
   public val exec: Exec,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgVote"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgVote> {
     private val delegator: KSerializer<MsgVote> = MsgVote.serializer()
 
@@ -751,8 +845,12 @@ public data class MsgVote(
 }
 
 @Serializable(with = MsgVoteResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgVoteResponse")
-public class MsgVoteResponse() {
+@SerialName(value = MsgVoteResponse.TYPE_URL)
+public class MsgVoteResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgVoteResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgVoteResponse> {
     private val delegator: KSerializer<MsgVoteResponse> = MsgVoteResponse.serializer()
 
@@ -776,13 +874,17 @@ public class MsgVoteResponse() {
 }
 
 @Serializable(with = MsgExec.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgExec")
+@SerialName(value = MsgExec.TYPE_URL)
 public data class MsgExec(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
   @ProtobufIndex(index = 2)
   public val executor: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgExec"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgExec> {
     private val delegator: KSerializer<MsgExec> = MsgExec.serializer()
 
@@ -806,11 +908,15 @@ public data class MsgExec(
 }
 
 @Serializable(with = MsgExecResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgExecResponse")
+@SerialName(value = MsgExecResponse.TYPE_URL)
 public data class MsgExecResponse(
   @ProtobufIndex(index = 2)
   public val result: ProposalExecutorResult,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgExecResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgExecResponse> {
     private val delegator: KSerializer<MsgExecResponse> = MsgExecResponse.serializer()
 
@@ -834,13 +940,17 @@ public data class MsgExecResponse(
 }
 
 @Serializable(with = MsgLeaveGroup.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgLeaveGroup")
+@SerialName(value = MsgLeaveGroup.TYPE_URL)
 public data class MsgLeaveGroup(
   @ProtobufIndex(index = 1)
   public val address: String,
   @ProtobufIndex(index = 2)
   public val groupId: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgLeaveGroup"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgLeaveGroup> {
     private val delegator: KSerializer<MsgLeaveGroup> = MsgLeaveGroup.serializer()
 
@@ -864,8 +974,12 @@ public data class MsgLeaveGroup(
 }
 
 @Serializable(with = MsgLeaveGroupResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.group.v1.MsgLeaveGroupResponse")
-public class MsgLeaveGroupResponse() {
+@SerialName(value = MsgLeaveGroupResponse.TYPE_URL)
+public class MsgLeaveGroupResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.group.v1.MsgLeaveGroupResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgLeaveGroupResponse> {
     private val delegator: KSerializer<MsgLeaveGroupResponse> = MsgLeaveGroupResponse.serializer()
 

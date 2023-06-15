@@ -1,6 +1,6 @@
 // Transform from cosmos/params/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.params.v1beta1
 
@@ -18,15 +18,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryParamsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.params.v1beta1.QueryParamsRequest")
+@SerialName(value = QueryParamsRequest.TYPE_URL)
 public data class QueryParamsRequest(
   @ProtobufIndex(index = 1)
   public val subspace: String,
   @ProtobufIndex(index = 2)
   public val key: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.params.v1beta1.QueryParamsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsRequest> {
     private val delegator: KSerializer<QueryParamsRequest> = QueryParamsRequest.serializer()
 
@@ -50,11 +55,15 @@ public data class QueryParamsRequest(
 }
 
 @Serializable(with = QueryParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.params.v1beta1.QueryParamsResponse")
+@SerialName(value = QueryParamsResponse.TYPE_URL)
 public data class QueryParamsResponse(
   @ProtobufIndex(index = 1)
   public val `param`: ParamChange,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.params.v1beta1.QueryParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsResponse> {
     private val delegator: KSerializer<QueryParamsResponse> = QueryParamsResponse.serializer()
 
@@ -78,8 +87,12 @@ public data class QueryParamsResponse(
 }
 
 @Serializable(with = QuerySubspacesRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.params.v1beta1.QuerySubspacesRequest")
-public class QuerySubspacesRequest() {
+@SerialName(value = QuerySubspacesRequest.TYPE_URL)
+public class QuerySubspacesRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.params.v1beta1.QuerySubspacesRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySubspacesRequest> {
     private val delegator: KSerializer<QuerySubspacesRequest> = QuerySubspacesRequest.serializer()
 
@@ -103,11 +116,15 @@ public class QuerySubspacesRequest() {
 }
 
 @Serializable(with = QuerySubspacesResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.params.v1beta1.QuerySubspacesResponse")
+@SerialName(value = QuerySubspacesResponse.TYPE_URL)
 public data class QuerySubspacesResponse(
   @ProtobufIndex(index = 1)
   public val subspaces: List<Subspace>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.params.v1beta1.QuerySubspacesResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QuerySubspacesResponse> {
     private val delegator: KSerializer<QuerySubspacesResponse> = QuerySubspacesResponse.serializer()
 
@@ -131,13 +148,17 @@ public data class QuerySubspacesResponse(
 }
 
 @Serializable(with = Subspace.KotlinxSerializer::class)
-@SerialName(value = "cosmos.params.v1beta1.Subspace")
+@SerialName(value = Subspace.TYPE_URL)
 public data class Subspace(
   @ProtobufIndex(index = 1)
   public val subspace: String,
   @ProtobufIndex(index = 2)
   public val keys: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.params.v1beta1.Subspace"
+  }
+
   public object KotlinxSerializer : KSerializer<Subspace> {
     private val delegator: KSerializer<Subspace> = Subspace.serializer()
 

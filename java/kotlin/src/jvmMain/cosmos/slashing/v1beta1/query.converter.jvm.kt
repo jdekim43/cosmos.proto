@@ -1,5 +1,5 @@
 // Transform from cosmos/slashing/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.slashing.v1beta1
 
@@ -38,7 +38,7 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	params = ParamsJvmConverter.convert(obj.params),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {
@@ -58,7 +58,7 @@ public object QuerySigningInfoRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySigningInfoRequest): QuerySigningInfoRequest
       = QuerySigningInfoRequest(
-  	consAddress = obj.consAddress,
+  	consAddress = obj.getConsAddress(),
   )
 
   public override fun convert(obj: QuerySigningInfoRequest):
@@ -79,7 +79,7 @@ public object QuerySigningInfoResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySigningInfoResponse):
       QuerySigningInfoResponse = QuerySigningInfoResponse(
-  	valSigningInfo = ValidatorSigningInfoJvmConverter.convert(obj.valSigningInfo),
+  	valSigningInfo = ValidatorSigningInfoJvmConverter.convert(obj.getValSigningInfo()),
   )
 
   public override fun convert(obj: QuerySigningInfoResponse):
@@ -100,7 +100,7 @@ public object QuerySigningInfosRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySigningInfosRequest):
       QuerySigningInfosRequest = QuerySigningInfosRequest(
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QuerySigningInfosRequest):
@@ -121,8 +121,8 @@ public object QuerySigningInfosResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySigningInfosResponse):
       QuerySigningInfosResponse = QuerySigningInfosResponse(
-  	info = obj.infoList.map { ValidatorSigningInfoJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	info = obj.getInfoList().map { ValidatorSigningInfoJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QuerySigningInfosResponse):

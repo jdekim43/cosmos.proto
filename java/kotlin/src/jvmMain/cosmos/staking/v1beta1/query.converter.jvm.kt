@@ -1,5 +1,5 @@
 // Transform from cosmos/staking/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -20,8 +20,8 @@ public object QueryValidatorsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorsRequest): QueryValidatorsRequest =
       QueryValidatorsRequest(
-  	status = obj.status,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	status = obj.getStatus(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryValidatorsRequest): QueryOuterClass.QueryValidatorsRequest {
@@ -42,8 +42,8 @@ public object QueryValidatorsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorsResponse): QueryValidatorsResponse
       = QueryValidatorsResponse(
-  	validators = obj.validatorsList.map { ValidatorJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	validators = obj.getValidatorsList().map { ValidatorJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryValidatorsResponse):
@@ -65,7 +65,7 @@ public object QueryValidatorRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorRequest): QueryValidatorRequest =
       QueryValidatorRequest(
-  	validatorAddr = obj.validatorAddr,
+  	validatorAddr = obj.getValidatorAddr(),
   )
 
   public override fun convert(obj: QueryValidatorRequest): QueryOuterClass.QueryValidatorRequest {
@@ -85,7 +85,7 @@ public object QueryValidatorResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorResponse): QueryValidatorResponse =
       QueryValidatorResponse(
-  	validator = ValidatorJvmConverter.convert(obj.validator),
+  	validator = ValidatorJvmConverter.convert(obj.getValidator()),
   )
 
   public override fun convert(obj: QueryValidatorResponse): QueryOuterClass.QueryValidatorResponse {
@@ -106,8 +106,8 @@ public object QueryValidatorDelegationsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorDelegationsRequest):
       QueryValidatorDelegationsRequest = QueryValidatorDelegationsRequest(
-  	validatorAddr = obj.validatorAddr,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	validatorAddr = obj.getValidatorAddr(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryValidatorDelegationsRequest):
@@ -130,9 +130,9 @@ public object QueryValidatorDelegationsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorDelegationsResponse):
       QueryValidatorDelegationsResponse = QueryValidatorDelegationsResponse(
-  	delegationResponses = obj.delegationResponsesList.map {
+  	delegationResponses = obj.getDelegationResponsesList().map {
       DelegationResponseJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryValidatorDelegationsResponse):
@@ -156,8 +156,8 @@ public object QueryValidatorUnbondingDelegationsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorUnbondingDelegationsRequest):
       QueryValidatorUnbondingDelegationsRequest = QueryValidatorUnbondingDelegationsRequest(
-  	validatorAddr = obj.validatorAddr,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	validatorAddr = obj.getValidatorAddr(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryValidatorUnbondingDelegationsRequest):
@@ -180,9 +180,9 @@ public object QueryValidatorUnbondingDelegationsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryValidatorUnbondingDelegationsResponse):
       QueryValidatorUnbondingDelegationsResponse = QueryValidatorUnbondingDelegationsResponse(
-  	unbondingResponses = obj.unbondingResponsesList.map { UnbondingDelegationJvmConverter.convert(it)
-      },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	unbondingResponses = obj.getUnbondingResponsesList().map {
+      UnbondingDelegationJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryValidatorUnbondingDelegationsResponse):
@@ -205,8 +205,8 @@ public object QueryDelegationRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegationRequest): QueryDelegationRequest =
       QueryDelegationRequest(
-  	delegatorAddr = obj.delegatorAddr,
-  	validatorAddr = obj.validatorAddr,
+  	delegatorAddr = obj.getDelegatorAddr(),
+  	validatorAddr = obj.getValidatorAddr(),
   )
 
   public override fun convert(obj: QueryDelegationRequest): QueryOuterClass.QueryDelegationRequest {
@@ -227,7 +227,7 @@ public object QueryDelegationResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegationResponse): QueryDelegationResponse
       = QueryDelegationResponse(
-  	delegationResponse = DelegationResponseJvmConverter.convert(obj.delegationResponse),
+  	delegationResponse = DelegationResponseJvmConverter.convert(obj.getDelegationResponse()),
   )
 
   public override fun convert(obj: QueryDelegationResponse):
@@ -249,8 +249,8 @@ public object QueryUnbondingDelegationRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryUnbondingDelegationRequest):
       QueryUnbondingDelegationRequest = QueryUnbondingDelegationRequest(
-  	delegatorAddr = obj.delegatorAddr,
-  	validatorAddr = obj.validatorAddr,
+  	delegatorAddr = obj.getDelegatorAddr(),
+  	validatorAddr = obj.getValidatorAddr(),
   )
 
   public override fun convert(obj: QueryUnbondingDelegationRequest):
@@ -273,7 +273,7 @@ public object QueryUnbondingDelegationResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryUnbondingDelegationResponse):
       QueryUnbondingDelegationResponse = QueryUnbondingDelegationResponse(
-  	unbond = UnbondingDelegationJvmConverter.convert(obj.unbond),
+  	unbond = UnbondingDelegationJvmConverter.convert(obj.getUnbond()),
   )
 
   public override fun convert(obj: QueryUnbondingDelegationResponse):
@@ -295,8 +295,8 @@ public object QueryDelegatorDelegationsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorDelegationsRequest):
       QueryDelegatorDelegationsRequest = QueryDelegatorDelegationsRequest(
-  	delegatorAddr = obj.delegatorAddr,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	delegatorAddr = obj.getDelegatorAddr(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDelegatorDelegationsRequest):
@@ -319,9 +319,9 @@ public object QueryDelegatorDelegationsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorDelegationsResponse):
       QueryDelegatorDelegationsResponse = QueryDelegatorDelegationsResponse(
-  	delegationResponses = obj.delegationResponsesList.map {
+  	delegationResponses = obj.getDelegationResponsesList().map {
       DelegationResponseJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDelegatorDelegationsResponse):
@@ -345,8 +345,8 @@ public object QueryDelegatorUnbondingDelegationsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorUnbondingDelegationsRequest):
       QueryDelegatorUnbondingDelegationsRequest = QueryDelegatorUnbondingDelegationsRequest(
-  	delegatorAddr = obj.delegatorAddr,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	delegatorAddr = obj.getDelegatorAddr(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDelegatorUnbondingDelegationsRequest):
@@ -369,9 +369,9 @@ public object QueryDelegatorUnbondingDelegationsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorUnbondingDelegationsResponse):
       QueryDelegatorUnbondingDelegationsResponse = QueryDelegatorUnbondingDelegationsResponse(
-  	unbondingResponses = obj.unbondingResponsesList.map { UnbondingDelegationJvmConverter.convert(it)
-      },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	unbondingResponses = obj.getUnbondingResponsesList().map {
+      UnbondingDelegationJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDelegatorUnbondingDelegationsResponse):
@@ -394,10 +394,10 @@ public object QueryRedelegationsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryRedelegationsRequest):
       QueryRedelegationsRequest = QueryRedelegationsRequest(
-  	delegatorAddr = obj.delegatorAddr,
-  	srcValidatorAddr = obj.srcValidatorAddr,
-  	dstValidatorAddr = obj.dstValidatorAddr,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	delegatorAddr = obj.getDelegatorAddr(),
+  	srcValidatorAddr = obj.getSrcValidatorAddr(),
+  	dstValidatorAddr = obj.getDstValidatorAddr(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryRedelegationsRequest):
@@ -421,9 +421,9 @@ public object QueryRedelegationsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryRedelegationsResponse):
       QueryRedelegationsResponse = QueryRedelegationsResponse(
-  	redelegationResponses = obj.redelegationResponsesList.map {
+  	redelegationResponses = obj.getRedelegationResponsesList().map {
       RedelegationResponseJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryRedelegationsResponse):
@@ -447,8 +447,8 @@ public object QueryDelegatorValidatorsRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorValidatorsRequest):
       QueryDelegatorValidatorsRequest = QueryDelegatorValidatorsRequest(
-  	delegatorAddr = obj.delegatorAddr,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	delegatorAddr = obj.getDelegatorAddr(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDelegatorValidatorsRequest):
@@ -471,8 +471,8 @@ public object QueryDelegatorValidatorsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorValidatorsResponse):
       QueryDelegatorValidatorsResponse = QueryDelegatorValidatorsResponse(
-  	validators = obj.validatorsList.map { ValidatorJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	validators = obj.getValidatorsList().map { ValidatorJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDelegatorValidatorsResponse):
@@ -495,8 +495,8 @@ public object QueryDelegatorValidatorRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorValidatorRequest):
       QueryDelegatorValidatorRequest = QueryDelegatorValidatorRequest(
-  	delegatorAddr = obj.delegatorAddr,
-  	validatorAddr = obj.validatorAddr,
+  	delegatorAddr = obj.getDelegatorAddr(),
+  	validatorAddr = obj.getValidatorAddr(),
   )
 
   public override fun convert(obj: QueryDelegatorValidatorRequest):
@@ -519,7 +519,7 @@ public object QueryDelegatorValidatorResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDelegatorValidatorResponse):
       QueryDelegatorValidatorResponse = QueryDelegatorValidatorResponse(
-  	validator = ValidatorJvmConverter.convert(obj.validator),
+  	validator = ValidatorJvmConverter.convert(obj.getValidator()),
   )
 
   public override fun convert(obj: QueryDelegatorValidatorResponse):
@@ -540,7 +540,7 @@ public object QueryHistoricalInfoRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryHistoricalInfoRequest):
       QueryHistoricalInfoRequest = QueryHistoricalInfoRequest(
-  	height = obj.height,
+  	height = obj.getHeight(),
   )
 
   public override fun convert(obj: QueryHistoricalInfoRequest):
@@ -561,7 +561,7 @@ public object QueryHistoricalInfoResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryHistoricalInfoResponse):
       QueryHistoricalInfoResponse = QueryHistoricalInfoResponse(
-  	hist = HistoricalInfoJvmConverter.convert(obj.hist),
+  	hist = HistoricalInfoJvmConverter.convert(obj.getHist()),
   )
 
   public override fun convert(obj: QueryHistoricalInfoResponse):
@@ -600,7 +600,7 @@ public object QueryPoolResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryPoolResponse): QueryPoolResponse =
       QueryPoolResponse(
-  	pool = PoolJvmConverter.convert(obj.pool),
+  	pool = PoolJvmConverter.convert(obj.getPool()),
   )
 
   public override fun convert(obj: QueryPoolResponse): QueryOuterClass.QueryPoolResponse {
@@ -638,7 +638,7 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	params = ParamsJvmConverter.convert(obj.params),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {

@@ -1,5 +1,5 @@
 // Transform from cosmos/auth/v1beta1/auth.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.auth.v1beta1
 
@@ -18,10 +18,10 @@ public object BaseAccountJvmConverter : ProtobufTypeMapper<BaseAccount, Auth.Bas
   public override val parser: Parser<Auth.BaseAccount> = Auth.BaseAccount.parser()
 
   public override fun convert(obj: Auth.BaseAccount): BaseAccount = BaseAccount(
-  	address = obj.address,
-  	pubKey = AnyJvmConverter.convert(obj.pubKey),
-  	accountNumber = obj.accountNumber.asKotlinType,
-  	sequence = obj.sequence.asKotlinType,
+  	address = obj.getAddress(),
+  	pubKey = AnyJvmConverter.convert(obj.getPubKey()),
+  	accountNumber = obj.getAccountNumber().asKotlinType,
+  	sequence = obj.getSequence().asKotlinType,
   )
 
   public override fun convert(obj: BaseAccount): Auth.BaseAccount {
@@ -40,9 +40,9 @@ public object ModuleAccountJvmConverter : ProtobufTypeMapper<ModuleAccount, Auth
   public override val parser: Parser<Auth.ModuleAccount> = Auth.ModuleAccount.parser()
 
   public override fun convert(obj: Auth.ModuleAccount): ModuleAccount = ModuleAccount(
-  	baseAccount = BaseAccountJvmConverter.convert(obj.baseAccount),
-  	name = obj.name,
-  	permissions = obj.permissionsList.map { it },
+  	baseAccount = BaseAccountJvmConverter.convert(obj.getBaseAccount()),
+  	name = obj.getName(),
+  	permissions = obj.getPermissionsList().map { it },
   )
 
   public override fun convert(obj: ModuleAccount): Auth.ModuleAccount {
@@ -61,8 +61,8 @@ public object ModuleCredentialJvmConverter :
   public override val parser: Parser<Auth.ModuleCredential> = Auth.ModuleCredential.parser()
 
   public override fun convert(obj: Auth.ModuleCredential): ModuleCredential = ModuleCredential(
-  	moduleName = obj.moduleName,
-  	derivationKeys = obj.derivationKeysList.map { it.toByteArray() },
+  	moduleName = obj.getModuleName(),
+  	derivationKeys = obj.getDerivationKeysList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: ModuleCredential): Auth.ModuleCredential {
@@ -79,11 +79,11 @@ public object ParamsJvmConverter : ProtobufTypeMapper<Params, Auth.Params> {
   public override val parser: Parser<Auth.Params> = Auth.Params.parser()
 
   public override fun convert(obj: Auth.Params): Params = Params(
-  	maxMemoCharacters = obj.maxMemoCharacters.asKotlinType,
-  	txSigLimit = obj.txSigLimit.asKotlinType,
-  	txSizeCostPerByte = obj.txSizeCostPerByte.asKotlinType,
-  	sigVerifyCostEd25519 = obj.sigVerifyCostEd25519.asKotlinType,
-  	sigVerifyCostSecp256K1 = obj.sigVerifyCostSecp256K1.asKotlinType,
+  	maxMemoCharacters = obj.getMaxMemoCharacters().asKotlinType,
+  	txSigLimit = obj.getTxSigLimit().asKotlinType,
+  	txSizeCostPerByte = obj.getTxSizeCostPerByte().asKotlinType,
+  	sigVerifyCostEd25519 = obj.getSigVerifyCostEd25519().asKotlinType,
+  	sigVerifyCostSecp256K1 = obj.getSigVerifyCostSecp256K1().asKotlinType,
   )
 
   public override fun convert(obj: Params): Auth.Params {

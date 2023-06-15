@@ -1,5 +1,5 @@
 // Transform from cosmos/staking/v1beta1/genesis.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -15,16 +15,16 @@ public object GenesisStateJvmConverter : ProtobufTypeMapper<GenesisState, Genesi
   public override val parser: Parser<Genesis.GenesisState> = Genesis.GenesisState.parser()
 
   public override fun convert(obj: Genesis.GenesisState): GenesisState = GenesisState(
-  	params = ParamsJvmConverter.convert(obj.params),
-  	lastTotalPower = obj.lastTotalPower.toByteArray(),
-  	lastValidatorPowers = obj.lastValidatorPowersList.map {
+  	params = ParamsJvmConverter.convert(obj.getParams()),
+  	lastTotalPower = obj.getLastTotalPower().toByteArray(),
+  	lastValidatorPowers = obj.getLastValidatorPowersList().map {
       LastValidatorPowerJvmConverter.convert(it) },
-  	validators = obj.validatorsList.map { ValidatorJvmConverter.convert(it) },
-  	delegations = obj.delegationsList.map { DelegationJvmConverter.convert(it) },
-  	unbondingDelegations = obj.unbondingDelegationsList.map {
+  	validators = obj.getValidatorsList().map { ValidatorJvmConverter.convert(it) },
+  	delegations = obj.getDelegationsList().map { DelegationJvmConverter.convert(it) },
+  	unbondingDelegations = obj.getUnbondingDelegationsList().map {
       UnbondingDelegationJvmConverter.convert(it) },
-  	redelegations = obj.redelegationsList.map { RedelegationJvmConverter.convert(it) },
-  	exported = obj.exported,
+  	redelegations = obj.getRedelegationsList().map { RedelegationJvmConverter.convert(it) },
+  	exported = obj.getExported(),
   )
 
   public override fun convert(obj: GenesisState): Genesis.GenesisState {
@@ -53,8 +53,8 @@ public object LastValidatorPowerJvmConverter :
 
   public override fun convert(obj: Genesis.LastValidatorPower): LastValidatorPower =
       LastValidatorPower(
-  	address = obj.address,
-  	power = obj.power,
+  	address = obj.getAddress(),
+  	power = obj.getPower(),
   )
 
   public override fun convert(obj: LastValidatorPower): Genesis.LastValidatorPower {

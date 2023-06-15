@@ -1,5 +1,5 @@
 // Transform from cosmos/feegrant/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.feegrant.v1beta1
 
@@ -20,8 +20,8 @@ public object QueryAllowanceRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllowanceRequest): QueryAllowanceRequest =
       QueryAllowanceRequest(
-  	granter = obj.granter,
-  	grantee = obj.grantee,
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
   )
 
   public override fun convert(obj: QueryAllowanceRequest): QueryOuterClass.QueryAllowanceRequest {
@@ -42,7 +42,7 @@ public object QueryAllowanceResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllowanceResponse): QueryAllowanceResponse =
       QueryAllowanceResponse(
-  	allowance = GrantJvmConverter.convert(obj.allowance),
+  	allowance = GrantJvmConverter.convert(obj.getAllowance()),
   )
 
   public override fun convert(obj: QueryAllowanceResponse): QueryOuterClass.QueryAllowanceResponse {
@@ -62,8 +62,8 @@ public object QueryAllowancesRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllowancesRequest): QueryAllowancesRequest =
       QueryAllowancesRequest(
-  	grantee = obj.grantee,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	grantee = obj.getGrantee(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAllowancesRequest): QueryOuterClass.QueryAllowancesRequest {
@@ -84,8 +84,8 @@ public object QueryAllowancesResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllowancesResponse): QueryAllowancesResponse
       = QueryAllowancesResponse(
-  	allowances = obj.allowancesList.map { GrantJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	allowances = obj.getAllowancesList().map { GrantJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAllowancesResponse):
@@ -108,8 +108,8 @@ public object QueryAllowancesByGranterRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllowancesByGranterRequest):
       QueryAllowancesByGranterRequest = QueryAllowancesByGranterRequest(
-  	granter = obj.granter,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	granter = obj.getGranter(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAllowancesByGranterRequest):
@@ -132,8 +132,8 @@ public object QueryAllowancesByGranterResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllowancesByGranterResponse):
       QueryAllowancesByGranterResponse = QueryAllowancesByGranterResponse(
-  	allowances = obj.allowancesList.map { GrantJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	allowances = obj.getAllowancesList().map { GrantJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAllowancesByGranterResponse):

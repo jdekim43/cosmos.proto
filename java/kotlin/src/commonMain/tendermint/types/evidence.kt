@@ -1,11 +1,12 @@
 // Transform from tendermint/types/evidence.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
 import google.protobuf.Timestamp
 import kotlin.Long
+import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 import kotlin.jvm.JvmInline
@@ -20,12 +21,17 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Evidence.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.Evidence")
+@SerialName(value = Evidence.TYPE_URL)
 public data class Evidence(
   public val sum: SumOneOf,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.Evidence"
+  }
+
   @Serializable
   public sealed interface SumOneOf {
     @JvmInline
@@ -64,7 +70,7 @@ public data class Evidence(
 }
 
 @Serializable(with = DuplicateVoteEvidence.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.DuplicateVoteEvidence")
+@SerialName(value = DuplicateVoteEvidence.TYPE_URL)
 public data class DuplicateVoteEvidence(
   @ProtobufIndex(index = 1)
   public val voteA: Vote,
@@ -76,7 +82,11 @@ public data class DuplicateVoteEvidence(
   public val validatorPower: Long,
   @ProtobufIndex(index = 5)
   public val timestamp: Timestamp,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.DuplicateVoteEvidence"
+  }
+
   public object KotlinxSerializer : KSerializer<DuplicateVoteEvidence> {
     private val delegator: KSerializer<DuplicateVoteEvidence> = DuplicateVoteEvidence.serializer()
 
@@ -100,7 +110,7 @@ public data class DuplicateVoteEvidence(
 }
 
 @Serializable(with = LightClientAttackEvidence.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.LightClientAttackEvidence")
+@SerialName(value = LightClientAttackEvidence.TYPE_URL)
 public data class LightClientAttackEvidence(
   @ProtobufIndex(index = 1)
   public val conflictingBlock: LightBlock,
@@ -112,7 +122,11 @@ public data class LightClientAttackEvidence(
   public val totalVotingPower: Long,
   @ProtobufIndex(index = 5)
   public val timestamp: Timestamp,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.LightClientAttackEvidence"
+  }
+
   public object KotlinxSerializer : KSerializer<LightClientAttackEvidence> {
     private val delegator: KSerializer<LightClientAttackEvidence> =
         LightClientAttackEvidence.serializer()
@@ -137,11 +151,15 @@ public data class LightClientAttackEvidence(
 }
 
 @Serializable(with = EvidenceList.KotlinxSerializer::class)
-@SerialName(value = "tendermint.types.EvidenceList")
+@SerialName(value = EvidenceList.TYPE_URL)
 public data class EvidenceList(
   @ProtobufIndex(index = 1)
   public val evidence: List<Evidence>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/tendermint.types.EvidenceList"
+  }
+
   public object KotlinxSerializer : KSerializer<EvidenceList> {
     private val delegator: KSerializer<EvidenceList> = EvidenceList.serializer()
 

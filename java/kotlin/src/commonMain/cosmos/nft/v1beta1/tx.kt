@@ -1,6 +1,6 @@
 // Transform from cosmos/nft/v1beta1/tx.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.nft.v1beta1
 
@@ -17,9 +17,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = MsgSend.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.MsgSend")
+@SerialName(value = MsgSend.TYPE_URL)
 public data class MsgSend(
   @ProtobufIndex(index = 1)
   public val classId: String,
@@ -29,7 +30,11 @@ public data class MsgSend(
   public val sender: String,
   @ProtobufIndex(index = 4)
   public val `receiver`: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.MsgSend"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSend> {
     private val delegator: KSerializer<MsgSend> = MsgSend.serializer()
 
@@ -53,8 +58,12 @@ public data class MsgSend(
 }
 
 @Serializable(with = MsgSendResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.nft.v1beta1.MsgSendResponse")
-public class MsgSendResponse() {
+@SerialName(value = MsgSendResponse.TYPE_URL)
+public class MsgSendResponse() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.nft.v1beta1.MsgSendResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<MsgSendResponse> {
     private val delegator: KSerializer<MsgSendResponse> = MsgSendResponse.serializer()
 

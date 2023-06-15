@@ -1,5 +1,5 @@
 // Transform from cosmos/bank/v1beta1/authz.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -16,8 +16,8 @@ public object SendAuthorizationJvmConverter :
   public override val parser: Parser<Authz.SendAuthorization> = Authz.SendAuthorization.parser()
 
   public override fun convert(obj: Authz.SendAuthorization): SendAuthorization = SendAuthorization(
-  	spendLimit = obj.spendLimitList.map { CoinJvmConverter.convert(it) },
-  	allowList = obj.allowListList.map { it },
+  	spendLimit = obj.getSpendLimitList().map { CoinJvmConverter.convert(it) },
+  	allowList = obj.getAllowListList().map { it },
   )
 
   public override fun convert(obj: SendAuthorization): Authz.SendAuthorization {

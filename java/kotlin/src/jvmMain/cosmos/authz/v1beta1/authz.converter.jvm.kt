@@ -1,5 +1,5 @@
 // Transform from cosmos/authz/v1beta1/authz.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.authz.v1beta1
 
@@ -20,7 +20,7 @@ public object GenericAuthorizationJvmConverter :
 
   public override fun convert(obj: Authz.GenericAuthorization): GenericAuthorization =
       GenericAuthorization(
-  	msg = obj.msg,
+  	msg = obj.getMsg(),
   )
 
   public override fun convert(obj: GenericAuthorization): Authz.GenericAuthorization {
@@ -36,8 +36,8 @@ public object GrantJvmConverter : ProtobufTypeMapper<Grant, Authz.Grant> {
   public override val parser: Parser<Authz.Grant> = Authz.Grant.parser()
 
   public override fun convert(obj: Authz.Grant): Grant = Grant(
-  	authorization = AnyJvmConverter.convert(obj.authorization),
-  	expiration = TimestampJvmConverter.convert(obj.expiration),
+  	authorization = AnyJvmConverter.convert(obj.getAuthorization()),
+  	expiration = TimestampJvmConverter.convert(obj.getExpiration()),
   )
 
   public override fun convert(obj: Grant): Authz.Grant {
@@ -56,10 +56,10 @@ public object GrantAuthorizationJvmConverter :
 
   public override fun convert(obj: Authz.GrantAuthorization): GrantAuthorization =
       GrantAuthorization(
-  	granter = obj.granter,
-  	grantee = obj.grantee,
-  	authorization = AnyJvmConverter.convert(obj.authorization),
-  	expiration = TimestampJvmConverter.convert(obj.expiration),
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
+  	authorization = AnyJvmConverter.convert(obj.getAuthorization()),
+  	expiration = TimestampJvmConverter.convert(obj.getExpiration()),
   )
 
   public override fun convert(obj: GrantAuthorization): Authz.GrantAuthorization {
@@ -79,7 +79,7 @@ public object GrantQueueItemJvmConverter : ProtobufTypeMapper<GrantQueueItem, Au
   public override val parser: Parser<Authz.GrantQueueItem> = Authz.GrantQueueItem.parser()
 
   public override fun convert(obj: Authz.GrantQueueItem): GrantQueueItem = GrantQueueItem(
-  	msgTypeUrls = obj.msgTypeUrlsList.map { it },
+  	msgTypeUrls = obj.getMsgTypeUrlsList().map { it },
   )
 
   public override fun convert(obj: GrantQueueItem): Authz.GrantQueueItem {

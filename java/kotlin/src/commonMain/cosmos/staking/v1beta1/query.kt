@@ -1,6 +1,6 @@
 // Transform from cosmos/staking/v1beta1/query.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 
@@ -21,15 +21,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = QueryValidatorsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryValidatorsRequest")
+@SerialName(value = QueryValidatorsRequest.TYPE_URL)
 public data class QueryValidatorsRequest(
   @ProtobufIndex(index = 1)
   public val status: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryValidatorsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryValidatorsRequest> {
     private val delegator: KSerializer<QueryValidatorsRequest> = QueryValidatorsRequest.serializer()
 
@@ -53,13 +58,17 @@ public data class QueryValidatorsRequest(
 }
 
 @Serializable(with = QueryValidatorsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryValidatorsResponse")
+@SerialName(value = QueryValidatorsResponse.TYPE_URL)
 public data class QueryValidatorsResponse(
   @ProtobufIndex(index = 1)
   public val validators: List<Validator>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryValidatorsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryValidatorsResponse> {
     private val delegator: KSerializer<QueryValidatorsResponse> =
         QueryValidatorsResponse.serializer()
@@ -84,11 +93,15 @@ public data class QueryValidatorsResponse(
 }
 
 @Serializable(with = QueryValidatorRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryValidatorRequest")
+@SerialName(value = QueryValidatorRequest.TYPE_URL)
 public data class QueryValidatorRequest(
   @ProtobufIndex(index = 1)
   public val validatorAddr: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryValidatorRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryValidatorRequest> {
     private val delegator: KSerializer<QueryValidatorRequest> = QueryValidatorRequest.serializer()
 
@@ -112,11 +125,15 @@ public data class QueryValidatorRequest(
 }
 
 @Serializable(with = QueryValidatorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryValidatorResponse")
+@SerialName(value = QueryValidatorResponse.TYPE_URL)
 public data class QueryValidatorResponse(
   @ProtobufIndex(index = 1)
   public val validator: Validator,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryValidatorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryValidatorResponse> {
     private val delegator: KSerializer<QueryValidatorResponse> = QueryValidatorResponse.serializer()
 
@@ -140,13 +157,17 @@ public data class QueryValidatorResponse(
 }
 
 @Serializable(with = QueryValidatorDelegationsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryValidatorDelegationsRequest")
+@SerialName(value = QueryValidatorDelegationsRequest.TYPE_URL)
 public data class QueryValidatorDelegationsRequest(
   @ProtobufIndex(index = 1)
   public val validatorAddr: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryValidatorDelegationsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryValidatorDelegationsRequest> {
     private val delegator: KSerializer<QueryValidatorDelegationsRequest> =
         QueryValidatorDelegationsRequest.serializer()
@@ -172,13 +193,17 @@ public data class QueryValidatorDelegationsRequest(
 }
 
 @Serializable(with = QueryValidatorDelegationsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryValidatorDelegationsResponse")
+@SerialName(value = QueryValidatorDelegationsResponse.TYPE_URL)
 public data class QueryValidatorDelegationsResponse(
   @ProtobufIndex(index = 1)
   public val delegationResponses: List<DelegationResponse>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryValidatorDelegationsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryValidatorDelegationsResponse> {
     private val delegator: KSerializer<QueryValidatorDelegationsResponse> =
         QueryValidatorDelegationsResponse.serializer()
@@ -204,13 +229,18 @@ public data class QueryValidatorDelegationsResponse(
 }
 
 @Serializable(with = QueryValidatorUnbondingDelegationsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsRequest")
+@SerialName(value = QueryValidatorUnbondingDelegationsRequest.TYPE_URL)
 public data class QueryValidatorUnbondingDelegationsRequest(
   @ProtobufIndex(index = 1)
   public val validatorAddr: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryValidatorUnbondingDelegationsRequest> {
     private val delegator: KSerializer<QueryValidatorUnbondingDelegationsRequest> =
         QueryValidatorUnbondingDelegationsRequest.serializer()
@@ -236,13 +266,18 @@ public data class QueryValidatorUnbondingDelegationsRequest(
 }
 
 @Serializable(with = QueryValidatorUnbondingDelegationsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsResponse")
+@SerialName(value = QueryValidatorUnbondingDelegationsResponse.TYPE_URL)
 public data class QueryValidatorUnbondingDelegationsResponse(
   @ProtobufIndex(index = 1)
   public val unbondingResponses: List<UnbondingDelegation>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryValidatorUnbondingDelegationsResponse> {
     private val delegator: KSerializer<QueryValidatorUnbondingDelegationsResponse> =
         QueryValidatorUnbondingDelegationsResponse.serializer()
@@ -268,13 +303,17 @@ public data class QueryValidatorUnbondingDelegationsResponse(
 }
 
 @Serializable(with = QueryDelegationRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegationRequest")
+@SerialName(value = QueryDelegationRequest.TYPE_URL)
 public data class QueryDelegationRequest(
   @ProtobufIndex(index = 1)
   public val delegatorAddr: String,
   @ProtobufIndex(index = 2)
   public val validatorAddr: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryDelegationRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegationRequest> {
     private val delegator: KSerializer<QueryDelegationRequest> = QueryDelegationRequest.serializer()
 
@@ -298,11 +337,15 @@ public data class QueryDelegationRequest(
 }
 
 @Serializable(with = QueryDelegationResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegationResponse")
+@SerialName(value = QueryDelegationResponse.TYPE_URL)
 public data class QueryDelegationResponse(
   @ProtobufIndex(index = 1)
   public val delegationResponse: DelegationResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryDelegationResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegationResponse> {
     private val delegator: KSerializer<QueryDelegationResponse> =
         QueryDelegationResponse.serializer()
@@ -327,13 +370,17 @@ public data class QueryDelegationResponse(
 }
 
 @Serializable(with = QueryUnbondingDelegationRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryUnbondingDelegationRequest")
+@SerialName(value = QueryUnbondingDelegationRequest.TYPE_URL)
 public data class QueryUnbondingDelegationRequest(
   @ProtobufIndex(index = 1)
   public val delegatorAddr: String,
   @ProtobufIndex(index = 2)
   public val validatorAddr: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryUnbondingDelegationRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryUnbondingDelegationRequest> {
     private val delegator: KSerializer<QueryUnbondingDelegationRequest> =
         QueryUnbondingDelegationRequest.serializer()
@@ -359,11 +406,15 @@ public data class QueryUnbondingDelegationRequest(
 }
 
 @Serializable(with = QueryUnbondingDelegationResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryUnbondingDelegationResponse")
+@SerialName(value = QueryUnbondingDelegationResponse.TYPE_URL)
 public data class QueryUnbondingDelegationResponse(
   @ProtobufIndex(index = 1)
   public val unbond: UnbondingDelegation,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryUnbondingDelegationResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryUnbondingDelegationResponse> {
     private val delegator: KSerializer<QueryUnbondingDelegationResponse> =
         QueryUnbondingDelegationResponse.serializer()
@@ -389,13 +440,17 @@ public data class QueryUnbondingDelegationResponse(
 }
 
 @Serializable(with = QueryDelegatorDelegationsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegatorDelegationsRequest")
+@SerialName(value = QueryDelegatorDelegationsRequest.TYPE_URL)
 public data class QueryDelegatorDelegationsRequest(
   @ProtobufIndex(index = 1)
   public val delegatorAddr: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryDelegatorDelegationsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegatorDelegationsRequest> {
     private val delegator: KSerializer<QueryDelegatorDelegationsRequest> =
         QueryDelegatorDelegationsRequest.serializer()
@@ -421,13 +476,17 @@ public data class QueryDelegatorDelegationsRequest(
 }
 
 @Serializable(with = QueryDelegatorDelegationsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegatorDelegationsResponse")
+@SerialName(value = QueryDelegatorDelegationsResponse.TYPE_URL)
 public data class QueryDelegatorDelegationsResponse(
   @ProtobufIndex(index = 1)
   public val delegationResponses: List<DelegationResponse>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryDelegatorDelegationsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegatorDelegationsResponse> {
     private val delegator: KSerializer<QueryDelegatorDelegationsResponse> =
         QueryDelegatorDelegationsResponse.serializer()
@@ -453,13 +512,18 @@ public data class QueryDelegatorDelegationsResponse(
 }
 
 @Serializable(with = QueryDelegatorUnbondingDelegationsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsRequest")
+@SerialName(value = QueryDelegatorUnbondingDelegationsRequest.TYPE_URL)
 public data class QueryDelegatorUnbondingDelegationsRequest(
   @ProtobufIndex(index = 1)
   public val delegatorAddr: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegatorUnbondingDelegationsRequest> {
     private val delegator: KSerializer<QueryDelegatorUnbondingDelegationsRequest> =
         QueryDelegatorUnbondingDelegationsRequest.serializer()
@@ -485,13 +549,18 @@ public data class QueryDelegatorUnbondingDelegationsRequest(
 }
 
 @Serializable(with = QueryDelegatorUnbondingDelegationsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsResponse")
+@SerialName(value = QueryDelegatorUnbondingDelegationsResponse.TYPE_URL)
 public data class QueryDelegatorUnbondingDelegationsResponse(
   @ProtobufIndex(index = 1)
   public val unbondingResponses: List<UnbondingDelegation>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String =
+        "/cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegatorUnbondingDelegationsResponse> {
     private val delegator: KSerializer<QueryDelegatorUnbondingDelegationsResponse> =
         QueryDelegatorUnbondingDelegationsResponse.serializer()
@@ -517,7 +586,7 @@ public data class QueryDelegatorUnbondingDelegationsResponse(
 }
 
 @Serializable(with = QueryRedelegationsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryRedelegationsRequest")
+@SerialName(value = QueryRedelegationsRequest.TYPE_URL)
 public data class QueryRedelegationsRequest(
   @ProtobufIndex(index = 1)
   public val delegatorAddr: String,
@@ -527,7 +596,11 @@ public data class QueryRedelegationsRequest(
   public val dstValidatorAddr: String,
   @ProtobufIndex(index = 4)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryRedelegationsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryRedelegationsRequest> {
     private val delegator: KSerializer<QueryRedelegationsRequest> =
         QueryRedelegationsRequest.serializer()
@@ -552,13 +625,17 @@ public data class QueryRedelegationsRequest(
 }
 
 @Serializable(with = QueryRedelegationsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryRedelegationsResponse")
+@SerialName(value = QueryRedelegationsResponse.TYPE_URL)
 public data class QueryRedelegationsResponse(
   @ProtobufIndex(index = 1)
   public val redelegationResponses: List<RedelegationResponse>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryRedelegationsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryRedelegationsResponse> {
     private val delegator: KSerializer<QueryRedelegationsResponse> =
         QueryRedelegationsResponse.serializer()
@@ -583,13 +660,17 @@ public data class QueryRedelegationsResponse(
 }
 
 @Serializable(with = QueryDelegatorValidatorsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegatorValidatorsRequest")
+@SerialName(value = QueryDelegatorValidatorsRequest.TYPE_URL)
 public data class QueryDelegatorValidatorsRequest(
   @ProtobufIndex(index = 1)
   public val delegatorAddr: String,
   @ProtobufIndex(index = 2)
   public val pagination: PageRequest,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryDelegatorValidatorsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegatorValidatorsRequest> {
     private val delegator: KSerializer<QueryDelegatorValidatorsRequest> =
         QueryDelegatorValidatorsRequest.serializer()
@@ -615,13 +696,17 @@ public data class QueryDelegatorValidatorsRequest(
 }
 
 @Serializable(with = QueryDelegatorValidatorsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegatorValidatorsResponse")
+@SerialName(value = QueryDelegatorValidatorsResponse.TYPE_URL)
 public data class QueryDelegatorValidatorsResponse(
   @ProtobufIndex(index = 1)
   public val validators: List<Validator>,
   @ProtobufIndex(index = 2)
   public val pagination: PageResponse,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryDelegatorValidatorsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegatorValidatorsResponse> {
     private val delegator: KSerializer<QueryDelegatorValidatorsResponse> =
         QueryDelegatorValidatorsResponse.serializer()
@@ -647,13 +732,17 @@ public data class QueryDelegatorValidatorsResponse(
 }
 
 @Serializable(with = QueryDelegatorValidatorRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegatorValidatorRequest")
+@SerialName(value = QueryDelegatorValidatorRequest.TYPE_URL)
 public data class QueryDelegatorValidatorRequest(
   @ProtobufIndex(index = 1)
   public val delegatorAddr: String,
   @ProtobufIndex(index = 2)
   public val validatorAddr: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryDelegatorValidatorRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegatorValidatorRequest> {
     private val delegator: KSerializer<QueryDelegatorValidatorRequest> =
         QueryDelegatorValidatorRequest.serializer()
@@ -678,11 +767,15 @@ public data class QueryDelegatorValidatorRequest(
 }
 
 @Serializable(with = QueryDelegatorValidatorResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryDelegatorValidatorResponse")
+@SerialName(value = QueryDelegatorValidatorResponse.TYPE_URL)
 public data class QueryDelegatorValidatorResponse(
   @ProtobufIndex(index = 1)
   public val validator: Validator,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryDelegatorValidatorResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryDelegatorValidatorResponse> {
     private val delegator: KSerializer<QueryDelegatorValidatorResponse> =
         QueryDelegatorValidatorResponse.serializer()
@@ -708,11 +801,15 @@ public data class QueryDelegatorValidatorResponse(
 }
 
 @Serializable(with = QueryHistoricalInfoRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryHistoricalInfoRequest")
+@SerialName(value = QueryHistoricalInfoRequest.TYPE_URL)
 public data class QueryHistoricalInfoRequest(
   @ProtobufIndex(index = 1)
   public val height: Long,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryHistoricalInfoRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryHistoricalInfoRequest> {
     private val delegator: KSerializer<QueryHistoricalInfoRequest> =
         QueryHistoricalInfoRequest.serializer()
@@ -737,11 +834,15 @@ public data class QueryHistoricalInfoRequest(
 }
 
 @Serializable(with = QueryHistoricalInfoResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryHistoricalInfoResponse")
+@SerialName(value = QueryHistoricalInfoResponse.TYPE_URL)
 public data class QueryHistoricalInfoResponse(
   @ProtobufIndex(index = 1)
   public val hist: HistoricalInfo,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryHistoricalInfoResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryHistoricalInfoResponse> {
     private val delegator: KSerializer<QueryHistoricalInfoResponse> =
         QueryHistoricalInfoResponse.serializer()
@@ -766,8 +867,12 @@ public data class QueryHistoricalInfoResponse(
 }
 
 @Serializable(with = QueryPoolRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryPoolRequest")
-public class QueryPoolRequest() {
+@SerialName(value = QueryPoolRequest.TYPE_URL)
+public class QueryPoolRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryPoolRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryPoolRequest> {
     private val delegator: KSerializer<QueryPoolRequest> = QueryPoolRequest.serializer()
 
@@ -791,11 +896,15 @@ public class QueryPoolRequest() {
 }
 
 @Serializable(with = QueryPoolResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryPoolResponse")
+@SerialName(value = QueryPoolResponse.TYPE_URL)
 public data class QueryPoolResponse(
   @ProtobufIndex(index = 1)
   public val pool: Pool,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryPoolResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryPoolResponse> {
     private val delegator: KSerializer<QueryPoolResponse> = QueryPoolResponse.serializer()
 
@@ -819,8 +928,12 @@ public data class QueryPoolResponse(
 }
 
 @Serializable(with = QueryParamsRequest.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryParamsRequest")
-public class QueryParamsRequest() {
+@SerialName(value = QueryParamsRequest.TYPE_URL)
+public class QueryParamsRequest() : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryParamsRequest"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsRequest> {
     private val delegator: KSerializer<QueryParamsRequest> = QueryParamsRequest.serializer()
 
@@ -844,11 +957,15 @@ public class QueryParamsRequest() {
 }
 
 @Serializable(with = QueryParamsResponse.KotlinxSerializer::class)
-@SerialName(value = "cosmos.staking.v1beta1.QueryParamsResponse")
+@SerialName(value = QueryParamsResponse.TYPE_URL)
 public data class QueryParamsResponse(
   @ProtobufIndex(index = 1)
   public val params: Params,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.staking.v1beta1.QueryParamsResponse"
+  }
+
   public object KotlinxSerializer : KSerializer<QueryParamsResponse> {
     private val delegator: KSerializer<QueryParamsResponse> = QueryParamsResponse.serializer()
 

@@ -1,6 +1,6 @@
 // Transform from cosmos/base/store/v1beta1/listening.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.store.v1beta1
 
@@ -20,6 +20,7 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 import tendermint.abci.RequestBeginBlock
 import tendermint.abci.RequestDeliverTx
 import tendermint.abci.RequestEndBlock
@@ -29,7 +30,7 @@ import tendermint.abci.ResponseDeliverTx
 import tendermint.abci.ResponseEndBlock
 
 @Serializable(with = StoreKVPair.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.store.v1beta1.StoreKVPair")
+@SerialName(value = StoreKVPair.TYPE_URL)
 public data class StoreKVPair(
   @ProtobufIndex(index = 1)
   public val storeKey: String,
@@ -39,7 +40,11 @@ public data class StoreKVPair(
   public val key: ByteArray,
   @ProtobufIndex(index = 4)
   public val `value`: ByteArray,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.store.v1beta1.StoreKVPair"
+  }
+
   public object KotlinxSerializer : KSerializer<StoreKVPair> {
     private val delegator: KSerializer<StoreKVPair> = StoreKVPair.serializer()
 
@@ -63,7 +68,7 @@ public data class StoreKVPair(
 }
 
 @Serializable(with = BlockMetadata.KotlinxSerializer::class)
-@SerialName(value = "cosmos.base.store.v1beta1.BlockMetadata")
+@SerialName(value = BlockMetadata.TYPE_URL)
 public data class BlockMetadata(
   @ProtobufIndex(index = 1)
   public val requestBeginBlock: RequestBeginBlock,
@@ -77,15 +82,23 @@ public data class BlockMetadata(
   public val responseEndBlock: ResponseEndBlock,
   @ProtobufIndex(index = 6)
   public val responseCommit: ResponseCommit,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.base.store.v1beta1.BlockMetadata"
+  }
+
   @Serializable(with = DeliverTx.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.base.store.v1beta1.BlockMetadata.DeliverTx")
+  @SerialName(value = DeliverTx.TYPE_URL)
   public data class DeliverTx(
     @ProtobufIndex(index = 1)
     public val request: RequestDeliverTx,
     @ProtobufIndex(index = 2)
     public val response: ResponseDeliverTx,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.base.store.v1beta1.BlockMetadata.DeliverTx"
+    }
+
     public object KotlinxSerializer : KSerializer<DeliverTx> {
       private val delegator: KSerializer<DeliverTx> = DeliverTx.serializer()
 

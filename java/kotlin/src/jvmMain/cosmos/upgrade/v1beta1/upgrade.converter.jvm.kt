@@ -1,5 +1,5 @@
 // Transform from cosmos/upgrade/v1beta1/upgrade.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.upgrade.v1beta1
 
@@ -18,11 +18,11 @@ public object PlanJvmConverter : ProtobufTypeMapper<Plan, Upgrade.Plan> {
   public override val parser: Parser<Upgrade.Plan> = Upgrade.Plan.parser()
 
   public override fun convert(obj: Upgrade.Plan): Plan = Plan(
-  	name = obj.name,
-  	time = TimestampJvmConverter.convert(obj.time),
-  	height = obj.height,
-  	info = obj.info,
-  	upgradedClientState = AnyJvmConverter.convert(obj.upgradedClientState),
+  	name = obj.getName(),
+  	time = TimestampJvmConverter.convert(obj.getTime()),
+  	height = obj.getHeight(),
+  	info = obj.getInfo(),
+  	upgradedClientState = AnyJvmConverter.convert(obj.getUpgradedClientState()),
   )
 
   public override fun convert(obj: Plan): Upgrade.Plan {
@@ -46,9 +46,9 @@ public object SoftwareUpgradeProposalJvmConverter :
 
   public override fun convert(obj: Upgrade.SoftwareUpgradeProposal): SoftwareUpgradeProposal =
       SoftwareUpgradeProposal(
-  	title = obj.title,
-  	description = obj.description,
-  	plan = PlanJvmConverter.convert(obj.plan),
+  	title = obj.getTitle(),
+  	description = obj.getDescription(),
+  	plan = PlanJvmConverter.convert(obj.getPlan()),
   )
 
   public override fun convert(obj: SoftwareUpgradeProposal): Upgrade.SoftwareUpgradeProposal {
@@ -70,8 +70,8 @@ public object CancelSoftwareUpgradeProposalJvmConverter :
 
   public override fun convert(obj: Upgrade.CancelSoftwareUpgradeProposal):
       CancelSoftwareUpgradeProposal = CancelSoftwareUpgradeProposal(
-  	title = obj.title,
-  	description = obj.description,
+  	title = obj.getTitle(),
+  	description = obj.getDescription(),
   )
 
   public override fun convert(obj: CancelSoftwareUpgradeProposal):
@@ -89,8 +89,8 @@ public object ModuleVersionJvmConverter : ProtobufTypeMapper<ModuleVersion, Upgr
   public override val parser: Parser<Upgrade.ModuleVersion> = Upgrade.ModuleVersion.parser()
 
   public override fun convert(obj: Upgrade.ModuleVersion): ModuleVersion = ModuleVersion(
-  	name = obj.name,
-  	version = obj.version.asKotlinType,
+  	name = obj.getName(),
+  	version = obj.getVersion().asKotlinType,
   )
 
   public override fun convert(obj: ModuleVersion): Upgrade.ModuleVersion {

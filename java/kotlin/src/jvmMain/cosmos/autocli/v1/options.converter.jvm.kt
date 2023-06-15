@@ -1,5 +1,5 @@
 // Transform from cosmos/autocli/v1/options.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.autocli.v1
 
@@ -14,8 +14,8 @@ public object ModuleOptionsJvmConverter : ProtobufTypeMapper<ModuleOptions, Opti
   public override val parser: Parser<Options.ModuleOptions> = Options.ModuleOptions.parser()
 
   public override fun convert(obj: Options.ModuleOptions): ModuleOptions = ModuleOptions(
-  	tx = ServiceCommandDescriptorJvmConverter.convert(obj.tx),
-  	query = ServiceCommandDescriptorJvmConverter.convert(obj.query),
+  	tx = ServiceCommandDescriptorJvmConverter.convert(obj.getTx()),
+  	query = ServiceCommandDescriptorJvmConverter.convert(obj.getQuery()),
   )
 
   public override fun convert(obj: ModuleOptions): Options.ModuleOptions {
@@ -36,9 +36,10 @@ public object ServiceCommandDescriptorJvmConverter :
 
   public override fun convert(obj: Options.ServiceCommandDescriptor): ServiceCommandDescriptor =
       ServiceCommandDescriptor(
-  	service = obj.service,
-  	rpcCommandOptions = obj.rpcCommandOptionsList.map { RpcCommandOptionsJvmConverter.convert(it) },
-  	subCommands = obj.subCommandsMap.map { it.key to
+  	service = obj.getService(),
+  	rpcCommandOptions = obj.getRpcCommandOptionsList().map {
+      RpcCommandOptionsJvmConverter.convert(it) },
+  	subCommands = obj.getSubCommandsMap().map { it.key to
       ServiceCommandDescriptorJvmConverter.convert(it.value) }.toMap(),
   )
 
@@ -61,19 +62,20 @@ public object RpcCommandOptionsJvmConverter :
 
   public override fun convert(obj: Options.RpcCommandOptions): RpcCommandOptions =
       RpcCommandOptions(
-  	rpcMethod = obj.rpcMethod,
-  	use = obj.use,
-  	long = obj.long,
-  	short = obj.short,
-  	example = obj.example,
-  	alias = obj.aliasList.map { it },
-  	suggestFor = obj.suggestForList.map { it },
-  	deprecated = obj.deprecated,
-  	version = obj.version,
-  	flagOptions = obj.flagOptionsMap.map { it.key to FlagOptionsJvmConverter.convert(it.value)
+  	rpcMethod = obj.getRpcMethod(),
+  	use = obj.getUse(),
+  	long = obj.getLong(),
+  	short = obj.getShort(),
+  	example = obj.getExample(),
+  	alias = obj.getAliasList().map { it },
+  	suggestFor = obj.getSuggestForList().map { it },
+  	deprecated = obj.getDeprecated(),
+  	version = obj.getVersion(),
+  	flagOptions = obj.getFlagOptionsMap().map { it.key to FlagOptionsJvmConverter.convert(it.value)
       }.toMap(),
-  	positionalArgs = obj.positionalArgsList.map { PositionalArgDescriptorJvmConverter.convert(it) },
-  	skip = obj.skip,
+  	positionalArgs = obj.getPositionalArgsList().map {
+      PositionalArgDescriptorJvmConverter.convert(it) },
+  	skip = obj.getSkip(),
   )
 
   public override fun convert(obj: RpcCommandOptions): Options.RpcCommandOptions {
@@ -102,14 +104,14 @@ public object FlagOptionsJvmConverter : ProtobufTypeMapper<FlagOptions, Options.
   public override val parser: Parser<Options.FlagOptions> = Options.FlagOptions.parser()
 
   public override fun convert(obj: Options.FlagOptions): FlagOptions = FlagOptions(
-  	name = obj.name,
-  	shorthand = obj.shorthand,
-  	usage = obj.usage,
-  	defaultValue = obj.defaultValue,
-  	noOptDefaultValue = obj.noOptDefaultValue,
-  	deprecated = obj.deprecated,
-  	shorthandDeprecated = obj.shorthandDeprecated,
-  	hidden = obj.hidden,
+  	name = obj.getName(),
+  	shorthand = obj.getShorthand(),
+  	usage = obj.getUsage(),
+  	defaultValue = obj.getDefaultValue(),
+  	noOptDefaultValue = obj.getNoOptDefaultValue(),
+  	deprecated = obj.getDeprecated(),
+  	shorthandDeprecated = obj.getShorthandDeprecated(),
+  	hidden = obj.getHidden(),
   )
 
   public override fun convert(obj: FlagOptions): Options.FlagOptions {
@@ -136,8 +138,8 @@ public object PositionalArgDescriptorJvmConverter :
 
   public override fun convert(obj: Options.PositionalArgDescriptor): PositionalArgDescriptor =
       PositionalArgDescriptor(
-  	protoField = obj.protoField,
-  	varargs = obj.varargs,
+  	protoField = obj.getProtoField(),
+  	varargs = obj.getVarargs(),
   )
 
   public override fun convert(obj: PositionalArgDescriptor): Options.PositionalArgDescriptor {

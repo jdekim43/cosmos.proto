@@ -1,5 +1,5 @@
 // Transform from cosmos/staking/v1beta1/staking.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.staking.v1beta1
 

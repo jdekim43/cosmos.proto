@@ -1,5 +1,5 @@
 // Transform from tendermint/types/evidence.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
@@ -19,10 +19,10 @@ public object EvidenceJvmConverter : ProtobufTypeMapper<Evidence, EvidenceOuterC
   public override fun convert(obj: EvidenceOuterClass.Evidence): Evidence = Evidence(
   	sum = mapOf(
   1 to {
-      Evidence.SumOneOf.DuplicateVoteEvidence(DuplicateVoteEvidenceJvmConverter.convert(obj.duplicateVoteEvidence))
+      Evidence.SumOneOf.DuplicateVoteEvidence(DuplicateVoteEvidenceJvmConverter.convert(obj.getDuplicateVoteEvidence()))
       },
   2 to {
-      Evidence.SumOneOf.LightClientAttackEvidence(LightClientAttackEvidenceJvmConverter.convert(obj.lightClientAttackEvidence))
+      Evidence.SumOneOf.LightClientAttackEvidence(LightClientAttackEvidenceJvmConverter.convert(obj.getLightClientAttackEvidence()))
       },
   ).getValue(obj.sumCase.number)(),
   )
@@ -49,11 +49,11 @@ public object DuplicateVoteEvidenceJvmConverter :
 
   public override fun convert(obj: EvidenceOuterClass.DuplicateVoteEvidence): DuplicateVoteEvidence
       = DuplicateVoteEvidence(
-  	voteA = VoteJvmConverter.convert(obj.voteA),
-  	voteB = VoteJvmConverter.convert(obj.voteB),
-  	totalVotingPower = obj.totalVotingPower,
-  	validatorPower = obj.validatorPower,
-  	timestamp = TimestampJvmConverter.convert(obj.timestamp),
+  	voteA = VoteJvmConverter.convert(obj.getVoteA()),
+  	voteB = VoteJvmConverter.convert(obj.getVoteB()),
+  	totalVotingPower = obj.getTotalVotingPower(),
+  	validatorPower = obj.getValidatorPower(),
+  	timestamp = TimestampJvmConverter.convert(obj.getTimestamp()),
   )
 
   public override fun convert(obj: DuplicateVoteEvidence):
@@ -78,11 +78,11 @@ public object LightClientAttackEvidenceJvmConverter :
 
   public override fun convert(obj: EvidenceOuterClass.LightClientAttackEvidence):
       LightClientAttackEvidence = LightClientAttackEvidence(
-  	conflictingBlock = LightBlockJvmConverter.convert(obj.conflictingBlock),
-  	commonHeight = obj.commonHeight,
-  	byzantineValidators = obj.byzantineValidatorsList.map { ValidatorJvmConverter.convert(it) },
-  	totalVotingPower = obj.totalVotingPower,
-  	timestamp = TimestampJvmConverter.convert(obj.timestamp),
+  	conflictingBlock = LightBlockJvmConverter.convert(obj.getConflictingBlock()),
+  	commonHeight = obj.getCommonHeight(),
+  	byzantineValidators = obj.getByzantineValidatorsList().map { ValidatorJvmConverter.convert(it) },
+  	totalVotingPower = obj.getTotalVotingPower(),
+  	timestamp = TimestampJvmConverter.convert(obj.getTimestamp()),
   )
 
   public override fun convert(obj: LightClientAttackEvidence):
@@ -107,7 +107,7 @@ public object EvidenceListJvmConverter :
       EvidenceOuterClass.EvidenceList.parser()
 
   public override fun convert(obj: EvidenceOuterClass.EvidenceList): EvidenceList = EvidenceList(
-  	evidence = obj.evidenceList.map { EvidenceJvmConverter.convert(it) },
+  	evidence = obj.getEvidenceList().map { EvidenceJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: EvidenceList): EvidenceOuterClass.EvidenceList {

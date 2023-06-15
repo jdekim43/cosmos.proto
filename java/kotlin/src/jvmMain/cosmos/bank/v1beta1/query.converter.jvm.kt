@@ -1,5 +1,5 @@
 // Transform from cosmos/bank/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -21,8 +21,8 @@ public object QueryBalanceRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryBalanceRequest): QueryBalanceRequest =
       QueryBalanceRequest(
-  	address = obj.address,
-  	denom = obj.denom,
+  	address = obj.getAddress(),
+  	denom = obj.getDenom(),
   )
 
   public override fun convert(obj: QueryBalanceRequest): QueryOuterClass.QueryBalanceRequest {
@@ -43,7 +43,7 @@ public object QueryBalanceResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryBalanceResponse): QueryBalanceResponse =
       QueryBalanceResponse(
-  	balance = CoinJvmConverter.convert(obj.balance),
+  	balance = CoinJvmConverter.convert(obj.getBalance()),
   )
 
   public override fun convert(obj: QueryBalanceResponse): QueryOuterClass.QueryBalanceResponse {
@@ -63,8 +63,8 @@ public object QueryAllBalancesRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllBalancesRequest): QueryAllBalancesRequest
       = QueryAllBalancesRequest(
-  	address = obj.address,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	address = obj.getAddress(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAllBalancesRequest):
@@ -86,8 +86,8 @@ public object QueryAllBalancesResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryAllBalancesResponse):
       QueryAllBalancesResponse = QueryAllBalancesResponse(
-  	balances = obj.balancesList.map { CoinJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	balances = obj.getBalancesList().map { CoinJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryAllBalancesResponse):
@@ -110,8 +110,8 @@ public object QuerySpendableBalancesRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySpendableBalancesRequest):
       QuerySpendableBalancesRequest = QuerySpendableBalancesRequest(
-  	address = obj.address,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	address = obj.getAddress(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QuerySpendableBalancesRequest):
@@ -134,8 +134,8 @@ public object QuerySpendableBalancesResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySpendableBalancesResponse):
       QuerySpendableBalancesResponse = QuerySpendableBalancesResponse(
-  	balances = obj.balancesList.map { CoinJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	balances = obj.getBalancesList().map { CoinJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QuerySpendableBalancesResponse):
@@ -158,8 +158,8 @@ public object QuerySpendableBalanceByDenomRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySpendableBalanceByDenomRequest):
       QuerySpendableBalanceByDenomRequest = QuerySpendableBalanceByDenomRequest(
-  	address = obj.address,
-  	denom = obj.denom,
+  	address = obj.getAddress(),
+  	denom = obj.getDenom(),
   )
 
   public override fun convert(obj: QuerySpendableBalanceByDenomRequest):
@@ -182,7 +182,7 @@ public object QuerySpendableBalanceByDenomResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySpendableBalanceByDenomResponse):
       QuerySpendableBalanceByDenomResponse = QuerySpendableBalanceByDenomResponse(
-  	balance = CoinJvmConverter.convert(obj.balance),
+  	balance = CoinJvmConverter.convert(obj.getBalance()),
   )
 
   public override fun convert(obj: QuerySpendableBalanceByDenomResponse):
@@ -203,7 +203,7 @@ public object QueryTotalSupplyRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryTotalSupplyRequest): QueryTotalSupplyRequest
       = QueryTotalSupplyRequest(
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryTotalSupplyRequest):
@@ -224,8 +224,8 @@ public object QueryTotalSupplyResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryTotalSupplyResponse):
       QueryTotalSupplyResponse = QueryTotalSupplyResponse(
-  	supply = obj.supplyList.map { CoinJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	supply = obj.getSupplyList().map { CoinJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryTotalSupplyResponse):
@@ -247,7 +247,7 @@ public object QuerySupplyOfRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySupplyOfRequest): QuerySupplyOfRequest =
       QuerySupplyOfRequest(
-  	denom = obj.denom,
+  	denom = obj.getDenom(),
   )
 
   public override fun convert(obj: QuerySupplyOfRequest): QueryOuterClass.QuerySupplyOfRequest {
@@ -267,7 +267,7 @@ public object QuerySupplyOfResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySupplyOfResponse): QuerySupplyOfResponse =
       QuerySupplyOfResponse(
-  	amount = CoinJvmConverter.convert(obj.amount),
+  	amount = CoinJvmConverter.convert(obj.getAmount()),
   )
 
   public override fun convert(obj: QuerySupplyOfResponse): QueryOuterClass.QuerySupplyOfResponse {
@@ -305,7 +305,7 @@ public object QueryParamsResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryParamsResponse): QueryParamsResponse =
       QueryParamsResponse(
-  	params = ParamsJvmConverter.convert(obj.params),
+  	params = ParamsJvmConverter.convert(obj.getParams()),
   )
 
   public override fun convert(obj: QueryParamsResponse): QueryOuterClass.QueryParamsResponse {
@@ -325,7 +325,7 @@ public object QueryDenomsMetadataRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDenomsMetadataRequest):
       QueryDenomsMetadataRequest = QueryDenomsMetadataRequest(
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDenomsMetadataRequest):
@@ -346,8 +346,8 @@ public object QueryDenomsMetadataResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDenomsMetadataResponse):
       QueryDenomsMetadataResponse = QueryDenomsMetadataResponse(
-  	metadatas = obj.metadatasList.map { MetadataJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	metadatas = obj.getMetadatasList().map { MetadataJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDenomsMetadataResponse):
@@ -369,7 +369,7 @@ public object QueryDenomMetadataRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDenomMetadataRequest):
       QueryDenomMetadataRequest = QueryDenomMetadataRequest(
-  	denom = obj.denom,
+  	denom = obj.getDenom(),
   )
 
   public override fun convert(obj: QueryDenomMetadataRequest):
@@ -390,7 +390,7 @@ public object QueryDenomMetadataResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDenomMetadataResponse):
       QueryDenomMetadataResponse = QueryDenomMetadataResponse(
-  	metadata = MetadataJvmConverter.convert(obj.metadata),
+  	metadata = MetadataJvmConverter.convert(obj.getMetadata()),
   )
 
   public override fun convert(obj: QueryDenomMetadataResponse):
@@ -411,8 +411,8 @@ public object QueryDenomOwnersRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDenomOwnersRequest): QueryDenomOwnersRequest
       = QueryDenomOwnersRequest(
-  	denom = obj.denom,
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	denom = obj.getDenom(),
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDenomOwnersRequest):
@@ -432,8 +432,8 @@ public object DenomOwnerJvmConverter : ProtobufTypeMapper<DenomOwner, QueryOuter
       QueryOuterClass.DenomOwner.parser()
 
   public override fun convert(obj: QueryOuterClass.DenomOwner): DenomOwner = DenomOwner(
-  	address = obj.address,
-  	balance = CoinJvmConverter.convert(obj.balance),
+  	address = obj.getAddress(),
+  	balance = CoinJvmConverter.convert(obj.getBalance()),
   )
 
   public override fun convert(obj: DenomOwner): QueryOuterClass.DenomOwner {
@@ -454,8 +454,8 @@ public object QueryDenomOwnersResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QueryDenomOwnersResponse):
       QueryDenomOwnersResponse = QueryDenomOwnersResponse(
-  	denomOwners = obj.denomOwnersList.map { DenomOwnerJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	denomOwners = obj.getDenomOwnersList().map { DenomOwnerJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QueryDenomOwnersResponse):
@@ -477,8 +477,8 @@ public object QuerySendEnabledRequestJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySendEnabledRequest): QuerySendEnabledRequest
       = QuerySendEnabledRequest(
-  	denoms = obj.denomsList.map { it },
-  	pagination = PageRequestJvmConverter.convert(obj.pagination),
+  	denoms = obj.getDenomsList().map { it },
+  	pagination = PageRequestJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QuerySendEnabledRequest):
@@ -500,8 +500,8 @@ public object QuerySendEnabledResponseJvmConverter :
 
   public override fun convert(obj: QueryOuterClass.QuerySendEnabledResponse):
       QuerySendEnabledResponse = QuerySendEnabledResponse(
-  	sendEnabled = obj.sendEnabledList.map { SendEnabledJvmConverter.convert(it) },
-  	pagination = PageResponseJvmConverter.convert(obj.pagination),
+  	sendEnabled = obj.getSendEnabledList().map { SendEnabledJvmConverter.convert(it) },
+  	pagination = PageResponseJvmConverter.convert(obj.getPagination()),
   )
 
   public override fun convert(obj: QuerySendEnabledResponse):

@@ -1,5 +1,5 @@
 // Transform from cosmos/feegrant/v1beta1/tx.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.feegrant.v1beta1
 
@@ -16,9 +16,9 @@ public object MsgGrantAllowanceJvmConverter :
   public override val parser: Parser<Tx.MsgGrantAllowance> = Tx.MsgGrantAllowance.parser()
 
   public override fun convert(obj: Tx.MsgGrantAllowance): MsgGrantAllowance = MsgGrantAllowance(
-  	granter = obj.granter,
-  	grantee = obj.grantee,
-  	allowance = AnyJvmConverter.convert(obj.allowance),
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
+  	allowance = AnyJvmConverter.convert(obj.getAllowance()),
   )
 
   public override fun convert(obj: MsgGrantAllowance): Tx.MsgGrantAllowance {
@@ -55,8 +55,8 @@ public object MsgRevokeAllowanceJvmConverter :
   public override val parser: Parser<Tx.MsgRevokeAllowance> = Tx.MsgRevokeAllowance.parser()
 
   public override fun convert(obj: Tx.MsgRevokeAllowance): MsgRevokeAllowance = MsgRevokeAllowance(
-  	granter = obj.granter,
-  	grantee = obj.grantee,
+  	granter = obj.getGranter(),
+  	grantee = obj.getGrantee(),
   )
 
   public override fun convert(obj: MsgRevokeAllowance): Tx.MsgRevokeAllowance {

@@ -1,5 +1,5 @@
 // Transform from tendermint/crypto/proof.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.crypto
 
@@ -15,10 +15,10 @@ public object ProofJvmConverter : ProtobufTypeMapper<Proof, ProofOuterClass.Proo
   public override val parser: Parser<ProofOuterClass.Proof> = ProofOuterClass.Proof.parser()
 
   public override fun convert(obj: ProofOuterClass.Proof): Proof = Proof(
-  	total = obj.total,
-  	index = obj.index,
-  	leafHash = obj.leafHash.toByteArray(),
-  	aunts = obj.auntsList.map { it.toByteArray() },
+  	total = obj.getTotal(),
+  	index = obj.getIndex(),
+  	leafHash = obj.getLeafHash().toByteArray(),
+  	aunts = obj.getAuntsList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: Proof): ProofOuterClass.Proof {
@@ -37,8 +37,8 @@ public object ValueOpJvmConverter : ProtobufTypeMapper<ValueOp, ProofOuterClass.
   public override val parser: Parser<ProofOuterClass.ValueOp> = ProofOuterClass.ValueOp.parser()
 
   public override fun convert(obj: ProofOuterClass.ValueOp): ValueOp = ValueOp(
-  	key = obj.key.toByteArray(),
-  	proof = ProofJvmConverter.convert(obj.proof),
+  	key = obj.getKey().toByteArray(),
+  	proof = ProofJvmConverter.convert(obj.getProof()),
   )
 
   public override fun convert(obj: ValueOp): ProofOuterClass.ValueOp {
@@ -55,9 +55,9 @@ public object DominoOpJvmConverter : ProtobufTypeMapper<DominoOp, ProofOuterClas
   public override val parser: Parser<ProofOuterClass.DominoOp> = ProofOuterClass.DominoOp.parser()
 
   public override fun convert(obj: ProofOuterClass.DominoOp): DominoOp = DominoOp(
-  	key = obj.key,
-  	input = obj.input,
-  	output = obj.output,
+  	key = obj.getKey(),
+  	input = obj.getInput(),
+  	output = obj.getOutput(),
   )
 
   public override fun convert(obj: DominoOp): ProofOuterClass.DominoOp {
@@ -75,9 +75,9 @@ public object ProofOpJvmConverter : ProtobufTypeMapper<ProofOp, ProofOuterClass.
   public override val parser: Parser<ProofOuterClass.ProofOp> = ProofOuterClass.ProofOp.parser()
 
   public override fun convert(obj: ProofOuterClass.ProofOp): ProofOp = ProofOp(
-  	type = obj.type,
-  	key = obj.key.toByteArray(),
-  	`data` = obj.`data`.toByteArray(),
+  	type = obj.getType(),
+  	key = obj.getKey().toByteArray(),
+  	`data` = obj.getData().toByteArray(),
   )
 
   public override fun convert(obj: ProofOp): ProofOuterClass.ProofOp {
@@ -95,7 +95,7 @@ public object ProofOpsJvmConverter : ProtobufTypeMapper<ProofOps, ProofOuterClas
   public override val parser: Parser<ProofOuterClass.ProofOps> = ProofOuterClass.ProofOps.parser()
 
   public override fun convert(obj: ProofOuterClass.ProofOps): ProofOps = ProofOps(
-  	ops = obj.opsList.map { ProofOpJvmConverter.convert(it) },
+  	ops = obj.getOpsList().map { ProofOpJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ProofOps): ProofOuterClass.ProofOps {

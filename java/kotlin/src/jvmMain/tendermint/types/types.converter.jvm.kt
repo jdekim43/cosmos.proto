@@ -1,5 +1,5 @@
 // Transform from tendermint/types/types.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package tendermint.types
 
@@ -20,8 +20,8 @@ public object PartSetHeaderJvmConverter : ProtobufTypeMapper<PartSetHeader, Type
   public override val parser: Parser<Types.PartSetHeader> = Types.PartSetHeader.parser()
 
   public override fun convert(obj: Types.PartSetHeader): PartSetHeader = PartSetHeader(
-  	total = obj.total.asKotlinType,
-  	hash = obj.hash.toByteArray(),
+  	total = obj.getTotal().asKotlinType,
+  	hash = obj.getHash().toByteArray(),
   )
 
   public override fun convert(obj: PartSetHeader): Types.PartSetHeader {
@@ -38,9 +38,9 @@ public object PartJvmConverter : ProtobufTypeMapper<Part, Types.Part> {
   public override val parser: Parser<Types.Part> = Types.Part.parser()
 
   public override fun convert(obj: Types.Part): Part = Part(
-  	index = obj.index.asKotlinType,
-  	bytes = obj.bytes.toByteArray(),
-  	proof = ProofJvmConverter.convert(obj.proof),
+  	index = obj.getIndex().asKotlinType,
+  	bytes = obj.getBytes().toByteArray(),
+  	proof = ProofJvmConverter.convert(obj.getProof()),
   )
 
   public override fun convert(obj: Part): Types.Part {
@@ -58,8 +58,8 @@ public object BlockIDJvmConverter : ProtobufTypeMapper<BlockID, Types.BlockID> {
   public override val parser: Parser<Types.BlockID> = Types.BlockID.parser()
 
   public override fun convert(obj: Types.BlockID): BlockID = BlockID(
-  	hash = obj.hash.toByteArray(),
-  	partSetHeader = PartSetHeaderJvmConverter.convert(obj.partSetHeader),
+  	hash = obj.getHash().toByteArray(),
+  	partSetHeader = PartSetHeaderJvmConverter.convert(obj.getPartSetHeader()),
   )
 
   public override fun convert(obj: BlockID): Types.BlockID {
@@ -76,20 +76,20 @@ public object HeaderJvmConverter : ProtobufTypeMapper<Header, Types.Header> {
   public override val parser: Parser<Types.Header> = Types.Header.parser()
 
   public override fun convert(obj: Types.Header): Header = Header(
-  	version = ConsensusJvmConverter.convert(obj.version),
-  	chainId = obj.chainId,
-  	height = obj.height,
-  	time = TimestampJvmConverter.convert(obj.time),
-  	lastBlockId = BlockIDJvmConverter.convert(obj.lastBlockId),
-  	lastCommitHash = obj.lastCommitHash.toByteArray(),
-  	dataHash = obj.dataHash.toByteArray(),
-  	validatorsHash = obj.validatorsHash.toByteArray(),
-  	nextValidatorsHash = obj.nextValidatorsHash.toByteArray(),
-  	consensusHash = obj.consensusHash.toByteArray(),
-  	appHash = obj.appHash.toByteArray(),
-  	lastResultsHash = obj.lastResultsHash.toByteArray(),
-  	evidenceHash = obj.evidenceHash.toByteArray(),
-  	proposerAddress = obj.proposerAddress.toByteArray(),
+  	version = ConsensusJvmConverter.convert(obj.getVersion()),
+  	chainId = obj.getChainId(),
+  	height = obj.getHeight(),
+  	time = TimestampJvmConverter.convert(obj.getTime()),
+  	lastBlockId = BlockIDJvmConverter.convert(obj.getLastBlockId()),
+  	lastCommitHash = obj.getLastCommitHash().toByteArray(),
+  	dataHash = obj.getDataHash().toByteArray(),
+  	validatorsHash = obj.getValidatorsHash().toByteArray(),
+  	nextValidatorsHash = obj.getNextValidatorsHash().toByteArray(),
+  	consensusHash = obj.getConsensusHash().toByteArray(),
+  	appHash = obj.getAppHash().toByteArray(),
+  	lastResultsHash = obj.getLastResultsHash().toByteArray(),
+  	evidenceHash = obj.getEvidenceHash().toByteArray(),
+  	proposerAddress = obj.getProposerAddress().toByteArray(),
   )
 
   public override fun convert(obj: Header): Types.Header {
@@ -118,7 +118,7 @@ public object DataJvmConverter : ProtobufTypeMapper<Data, Types.Data> {
   public override val parser: Parser<Types.Data> = Types.Data.parser()
 
   public override fun convert(obj: Types.Data): Data = Data(
-  	txs = obj.txsList.map { it.toByteArray() },
+  	txs = obj.getTxsList().map { it.toByteArray() },
   )
 
   public override fun convert(obj: Data): Types.Data {
@@ -134,14 +134,14 @@ public object VoteJvmConverter : ProtobufTypeMapper<Vote, Types.Vote> {
   public override val parser: Parser<Types.Vote> = Types.Vote.parser()
 
   public override fun convert(obj: Types.Vote): Vote = Vote(
-  	type = SignedMsgType.forNumber(obj.type.number),
-  	height = obj.height,
-  	round = obj.round,
-  	blockId = BlockIDJvmConverter.convert(obj.blockId),
-  	timestamp = TimestampJvmConverter.convert(obj.timestamp),
-  	validatorAddress = obj.validatorAddress.toByteArray(),
-  	validatorIndex = obj.validatorIndex,
-  	signature = obj.signature.toByteArray(),
+  	type = SignedMsgType.forNumber(obj.getType().number),
+  	height = obj.getHeight(),
+  	round = obj.getRound(),
+  	blockId = BlockIDJvmConverter.convert(obj.getBlockId()),
+  	timestamp = TimestampJvmConverter.convert(obj.getTimestamp()),
+  	validatorAddress = obj.getValidatorAddress().toByteArray(),
+  	validatorIndex = obj.getValidatorIndex(),
+  	signature = obj.getSignature().toByteArray(),
   )
 
   public override fun convert(obj: Vote): Types.Vote {
@@ -164,10 +164,10 @@ public object CommitJvmConverter : ProtobufTypeMapper<Commit, Types.Commit> {
   public override val parser: Parser<Types.Commit> = Types.Commit.parser()
 
   public override fun convert(obj: Types.Commit): Commit = Commit(
-  	height = obj.height,
-  	round = obj.round,
-  	blockId = BlockIDJvmConverter.convert(obj.blockId),
-  	signatures = obj.signaturesList.map { CommitSigJvmConverter.convert(it) },
+  	height = obj.getHeight(),
+  	round = obj.getRound(),
+  	blockId = BlockIDJvmConverter.convert(obj.getBlockId()),
+  	signatures = obj.getSignaturesList().map { CommitSigJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Commit): Types.Commit {
@@ -186,10 +186,10 @@ public object CommitSigJvmConverter : ProtobufTypeMapper<CommitSig, Types.Commit
   public override val parser: Parser<Types.CommitSig> = Types.CommitSig.parser()
 
   public override fun convert(obj: Types.CommitSig): CommitSig = CommitSig(
-  	blockIdFlag = BlockIDFlag.forNumber(obj.blockIdFlag.number),
-  	validatorAddress = obj.validatorAddress.toByteArray(),
-  	timestamp = TimestampJvmConverter.convert(obj.timestamp),
-  	signature = obj.signature.toByteArray(),
+  	blockIdFlag = BlockIDFlag.forNumber(obj.getBlockIdFlag().number),
+  	validatorAddress = obj.getValidatorAddress().toByteArray(),
+  	timestamp = TimestampJvmConverter.convert(obj.getTimestamp()),
+  	signature = obj.getSignature().toByteArray(),
   )
 
   public override fun convert(obj: CommitSig): Types.CommitSig {
@@ -208,13 +208,13 @@ public object ProposalJvmConverter : ProtobufTypeMapper<Proposal, Types.Proposal
   public override val parser: Parser<Types.Proposal> = Types.Proposal.parser()
 
   public override fun convert(obj: Types.Proposal): Proposal = Proposal(
-  	type = SignedMsgType.forNumber(obj.type.number),
-  	height = obj.height,
-  	round = obj.round,
-  	polRound = obj.polRound,
-  	blockId = BlockIDJvmConverter.convert(obj.blockId),
-  	timestamp = TimestampJvmConverter.convert(obj.timestamp),
-  	signature = obj.signature.toByteArray(),
+  	type = SignedMsgType.forNumber(obj.getType().number),
+  	height = obj.getHeight(),
+  	round = obj.getRound(),
+  	polRound = obj.getPolRound(),
+  	blockId = BlockIDJvmConverter.convert(obj.getBlockId()),
+  	timestamp = TimestampJvmConverter.convert(obj.getTimestamp()),
+  	signature = obj.getSignature().toByteArray(),
   )
 
   public override fun convert(obj: Proposal): Types.Proposal {
@@ -236,8 +236,8 @@ public object SignedHeaderJvmConverter : ProtobufTypeMapper<SignedHeader, Types.
   public override val parser: Parser<Types.SignedHeader> = Types.SignedHeader.parser()
 
   public override fun convert(obj: Types.SignedHeader): SignedHeader = SignedHeader(
-  	`header` = HeaderJvmConverter.convert(obj.`header`),
-  	commit = CommitJvmConverter.convert(obj.commit),
+  	`header` = HeaderJvmConverter.convert(obj.getHeader()),
+  	commit = CommitJvmConverter.convert(obj.getCommit()),
   )
 
   public override fun convert(obj: SignedHeader): Types.SignedHeader {
@@ -254,8 +254,8 @@ public object LightBlockJvmConverter : ProtobufTypeMapper<LightBlock, Types.Ligh
   public override val parser: Parser<Types.LightBlock> = Types.LightBlock.parser()
 
   public override fun convert(obj: Types.LightBlock): LightBlock = LightBlock(
-  	signedHeader = SignedHeaderJvmConverter.convert(obj.signedHeader),
-  	validatorSet = ValidatorSetJvmConverter.convert(obj.validatorSet),
+  	signedHeader = SignedHeaderJvmConverter.convert(obj.getSignedHeader()),
+  	validatorSet = ValidatorSetJvmConverter.convert(obj.getValidatorSet()),
   )
 
   public override fun convert(obj: LightBlock): Types.LightBlock {
@@ -272,10 +272,10 @@ public object BlockMetaJvmConverter : ProtobufTypeMapper<BlockMeta, Types.BlockM
   public override val parser: Parser<Types.BlockMeta> = Types.BlockMeta.parser()
 
   public override fun convert(obj: Types.BlockMeta): BlockMeta = BlockMeta(
-  	blockId = BlockIDJvmConverter.convert(obj.blockId),
-  	blockSize = obj.blockSize,
-  	`header` = HeaderJvmConverter.convert(obj.`header`),
-  	numTxs = obj.numTxs,
+  	blockId = BlockIDJvmConverter.convert(obj.getBlockId()),
+  	blockSize = obj.getBlockSize(),
+  	`header` = HeaderJvmConverter.convert(obj.getHeader()),
+  	numTxs = obj.getNumTxs(),
   )
 
   public override fun convert(obj: BlockMeta): Types.BlockMeta {
@@ -294,9 +294,9 @@ public object TxProofJvmConverter : ProtobufTypeMapper<TxProof, Types.TxProof> {
   public override val parser: Parser<Types.TxProof> = Types.TxProof.parser()
 
   public override fun convert(obj: Types.TxProof): TxProof = TxProof(
-  	rootHash = obj.rootHash.toByteArray(),
-  	`data` = obj.`data`.toByteArray(),
-  	proof = ProofJvmConverter.convert(obj.proof),
+  	rootHash = obj.getRootHash().toByteArray(),
+  	`data` = obj.getData().toByteArray(),
+  	proof = ProofJvmConverter.convert(obj.getProof()),
   )
 
   public override fun convert(obj: TxProof): Types.TxProof {

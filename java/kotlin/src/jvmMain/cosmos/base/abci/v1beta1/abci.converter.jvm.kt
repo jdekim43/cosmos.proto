@@ -1,5 +1,5 @@
 // Transform from cosmos/base/abci/v1beta1/abci.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.abci.v1beta1
 
@@ -19,19 +19,19 @@ public object TxResponseJvmConverter : ProtobufTypeMapper<TxResponse, Abci.TxRes
   public override val parser: Parser<Abci.TxResponse> = Abci.TxResponse.parser()
 
   public override fun convert(obj: Abci.TxResponse): TxResponse = TxResponse(
-  	height = obj.height,
-  	txhash = obj.txhash,
-  	codespace = obj.codespace,
-  	code = obj.code.asKotlinType,
-  	`data` = obj.`data`,
-  	rawLog = obj.rawLog,
-  	logs = obj.logsList.map { ABCIMessageLogJvmConverter.convert(it) },
-  	info = obj.info,
-  	gasWanted = obj.gasWanted,
-  	gasUsed = obj.gasUsed,
-  	tx = AnyJvmConverter.convert(obj.tx),
-  	timestamp = obj.timestamp,
-  	events = obj.eventsList.map { EventJvmConverter.convert(it) },
+  	height = obj.getHeight(),
+  	txhash = obj.getTxhash(),
+  	codespace = obj.getCodespace(),
+  	code = obj.getCode().asKotlinType,
+  	`data` = obj.getData(),
+  	rawLog = obj.getRawLog(),
+  	logs = obj.getLogsList().map { ABCIMessageLogJvmConverter.convert(it) },
+  	info = obj.getInfo(),
+  	gasWanted = obj.getGasWanted(),
+  	gasUsed = obj.getGasUsed(),
+  	tx = AnyJvmConverter.convert(obj.getTx()),
+  	timestamp = obj.getTimestamp(),
+  	events = obj.getEventsList().map { EventJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: TxResponse): Abci.TxResponse {
@@ -59,9 +59,9 @@ public object ABCIMessageLogJvmConverter : ProtobufTypeMapper<ABCIMessageLog, Ab
   public override val parser: Parser<Abci.ABCIMessageLog> = Abci.ABCIMessageLog.parser()
 
   public override fun convert(obj: Abci.ABCIMessageLog): ABCIMessageLog = ABCIMessageLog(
-  	msgIndex = obj.msgIndex.asKotlinType,
-  	log = obj.log,
-  	events = obj.eventsList.map { StringEventJvmConverter.convert(it) },
+  	msgIndex = obj.getMsgIndex().asKotlinType,
+  	log = obj.getLog(),
+  	events = obj.getEventsList().map { StringEventJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: ABCIMessageLog): Abci.ABCIMessageLog {
@@ -79,8 +79,8 @@ public object StringEventJvmConverter : ProtobufTypeMapper<StringEvent, Abci.Str
   public override val parser: Parser<Abci.StringEvent> = Abci.StringEvent.parser()
 
   public override fun convert(obj: Abci.StringEvent): StringEvent = StringEvent(
-  	type = obj.type,
-  	attributes = obj.attributesList.map { AttributeJvmConverter.convert(it) },
+  	type = obj.getType(),
+  	attributes = obj.getAttributesList().map { AttributeJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: StringEvent): Abci.StringEvent {
@@ -97,8 +97,8 @@ public object AttributeJvmConverter : ProtobufTypeMapper<Attribute, Abci.Attribu
   public override val parser: Parser<Abci.Attribute> = Abci.Attribute.parser()
 
   public override fun convert(obj: Abci.Attribute): Attribute = Attribute(
-  	key = obj.key,
-  	`value` = obj.`value`,
+  	key = obj.getKey(),
+  	`value` = obj.getValue(),
   )
 
   public override fun convert(obj: Attribute): Abci.Attribute {
@@ -115,8 +115,8 @@ public object GasInfoJvmConverter : ProtobufTypeMapper<GasInfo, Abci.GasInfo> {
   public override val parser: Parser<Abci.GasInfo> = Abci.GasInfo.parser()
 
   public override fun convert(obj: Abci.GasInfo): GasInfo = GasInfo(
-  	gasWanted = obj.gasWanted.asKotlinType,
-  	gasUsed = obj.gasUsed.asKotlinType,
+  	gasWanted = obj.getGasWanted().asKotlinType,
+  	gasUsed = obj.getGasUsed().asKotlinType,
   )
 
   public override fun convert(obj: GasInfo): Abci.GasInfo {
@@ -133,10 +133,10 @@ public object ResultJvmConverter : ProtobufTypeMapper<Result, Abci.Result> {
   public override val parser: Parser<Abci.Result> = Abci.Result.parser()
 
   public override fun convert(obj: Abci.Result): Result = Result(
-  	`data` = obj.`data`.toByteArray(),
-  	log = obj.log,
-  	events = obj.eventsList.map { EventJvmConverter.convert(it) },
-  	msgResponses = obj.msgResponsesList.map { AnyJvmConverter.convert(it) },
+  	`data` = obj.getData().toByteArray(),
+  	log = obj.getLog(),
+  	events = obj.getEventsList().map { EventJvmConverter.convert(it) },
+  	msgResponses = obj.getMsgResponsesList().map { AnyJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: Result): Abci.Result {
@@ -157,8 +157,8 @@ public object SimulationResponseJvmConverter :
 
   public override fun convert(obj: Abci.SimulationResponse): SimulationResponse =
       SimulationResponse(
-  	gasInfo = GasInfoJvmConverter.convert(obj.gasInfo),
-  	result = ResultJvmConverter.convert(obj.result),
+  	gasInfo = GasInfoJvmConverter.convert(obj.getGasInfo()),
+  	result = ResultJvmConverter.convert(obj.getResult()),
   )
 
   public override fun convert(obj: SimulationResponse): Abci.SimulationResponse {
@@ -175,8 +175,8 @@ public object MsgDataJvmConverter : ProtobufTypeMapper<MsgData, Abci.MsgData> {
   public override val parser: Parser<Abci.MsgData> = Abci.MsgData.parser()
 
   public override fun convert(obj: Abci.MsgData): MsgData = MsgData(
-  	msgType = obj.msgType,
-  	`data` = obj.`data`.toByteArray(),
+  	msgType = obj.getMsgType(),
+  	`data` = obj.getData().toByteArray(),
   )
 
   public override fun convert(obj: MsgData): Abci.MsgData {
@@ -193,8 +193,8 @@ public object TxMsgDataJvmConverter : ProtobufTypeMapper<TxMsgData, Abci.TxMsgDa
   public override val parser: Parser<Abci.TxMsgData> = Abci.TxMsgData.parser()
 
   public override fun convert(obj: Abci.TxMsgData): TxMsgData = TxMsgData(
-  	`data` = obj.dataList.map { MsgDataJvmConverter.convert(it) },
-  	msgResponses = obj.msgResponsesList.map { AnyJvmConverter.convert(it) },
+  	`data` = obj.getDataList().map { MsgDataJvmConverter.convert(it) },
+  	msgResponses = obj.getMsgResponsesList().map { AnyJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: TxMsgData): Abci.TxMsgData {
@@ -212,12 +212,12 @@ public object SearchTxsResultJvmConverter :
   public override val parser: Parser<Abci.SearchTxsResult> = Abci.SearchTxsResult.parser()
 
   public override fun convert(obj: Abci.SearchTxsResult): SearchTxsResult = SearchTxsResult(
-  	totalCount = obj.totalCount.asKotlinType,
-  	count = obj.count.asKotlinType,
-  	pageNumber = obj.pageNumber.asKotlinType,
-  	pageTotal = obj.pageTotal.asKotlinType,
-  	limit = obj.limit.asKotlinType,
-  	txs = obj.txsList.map { TxResponseJvmConverter.convert(it) },
+  	totalCount = obj.getTotalCount().asKotlinType,
+  	count = obj.getCount().asKotlinType,
+  	pageNumber = obj.getPageNumber().asKotlinType,
+  	pageTotal = obj.getPageTotal().asKotlinType,
+  	limit = obj.getLimit().asKotlinType,
+  	txs = obj.getTxsList().map { TxResponseJvmConverter.convert(it) },
   )
 
   public override fun convert(obj: SearchTxsResult): Abci.SearchTxsResult {

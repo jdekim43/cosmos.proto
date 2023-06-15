@@ -1,6 +1,6 @@
 // Transform from cosmos/app/v1alpha1/config.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.app.v1alpha1
 
@@ -19,15 +19,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Config.KotlinxSerializer::class)
-@SerialName(value = "cosmos.app.v1alpha1.Config")
+@SerialName(value = Config.TYPE_URL)
 public data class Config(
   @ProtobufIndex(index = 1)
   public val modules: List<ModuleConfig>,
   @ProtobufIndex(index = 2)
   public val golangBindings: List<GolangBinding>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.app.v1alpha1.Config"
+  }
+
   public object KotlinxSerializer : KSerializer<Config> {
     private val delegator: KSerializer<Config> = Config.serializer()
 
@@ -51,7 +56,7 @@ public data class Config(
 }
 
 @Serializable(with = ModuleConfig.KotlinxSerializer::class)
-@SerialName(value = "cosmos.app.v1alpha1.ModuleConfig")
+@SerialName(value = ModuleConfig.TYPE_URL)
 public data class ModuleConfig(
   @ProtobufIndex(index = 1)
   public val name: String,
@@ -59,7 +64,11 @@ public data class ModuleConfig(
   public val config: Any,
   @ProtobufIndex(index = 3)
   public val golangBindings: List<GolangBinding>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.app.v1alpha1.ModuleConfig"
+  }
+
   public object KotlinxSerializer : KSerializer<ModuleConfig> {
     private val delegator: KSerializer<ModuleConfig> = ModuleConfig.serializer()
 
@@ -83,13 +92,17 @@ public data class ModuleConfig(
 }
 
 @Serializable(with = GolangBinding.KotlinxSerializer::class)
-@SerialName(value = "cosmos.app.v1alpha1.GolangBinding")
+@SerialName(value = GolangBinding.TYPE_URL)
 public data class GolangBinding(
   @ProtobufIndex(index = 1)
   public val interfaceType: String,
   @ProtobufIndex(index = 2)
   public val implementation: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.app.v1alpha1.GolangBinding"
+  }
+
   public object KotlinxSerializer : KSerializer<GolangBinding> {
     private val delegator: KSerializer<GolangBinding> = GolangBinding.serializer()
 

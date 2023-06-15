@@ -1,5 +1,5 @@
 // Transform from cosmos/base/node/v1beta1/query.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.node.v1beta1
 
@@ -29,7 +29,7 @@ public object ConfigResponseJvmConverter : ProtobufTypeMapper<ConfigResponse, Qu
   public override val parser: Parser<Query.ConfigResponse> = Query.ConfigResponse.parser()
 
   public override fun convert(obj: Query.ConfigResponse): ConfigResponse = ConfigResponse(
-  	minimumGasPrice = obj.minimumGasPrice,
+  	minimumGasPrice = obj.getMinimumGasPrice(),
   )
 
   public override fun convert(obj: ConfigResponse): Query.ConfigResponse {

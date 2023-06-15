@@ -1,6 +1,6 @@
 // Transform from cosmos/gov/v1/gov.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.gov.v1
 
@@ -25,9 +25,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable
-@SerialName(value = "cosmos.gov.v1.VoteOption")
+@SerialName(value = "/cosmos.gov.v1.VoteOption")
 public enum class VoteOption(
   public val number: Int,
 ) {
@@ -50,7 +51,7 @@ public enum class VoteOption(
 }
 
 @Serializable
-@SerialName(value = "cosmos.gov.v1.ProposalStatus")
+@SerialName(value = "/cosmos.gov.v1.ProposalStatus")
 public enum class ProposalStatus(
   public val number: Int,
 ) {
@@ -75,13 +76,17 @@ public enum class ProposalStatus(
 }
 
 @Serializable(with = WeightedVoteOption.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.WeightedVoteOption")
+@SerialName(value = WeightedVoteOption.TYPE_URL)
 public data class WeightedVoteOption(
   @ProtobufIndex(index = 1)
   public val option: VoteOption,
   @ProtobufIndex(index = 2)
   public val weight: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.WeightedVoteOption"
+  }
+
   public object KotlinxSerializer : KSerializer<WeightedVoteOption> {
     private val delegator: KSerializer<WeightedVoteOption> = WeightedVoteOption.serializer()
 
@@ -105,7 +110,7 @@ public data class WeightedVoteOption(
 }
 
 @Serializable(with = Deposit.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.Deposit")
+@SerialName(value = Deposit.TYPE_URL)
 public data class Deposit(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
@@ -113,7 +118,11 @@ public data class Deposit(
   public val depositor: String,
   @ProtobufIndex(index = 3)
   public val amount: List<Coin>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.Deposit"
+  }
+
   public object KotlinxSerializer : KSerializer<Deposit> {
     private val delegator: KSerializer<Deposit> = Deposit.serializer()
 
@@ -137,7 +146,7 @@ public data class Deposit(
 }
 
 @Serializable(with = Proposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.Proposal")
+@SerialName(value = Proposal.TYPE_URL)
 public data class Proposal(
   @ProtobufIndex(index = 1)
   public val id: ULong,
@@ -165,7 +174,11 @@ public data class Proposal(
   public val summary: String,
   @ProtobufIndex(index = 13)
   public val proposer: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.Proposal"
+  }
+
   public object KotlinxSerializer : KSerializer<Proposal> {
     private val delegator: KSerializer<Proposal> = Proposal.serializer()
 
@@ -189,7 +202,7 @@ public data class Proposal(
 }
 
 @Serializable(with = TallyResult.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.TallyResult")
+@SerialName(value = TallyResult.TYPE_URL)
 public data class TallyResult(
   @ProtobufIndex(index = 1)
   public val yesCount: String,
@@ -199,7 +212,11 @@ public data class TallyResult(
   public val noCount: String,
   @ProtobufIndex(index = 4)
   public val noWithVetoCount: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.TallyResult"
+  }
+
   public object KotlinxSerializer : KSerializer<TallyResult> {
     private val delegator: KSerializer<TallyResult> = TallyResult.serializer()
 
@@ -223,7 +240,7 @@ public data class TallyResult(
 }
 
 @Serializable(with = Vote.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.Vote")
+@SerialName(value = Vote.TYPE_URL)
 public data class Vote(
   @ProtobufIndex(index = 1)
   public val proposalId: ULong,
@@ -233,7 +250,11 @@ public data class Vote(
   public val options: List<WeightedVoteOption>,
   @ProtobufIndex(index = 5)
   public val metadata: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.Vote"
+  }
+
   public object KotlinxSerializer : KSerializer<Vote> {
     private val delegator: KSerializer<Vote> = Vote.serializer()
 
@@ -257,13 +278,17 @@ public data class Vote(
 }
 
 @Serializable(with = DepositParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.DepositParams")
+@SerialName(value = DepositParams.TYPE_URL)
 public data class DepositParams(
   @ProtobufIndex(index = 1)
   public val minDeposit: List<Coin>,
   @ProtobufIndex(index = 2)
   public val maxDepositPeriod: Duration,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.DepositParams"
+  }
+
   public object KotlinxSerializer : KSerializer<DepositParams> {
     private val delegator: KSerializer<DepositParams> = DepositParams.serializer()
 
@@ -287,11 +312,15 @@ public data class DepositParams(
 }
 
 @Serializable(with = VotingParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.VotingParams")
+@SerialName(value = VotingParams.TYPE_URL)
 public data class VotingParams(
   @ProtobufIndex(index = 1)
   public val votingPeriod: Duration,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.VotingParams"
+  }
+
   public object KotlinxSerializer : KSerializer<VotingParams> {
     private val delegator: KSerializer<VotingParams> = VotingParams.serializer()
 
@@ -315,7 +344,7 @@ public data class VotingParams(
 }
 
 @Serializable(with = TallyParams.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.TallyParams")
+@SerialName(value = TallyParams.TYPE_URL)
 public data class TallyParams(
   @ProtobufIndex(index = 1)
   public val quorum: String,
@@ -323,7 +352,11 @@ public data class TallyParams(
   public val threshold: String,
   @ProtobufIndex(index = 3)
   public val vetoThreshold: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.TallyParams"
+  }
+
   public object KotlinxSerializer : KSerializer<TallyParams> {
     private val delegator: KSerializer<TallyParams> = TallyParams.serializer()
 
@@ -347,7 +380,7 @@ public data class TallyParams(
 }
 
 @Serializable(with = Params.KotlinxSerializer::class)
-@SerialName(value = "cosmos.gov.v1.Params")
+@SerialName(value = Params.TYPE_URL)
 public data class Params(
   @ProtobufIndex(index = 1)
   public val minDeposit: List<Coin>,
@@ -369,7 +402,11 @@ public data class Params(
   public val burnProposalDepositPrevote: Boolean,
   @ProtobufIndex(index = 15)
   public val burnVoteVeto: Boolean,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.gov.v1.Params"
+  }
+
   public object KotlinxSerializer : KSerializer<Params> {
     private val delegator: KSerializer<Params> = Params.serializer()
 

@@ -1,5 +1,5 @@
 // Transform from cosmos/base/reflection/v2alpha1/reflection.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.base.reflection.v2alpha1
 

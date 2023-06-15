@@ -1,6 +1,6 @@
 // Transform from cosmos/app/v1alpha1/module.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.app.v1alpha1
 
@@ -19,9 +19,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = ModuleDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.app.v1alpha1.ModuleDescriptor")
+@SerialName(value = ModuleDescriptor.TYPE_URL)
 public data class ModuleDescriptor(
   @ProtobufIndex(index = 1)
   public val goImport: String,
@@ -29,7 +30,11 @@ public data class ModuleDescriptor(
   public val usePackage: List<PackageReference>,
   @ProtobufIndex(index = 3)
   public val canMigrateFrom: List<MigrateFromInfo>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.app.v1alpha1.ModuleDescriptor"
+  }
+
   public object KotlinxSerializer : KSerializer<ModuleDescriptor> {
     private val delegator: KSerializer<ModuleDescriptor> = ModuleDescriptor.serializer()
 
@@ -53,13 +58,17 @@ public data class ModuleDescriptor(
 }
 
 @Serializable(with = PackageReference.KotlinxSerializer::class)
-@SerialName(value = "cosmos.app.v1alpha1.PackageReference")
+@SerialName(value = PackageReference.TYPE_URL)
 public data class PackageReference(
   @ProtobufIndex(index = 1)
   public val name: String,
   @ProtobufIndex(index = 2)
   public val revision: UInt,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.app.v1alpha1.PackageReference"
+  }
+
   public object KotlinxSerializer : KSerializer<PackageReference> {
     private val delegator: KSerializer<PackageReference> = PackageReference.serializer()
 
@@ -83,11 +92,15 @@ public data class PackageReference(
 }
 
 @Serializable(with = MigrateFromInfo.KotlinxSerializer::class)
-@SerialName(value = "cosmos.app.v1alpha1.MigrateFromInfo")
+@SerialName(value = MigrateFromInfo.TYPE_URL)
 public data class MigrateFromInfo(
   @ProtobufIndex(index = 1)
   public val module: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.app.v1alpha1.MigrateFromInfo"
+  }
+
   public object KotlinxSerializer : KSerializer<MigrateFromInfo> {
     private val delegator: KSerializer<MigrateFromInfo> = MigrateFromInfo.serializer()
 

@@ -1,5 +1,5 @@
 // Transform from cosmos/group/v1/events.proto
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.group.v1
 
@@ -17,7 +17,7 @@ public object EventCreateGroupJvmConverter :
   public override val parser: Parser<Events.EventCreateGroup> = Events.EventCreateGroup.parser()
 
   public override fun convert(obj: Events.EventCreateGroup): EventCreateGroup = EventCreateGroup(
-  	groupId = obj.groupId.asKotlinType,
+  	groupId = obj.getGroupId().asKotlinType,
   )
 
   public override fun convert(obj: EventCreateGroup): Events.EventCreateGroup {
@@ -34,7 +34,7 @@ public object EventUpdateGroupJvmConverter :
   public override val parser: Parser<Events.EventUpdateGroup> = Events.EventUpdateGroup.parser()
 
   public override fun convert(obj: Events.EventUpdateGroup): EventUpdateGroup = EventUpdateGroup(
-  	groupId = obj.groupId.asKotlinType,
+  	groupId = obj.getGroupId().asKotlinType,
   )
 
   public override fun convert(obj: EventUpdateGroup): Events.EventUpdateGroup {
@@ -54,7 +54,7 @@ public object EventCreateGroupPolicyJvmConverter :
 
   public override fun convert(obj: Events.EventCreateGroupPolicy): EventCreateGroupPolicy =
       EventCreateGroupPolicy(
-  	address = obj.address,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: EventCreateGroupPolicy): Events.EventCreateGroupPolicy {
@@ -74,7 +74,7 @@ public object EventUpdateGroupPolicyJvmConverter :
 
   public override fun convert(obj: Events.EventUpdateGroupPolicy): EventUpdateGroupPolicy =
       EventUpdateGroupPolicy(
-  	address = obj.address,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: EventUpdateGroupPolicy): Events.EventUpdateGroupPolicy {
@@ -94,7 +94,7 @@ public object EventSubmitProposalJvmConverter :
 
   public override fun convert(obj: Events.EventSubmitProposal): EventSubmitProposal =
       EventSubmitProposal(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: EventSubmitProposal): Events.EventSubmitProposal {
@@ -114,7 +114,7 @@ public object EventWithdrawProposalJvmConverter :
 
   public override fun convert(obj: Events.EventWithdrawProposal): EventWithdrawProposal =
       EventWithdrawProposal(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: EventWithdrawProposal): Events.EventWithdrawProposal {
@@ -130,7 +130,7 @@ public object EventVoteJvmConverter : ProtobufTypeMapper<EventVote, Events.Event
   public override val parser: Parser<Events.EventVote> = Events.EventVote.parser()
 
   public override fun convert(obj: Events.EventVote): EventVote = EventVote(
-  	proposalId = obj.proposalId.asKotlinType,
+  	proposalId = obj.getProposalId().asKotlinType,
   )
 
   public override fun convert(obj: EventVote): Events.EventVote {
@@ -146,9 +146,9 @@ public object EventExecJvmConverter : ProtobufTypeMapper<EventExec, Events.Event
   public override val parser: Parser<Events.EventExec> = Events.EventExec.parser()
 
   public override fun convert(obj: Events.EventExec): EventExec = EventExec(
-  	proposalId = obj.proposalId.asKotlinType,
-  	result = ProposalExecutorResult.forNumber(obj.result.number),
-  	logs = obj.logs,
+  	proposalId = obj.getProposalId().asKotlinType,
+  	result = ProposalExecutorResult.forNumber(obj.getResult().number),
+  	logs = obj.getLogs(),
   )
 
   public override fun convert(obj: EventExec): Events.EventExec {
@@ -167,8 +167,8 @@ public object EventLeaveGroupJvmConverter :
   public override val parser: Parser<Events.EventLeaveGroup> = Events.EventLeaveGroup.parser()
 
   public override fun convert(obj: Events.EventLeaveGroup): EventLeaveGroup = EventLeaveGroup(
-  	groupId = obj.groupId.asKotlinType,
-  	address = obj.address,
+  	groupId = obj.getGroupId().asKotlinType,
+  	address = obj.getAddress(),
   )
 
   public override fun convert(obj: EventLeaveGroup): Events.EventLeaveGroup {

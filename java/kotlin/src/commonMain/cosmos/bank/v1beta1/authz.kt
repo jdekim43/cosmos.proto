@@ -1,6 +1,6 @@
 // Transform from cosmos/bank/v1beta1/authz.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.bank.v1beta1
 
@@ -19,15 +19,20 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = SendAuthorization.KotlinxSerializer::class)
-@SerialName(value = "cosmos.bank.v1beta1.SendAuthorization")
+@SerialName(value = SendAuthorization.TYPE_URL)
 public data class SendAuthorization(
   @ProtobufIndex(index = 1)
   public val spendLimit: List<Coin>,
   @ProtobufIndex(index = 2)
   public val allowList: List<String>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.bank.v1beta1.SendAuthorization"
+  }
+
   public object KotlinxSerializer : KSerializer<SendAuthorization> {
     private val delegator: KSerializer<SendAuthorization> = SendAuthorization.serializer()
 

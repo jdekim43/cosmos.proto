@@ -1,6 +1,6 @@
 // Transform from cosmos/upgrade/v1beta1/upgrade.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.upgrade.v1beta1
 
@@ -24,9 +24,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable(with = Plan.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.Plan")
+@SerialName(value = Plan.TYPE_URL)
 public data class Plan(
   @ProtobufIndex(index = 1)
   public val name: String,
@@ -48,7 +49,11 @@ public data class Plan(
   )
   @ProtobufIndex(index = 5)
   public val upgradedClientState: Any,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.Plan"
+  }
+
   public object KotlinxSerializer : KSerializer<Plan> {
     private val delegator: KSerializer<Plan> = Plan.serializer()
 
@@ -72,7 +77,7 @@ public data class Plan(
 }
 
 @Serializable(with = SoftwareUpgradeProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.SoftwareUpgradeProposal")
+@SerialName(value = SoftwareUpgradeProposal.TYPE_URL)
 public data class SoftwareUpgradeProposal(
   @ProtobufIndex(index = 1)
   public val title: String,
@@ -80,7 +85,11 @@ public data class SoftwareUpgradeProposal(
   public val description: String,
   @ProtobufIndex(index = 3)
   public val plan: Plan,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<SoftwareUpgradeProposal> {
     private val delegator: KSerializer<SoftwareUpgradeProposal> =
         SoftwareUpgradeProposal.serializer()
@@ -105,13 +114,17 @@ public data class SoftwareUpgradeProposal(
 }
 
 @Serializable(with = CancelSoftwareUpgradeProposal.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal")
+@SerialName(value = CancelSoftwareUpgradeProposal.TYPE_URL)
 public data class CancelSoftwareUpgradeProposal(
   @ProtobufIndex(index = 1)
   public val title: String,
   @ProtobufIndex(index = 2)
   public val description: String,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal"
+  }
+
   public object KotlinxSerializer : KSerializer<CancelSoftwareUpgradeProposal> {
     private val delegator: KSerializer<CancelSoftwareUpgradeProposal> =
         CancelSoftwareUpgradeProposal.serializer()
@@ -136,13 +149,17 @@ public data class CancelSoftwareUpgradeProposal(
 }
 
 @Serializable(with = ModuleVersion.KotlinxSerializer::class)
-@SerialName(value = "cosmos.upgrade.v1beta1.ModuleVersion")
+@SerialName(value = ModuleVersion.TYPE_URL)
 public data class ModuleVersion(
   @ProtobufIndex(index = 1)
   public val name: String,
   @ProtobufIndex(index = 2)
   public val version: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.upgrade.v1beta1.ModuleVersion"
+  }
+
   public object KotlinxSerializer : KSerializer<ModuleVersion> {
     private val delegator: KSerializer<ModuleVersion> = ModuleVersion.serializer()
 

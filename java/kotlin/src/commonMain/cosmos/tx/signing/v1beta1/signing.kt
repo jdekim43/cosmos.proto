@@ -1,6 +1,6 @@
 // Transform from cosmos/tx/signing/v1beta1/signing.proto
 @file:ProtobufSyntax(syntax = "PROTO3")
-@file:GeneratorVersion(version = "0.2.2")
+@file:GeneratorVersion(version = "0.3.1")
 
 package cosmos.tx.signing.v1beta1
 
@@ -8,6 +8,7 @@ import cosmos.crypto.multisig.v1beta1.CompactBitArray
 import google.protobuf.Any
 import kotlin.ByteArray
 import kotlin.Int
+import kotlin.String
 import kotlin.ULong
 import kotlin.Unit
 import kotlin.collections.List
@@ -23,9 +24,10 @@ import kr.jadekim.protobuf.`annotation`.ProtobufIndex
 import kr.jadekim.protobuf.`annotation`.ProtobufSyntax
 import kr.jadekim.protobuf.kotlinx.ProtobufConverterEncoder
 import kr.jadekim.protobuf.kotlinx.ProtobufMapperDecoder
+import kr.jadekim.protobuf.type.ProtobufMessage
 
 @Serializable
-@SerialName(value = "cosmos.tx.signing.v1beta1.SignMode")
+@SerialName(value = "/cosmos.tx.signing.v1beta1.SignMode")
 public enum class SignMode(
   public val number: Int,
 ) {
@@ -50,11 +52,15 @@ public enum class SignMode(
 }
 
 @Serializable(with = SignatureDescriptors.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.signing.v1beta1.SignatureDescriptors")
+@SerialName(value = SignatureDescriptors.TYPE_URL)
 public data class SignatureDescriptors(
   @ProtobufIndex(index = 1)
   public val signatures: List<SignatureDescriptor>,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.signing.v1beta1.SignatureDescriptors"
+  }
+
   public object KotlinxSerializer : KSerializer<SignatureDescriptors> {
     private val delegator: KSerializer<SignatureDescriptors> = SignatureDescriptors.serializer()
 
@@ -78,7 +84,7 @@ public data class SignatureDescriptors(
 }
 
 @Serializable(with = SignatureDescriptor.KotlinxSerializer::class)
-@SerialName(value = "cosmos.tx.signing.v1beta1.SignatureDescriptor")
+@SerialName(value = SignatureDescriptor.TYPE_URL)
 public data class SignatureDescriptor(
   @ProtobufIndex(index = 1)
   public val publicKey: Any,
@@ -86,12 +92,20 @@ public data class SignatureDescriptor(
   public val `data`: Data,
   @ProtobufIndex(index = 3)
   public val sequence: ULong,
-) {
+) : ProtobufMessage {
+  public companion object {
+    public const val TYPE_URL: String = "/cosmos.tx.signing.v1beta1.SignatureDescriptor"
+  }
+
   @Serializable(with = Data.KotlinxSerializer::class)
-  @SerialName(value = "cosmos.tx.signing.v1beta1.SignatureDescriptor.Data")
+  @SerialName(value = Data.TYPE_URL)
   public data class Data(
     public val sum: SumOneOf,
-  ) {
+  ) : ProtobufMessage {
+    public companion object {
+      public const val TYPE_URL: String = "/cosmos.tx.signing.v1beta1.SignatureDescriptor.Data"
+    }
+
     @Serializable
     public sealed interface SumOneOf {
       @JvmInline
@@ -108,13 +122,18 @@ public data class SignatureDescriptor(
     }
 
     @Serializable(with = Single.KotlinxSerializer::class)
-    @SerialName(value = "cosmos.tx.signing.v1beta1.SignatureDescriptor.Data.Single")
+    @SerialName(value = Single.TYPE_URL)
     public data class Single(
       @ProtobufIndex(index = 1)
       public val mode: SignMode,
       @ProtobufIndex(index = 2)
       public val signature: ByteArray,
-    ) {
+    ) : ProtobufMessage {
+      public companion object {
+        public const val TYPE_URL: String =
+            "/cosmos.tx.signing.v1beta1.SignatureDescriptor.Data.Single"
+      }
+
       public object KotlinxSerializer : KSerializer<Single> {
         private val delegator: KSerializer<Single> = Single.serializer()
 
@@ -138,13 +157,18 @@ public data class SignatureDescriptor(
     }
 
     @Serializable(with = Multi.KotlinxSerializer::class)
-    @SerialName(value = "cosmos.tx.signing.v1beta1.SignatureDescriptor.Data.Multi")
+    @SerialName(value = Multi.TYPE_URL)
     public data class Multi(
       @ProtobufIndex(index = 1)
       public val bitarray: CompactBitArray,
       @ProtobufIndex(index = 2)
       public val signatures: List<Data>,
-    ) {
+    ) : ProtobufMessage {
+      public companion object {
+        public const val TYPE_URL: String =
+            "/cosmos.tx.signing.v1beta1.SignatureDescriptor.Data.Multi"
+      }
+
       public object KotlinxSerializer : KSerializer<Multi> {
         private val delegator: KSerializer<Multi> = Multi.serializer()
 
